@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <!DOCTYPE html>
-<html>
+
 <head>
 	<title>Login V3</title>
 	<meta charset="UTF-8">
