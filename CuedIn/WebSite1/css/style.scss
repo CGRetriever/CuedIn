@@ -1,0 +1,43 @@
+// See node_modules/bootstrap/scss/_variables.scss for more variables that you can chage
+// When running Sass, destination file should be style.css
+
+// Variable Overrides 
+// COLORS
+$theme-colors: (
+  "primary": #d95700,
+  "tacotuesday": #900
+);
+// other theme-colors variables are: primary, secondary, success, info, warning, danger, light, dark
+
+$body-bg: #ededed;
+$body-color: #000;
+$link-color: blue;
+$link-decoration: none;
+$link-hover-color: gray;
+$link-hover-decoration: underline;
+
+// GRID VARIABLES
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+
+// FONTS
+
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-size-base: 1.1rem;
+
+
+
+
+// MUST IMPORT THIS AT THE BOTTOM OF THE CUSTOM SASS FILE
+// Path must be accurate to the node_modules folder within 
+// the main project folder
+// ///////////////////////////////////////////////////////
+// Bootstrap Sass Imports
+@import "../node_modules/bootstrap/scss/bootstrap";
+
