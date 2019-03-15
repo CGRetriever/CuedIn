@@ -1,13 +1,14 @@
 drop table TechnicalSchool
 drop table University
 drop table EducationInstitution
-drop table Scholorship
+drop table Scholarship
 drop table JobListing
 drop table UserInterest
 drop table OpportunityEntity
 drop table Organization
 drop table Student
 drop table Parent
+drop table SchoolEmployee
 drop table School
 drop table Password
 drop table UserEntity
@@ -38,10 +39,26 @@ Country varchar (50) not null,
 City varchar (50) not null,
 State varchar (50) not null,
 ZipCode int not null,
-SchoolEntityType varchar(1) not null,
-SchoolUserOccupation varchar(50),
 primary key (SchoolEntityID),
 Foreign key (SchoolEntityID) references UserEntity (UserEntityID)
+);
+
+Create table SchoolEmployee(
+SchoolEmployeeEntityID int identity (1,1) not null,
+FirstName varchar (50),
+LastName varchar (50) not null,
+MiddleName varchar (50) not null,
+StreetAddress varchar (50) not null,
+Country varchar (50) not null,
+City varchar (50) not null,
+State varchar (50) not null,
+ZipCode int not null,
+SchoolEmployeeEntityType varchar (3) not null,
+SchoolEntityID int not null,
+UserEntityID int not null,
+primary key (SchoolEmployeeEntityID),
+Foreign key (SchoolEntityID) references School (SchoolEntityID),
+Foreign key (UserEntityID) references UserEntity (UserEntityID)
 );
 
 Create table Parent (
@@ -109,11 +126,11 @@ Foreign Key (OpportunityID) references OpportunityEntity (OpportunityID),
 );
 
 Create Table JobListing (
-JobListingID int not null,
-JobTitle varchar(50) not null,
+JobListingID int identity(1,1) not null,
+JobTitle varchar(255) not null,
 JobDescription varchar(255) not null,
-JobType varchar(10) not null,
-Location varchar(35) not null,
+JobType varchar(255) not null,
+Location varchar(255) not null,
 PostingDate datetime not null,
 Deadline datetime not null,
 LastUpdated datetime not null,
@@ -124,7 +141,7 @@ Primary Key (JobListingID),
 Foreign Key (OrganizationID) references Organization (OrganizationEntityID),
 );
 
-Create Table Scholorship (
+Create Table Scholarship (
 ScholarshipID int not null,
 ScholarshipName varchar(50) not null,
 ScholarshipDescription varchar(255) not null,
