@@ -9,7 +9,10 @@ public partial class JobPostings : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        int count = 0;
+
+       
+
+        /*int count = 0;
         String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         sc.Open();
@@ -35,9 +38,11 @@ public partial class JobPostings : System.Web.UI.Page
             for (int cellCtr = 1; cellCtr <= colCnt; cellCtr++)
             {
                 TableCell tableCell = new TableCell();
-                tableCell.Text
+                tableCell.Text = "hi";
+                tblJobPosting.
             }
         }
+        */
 
 
     }
