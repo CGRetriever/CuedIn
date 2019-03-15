@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 
+
 <head>
         <title>Sass Bootstrap Template</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -115,7 +116,8 @@
         });
     </script>
 
-
+    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>
 
