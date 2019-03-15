@@ -1,28 +1,32 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="OpportunityActDec.aspx.cs" Inherits="OpportunityActDec" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+      <form id="form1" runat="server">
       <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputJobs">Jobs to Approve </label>
         <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT [OpportunityID], [OpportunityType] FROM [OpportunityEntity]"></asp:SqlDataSource>
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="OpportunityID" DataSourceID="JobOpportunity">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="OpportunityID" DataSourceID="JobOpportunity" CellPadding="1"  OnRowCommand="GridView1_OnRowCommand">
             <Columns>
                 <asp:BoundField DataField="OpportunityID" HeaderText="OpportunityID" InsertVisible="False" ReadOnly="True" SortExpression="OpportunityID" />
                 <asp:BoundField DataField="OpportunityType" HeaderText="OpportunityType" SortExpression="OpportunityType" />
-                     <asp:TemplateField ShowHeader="False">
+                     <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
             <ItemTemplate>
-                <asp:Button ID="ApproveButton" runat="server" CausesValidation="false" 
-                    Text="Approve" CssClass="btn-success" />
+                <asp:Button ID="ApproveButton" runat="server" CausesValidation="false"  
+                    Text="Approve" CssClass="btn-success" CommandName ="Approve" CommandArgument='<%#Eval ("OpportunityID") %>' OnClick="ApproveButton_Click1"/>
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn-danger" />
-                <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn-primary"/>
+                <asp:Button ID="ViewMoreButton1" runat="server" CausesValidation="false" 
+                    Text="View More" CssClass="btn-primary" />
             </ItemTemplate>
+
+<HeaderStyle BorderColor="Black"></HeaderStyle>
         </asp:TemplateField>
             </Columns>
             <RowStyle CssClass="cursor-pointer" />
-
         </asp:GridView>
+
+
     </div>
           
     <div class="form-group col-md-6">
@@ -44,10 +48,16 @@
         </asp:TemplateField>
             </Columns>
             <RowStyle CssClass="cursor-pointer" />
-
         </asp:GridView>
-
     </div>
+        
   </div>
+      <asp:TextBox ID="TextBox1" runat="server" AutoPostBack ="true"></asp:TextBox>
+
+          <br />
+          <br />
+        
+      </form>
+
 </asp:Content>
 
