@@ -13,7 +13,7 @@
                      <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
             <ItemTemplate>
                 <asp:Button ID="ApproveButton" runat="server" CausesValidation="false"  
-                    Text="Approve" CssClass="btn-success" CommandName ="Approve" CommandArgument='<%#Eval ("OpportunityID") %>' OnClick="ApproveButton_Click1"/>
+                    Text="Approve" CssClass="btn-success" CommandName ="Approve" CommandArgument='<%#Eval ("OpportunityID") %>'/>
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn-danger" />
                 <asp:Button ID="ViewMoreButton1" runat="server" CausesValidation="false" 
