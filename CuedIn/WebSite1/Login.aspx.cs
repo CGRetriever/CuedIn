@@ -13,6 +13,6 @@ public partial class Login : System.Web.UI.Page
     }
     protected void btn_click(object sender, EventArgs e)
     {
-        Response.Redirect("JobPostings.aspx");
+        Response.Redirect("AcceptDeclineOppForm.aspx");
     }
 }
