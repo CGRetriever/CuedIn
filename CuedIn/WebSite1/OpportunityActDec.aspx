@@ -10,7 +10,7 @@
         <%--Get rid of Job ID eventually- for now we need it for the DB update?--%>
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1"  OnRowCommand="GridView1_OnRowCommand">
             <Columns>
-                <asp:BoundField DataField ="JobListingID" HeaderText ="Job ID" InsertVisible="false" ReadOnly="true" />
+                
                 <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                 <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
                      <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
@@ -31,20 +31,20 @@
 
 
     </div>
-    <%--      
+        
     <div class="form-group col-md-6">
       <label for="ScholarshipOpportunity">Scholarships to Approve</label>
-        <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server"></asp:SqlDataSource>
-              <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="OpportunityID" DataSourceID="JobOpportunity">
+        <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'pen'"></asp:SqlDataSource>
+              <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity">
             <Columns>
-                <asp:BoundField DataField="OpportunityID" HeaderText="OpportunityID" InsertVisible="False" ReadOnly="True" SortExpression="OpportunityID" />
-                <asp:BoundField DataField="OpportunityType" HeaderText="OpportunityType" SortExpression="OpportunityType" />
+                <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True"  />
+                <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True"   />
                      <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
                 <asp:Button ID="ApproveButton" runat="server" CausesValidation="false" 
-                    Text="Approve" CssClass="btn-success" />
+                    Text="Approve" CssClass="btn-success" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
-                    Text="Reject" CssClass="btn-danger" />
+                    Text="Reject" CssClass="btn-danger" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
                     Text="View More" CssClass="btn-primary"/>
             </ItemTemplate>
@@ -53,10 +53,9 @@
             <RowStyle CssClass="cursor-pointer" />
         </asp:GridView>
     </div>
-    --%>
+    
         
   </div>
-      <asp:TextBox ID="TextBox1" runat="server" AutoPostBack ="true"></asp:TextBox>
 
           <br />
           <br />

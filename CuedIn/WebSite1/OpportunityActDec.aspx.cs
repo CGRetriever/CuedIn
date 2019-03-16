@@ -40,8 +40,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
             //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
 
-            //Make page refresh to re-run query to only pull pending items
-
         }
         else if (e.CommandName == "JReject")
         {
@@ -52,9 +50,38 @@ public partial class OpportunityActDec : System.Web.UI.Page
             rejectJob.ExecuteNonQuery();
             sql.Close();
 
+            //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
         }
         Response.Redirect(Request.RawUrl);
 
+    }
+
+    protected void GridView2_OnRowCommand(object sender, GridViewCommandEventArgs e)
+    {
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+        if (e.CommandName == "SApprove")
+        {
+            sql.Open();
+            System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
+            approveScholarship.Connection = sql;
+            approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
+            approveScholarship.ExecuteNonQuery();
+            //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
+        }
+
+        if (e.CommandName == "SReject")
+        {
+            sql.Open();
+            System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
+            rejectScholarship.Connection = sql;
+            rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
+            rejectScholarship.ExecuteNonQuery();
+            //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business?"//
+        }
+
+        Response.Redirect(Request.RawUrl);
     }
 
 
