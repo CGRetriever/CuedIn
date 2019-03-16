@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -24,12 +25,24 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void GridView1_OnRowCommand(object sender, GridViewCommandEventArgs e)
 
     {
-        if (e.CommandName == "Approve")
+        int jobID = Convert.ToInt32(e.CommandArgument);
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        if (e.CommandName == "JApprove")
         {
-            int test = Convert.ToInt32(e.CommandArgument);
-            TextBox1.Text = test.ToString();
+            sql.Open();
+            System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
+            approveJob.Connection = sql;
+            approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
+            approveJob.ExecuteNonQuery();
+
+            //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
+
 
         }
+
+
 
 
 

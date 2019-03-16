@@ -6,16 +6,19 @@
     <div class="form-group col-md-6">
       <label for="inputJobs">Jobs to Approve </label>
         <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT [OpportunityID], [OpportunityType] FROM [OpportunityEntity]"></asp:SqlDataSource>
+        <%--Set this so it's only selecting job opportunities that are pending--%>
+        <%--Update the Opportunity ID column to be Opportunity Name- users wouldn't need opportunity ID--%>
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="OpportunityID" DataSourceID="JobOpportunity" CellPadding="1"  OnRowCommand="GridView1_OnRowCommand">
             <Columns>
                 <asp:BoundField DataField="OpportunityID" HeaderText="OpportunityID" InsertVisible="False" ReadOnly="True" SortExpression="OpportunityID" />
+                
                 <asp:BoundField DataField="OpportunityType" HeaderText="OpportunityType" SortExpression="OpportunityType" />
                      <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
             <ItemTemplate>
                 <asp:Button ID="ApproveButton" runat="server" CausesValidation="false"  
-                    Text="Approve" CssClass="btn-success" CommandName ="Approve" CommandArgument='<%#Eval ("OpportunityID") %>'/>
+                    Text="Approve" CssClass="btn-success" CommandName ="JApprove" CommandArgument='<%#Eval ("OpportunityID") %>'/>
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
-                    Text="Reject" CssClass="btn-danger" />
+                    Text="Reject" CssClass="btn-danger" CommandName ="JReject" CommandArgument='<%#Eval ("OpportunityID") %>' />
                 <asp:Button ID="ViewMoreButton1" runat="server" CausesValidation="false" 
                     Text="View More" CssClass="btn-primary" />
             </ItemTemplate>
