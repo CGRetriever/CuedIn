@@ -52,7 +52,7 @@
                         Dashboard
                     </a>
 
-                <li class="active">
+                <li>
                     <a href="JobPostingsPrototype.aspx">
                         <i class="fas fa-briefcase"></i>
                         Jobs
