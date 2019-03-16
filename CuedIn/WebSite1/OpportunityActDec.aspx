@@ -19,8 +19,8 @@
                     Text="Approve" CssClass="btn-success" CommandName ="JApprove" CommandArgument='<%#Eval ("JobListingID") %>'/>
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn-danger" CommandName ="JReject" CommandArgument='<%#Eval ("JobListingID") %>' />
-                <asp:Button ID="ViewMoreButton1" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn-primary" />
+                <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
+                    Text="View More" CssClass="btn-primary" CommandName = "JViewMore" CommandArgument='<%#Eval ("JobListingID") %>'/>
             </ItemTemplate>
 
 <HeaderStyle BorderColor="Black"></HeaderStyle>
@@ -46,7 +46,7 @@
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn-danger" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn-primary"/>
+                    Text="View More" CssClass="btn-primary"  CommandName ="SViewMore" CommandArgument='<%#Eval ("ScholarshipID") %>' />
             </ItemTemplate>
         </asp:TemplateField>
             </Columns>
