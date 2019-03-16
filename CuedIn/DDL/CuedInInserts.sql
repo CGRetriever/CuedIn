@@ -1036,7 +1036,7 @@ INSERT INTO [dbo].[JobListing]
            ,'03-15-2019'
            ,'12-31-2019'
            ,getdate()
-           ,'no'
+           ,'pen'
            ,'2'
            ,'1')
 GO
@@ -1060,7 +1060,7 @@ INSERT INTO [dbo].[JobListing]
            ,'03-15-2019'
            ,'12-31-2019'
            ,getdate()
-           ,'no'
+           ,'pen'
            ,'7'
            ,'2')
 GO
@@ -1084,7 +1084,7 @@ INSERT INTO [dbo].[JobListing]
            ,'03-15-2019'
            ,'12-31-2019'
            ,getdate()
-           ,'no'
+           ,'pen'
            ,'5'
            ,'3')
 GO
@@ -1108,7 +1108,7 @@ INSERT INTO [dbo].[JobListing]
            ,'03-15-2019'
            ,'12-31-2019'
            ,getdate()
-           ,'no'
+           ,'pen'
            ,'3'
            ,'4')
 GO
@@ -1132,7 +1132,7 @@ INSERT INTO [dbo].[JobListing]
            ,'03-15-2019'
            ,'12-31-2019'
            ,getdate()
-           ,'no'
+           ,'pen'
            ,'16'
            ,'5')
 GO
@@ -1156,7 +1156,7 @@ INSERT INTO [dbo].[JobListing]
            ,'03-15-2019'
            ,'12-31-2019'
            ,getdate()
-           ,'no'
+           ,'pen'
            ,'21'
            ,'6')
 GO
@@ -1285,7 +1285,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'3'
            ,'10-15-2019'
            ,'6'
-           ,'yes'
+           ,'pen'
            ,GETDATE())
 GO
 
