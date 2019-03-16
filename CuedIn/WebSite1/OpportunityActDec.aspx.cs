@@ -36,15 +36,24 @@ public partial class OpportunityActDec : System.Web.UI.Page
             approveJob.Connection = sql;
             approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
             approveJob.ExecuteNonQuery();
+            sql.Close();
 
             //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
 
+            //Make page refresh to re-run query to only pull pending items
 
         }
+        else if (e.CommandName == "JReject")
+        {
+            sql.Open();
+            System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
+            rejectJob.Connection = sql;
+            rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
+            rejectJob.ExecuteNonQuery();
+            sql.Close();
 
-
-
-
+        }
+        Response.Redirect(Request.RawUrl);
 
     }
 
