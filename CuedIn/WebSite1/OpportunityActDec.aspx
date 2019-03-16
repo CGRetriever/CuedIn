@@ -15,7 +15,7 @@
                 <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
                      <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
             <ItemTemplate>
-                <asp:Button ID="ApproveButton" runat="server" CausesValidation="false"  
+                <asp:Button  ID="ApproveButton" runat="server" CausesValidation="false"  
                     Text="Approve" CssClass="btn-success" CommandName ="JApprove" CommandArgument='<%#Eval ("JobListingID") %>'/>
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn-danger" CommandName ="JReject" CommandArgument='<%#Eval ("JobListingID") %>' />
@@ -41,7 +41,7 @@
                 <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True"   />
                      <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
-                <asp:Button ID="ApproveButton" runat="server" CausesValidation="false" 
+                <asp:Button  ID="ApproveButton" runat="server" CausesValidation="false" 
                     Text="Approve" CssClass="btn-success" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn-danger" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />

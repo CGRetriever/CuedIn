@@ -63,6 +63,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
         if (e.CommandName == "SApprove")
         {
+            
             sql.Open();
             System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
             approveScholarship.Connection = sql;
