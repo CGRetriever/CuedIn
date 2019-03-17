@@ -6,7 +6,7 @@
       <form id="form1" runat="server">
       <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputJobs">Jobs to Approve </label>
+      <label Class="form-control-lg font-weight-bold" for="inputJobs">Jobs to Approve </label>
         <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'pen'"></asp:SqlDataSource>
         <%--Set this so it's only selecting job opportunities that are pending--%>
         <%--Get rid of Job ID eventually- for now we need it for the DB update?--%>
@@ -18,11 +18,11 @@
                      <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
             <ItemTemplate>
                 <asp:Button  ID="ApproveButton" runat="server" CausesValidation="false"  
-                    Text="Approve" CssClass="btn-success" CommandName ="JApprove" CommandArgument='<%#Eval ("JobListingID") %>'/>
+                    Text="Approve" CssClass="btn btn-success btn-circle" CommandName ="JApprove" CommandArgument='<%#Eval ("JobListingID") %>'/>
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
-                    Text="Reject" CssClass="btn-danger" CommandName ="JReject" CommandArgument='<%#Eval ("JobListingID") %>' />
+                    Text="Reject" CssClass="btn btn-danger btn-circle" CommandName ="JReject" CommandArgument='<%#Eval ("JobListingID") %>' />
                 <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn-primary" CommandName = "JViewMore" CommandArgument='<%#Eval ("JobListingID") %>'/>
+                    Text="View More" CssClass="btn btn-warning btn-circle" CommandName = "JViewMore" CommandArgument='<%#Eval ("JobListingID") %>'/>
             </ItemTemplate>
 
 <HeaderStyle BorderColor="Black"></HeaderStyle>
@@ -35,7 +35,7 @@
     </div>
         
     <div class="form-group col-md-6">
-      <label for="ScholarshipOpportunity">Scholarships to Approve</label>
+      <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
         <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'pen'"></asp:SqlDataSource>
               <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" OnRowCommand="GridView2_OnRowCommand">
             <Columns>
@@ -44,11 +44,11 @@
                      <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
                 <asp:Button  ID="ApproveButton" runat="server" CausesValidation="false" 
-                    Text="Approve" CssClass="btn-success" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
+                    Text="Approve" CssClass="btn btn-success btn-circle" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
-                    Text="Reject" CssClass="btn-danger" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
+                    Text="Reject" CssClass="btn btn-danger btn-circle" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn-primary"  CommandName ="SViewMore" CommandArgument='<%#Eval ("ScholarshipID") %>' />
+                    Text="View More" CssClass="btn btn-warning btn-circle"  CommandName ="SViewMore" CommandArgument='<%#Eval ("ScholarshipID") %>' />
             </ItemTemplate>
         </asp:TemplateField>
             </Columns>
