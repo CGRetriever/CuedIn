@@ -28,12 +28,14 @@
 
 
 .RoundedElement {
-    width: 80px;
-    height: 60px;
-    position: center;
-    right: 20px;
-    border-radius: 15px 0px 0px 15px;
-    background-color: #F7A824;
+    width: 350px;
+    height: 200px;
+    /*position: center;
+    right: 40px;
+    border-radius: 60px 60px 60px 60px;
+    background-color: #03030a;*/
+    padding-left: 80px;
+    padding-top:40px;
 }
 
 /*//////////////////////////////////////////////////////////////////
