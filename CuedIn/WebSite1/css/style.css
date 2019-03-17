@@ -22,7 +22,7 @@ a:focus {
 
 .navbar {
     padding: 15px 10px;
-    background: #fff;
+    background: #4F79A3;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -42,6 +42,8 @@ a:focus {
 
 .bg-light {
     background-color: #81C341!important;
+    top: 0px;
+    left: 0px;
 }
 
 .line {
@@ -279,4 +281,4 @@ a.article:hover {
         text-align: center;
         font-size: 12px;
         line-height: 1.42857;
-    }
+
