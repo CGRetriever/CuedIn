@@ -27,6 +27,14 @@
 
 
 
+.RoundedElement {
+    width: 80px;
+    height: 60px;
+    position: center;
+    right: 20px;
+    border-radius: 15px 0px 0px 15px;
+    background-color: #F7A824;
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/

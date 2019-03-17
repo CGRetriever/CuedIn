@@ -39,7 +39,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-logo">
-						<img src="images/cued.jpg" alt="logo" class="rounded-circle">
+						<img src="images/cued.jpg" alt="logo" class="RoundedElement">
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
