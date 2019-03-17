@@ -22,7 +22,7 @@ a:focus {
 
 .navbar {
     padding: 15px 10px;
-    background: #fff;
+    background: #4F79A3;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -42,6 +42,8 @@ a:focus {
 
 .bg-light {
     background-color: #81C341!important;
+    top: 0px;
+    left: 0px;
 }
 
 .line {
@@ -145,20 +147,20 @@ span {
     display: block;
 }
 
-#sidebar ul li a:hover {
-    color: #81C341;
-    background: #fff;
-}
+    #sidebar ul li a:hover {
+        color: #4F79A3;
+        background: #fff;
+    }
 
 #sidebar ul li a i {
     margin-right: 10px;
 }
 
-#sidebar ul li.active>a,
-a[aria-expanded="true"] {
-    color: #fff;
-    background: #81C341;
-}
+    #sidebar ul li.active > a,
+    a[aria-expanded="true"] {
+        color: #fff;
+        background: #4F79A3;
+    }
 
 a[data-toggle="collapse"] {
     position: relative;
@@ -175,7 +177,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #81C341;
+    background: #4F79A3;
 }
 
 ul.CTAs {
@@ -192,12 +194,12 @@ ul.CTAs a {
 
 a.download {
     background: #fff;
-    color: #81C341;
+    color: #4F79A3;
 }
 
 a.article,
 a.article:hover {
-    background: #81C341 !important;
+    background: #4F79A3 !important;
     color: #fff !important;
 }
 
@@ -271,6 +273,12 @@ a.article:hover {
     Cards
 ----------------------------------------------------- */
 
+ .btn-circle {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.42857;
 
-
-}
