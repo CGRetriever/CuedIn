@@ -188,6 +188,3 @@ Description varchar(50) not null,
 Primary Key (TechnicalSchoolID),
 Foreign Key (TechnicalSchoolID) references EducationInstitution (HigherEducationID),
 );
-
-
-insert into OpportunityEntity values ('hi')
