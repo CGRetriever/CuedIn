@@ -52,6 +52,16 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
             //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
         }
+
+        if (e.CommandName == "JViewMore")
+        {
+            mp1.Show();
+
+
+        }
+
+
+
         Response.Redirect(Request.RawUrl);
 
     }
@@ -74,6 +84,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         if (e.CommandName == "SReject")
         {
+            
             sql.Open();
             System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
             rejectScholarship.Connection = sql;
@@ -81,7 +92,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
             rejectScholarship.ExecuteNonQuery();
             //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business?"//
         }
-       
+        if (e.CommandName == "SViewMore")
+        {
+            mp1.Show();
+
+
+        }
+
         Response.Redirect(Request.RawUrl);
     }
 

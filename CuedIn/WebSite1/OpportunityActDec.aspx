@@ -66,23 +66,20 @@
 
 
 
-          <asp:ScriptManager ID="ScriptManager1" runat="server">
+<asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
-<asp:Button ID="btnShow" runat="server" Text="Show Modal Popup" />
- 
+<asp:Button ID="btnShow" runat="server" style="display:none" />
+
 <!-- ModalPopupExtender -->
-<cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" TargetControlID="btnShow"
-    CancelControlID="btnClose" BackgroundCssClass="modalBackground">
+<cc1:ModalPopupExtender ID="mp1" runat="server" PopupControlID="Panel1" 
+    CancelControlID="btnClose" TargetControlID="btnShow" BackgroundCssClass="modalBackground">
 </cc1:ModalPopupExtender>
-<asp:Panel ID="Panel1" runat="server" CssClass="modal-content modal-dialog modal-lg" align="center" style = "display:none">
+<asp:Panel ID="Panel1" runat="server" CssClass="modal-header modal-content modal-dialog modal-lg" align="center" style = "display:none" ScrollBars="Vertical">
     This is an ASP.Net AJAX ModalPopupExtender Example<br />
     <asp:Button ID="btnClose" runat="server" Text="Close" CssClass="btn-danger" />
     <asp:Button ID="Button1" runat="server" Text="Close" />
 </asp:Panel>
 <!-- ModalPopupExtender -->
-
-
-        
       </form>
 
 </asp:Content>
