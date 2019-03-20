@@ -1378,13 +1378,3 @@ INSERT INTO [dbo].[TechnicalSchool]
            ,'Welding'
            ,'Permanently connecting metals')
 GO
-
-
-
-
-
-
-
-
-
-
