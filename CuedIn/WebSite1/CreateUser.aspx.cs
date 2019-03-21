@@ -68,7 +68,7 @@ public partial class CreateUser : System.Web.UI.Page
         
 
         //had to use only the substring and not the full salt value because there is a max length of 10 in the DB.
-        insert.Parameters.AddWithValue("@passwordSalt", PasswordHash.returnSalt(hashedPass).Substring(0, 9));
+        insert.Parameters.AddWithValue("@passwordSalt", PasswordHash.returnSalt(hashedPass).Substring(0, 24));
         insert.Parameters.AddWithValue("@userentityID", userID);
         insert.ExecuteNonQuery();
 

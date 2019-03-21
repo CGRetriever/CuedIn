@@ -33,7 +33,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
@@ -72,12 +72,16 @@
                   <br />
                     <br />
                     <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                    <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" ></asp:Label>
-                        </div>
+                    <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="#">
 							Forgot Password?
+						</a>
+                        <br />
+                        <br />
+                        <a class="txt1" href="CreateUser.aspx">
+							Don't Have an Account?
 						</a>
 					</div>
 				</form>
