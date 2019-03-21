@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LoginMasterPage.master" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" runat="server" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/LoginMasterPage.master" runat="server" CodeFile="CreateUser.aspx.cs" Inherits="CreateUser"  %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="server">
     <!DOCTYPE html>
 
 <head>
@@ -33,7 +34,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
@@ -44,11 +45,20 @@
 
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
-					
+					<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input runat="server" class="input100" id="username" type="text" name="username" placeholder="Username">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter email">
+						<input runat="server" class="input100" id="email" type="text" name="username" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Enter role">
+						<input runat="server" class="input100" id="role" type="text" name="username" placeholder="Role">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
@@ -65,15 +75,10 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<asp:Button class="login100-form-btn" Text="Login" runat="server" OnClick="LoginButton_Click">
+						<asp:Button class="login100-form-btn" Text="Create" runat="server" OnClick="CreateUserClick">
 							
 						</asp:Button>
 					</div>
-                  <br />
-                    <br />
-                    <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                    <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" ></asp:Label>
-                        </div>
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="#">
