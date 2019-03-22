@@ -49,7 +49,7 @@
                     Text="Approve" CssClass="btn btn-success btn-circle" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn btn-danger btn-circle" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
-                <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click">LinkButton</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click"></asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
             </Columns>

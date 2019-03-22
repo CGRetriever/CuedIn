@@ -96,7 +96,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-
+        Label2.Text = "hi";
 
 
 
