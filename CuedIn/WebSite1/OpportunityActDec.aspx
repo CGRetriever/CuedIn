@@ -59,9 +59,55 @@
     
         
   </div>
+          
+          <br />
+          <br />
 
-          <br />
-          <br />
+          <asp:Button ID="Button1" runat="server" Text="Button" />
+
+<div>
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                        <h4 class="modal-title">
+                            Student Fee Details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <asp:Label ID="lblstudent" runat="server" Text="Aadmission No: "></asp:Label>
+                                <asp:Label ID="lblstudentid" runat="server" Text=""></asp:Label>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="Label1" runat="server" Text="Month"></asp:Label>
+                                <asp:Label ID="lblmonth" runat="server" Text=""></asp:Label>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="Label2" runat="server" Text="Amount"></asp:Label>
+                                <asp:TextBox ID="txtAmount" runat="server" TabIndex="3" MaxLength="75" CssClass="form-control"
+                                    placeholder="Enter Amount"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="btnSave" runat="server" Text="Pay" CssClass="btn btn-info" />
+                        <button type="button" class="btn btn-info" data-dismiss="modal">
+                            Close</button>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openModal() {
+                    $('[id*=myModal]').modal('show');
+                } 
+            </script>
+        </div>
+    </div>
+
 
 </form>
 </asp:Content>

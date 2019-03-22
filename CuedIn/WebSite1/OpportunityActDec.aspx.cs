@@ -31,24 +31,25 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         if (e.CommandName == "JApprove")
         {
-            sql.Open();
-            System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
-            approveJob.Connection = sql;
-            approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            approveJob.ExecuteNonQuery();
-            sql.Close();
+            //sql.Open();
+            //System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
+            //approveJob.Connection = sql;
+            //approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
+            //approveJob.ExecuteNonQuery();
+            //sql.Close();
 
             //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
+            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
 
         }
         else if (e.CommandName == "JReject")
         {
-            sql.Open();
-            System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
-            rejectJob.Connection = sql;
-            rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            rejectJob.ExecuteNonQuery();
-            sql.Close();
+            //sql.Open();
+            //System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
+            //rejectJob.Connection = sql;
+            //rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
+            //rejectJob.ExecuteNonQuery();
+            //sql.Close();
 
             //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
         }
