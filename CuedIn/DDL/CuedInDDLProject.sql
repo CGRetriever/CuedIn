@@ -106,6 +106,7 @@ City varchar (50) not null,
 State varchar (50) not null,
 ZipCode int not null,
  Image varchar (50),
+ ExternalLink varchar(100),
 primary key (OrganizationEntityID),
 Foreign key (OrganizationEntityID) references UserEntity (UserEntityID)
 );
