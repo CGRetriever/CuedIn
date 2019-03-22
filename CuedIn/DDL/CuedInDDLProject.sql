@@ -105,6 +105,7 @@ Country varchar (50) not null,
 City varchar (50) not null,
 State varchar (50) not null,
 ZipCode int not null,
+ Image varchar (50),
 primary key (OrganizationEntityID),
 Foreign key (OrganizationEntityID) references UserEntity (UserEntityID)
 );
