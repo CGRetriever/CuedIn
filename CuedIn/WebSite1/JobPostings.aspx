@@ -4,7 +4,7 @@
     
     <form id="form1" runat="server">
     <head>
-        <title>Sass Bootstrap Template</title>
+        <title>Job Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="">
@@ -60,7 +60,9 @@
                 </div>                  <!-- Close Job Reccomend text div -->
 
                 <!--End of Recent Job Posting-->
-    <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%" > </asp:Table>
+    
+                    
+                    <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%" > </asp:Table>
 
    
     </form>
