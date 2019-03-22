@@ -905,7 +905,8 @@ INSERT INTO [dbo].[Organization]
            ,[City]
            ,[State]
            ,[ZipCode]
-	   ,[Image])
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('1'
            ,'withSimplicity'
@@ -915,7 +916,8 @@ INSERT INTO [dbo].[Organization]
            ,'Harrisonburg'
            ,'Virginia'
            ,'22801'
-	   ,'img/withSimplicity.jpg')
+	   ,'img/withSimplicity.jpg'
+	   ,'https://withsimplicityllc.com/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -927,17 +929,19 @@ INSERT INTO [dbo].[Organization]
            ,[City]
            ,[State]
            ,[ZipCode]
-	   ,[Image])
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('2'
-           ,'Kanis Bakery & Catering'
-           ,'Mediterranean Restaurant'
+           ,'Kandis Bakery & Catering'
+           ,'Bakery'
            ,'182 Neff Avenue'
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
            ,'22801'
-	   ,'img/kanis.jpg')
+	   ,'img/kanis.jpg'
+	   ,'https://www.kandiscakesandbakeshop.com/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -949,7 +953,8 @@ INSERT INTO [dbo].[Organization]
            ,[City]
            ,[State]
            ,[ZipCode]
-	   ,[Image])
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('3'
            ,'Arconic'
@@ -959,7 +964,8 @@ INSERT INTO [dbo].[Organization]
            ,'Harrisonburg'
            ,'Virginia'
            ,'22801'
-	   ,'img/arconic.jpg')
+	   ,'img/arconic.jpg'
+	   ,'https://www.arconic.com/global/en/home.asp')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -971,7 +977,8 @@ INSERT INTO [dbo].[Organization]
            ,[City]
            ,[State]
            ,[ZipCode]
-	   ,[Image])
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('4'
            ,'Green Hummingbird'
@@ -981,7 +988,8 @@ INSERT INTO [dbo].[Organization]
            ,'Harrisonburg'
            ,'Virginia'
            ,'22801'
-	   ,'img/greenhummingbird.jpg')
+	   ,'img/greenhummingbird.jpg'
+	   ,'http://www.greenhummingbird.net/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -993,7 +1001,8 @@ INSERT INTO [dbo].[Organization]
            ,[City]
            ,[State]
            ,[ZipCode]
-	   ,[Image])
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('5'
            ,'Jack Browns'
@@ -1003,7 +1012,8 @@ INSERT INTO [dbo].[Organization]
            ,'Harrisonburg'
            ,'Virginia'
            ,'22801'
-	   ,'img/jackbrowns.jpg')
+	   ,'img/jackbrowns.jpg'
+	   ,'https://www.jackbrownsjoint.com/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -1015,7 +1025,8 @@ INSERT INTO [dbo].[Organization]
            ,[City]
            ,[State]
            ,[ZipCode]
-	   ,[Image])
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('6'
            ,'Walmart Supercenter'
@@ -1025,7 +1036,8 @@ INSERT INTO [dbo].[Organization]
            ,'Harrisonburg'
            ,'Virginia'
            ,'22801'
-	   ,'img/walmart.jpg')
+	   ,'img/walmart.jpg'
+	   ,'https://www.walmart.com/')
 GO
 
 
