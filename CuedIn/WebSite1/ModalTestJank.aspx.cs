@@ -39,6 +39,8 @@ public partial class ModalTestPage : System.Web.UI.Page
         lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
         lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
         txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
+
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
     }
 

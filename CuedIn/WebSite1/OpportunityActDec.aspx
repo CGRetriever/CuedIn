@@ -38,8 +38,9 @@
     <div class="form-group col-md-6">
       <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
         <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'pen'"></asp:SqlDataSource>
-              <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" OnRowCommand="GridView2_OnRowCommand" BackColor="#102B40" ForeColor="White">
+              <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark" style="border-collapse:collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
             <Columns>
+                <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" />
                 <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True"  />
                 <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True"   />
                      <asp:TemplateField ShowHeader="False">
@@ -48,8 +49,7 @@
                     Text="Approve" CssClass="btn btn-success btn-circle" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
                 <asp:Button ID="Reject" runat="server" CausesValidation="false" 
                     Text="Reject" CssClass="btn btn-danger btn-circle" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
-                <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn btn-warning btn-circle"  CommandName ="SViewMore" CommandArgument='<%#Eval ("ScholarshipID") %>' />
+                <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click">LinkButton</asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
             </Columns>

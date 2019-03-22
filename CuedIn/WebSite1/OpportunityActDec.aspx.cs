@@ -10,9 +10,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-        }
+        GridView2.Columns[0].Visible = false;
     }
 
 
@@ -61,38 +59,48 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     }
 
-    protected void GridView2_OnRowCommand(object sender, GridViewCommandEventArgs e)
+
+
+
+
+
+
+    protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
-        int scholarshipID = Convert.ToInt32(e.CommandArgument);
-        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-        if (e.CommandName == "SApprove")
-        {
-            
-            sql.Open();
-            System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
-            approveScholarship.Connection = sql;
-            approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
-            approveScholarship.ExecuteNonQuery();
-            //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
-        }
 
-        if (e.CommandName == "SReject")
-        {
-            
-            sql.Open();
-            System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
-            rejectScholarship.Connection = sql;
-            rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
-            rejectScholarship.ExecuteNonQuery();
-            //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business?"//
-        }
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView2.Rows[rowIndex];
+        //lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
+        //lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
+        //txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
 
 
-        Response.Redirect(Request.RawUrl);
+
+
+        String sName;
+        String sDesc;
+
+        sName = GridView2.Rows[rowIndex].Cells[0].Text;
+        sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
+
+        //String primarykey;
+
+      //  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
+
+        int primarykey =Convert.ToInt32(e.CommandArgument);
+
+
+        int w = 2;
+
+
+
+
+
+
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
+
     }
-
-
-
-
 }
