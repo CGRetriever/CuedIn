@@ -32,14 +32,21 @@ public class PasswordHash
 
     public static bool ValidatePassword(string password, string correctHash)
     {
-        char[] delimiter = { ':' }; // this section takes the whole stored string and splits it up into the 3 parts
-        var split = correctHash.Split(delimiter); // splits the long string at the : character
-        var iterations = Int32.Parse(split[IterationIndex]); // picks out the first section and assigns the stored number of iterations to new variable
-        var salt = Convert.FromBase64String(split[SaltIndex]); // picks out the second section and assign stored salt to new variable
-        var hash = Convert.FromBase64String(split[Pbkdf2Index]); // picks out the third section and assign stored password hash to new variable
+        try
+        {
+            char[] delimiter = { ':' }; // this section takes the whole stored string and splits it up into the 3 parts
+            var split = correctHash.Split(delimiter); // splits the long string at the : character
+            var iterations = Int32.Parse(split[IterationIndex]); // picks out the first section and assigns the stored number of iterations to new variable
+            var salt = Convert.FromBase64String(split[SaltIndex]); // picks out the second section and assign stored salt to new variable
+            var hash = Convert.FromBase64String(split[Pbkdf2Index]); // picks out the third section and assign stored password hash to new variable
 
-        var testHash = GetPbkdf2Bytes(password, salt, iterations, hash.Length); // creates the hash for the entered password
-        return SlowEquals(hash, testHash); // compare the stored password (hash) to the entered password (testhash) and return true (matches) or false (doesn't)
+            var testHash = GetPbkdf2Bytes(password, salt, iterations, hash.Length); // creates the hash for the entered password
+            return SlowEquals(hash, testHash); // compare the stored password (hash) to the entered password (testhash) and return true (matches) or false (doesn't)
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     private static bool SlowEquals(byte[] a, byte[] b) // optional method -> increases security/makes password cracking take longer

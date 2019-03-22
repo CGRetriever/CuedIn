@@ -44,8 +44,29 @@
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Log in
+						Sign Up
+					
 					</span>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter first name">
+						<input runat="server" class="input100" id="firstName" type="text" name="username" placeholder="First Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+                    <div class="wrap-input100 validate-input" data-validate = "Enter middle name">
+						<input runat="server" class="input100" id="middleName" type="text" name="username" placeholder="Middle Name (Optional)">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter last name">
+						<input runat="server" class="input100" id="lastName" type="text" name="username" placeholder="Last Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter address">
+						<input runat="server" class="input100" id="address" type="text" name="username" placeholder="Address">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input runat="server" class="input100" id="username" type="text" name="username" placeholder="Username">
@@ -56,13 +77,26 @@
 						<input runat="server" class="input100" id="email" type="text" name="username" placeholder="Email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
-                    <div class="wrap-input100 validate-input" data-validate = "Enter role">
-						<input runat="server" class="input100" id="role" type="text" name="username" placeholder="Role">
-						<span class="focus-input100" data-placeholder="&#xf207;"></span>
-					</div>
+    
+
+                    <div class="ddl">
+                        <asp:DropDownList ID="role" runat="server" border-radius="50px" Width="390px" Height="50px" BackColor="#36536f" BorderColor="Transparent" ForeColor="#efefef" Font-Names="Poppins-Regular"  Font-Size="Medium" > 
+                             <asp:ListItem>Select A Role</asp:ListItem>
+                            <asp:ListItem Text="Teacher"></asp:ListItem>
+                            <asp:ListItem Text="Counselor"></asp:ListItem>
+                            <asp:ListItem Text="Admin"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <br />
 
 					<div class="wrap-input100  validate-input" data-validate="Enter password">
 						<input runat="server" class="input100" id="password" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+
+
+                    <div class="wrap-input100  validate-input" data-validate="Confirm password">
+						<input runat="server" class="input100" id="password2" type="password" name="pass" placeholder="Confirm Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -78,6 +112,10 @@
 							
 						</asp:Button>
 					</div>
+                      <br />
+                        <br />
+
+                        <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
 					<div class="text-center p-t-90">
                         <a class="txt1" href="Login.aspx">
