@@ -904,7 +904,8 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image])
      VALUES
            ('1'
            ,'withSimplicity'
@@ -913,7 +914,8 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/withSimplicity.jpg')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -924,7 +926,8 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image])
      VALUES
            ('2'
            ,'Kanis Bakery & Catering'
@@ -933,7 +936,8 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/kanis.jpg')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -944,7 +948,8 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image])
      VALUES
            ('3'
            ,'Arconic'
@@ -953,7 +958,8 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/arconic.jpg')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -964,7 +970,8 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image])
      VALUES
            ('4'
            ,'Green Hummingbird'
@@ -973,7 +980,8 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/greenhummingbird.jpg')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -984,7 +992,8 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image])
      VALUES
            ('5'
            ,'Jack Browns'
@@ -993,7 +1002,8 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/jackbrowns.jpg')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -1004,7 +1014,8 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image])
      VALUES
            ('6'
            ,'Walmart Supercenter'
@@ -1013,7 +1024,8 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/walmart.jpg')
 GO
 
 
