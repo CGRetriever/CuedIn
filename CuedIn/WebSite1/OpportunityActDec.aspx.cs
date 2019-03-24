@@ -142,4 +142,19 @@ public partial class OpportunityActDec : System.Web.UI.Page
         //rejectScholarship.ExecuteNonQuery();
         //sql.Close();
     }
+
+    protected void rejectScholarshipButton_Click(object sender, EventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
+        rejectScholarship.Connection = sql;
+        rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.ExecuteNonQuery();
+        sql.Close();
+
+        Response.Redirect(Request.RawUrl);
+    }
 }

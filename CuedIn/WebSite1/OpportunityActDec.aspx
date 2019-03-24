@@ -75,6 +75,7 @@
                     <div class="modal-body">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
+                                <asp:Label ID="moreScholarshipInformationLbl" runat="server" Text=""></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -116,7 +117,7 @@
                 </div>
             </div>
             <script type='text/javascript'>
-                function openApproveModal() {
+                function openApproveSModal() {
                     $('[id*=approveSModal]').modal('show');
                 } 
             </script>
@@ -142,7 +143,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="rejectScholarshipButton" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" />
+                        <asp:Button ID="rejectScholarshipButton" runat="server" Text="Reject" CssClass="btn btn-danger btn-circle" OnClick ="rejectScholarshipButton_Click"/>
                         <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
                     </div>
                 </div>
