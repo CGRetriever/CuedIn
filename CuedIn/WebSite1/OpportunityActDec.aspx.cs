@@ -52,8 +52,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
             //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
         }
 
-  
-        
+
+
 
         Response.Redirect(Request.RawUrl);
 
@@ -68,39 +68,78 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
 
+        //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        //GridViewRow row = GridView2.Rows[rowIndex];
+        ////lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
+        ////lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
+        ////txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
+
+        //String sName;
+        //String sDesc;
+
+        //sName = GridView2.Rows[rowIndex].Cells[0].Text;
+        //sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
+
+        ////String primarykey;
+
+        ////  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
         GridViewRow row = GridView2.Rows[rowIndex];
-        //lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
-        //lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
-        //txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
 
 
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditSModal();", true);
+
+    }
+
+    protected void LinkButton2_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+        
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView2.Rows[rowIndex];
+
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
+
+        //sql.Open();
+        //System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
+        //approveScholarship.Connection = sql;
+        //approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
+        //approveScholarship.ExecuteNonQuery();
+    }
 
 
-        String sName;
-        String sDesc;
+    protected void LinkButton3_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
-        sName = GridView2.Rows[rowIndex].Cells[0].Text;
-        sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView2.Rows[rowIndex];
 
-        //String primarykey;
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
-      //  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
 
-        int primarykey =Convert.ToInt32(e.CommandArgument);
-
-
-        int w = 2;
-
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
 
 
-
-
-        Label2.Text = "hi";
-
-
-
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
-
+        //sql.Open();
+        //System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
+        //rejectScholarship.Connection = sql;
+        //rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
+        //rejectScholarship.ExecuteNonQuery();
+        //sql.Close();
     }
 }

@@ -45,10 +45,8 @@
                 <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True"   />
                      <asp:TemplateField ShowHeader="False">
             <ItemTemplate>
-                <asp:Button  ID="ApproveButton" runat="server" CausesValidation="false" 
-                    Text="Approve" CssClass="btn btn-success btn-circle" CommandName ="SApprove" CommandArgument='<%#Eval ("ScholarshipID") %>' />
-                <asp:Button ID="Reject" runat="server" CausesValidation="false" 
-                    Text="Reject" CssClass="btn btn-danger btn-circle" CommandName ="SReject" CommandArgument='<%#Eval ("ScholarshipID") %>' />
+                <asp:LinkButton  ID="LinkButton2" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton2_Click"></asp:LinkButton>
+                <asp:LinkButton  ID="LinkButton3" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"></asp:LinkButton>
                 <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click"></asp:LinkButton>
             </ItemTemplate>
         </asp:TemplateField>
@@ -63,52 +61,99 @@
           <br />
           <br />
 
-          <asp:Button ID="Button1" runat="server" Text="Button" />
-
 <div>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
+                         <h4 class="modal-title">
+                            More Information</h4>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
-                        <h4 class="modal-title">
-                            Student Fee Details</h4>
                     </div>
                     <div class="modal-body">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
-                                <asp:Label ID="lblstudent" runat="server" Text="Aadmission No: "></asp:Label>
-                                <asp:Label ID="lblstudentid" runat="server" Text=""></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:Label ID="Label1" runat="server" Text="Month"></asp:Label>
-                                <asp:Label ID="lblmonth" runat="server" Text=""></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:Label ID="Label2" runat="server" Text="Amount"></asp:Label>
-                                <asp:TextBox ID="txtAmount" runat="server" TabIndex="3" MaxLength="75" CssClass="form-control"
-                                    placeholder="Enter Amount"></asp:TextBox>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="btnSave" runat="server" Text="Pay" CssClass="btn btn-info" />
-                        <button type="button" class="btn btn-info" data-dismiss="modal">
-                            Close</button>
+                        <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
                     </div>
                 </div>
             </div>
             <script type='text/javascript'>
-                function openModal() {
+                function openEditSModal() {
                     $('[id*=myModal]').modal('show');
                 } 
             </script>
         </div>
     </div>
 
+<div>
+        <div class="modal fade" id="approveSModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Approve Scholarship</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <asp:Label ID="ApprovalLbl" runat="server" Text="Are you sure you want to approve this scholarship listing?"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="Button1" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" />
+                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openApproveModal() {
+                    $('[id*=approveSModal]').modal('show');
+                } 
+            </script>
+        </div>
+    </div>
 
+<div>
+        <div class="modal fade" id="rejectSModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Reject Scholarship</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <asp:Label ID="Label1" runat="server" Text="Are you sure you want to reject this scholarship listing?"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="rejectScholarshipButton" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" />
+                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openRejectSModal() {
+                    $('[id*=rejectSModal]').modal('show');
+                } 
+            </script>
+        </div>
+    </div>
 </form>
 </asp:Content>
 
