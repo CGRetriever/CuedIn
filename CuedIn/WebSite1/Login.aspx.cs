@@ -63,7 +63,7 @@ public partial class Login : System.Web.UI.Page
         query.CommandText = "SELECT DISTINCT dbo.Password.PasswordHash FROM dbo.Password INNER JOIN  " +
             "dbo.UserEntity ON dbo.Password.UserEntityID = dbo.UserEntity.UserEntityID where upper(username) = upper(@userName)";
 
-        query.Parameters.AddWithValue("@userName", username.Value);
+        query.Parameters.AddWithValue("@userName", HttpUtility.HtmlEncode(username.Value));
 
         System.Data.SqlClient.SqlDataReader reader = query.ExecuteReader();
 

@@ -53,9 +53,9 @@ public partial class CreateUser : System.Web.UI.Page
                 "values (@username, @emailaddress, @entitytype)";
 
 
-            insert.Parameters.AddWithValue("@username", username.Value);
-            insert.Parameters.AddWithValue("@emailaddress", email.Value);
-            insert.Parameters.AddWithValue("@entitytype", role.SelectedItem.Value);
+            insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(username.Value));
+            insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(email.Value));
+            insert.Parameters.AddWithValue("@entitytype", HttpUtility.HtmlEncode(role.SelectedItem.Value));
 
 
 
