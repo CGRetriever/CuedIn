@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="Button3" runat="server" Text="Mail To" CssClass="btn btn-circle btn-primary" OnClick="Button3_Click1"  />
+                        <asp:Button ID="Button3" runat="server" Text="Message Organization" CssClass="btn btn-circle btn-primary" OnClick="Button3_Click1"  />
                         <asp:Button ID="Button1" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptJobButton_Click"/>
                         <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
                     </div>
