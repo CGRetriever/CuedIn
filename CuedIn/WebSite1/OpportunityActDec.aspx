@@ -140,7 +140,15 @@
                     <div class="modal-body">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
-                                <asp:Label ID="Label4" runat="server" Text="LOL"></asp:Label>
+                                <asp:Label ID="lblSOrganizationName" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblSOrganizationDescription" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblScholarshipName" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblScholarshipDescription" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblScholarshipMin" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblScholarshipMax" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblScholarshipQuantity" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblScholarshipDueDate" runat="server"></asp:Label> <br />
+
                             </div>
                         </div>
                     </div>
@@ -172,7 +180,15 @@
                     <div class="modal-body">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
-                                <asp:Label ID="moreJobInformationLbl" runat="server" Text="Test"></asp:Label>
+                                <asp:Label ID="lblJobTitle" runat="server"></asp:Label> <br />
+                                <asp:Label ID ="lblJobDescription" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblJobType" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblJobLocation" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblJobDeadline" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblNumOfApplicants" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblJOrganizationName" runat="server"></asp:Label> <br />
+                                <asp:Label ID ="lblJOrganizationDescription" runat="server"></asp:Label> <br />
+                            
                             </div>
                         </div>
                     </div>
