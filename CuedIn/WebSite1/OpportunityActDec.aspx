@@ -126,7 +126,7 @@
     </div>
 
     <div>
-      <%-- Job More Info Modal--%>
+      <%-- Scholarship More Info Modal--%>
         <div class="modal fade" id="jobMoreInfoModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -140,7 +140,7 @@
                     <div class="modal-body">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
-                                <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="Label4" runat="server" Text="LOL"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
     </div>
 
 <div>
-      <%-- Scholarship More Info Modal--%>
+      <%-- Job More Info Modal--%>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -172,7 +172,7 @@
                     <div class="modal-body">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
-                                <asp:Label ID="moreScholarshipInformationLbl" runat="server" Text=""></asp:Label>
+                                <asp:Label ID="moreJobInformationLbl" runat="server" Text="Test"></asp:Label>
                             </div>
                         </div>
                     </div>
