@@ -297,8 +297,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
-        String email;
-
 
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
@@ -309,7 +307,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         while (reader.Read())
         {
-            email = reader.GetString(0);
+            OpportunityActDec.email = reader.GetString(0);
         }
 
         sql.Close();
