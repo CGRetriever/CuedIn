@@ -239,7 +239,30 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Button3_Click1(object sender, EventArgs e)
     {
+        // Stopped here before class. Need to get the query result from the database (the business email) and store that as a variable to pass
+        // to the client script start up
+
+
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
+        approveScholarship.Connection = sql;
+        approveScholarship.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedjobID"];
+        approveScholarship.ExecuteNonQuery();
+        sql.Close();
+
+
+        
+
+
+
+
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        Response.Redirect("~/OpportunityActDec.aspx");
     }
 }
