@@ -71,7 +71,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedjobID"] = jobID.ToString();
 
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveJModal();", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
 
     protected void acceptJobButton_Click(object sender, EventArgs e)

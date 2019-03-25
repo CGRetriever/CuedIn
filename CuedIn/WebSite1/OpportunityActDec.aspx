@@ -61,7 +61,7 @@
           
 <div>
         <%--Job Approve Modal--%>
-        <div class="modal fade" id="approveJModal" role="dialog">
+        <div class="modal fade" id="approveXModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -85,8 +85,8 @@
                 </div>
             </div>
             <script type='text/javascript'>
-                function openApproveJModal() {
-                    $('[id*=approveJModal]').modal('show');
+                function openApproveXModal() {
+                    $('[id*=approveXModal]').modal('show');
                 } 
             </script>
         </div>
