@@ -49,32 +49,32 @@
 					</span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter first name">
-						<input runat="server" class="input100" id="firstName" type="text" name="username" placeholder="First Name">
+						<input runat="server" maxlength="30" class="input100" id="firstName" type="text" name="username" placeholder="First Name">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate = "Enter middle name">
-						<input runat="server" class="input100" id="middleName" type="text" name="username" placeholder="Middle Name (Optional)">
+						<input runat="server" maxlength="30" class="input100" id="middleName" type="text" name="username" placeholder="Middle Name (Optional)">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter last name">
-						<input runat="server" class="input100" id="lastName" type="text" name="username" placeholder="Last Name">
+						<input runat="server"  maxlength="30" class="input100" id="lastName" type="text" name="username" placeholder="Last Name">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter address">
-						<input runat="server" class="input100" id="address" type="text" name="username" placeholder="Address">
+						<input runat="server" maxlength="30" class="input100" id="address" type="text" name="username" placeholder="Address">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input runat="server" class="input100" id="username" type="text" name="username" placeholder="Username">
+						<input runat="server" maxlength="30" class="input100" id="username" type="text" name="username" placeholder="Username">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter email">
-						<input runat="server" class="input100" id="email" type="text" name="username" placeholder="Email">
+						<input runat="server" maxlength="30" class="input100" id="email" type="text" name="username" placeholder="Email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
     
@@ -88,15 +88,24 @@
                         </asp:DropDownList>
                     </div>
                     <br />
+                     <div class="ddl">
+                        <asp:DropDownList ID="DropDownList2" runat="server" border-radius="50px" Width="390px" Height="50px" BackColor="#36536f" BorderColor="Transparent" ForeColor="#efefef" Font-Names="Poppins-Regular"  Font-Size="Medium" > 
+                             <asp:ListItem>Select A School</asp:ListItem>
+                            <asp:ListItem Text="Harrisonburg High School"></asp:ListItem>
+                            <asp:ListItem Text="Skyline Middle School"></asp:ListItem>
+                            <asp:ListItem Text="Thomas Harrison Middle School"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <br />
 
 					<div class="wrap-input100  validate-input" data-validate="Enter password">
-						<input runat="server" class="input100" id="password" type="password" name="pass" placeholder="Password">
+						<input runat="server" maxlength="30" class="input100" id="password" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 
                     <div class="wrap-input100  validate-input" data-validate="Confirm password">
-						<input runat="server" class="input100" id="password2" type="password" name="pass" placeholder="Confirm Password">
+						<input runat="server" maxlength="30" class="input100" id="password2" type="password" name="pass" placeholder="Confirm Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
