@@ -233,4 +233,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Response.Redirect("~/OpportunityActDec.aspx");
     }
+
+    
+
+
+    protected void Button3_Click1(object sender, EventArgs e)
+    {
+        string email = "abc@abc.com";
+        ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+    }
 }
