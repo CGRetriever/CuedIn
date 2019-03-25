@@ -18,12 +18,9 @@
                 <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
                      <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
             <ItemTemplate>
-                <asp:Button  ID="ApproveButton" runat="server" CausesValidation="false"  
-                    Text="Approve" CssClass="btn btn-success btn-circle" CommandName ="JApprove" CommandArgument='<%#Eval ("JobListingID") %>'/>
-                <asp:Button ID="Reject" runat="server" CausesValidation="false" 
-                    Text="Reject" CssClass="btn btn-danger btn-circle" CommandName ="JReject" CommandArgument='<%#Eval ("JobListingID") %>' />
-                <asp:Button ID="ViewMoreButton" runat="server" CausesValidation="false" 
-                    Text="View More" CssClass="btn btn-warning btn-circle" CommandName = "JViewMore" CommandArgument='<%#Eval ("JobListingID") %>'/>
+                <asp:LinkButton  ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"></asp:LinkButton>
+                <asp:LinkButton  ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"></asp:LinkButton>
+                <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoJobLinkBtn_Click"></asp:LinkButton>
             </ItemTemplate>
 
 <HeaderStyle BorderColor="Black"></HeaderStyle>
@@ -61,7 +58,107 @@
           <br />
           <br />
 
+          
 <div>
+        <%--Job Approve Modal--%>
+        <div class="modal fade" id="approveJModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Approve Job</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <asp:Label ID="Label2" runat="server" Text="Are you sure you want to approve this job listing?"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="Button1" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptJobButton_Click"/>
+                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openApproveJModal() {
+                    $('[id*=approveJModal]').modal('show');
+                } 
+            </script>
+        </div>
+    </div>
+
+<div>
+        <%--Job Reject Modal--%>
+        <div class="modal fade" id="rejectJModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Reject Job</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <asp:Label ID="Label3" runat="server" Text="Are you sure you want to reject this job listing?"></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="Button2" runat="server" Text="Reject" CssClass="btn btn-danger btn-circle" OnClick ="rejectJobButton_Click"/>
+                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openRejectJModal() {
+                    $('[id*=rejectJModal]').modal('show');
+                } 
+            </script>
+        </div>
+    </div>
+
+    <div>
+      <%-- Job More Info Modal--%>
+        <div class="modal fade" id="jobMoreInfoModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                         <h4 class="modal-title">
+                            More Information</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>
+                function openEditJModal() {
+                    $('[id*=jobMoreInfoModal]').modal('show');
+                } 
+            </script>
+        </div>
+    </div>
+
+<div>
+      <%-- Scholarship More Info Modal--%>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -93,6 +190,7 @@
     </div>
 
 <div>
+        <%--Scholarship Approve Modal--%>
         <div class="modal fade" id="approveSModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -111,7 +209,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="Button1" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" />
+                        <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptScholarshipButton_Click"/>
                         <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -125,6 +223,7 @@
     </div>
 
 <div>
+        <%--Scholarship Reject Modal--%>
         <div class="modal fade" id="rejectSModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
