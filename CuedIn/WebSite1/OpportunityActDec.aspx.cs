@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 
 public partial class OpportunityActDec : System.Web.UI.Page
 {
+    public static String email;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         GridView2.Columns[0].Visible = false;
@@ -295,23 +297,26 @@ public partial class OpportunityActDec : System.Web.UI.Page
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
+        String email;
 
 
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
         approveScholarship.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedjobID"];
-        approveScholarship.ExecuteNonQuery();
+        System.Data.SqlClient.SqlDataReader reader = approveScholarship.ExecuteReader();
+
+
+        while (reader.Read())
+        {
+            email = reader.GetString(0);
+        }
+
         sql.Close();
 
 
         
-
-
-
-
-        string email = "abc@abc.com";
-        ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 }
