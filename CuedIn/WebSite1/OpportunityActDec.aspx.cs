@@ -10,9 +10,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
-        {
-        }
+        GridView2.Columns[0].Visible = false;
     }
 
 
@@ -31,67 +29,240 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         if (e.CommandName == "JApprove")
         {
-            sql.Open();
-            System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
-            approveJob.Connection = sql;
-            approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            approveJob.ExecuteNonQuery();
-            sql.Close();
+            //sql.Open();
+            //System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
+            //approveJob.Connection = sql;
+            //approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
+            //approveJob.ExecuteNonQuery();
+            //sql.Close();
 
             //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
+            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
 
         }
         else if (e.CommandName == "JReject")
         {
-            sql.Open();
-            System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
-            rejectJob.Connection = sql;
-            rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            rejectJob.ExecuteNonQuery();
-            sql.Close();
+            //sql.Open();
+            //System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
+            //rejectJob.Connection = sql;
+            //rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
+            //rejectJob.ExecuteNonQuery();
+            //sql.Close();
 
             //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
         }
 
-  
-        
+
+
 
         Response.Redirect(Request.RawUrl);
 
     }
 
-    protected void GridView2_OnRowCommand(object sender, GridViewCommandEventArgs e)
+    protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
-        int scholarshipID = Convert.ToInt32(e.CommandArgument);
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-        if (e.CommandName == "SApprove")
-        {
-            
-            sql.Open();
-            System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
-            approveScholarship.Connection = sql;
-            approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
-            approveScholarship.ExecuteNonQuery();
-            //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
-        }
 
-        if (e.CommandName == "SReject")
-        {
-            
-            sql.Open();
-            System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
-            rejectScholarship.Connection = sql;
-            rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + scholarshipID;
-            rejectScholarship.ExecuteNonQuery();
-            //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business?"//
-        }
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView1.Rows[rowIndex];
+
+        int jobID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedjobID"] = jobID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
+    }
+
+    protected void acceptJobButton_Click(object sender, EventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
+        approveJob.Connection = sql;
+        approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.ExecuteNonQuery();
+        sql.Close();
+
+        Response.Redirect("~/OpportunityActDec.aspx");
+    }
 
 
-        Response.Redirect(Request.RawUrl);
+    protected void rejectJobLinkBtn_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView1.Rows[rowIndex];
+
+        int jobID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedjobID"] = jobID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
+    }
+
+    protected void rejectJobButton_Click(object sender, EventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
+        rejectJob.Connection = sql;
+        rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        rejectJob.ExecuteNonQuery();
+        sql.Close();
+
+        Response.Redirect("~/OpportunityActDec.aspx");
+    }
+
+    protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView1.Rows[rowIndex];
+
+
+        int jobID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedjobID"] = jobID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditSModal();", true);
+
     }
 
 
 
 
+    protected void LinkButton1_Click(object sender, CommandEventArgs e)
+    {
+
+        //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        //GridViewRow row = GridView2.Rows[rowIndex];
+        ////lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
+        ////lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
+        ////txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
+
+        //String sName;
+        //String sDesc;
+
+        //sName = GridView2.Rows[rowIndex].Cells[0].Text;
+        //sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
+
+        ////String primarykey;
+
+        ////  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView2.Rows[rowIndex];
+
+
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
+
+    }
+
+    protected void LinkButton2_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+        
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView2.Rows[rowIndex];
+
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
+    }
+
+
+    protected void LinkButton3_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView2.Rows[rowIndex];
+
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
+    }
+
+    protected void rejectScholarshipButton_Click(object sender, EventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
+        rejectScholarship.Connection = sql;
+        rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.ExecuteNonQuery();
+        sql.Close();
+        
+        Response.Redirect("~/OpportunityActDec.aspx");
+    }
+
+    protected void acceptScholarshipButton_Click(object sender, EventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
+        approveScholarship.Connection = sql;
+        approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.ExecuteNonQuery();
+        sql.Close();
+
+        Response.Redirect("~/OpportunityActDec.aspx");
+    }
+
+    
+
+
+    protected void Button3_Click1(object sender, EventArgs e)
+    {
+        // Stopped here before class. Need to get the query result from the database (the business email) and store that as a variable to pass
+        // to the client script start up
+
+
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
+        approveScholarship.Connection = sql;
+        approveScholarship.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedjobID"];
+        approveScholarship.ExecuteNonQuery();
+        sql.Close();
+
+
+        
+
+
+
+
+        string email = "abc@abc.com";
+        ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        Response.Redirect("~/OpportunityActDec.aspx");
+    }
 }
