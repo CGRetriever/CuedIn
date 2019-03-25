@@ -1297,6 +1297,7 @@ INSERT INTO [dbo].[Scholarship]
            ,[ScholarshipMax]
            ,[ScholarshipQuantity]
            ,[ScholarshipDueDate]
+	   ,[PostingDate]
            ,[OrganizationID]
            ,[Approved]
            ,[LastUpdated])
@@ -1308,6 +1309,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'20000'
            ,'3'
            ,'10-15-2019'
+	    ,'03-14-2019'
            ,'6'
            ,'pen'
            ,GETDATE())
@@ -1321,6 +1323,7 @@ INSERT INTO [dbo].[Scholarship]
            ,[ScholarshipMax]
            ,[ScholarshipQuantity]
            ,[ScholarshipDueDate]
+	    ,[PostingDate]
            ,[OrganizationID]
            ,[Approved]
            ,[LastUpdated])
@@ -1332,6 +1335,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'2000'
            ,'1'
            ,'10-01-2019'
+	    ,'09-12-2018'
            ,'5'
            ,'pen'
            ,GETDATE())
@@ -1345,6 +1349,7 @@ INSERT INTO [dbo].[Scholarship]
            ,[ScholarshipMax]
            ,[ScholarshipQuantity]
            ,[ScholarshipDueDate]
+	    ,[PostingDate]
            ,[OrganizationID]
            ,[Approved]
            ,[LastUpdated])
@@ -1356,6 +1361,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'10000'
            ,'2'
            ,'12-15-2019'
+	    ,'02-15-2019'
            ,'3'
            ,'pen'
            ,GETDATE())
