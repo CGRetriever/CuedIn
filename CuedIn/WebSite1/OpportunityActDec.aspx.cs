@@ -307,14 +307,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         while (reader.Read())
         {
-            OpportunityActDec.email = reader.GetString(0);
+            email = reader.GetString(0);
         }
 
         sql.Close();
 
-
-        
-        ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
-        Response.Redirect("~/OpportunityActDec.aspx");
+        string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "%26argument=Number1";
+        string command = "mailto:" + email + "?subject=CommUp: Job Approval";
+        System.Diagnostics.Process.Start(command);
+        //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
+        //Response.Redirect("~/OpportunityActDec.aspx");
     }
 }
