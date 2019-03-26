@@ -78,10 +78,15 @@ public partial class CreateUser : System.Web.UI.Page
 
 
             //empmty these fields out.
+            firstName.Value = "";
+            lastName.Value = "";
+            middleName.Value = "";
+            address.Value = "";
             username.Value = "";
             password.Value = "";
             email.Value = "";
             role.SelectedIndex = 0;
+            DropDownList2.SelectedIndex = 0;
             Label1.Text = "Account Created!";
         }
         else
