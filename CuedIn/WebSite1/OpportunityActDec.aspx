@@ -2,7 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+    <link rel="stylesheet" type="text/css" href="css/style.css">
         <div class='tableauPlaceholder' id='viz1553211444276' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ap&#47;ApprovalDashboard_CuedIn_Dark_Extra_Large_Device&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ApprovalDashboard_CuedIn_Dark_Extra_Large_Device&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ap&#47;ApprovalDashboard_CuedIn_Dark_Extra_Large_Device&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1553211444276');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='1200px';vizElement.style.maxWidth='2560px';vizElement.style.width='100%';vizElement.style.height='307px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
       <form id="form1" runat="server">
@@ -100,21 +100,33 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">
-                            Reject Job</h4>
+                        <div class="col-md-12 text-center">
+                        <div class="modal-title">
+                            <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                            <br>
+                            <br>
+                           <h5> Are you sure you want to reject?</h5>
+                        </div>
+                            </div>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
                     </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    
+                    <div class="modal-body" style="background-color: #4F79A3;">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
-                                <asp:Label ID="Label3" runat="server" Text="Are you sure you want to reject this job listing?"></asp:Label>
+                                <asp:Label ID="Label3" runat="server" style="color:white;font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight:bold;" Text="Ashby Animal Clinic"></asp:Label>
                             </div>
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                <h4 style="color:white;font-family: 'Poppins', sans-serif; font-weight:bold;">Receptionist</h4>
+                                </div>
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <div class="text-center">
                         <asp:Button ID="Button2" runat="server" Text="Reject" CssClass="btn btn-danger btn-circle" OnClick ="rejectJobButton_Click"/>
                         <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                            </div>
                     </div>
                 </div>
             </div>
