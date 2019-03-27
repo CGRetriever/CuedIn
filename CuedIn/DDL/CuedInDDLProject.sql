@@ -191,3 +191,31 @@ Description varchar(50) not null,
 Primary Key (TechnicalSchoolID),
 Foreign Key (TechnicalSchoolID) references EducationInstitution (HigherEducationID),
 );
+
+Create Table StudentComment (
+LogID int,
+StudentEntityID int,
+Comment varchar (255),
+primary Key(LogID, StudentEntityID),
+Foreign Key (StudentEntityID) references student (StudentEntityID)
+);
+
+Create Table OrganizationComment (
+LogID int,
+OrganizationEntityID int,
+Comment varchar (255),
+primary Key(LogID, OrganizationEntityID),
+Foreign Key (OrganizationEntityID) references Organization (OrganizationEntityID)
+);
+
+Create Table LogHours (
+LogID int identity(1,1),
+JobListingID int, 
+HoursRequested int,
+CounselorApproval varchar (10),
+OrganizationApproval varchar(10),
+StudentEntityID int,
+Primary key (LogID),
+Foreign key (JobListingID) references JobListing (JobListingID),
+Foreign key (StudentEntityID) references Student (StudentEntityID)
+);
