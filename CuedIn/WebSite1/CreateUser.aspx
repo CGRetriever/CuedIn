@@ -126,10 +126,7 @@
 
                         <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
-					<div class="text-center p-t-90">
-                        <a class="txt1" href="OpportunityActDec">
-							Click Here To Return To Homepage.
-						</a>
+				
 					</div>
 				</form>
 			</div>

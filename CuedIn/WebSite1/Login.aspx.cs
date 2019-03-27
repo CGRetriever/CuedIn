@@ -87,7 +87,17 @@ public partial class Login : System.Web.UI.Page
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
             Label1.Text = "Success!";
-            Response.Redirect("JobPostingsPrototype.aspx");
+            String permissions = "Admin";
+
+            if (permissions.Equals("Admin"))
+                {
+                    Response.Redirect("JobPostingsPrototype.aspx");
+                }
+            else if (permissions.Equals("Counselor"))
+            {
+                Response.Redirect("CounselorJobPostingPrototype.aspx");
+            }
+
         }
         else
         {
