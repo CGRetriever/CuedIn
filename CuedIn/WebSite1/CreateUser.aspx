@@ -1,9 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/LoginMasterPage.master" runat="server" CodeFile="CreateUser.aspx.cs" Inherits="CreateUser"  %>
+﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/SchoolMaster.master" runat="server" CodeFile="CreateUser.aspx.cs" Inherits="CreateUser"  %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="server">
     <!DOCTYPE html>
 
 <head>
@@ -31,20 +29,22 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 <!--===============================================================================================-->
 </head>
-<body>
+     
+
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" runat="server">
 					<span>
 						<img src="images/CommUpMainLogo.png" alt="logo" class="RoundedElement">
 					</span>
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Sign Up
+						Create Users
 					
 					</span>
 
@@ -127,8 +127,8 @@
                         <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
 					<div class="text-center p-t-90">
-                        <a class="txt1" href="Login.aspx">
-							Already Have an Account? Sign In.
+                        <a class="txt1" href="OpportunityActDec">
+							Click Here To Return To Homepage.
 						</a>
 					</div>
 				</form>
@@ -157,6 +157,7 @@
 	<script src="js/main.js"></script>
 
 </body>
+         </form>
 </html>
 </asp:Content>
 

@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <!DOCTYPE html>
 
-<head>
-	<title>Login V3</title>
+
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -31,8 +31,8 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-</head>
-<body>
+
+
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
@@ -80,9 +80,7 @@
 						</a>
                         <br />
                         <br />
-                        <a class="txt1" href="CreateUser.aspx">
-							Don't Have an Account?
-						</a>
+                       
 					</div>
 				</form>
 			</div>

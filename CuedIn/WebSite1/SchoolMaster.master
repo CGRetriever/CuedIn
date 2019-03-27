@@ -70,6 +70,18 @@
                         Settings
                     </a>
                 </li>
+                <li>
+                    <a href="CreateUser.aspx">
+                        <i class="fas fa-user-circle"></i>
+                        Create Users
+                    </a>
+                </li>
+                 <li>
+                    <a href="Login.aspx">
+                        <i class="fas fa-ban"></i>
+                        Logout
+                    </a>
+                </li>
             </ul>
 
 
