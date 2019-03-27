@@ -135,21 +135,30 @@
                 <div class="modal-content">
                     <div class="modal-header">
                          <h4 class="modal-title">
-                            More Information</h4>
+                            Comments</h4>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                
+                       <div class="form-row">
+                        <div class="form-group col-md-6">
+                       <%-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">--%>
+                                <asp:Label ID="Label4" runat="server" Text="Student Comment:"></asp:Label>
+                                <asp:Label ID="StudentComment" runat="server"></asp:Label>
+                            </div>
+                             <div class="form-group col-md-6">
+                                <asp:Label ID="Label5" runat="server" Text="Organization Comment:"></asp:Label>
+                                <asp:Label ID="BusinessComment" runat="server"></asp:Label>
+                            </div>
+                                 
 
                             </div>
-                        </div>
+                           
                     </div>
                     <div class="modal-footer">
                         <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
                     </div>
+                 </div>
                 </div>
             </div>
             <script type='text/javascript'>

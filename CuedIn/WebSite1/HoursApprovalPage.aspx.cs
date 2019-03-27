@@ -128,6 +128,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
+        // working here
+
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
@@ -136,35 +138,27 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         int jobID = Convert.ToInt32(e.CommandArgument);
-
-        //sql.Open();
-        //System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-        //moreJobInfo.Connection = sql;
-        //moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID WHERE JobListing.JobListingID = " + jobID;
-        //System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-        //while (reader.Read())
-        //{
-        //    //set labels to db values
-        //    lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-        //    lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-        //    lblJobTitle.Text = "Job Title: " + reader.GetString(2);
-        //    lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-        //    lblJobType.Text = "Job Type: " + reader.GetString(4);
-        //    lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-        //    lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-        //    lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
-        //}
-
         Session["selectedLogID"] = jobID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT StudentComment.Comment, OrganizationComment.Comment AS Expr1 FROM OrganizationComment INNER JOIN StudentComment ON OrganizationComment.LogID = StudentComment.LogID INNER JOIN LogHours ON OrganizationComment.LogID = LogHours.LogID where LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            StudentComment.Text = reader.GetString(0);
+            BusinessComment.Text = reader.GetString(1);
+        }
+
+        sql.Close();
 
 
+     
 
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditSModal();", true);
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
 
 
