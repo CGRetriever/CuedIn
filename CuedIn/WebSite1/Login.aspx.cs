@@ -41,6 +41,7 @@ public partial class Login : System.Web.UI.Page
         }
 
         sql.Close();
+        
     }
 
 
@@ -54,7 +55,7 @@ public partial class Login : System.Web.UI.Page
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
+        
         sql.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = sql;
@@ -82,13 +83,38 @@ public partial class Login : System.Web.UI.Page
             }
 
         }
-       
+        sql.Close();
+        reader.Close();
+
         //method to validate if password in hashed textbox matches our hashed password in the DB
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
             Label1.Text = "Success!";
-            String permissions = "Admin";
+            String permissions = " ";
+            sql.Open();
+            System.Data.SqlClient.SqlCommand query1 = new System.Data.SqlClient.SqlCommand();
+          
+            query1.Connection = sql;
+            query1.CommandText = "SELECT dbo.UserEntity.EntityType from dbo.userentity where upper(username) like upper(@userName1)";
 
+            query1.Parameters.AddWithValue("@userName1", HttpUtility.HtmlEncode(username.Value));
+            System.Data.SqlClient.SqlDataReader reader1 = query1.ExecuteReader();
+            while (reader1.Read())
+            {
+                if (reader1.IsDBNull(0))
+                    username.Value = "null";
+
+
+                else
+                {
+                    permissions = reader1.GetString(0);
+                }
+            }
+            
+
+
+
+            //Test the permsissions
             if (permissions.Equals("Admin"))
                 {
                     Response.Redirect("JobPostingsPrototype.aspx");
