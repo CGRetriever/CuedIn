@@ -66,22 +66,33 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">
-                            Approve Job</h4>
+                         <div class="col-md-12 text-center">
+                        <div class="modal-title">
+                            <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                            <br>
+                            <br>
+                           <h5> Are you sure you want to approve?</h5>
+                        </div>
+                            </div>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
                     </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <div class="modal-body" style="background-color: #4F79A3;">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
-                                <asp:Label ID="Label2" runat="server" Text="Are you sure you want to approve this job listing?"></asp:Label>
+                                <asp:Label ID="Label2" runat="server" style="color:white;font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight:bold;" Text="Ashby Animal Clinic"></asp:Label>
                             </div>
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                <h4 style="color:white;font-family: 'Poppins', sans-serif; font-weight:bold;">Receptionist</h4>
+                                </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="Button3" runat="server" Text="Message Organization" CssClass="btn btn-circle btn-primary" OnClick="Button3_Click1"  />
-                        <asp:Button ID="Button1" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptJobButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                      <div class="modal-footer">
+                        <div class="flex-center" style= "text-align:center !important; margin:auto !important;">
+                        <asp:Button ID="Button3" runat="server" Text="Message Organization" style="background-color:#102B3F;color:#fff; width:200px; height:60px;" CssClass="btn btn-circle" OnClick="Button3_Click1"  />
+                        <asp:Button ID="Button1" runat="server" Text="Approve" style="background-color:#102B3F;color:#fff; width:100px; height:60px;" CssClass="btn btn-circle" OnClick ="acceptJobButton_Click"/>
+                        <button type="button" style="background-color:#102B3F;color:#fff; width:100px; height:60px;"  Class="btn btn-circle"data-dismiss="modal">Close</button>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -120,12 +131,13 @@
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <h4 style="color:white;font-family: 'Poppins', sans-serif; font-weight:bold;">Receptionist</h4>
                                 </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <div class="text-center">
-                        <asp:Button ID="Button2" runat="server" Text="Reject" CssClass="btn btn-danger btn-circle" OnClick ="rejectJobButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                        <div class="flex-center" style= "text-align:center !important; margin:auto !important;">
+                        <asp:Button ID="Button2" runat="server" Text="Reject" style="background-color:#102B3F;color:#fff; width:100px; height:60px;" CssClass="btn btn-circle" OnClick ="rejectJobButton_Click"/>
+                        <button type="button"style="background-color:#102B3F;color:#fff; width:100px; height:60px; " Class="btn btn-circle"data-dismiss="modal">Close</button>
                             </div>
                     </div>
                 </div>
