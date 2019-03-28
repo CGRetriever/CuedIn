@@ -73,6 +73,26 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedjobID"] = jobID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobid"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            Label2.Text = reader.GetString(0);
+            sublabelapprovemodal.Text = reader.GetString(1);
+
+        }
+
+
+
+
+
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
 
@@ -103,6 +123,23 @@ public partial class OpportunityActDec : System.Web.UI.Page
         int jobID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedjobID"] = jobID.ToString();
+
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobid"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            Label3.Text = reader.GetString(0);
+            rejectjobsublabel.Text = reader.GetString(1);
+
+        }
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }

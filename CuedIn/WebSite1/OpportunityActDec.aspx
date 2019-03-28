@@ -99,10 +99,10 @@
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <div class="form-group">
-                                    <asp:Label ID="Label2" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;" Text="Ashby Animal Clinic"></asp:Label>
+                                    <asp:Label ID="Label2" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
-                                    <h4 style="color: white; font-family: 'Poppins', sans-serif; font-weight: bold;">Receptionist</h4>
+                                    <asp:Label ID="sublabelapprovemodal" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -145,10 +145,10 @@
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <div class="form-group">
-                                    <asp:Label ID="Label3" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;" Text="Ashby Animal Clinic"></asp:Label>
+                                    <asp:Label ID="Label3" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
-                                    <h4 style="color: white; font-family: 'Poppins', sans-serif; font-weight: bold;">Receptionist</h4>
+                                    <asp:Label ID="rejectjobsublabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
 
                             </div>
