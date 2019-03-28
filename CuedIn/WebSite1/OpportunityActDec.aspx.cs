@@ -305,6 +305,24 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.ScholarshipID = " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            scholarRejectLabel.Text = reader.GetString(0);
+            scholarsubRejectLabel.Text = reader.GetString(1);
+
+        }
+
+
+
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
 
