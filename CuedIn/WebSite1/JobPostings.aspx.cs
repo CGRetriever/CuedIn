@@ -25,7 +25,7 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
-        sqlrecentJobPostID.CommandText = "select joblistingID from jobListing where postingDate = (select max(postingDate) from jobListing)";
+        sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
         sqlrecentJobPostID.Connection = sc;
         System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
 
@@ -79,7 +79,7 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
-        countJobPostings.CommandText = "select count(JobListingID) from JobListing where approved = 'yes' and jobListingID <> " + recentPostID;
+        countJobPostings.CommandText = "select count(JobListingID) from JobListing where approved = 'Y' and jobListingID <> " + recentPostID;
         countJobPostings.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();
@@ -95,7 +95,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where jobListingID <>" + recentPostID;
+        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where jobListingID <>" + recentPostID + "and approved = 'Y' ";
         pullJobInfo.Connection = sc;
 
 
