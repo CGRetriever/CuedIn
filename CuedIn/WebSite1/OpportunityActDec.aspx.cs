@@ -12,7 +12,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       // GridView2.Columns[0].Visible = false;
+       GridView2.Columns[0].Visible = false;
     }
 
 
@@ -191,7 +191,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        //GridViewRow row = GridView2.Rows[rowIndex];
+        GridViewRow row = GridView2.Rows[rowIndex];
 
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
@@ -230,7 +230,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
         
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-       // GridViewRow row = GridView2.Rows[rowIndex];
+        GridViewRow row = GridView2.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
@@ -246,7 +246,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-      //  GridViewRow row = GridView2.Rows[rowIndex];
+        GridViewRow row = GridView2.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 

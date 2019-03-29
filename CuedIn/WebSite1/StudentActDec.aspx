@@ -203,7 +203,8 @@
                                 <asp:Label ID="lblStudentFirstName" runat="server"></asp:Label> <br />
                                 <asp:Label ID="lblStudentLastNameName" runat="server"></asp:Label> <br />
                                 <asp:Label ID="lblStudentGpa" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentTrack" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblStudentGraduationTrack" runat="server"></asp:Label> <br />
+                                <asp:Label ID="lblLabelBlank" runat="server"></asp:Label> <br />
                                 <asp:Label ID="lblJobTitle" runat="server"></asp:Label> <br />
                                 <asp:Label ID ="lblJobDescription" runat="server"></asp:Label> <br />
                                 <asp:Label ID="lblJobType" runat="server"></asp:Label> <br />

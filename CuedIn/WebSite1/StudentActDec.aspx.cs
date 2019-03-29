@@ -186,7 +186,7 @@ public partial class StudentActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
         moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Student.FirstName, Student.LastName, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID INNER JOIN ApplicationRequest ON JobListing.JobListingID = ApplicationRequest.JobListingID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID where ApplicationRequest.ApplicationID = " + applicationID;
+        moreJobInfo.CommandText = "SELECT Student.FirstName, Student.LastName, Student.StudentGPA, Student.StudentGraduationTrack, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID INNER JOIN ApplicationRequest ON JobListing.JobListingID = ApplicationRequest.JobListingID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID where ApplicationRequest.ApplicationID = " + applicationID;
         System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
 
 
@@ -197,17 +197,20 @@ public partial class StudentActDec : System.Web.UI.Page
 
             lblStudentFirstName.Text = "Student First Name: " + reader.GetString(0);
             lblStudentLastNameName.Text = "Student Last Name: " + reader.GetString(1);
+            lblStudentGpa.Text = "Student GPA: " + reader.GetDouble(2);
+            lblStudentGraduationTrack.Text = "Is student on Track?: " + reader.GetString(3);
+            lblLabelBlank.Text = ""; 
             //lblStudentGpa.Text = "Student GPA: " + reader.GetString(2);
             //lblStudentTrack.Text = "Student on Graduation Track: " + reader.GetString(3);
 
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(8);
-            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(9);
-            lblJobTitle.Text = "Job Title: " + reader.GetString(2);
-            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-            lblJobType.Text = "Job Type: " + reader.GetString(4);
-            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
+            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(10);
+            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(11);
+            lblJobTitle.Text = "Job Title: " + reader.GetString(4);
+            lblJobDescription.Text = "Job Description: " + reader.GetString(5);
+            lblJobType.Text = "Job Type: " + reader.GetString(6);
+            lblJobLocation.Text = "Job Location: " + reader.GetString(7);
+            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(8);
+            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(9);
 
         }
 
