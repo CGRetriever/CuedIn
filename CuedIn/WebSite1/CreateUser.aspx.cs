@@ -15,6 +15,8 @@ public partial class CreateUser : System.Web.UI.Page
 
     protected void CreateUserClick(object sender, EventArgs e)
     {
+        Label1.Text = "";
+        Label2.Text = "";
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
        
@@ -93,7 +95,7 @@ public partial class CreateUser : System.Web.UI.Page
         }
         else
         {
-            Label1.Text = "Passwords do not match";
+            Label2.Text = "Passwords do not match";
         }
     }
 }
