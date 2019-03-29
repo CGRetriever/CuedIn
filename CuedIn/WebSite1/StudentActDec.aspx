@@ -150,34 +150,60 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                         <h4 class="modal-title">
-                            More Informationhaha</h4>
+                          <div class="col-md-12 text-center">
+                                <div class="modal-title">
+                                    <i class="fas fa-address-card fa-4x progress-bar-animated rotateIn"></i>
+                                    <br>
+                                    <br>
+                                    <h5>More Information</h5>
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                        </div>
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                     <asp:Label ID="lblSudentGPA" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                        </div>
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                     <asp:Label ID="lblStudentStatus" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                        </div>
+                                </div>
+                            </div>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="background-color: #4F79A3;">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <div class="form-group">
-                                <asp:Label ID="lblStudentFirstName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentLastNameName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentGpa" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentGraduationTrack" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblLabelBlank" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobTitle" runat="server"></asp:Label> <br />
-                                <asp:Label ID ="lblJobDescription" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobType" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobLocation" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobDeadline" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblNumOfApplicants" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJOrganizationName" runat="server"></asp:Label> <br />
-                                <asp:Label ID ="lblJOrganizationDescription" runat="server"></asp:Label> <br />
-                            
+                                
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                   <asp:Label ID="lblOrgName" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                    <asp:Label ID="lblOrgDesc" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                    <asp:Label ID="lblJobTitle" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                    <asp:Label ID="lblJobDesc" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                    <asp:Label ID="lblJobLocation" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                    <asp:Label ID="lblJobDeadline" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                    <asp:Label ID="lblNumberOfApplicants" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    </div>
+                                    
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
+                        <div class="flex-center" style="text-align: center !important; margin: auto !important;">
+                        <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" Class="btn btn-circle" data-dismiss="modal"> Close</button>
                     </div>
+                        </div>
                 </div>
             </div>
             <script type='text/javascript'>
