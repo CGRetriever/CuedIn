@@ -22,45 +22,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         /* Verifies that the control is rendered */
     }
 
-    protected void GridView1_OnRowCommand(object sender, GridViewCommandEventArgs e)
-
-    {
-        int jobID = Convert.ToInt32(e.CommandArgument);
-        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-        if (e.CommandName == "JApprove")
-        {
-            //sql.Open();
-            //System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
-            //approveJob.Connection = sql;
-            //approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            //approveJob.ExecuteNonQuery();
-            //sql.Close();
-
-            //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
-            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
-
-        }
-        else if (e.CommandName == "JReject")
-        {
-            //sql.Open();
-            //System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
-            //rejectJob.Connection = sql;
-            //rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            //rejectJob.ExecuteNonQuery();
-            //sql.Close();
-
-            //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
-        }
-
-
-
-
-        Response.Redirect(Request.RawUrl);
-
-    }
-
+    //approve button clicked in gridview--opens modal-- populates modal
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -95,7 +57,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
-
+    //yes button clicked in modal-- sends to DB
     protected void acceptJobButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -111,7 +73,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 
-
+    //reject button clicked in gridview-- populates modal
     protected void rejectJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -143,7 +105,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
-
+    //reject button clicked in modal-- sends to DB
     protected void rejectJobButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -158,7 +120,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Response.Redirect("~/OpportunityActDec.aspx");
     }
-
+    //more info button clicked in gridview
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -205,25 +167,10 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-
+    //more info button clicked in scholarship gridview
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
 
-        //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        //GridViewRow row = GridView2.Rows[rowIndex];
-        ////lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
-        ////lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
-        ////txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
-
-        //String sName;
-        //String sDesc;
-
-        //sName = GridView2.Rows[rowIndex].Cells[0].Text;
-        //sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
-
-        ////String primarykey;
-
-        ////  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
@@ -260,7 +207,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
     }
-
+    //approve button clicked in scholarship gridview
     protected void LinkButton2_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -292,7 +239,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
 
-
+    //reject button clicked in scholarship gridview
     protected void LinkButton3_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -324,7 +271,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
-
+    //reject button clicked in modal-- updates DB
     protected void rejectScholarshipButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -339,7 +286,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         
         Response.Redirect("~/OpportunityActDec.aspx");
     }
-
+    //approve button clicked in modal-- updates DB
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -357,7 +304,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     
 
-
+    //mail bullshit
     protected void Button3_Click1(object sender, EventArgs e)
     {
         // Stopped here before class. Need to get the query result from the database (the business email) and store that as a variable to pass

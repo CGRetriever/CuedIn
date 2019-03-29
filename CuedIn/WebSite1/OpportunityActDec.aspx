@@ -176,19 +176,26 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">More Information</h4>
+                            <div class ="col-md-12 text-center">
+                            <div class="modal-title">
+                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
+                                <br />
+                                <br />
+                                <h5>More Information</h5>
+                                <asp:Label ID="lblScholarshipName" runat="server"></asp:Label>
+                            </div>
+                            </div>
                             <button type="button" class="close" data-dismiss="modal">
                                 &times;</button>
                         </div>
-                        <div class="modal-body">
-                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                        <div class="modal-body" style="background-color: #4F79A3;">
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center"">
                                 <div class="form-group">
                                     <asp:Label ID="lblSOrganizationName" runat="server"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblSOrganizationDescription" runat="server"></asp:Label>
                                     <br />
-                                    <asp:Label ID="lblScholarshipName" runat="server"></asp:Label>
-                                    <br />
+
                                     <asp:Label ID="lblScholarshipDescription" runat="server"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblScholarshipMin" runat="server"></asp:Label>
@@ -204,7 +211,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning btn-circle" data-dismiss="modal">Close</button>
+                            <div class="flex-center" style="text-align: center !important; margin: auto !important;">
+                            <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
