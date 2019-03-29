@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 public partial class OpportunityActDec : System.Web.UI.Page
 {
     public static String email;
+    public static String fullName;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -73,6 +74,23 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedLogID"] = jobID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreHourInfo = new System.Data.SqlClient.SqlCommand();
+        moreHourInfo.Connection = sql;
+        moreHourInfo.CommandText = "SELECT JobListing.JobTitle, LogHours.HoursRequested, CONCAT(Student.FirstName,' ', Student.LastName) FROM LogHours INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN JobListing ON LogHours.JobListingID = JobListing.JobListingID WHERE LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreHourInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            sublabelapprovemodal1.Text = reader.GetString(2);
+            sublabelapprovemodal2.Text =  reader.GetString(0);
+            sublabelapprovemodal3.Text =  "Hours: " + reader.GetInt32(1).ToString();
+        }
+
+        sql.Close();
+
+      
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
 
@@ -84,7 +102,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update LogHours set OrganizationApproval = 'yes' where logID = " + Session["selectedLogID"];
+        approveJob.CommandText = "update LogHours set CounselorApproval = 'Y' where logID = " + Session["selectedLogID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -106,6 +124,21 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedLogID"] = jobID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreHourInfo = new System.Data.SqlClient.SqlCommand();
+        moreHourInfo.Connection = sql;
+        moreHourInfo.CommandText = "SELECT JobListing.JobTitle, LogHours.HoursRequested, CONCAT(Student.FirstName,' ', Student.LastName) FROM LogHours INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN JobListing ON LogHours.JobListingID = JobListing.JobListingID WHERE LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreHourInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            sublabelRejectModal1.Text = reader.GetString(2);
+            sublabelRejectModal2.Text = reader.GetString(0);
+            sublabelRejectModal3.Text = "Hours: " + reader.GetInt32(1).ToString();
+        }
+
+        sql.Close();
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
 
@@ -117,7 +150,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update LogHours set OrganizationApproval = 'no' where logID = " + Session["selectedLogID"];
+        rejectJob.CommandText = "update LogHours set CounselorApproval = 'N' where logID = " + Session["selectedLogID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
@@ -320,5 +353,59 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void approveJobLinkBtn_Command(object sender, CommandEventArgs e)
     {
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
+    }
+
+
+    protected void btnStudentView_Click (object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        
+
+        int logID= Convert.ToInt32(e.CommandArgument);
+
+        Session["logID"] = logID.ToString();
+
+        //find student ID from logID
+        sql.Open();
+        System.Data.SqlClient.SqlCommand findStudentID = new System.Data.SqlClient.SqlCommand();
+        findStudentID.Connection = sql;
+        findStudentID.CommandText = "SELECT StudentEntityID FROM LogHours WHERE LogID = " + Session["logID"];
+        System.Data.SqlClient.SqlDataReader IDreader = findStudentID.ExecuteReader();
+
+        //declare studentID session variable
+        Session["studentID"] = 0;
+
+        while (IDreader.Read())
+        {
+            Session["studentID"] = IDreader.GetInt32(0);
+        }
+
+        sql.Close();
+
+        //get student info for selected student
+        sql.Open();
+        System.Data.SqlClient.SqlCommand getStudentInfo = new System.Data.SqlClient.SqlCommand();
+        getStudentInfo.Connection = sql;
+        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID FROM Student WHERE StudentEntityID = " + Session["studentID"];
+        System.Data.SqlClient.SqlDataReader studentReader = getStudentInfo.ExecuteReader();
+
+        while (studentReader.Read())
+        {
+            //fill labels in modal
+            
+            
+            lblStudentName.Text = studentReader.GetString(0);
+            lblGradeLevel.Text = "Grade Level: " + studentReader.GetString(1);
+            lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
+            lblSATScore.Text = "SAT Score: " + studentReader.GetInt32(3);
+            lblHoursWorked.Text = "WBL Hours Earned: " + studentReader.GetInt32(4);
+        }
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
 }
