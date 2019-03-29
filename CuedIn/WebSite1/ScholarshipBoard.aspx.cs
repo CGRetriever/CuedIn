@@ -24,7 +24,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand sqlrecentScholarshipID = new System.Data.SqlClient.SqlCommand();
-        sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where postingDate = (select max(postingDate) from scholarship)";
+        sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where ScholarshipID = (select max(scholarshipID) from scholarship)";
         sqlrecentScholarshipID.Connection = sc;
         System.Data.SqlClient.SqlDataReader reader = sqlrecentScholarshipID.ExecuteReader();
 
@@ -66,7 +66,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countScholarships = new System.Data.SqlClient.SqlCommand();
-        countScholarships.CommandText = "select count(ScholarshipID) from Scholarship where approved = 'yes' and scholarshipID <> " + recentPostID;
+        countScholarships.CommandText = "select count(ScholarshipID) from Scholarship where approved = 'Y' and scholarshipID <> " + recentPostID;
         countScholarships.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countScholarships.ExecuteReader();
@@ -82,7 +82,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullScholarshipInfo = new System.Data.SqlClient.SqlCommand();
-        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'yes' AND scholarshipID <>" + recentPostID;
+        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'Y' AND scholarshipID <>" + recentPostID;
         pullScholarshipInfo.Connection = sc;
 
 
@@ -130,7 +130,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                     c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
                     c.Text += "<div class='font-weight-bold indigo-text py-2'>" + scholarshipNameArray[count] + "</div>";
                     c.Text += "<div class = 'card-text'>" + scholarshipDescriptionArray[count] + "</div>";
-                    c.Text += "<a type ='button' class = 'btn-primary btn-medium' style = 'background-color:#102b3f' href='" + linkArray[count] + "' target = '_blank'>Icon Button PlaceHolder</a>";
+                    c.Text += "<a type ='button' class = 'btn-primary btn-medium' style = 'background-color:#102b3f' href='" + linkArray[count] + "' target = '_blank'><i class='fab fa-dribbble'></i></a>";
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
