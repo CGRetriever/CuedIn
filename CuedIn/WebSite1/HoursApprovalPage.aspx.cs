@@ -74,6 +74,23 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedLogID"] = jobID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreHourInfo = new System.Data.SqlClient.SqlCommand();
+        moreHourInfo.Connection = sql;
+        moreHourInfo.CommandText = "SELECT JobListing.JobTitle, LogHours.HoursRequested, CONCAT(Student.FirstName,' ', Student.LastName) FROM LogHours INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN JobListing ON LogHours.JobListingID = JobListing.JobListingID WHERE LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreHourInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            sublabelapprovemodal1.Text = reader.GetString(2);
+            sublabelapprovemodal2.Text =  reader.GetString(0);
+            sublabelapprovemodal3.Text =  "Hours: " + reader.GetInt32(1).ToString();
+        }
+
+        sql.Close();
+
+      
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
 
@@ -106,6 +123,21 @@ public partial class OpportunityActDec : System.Web.UI.Page
         int jobID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedLogID"] = jobID.ToString();
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreHourInfo = new System.Data.SqlClient.SqlCommand();
+        moreHourInfo.Connection = sql;
+        moreHourInfo.CommandText = "SELECT JobListing.JobTitle, LogHours.HoursRequested, CONCAT(Student.FirstName,' ', Student.LastName) FROM LogHours INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN JobListing ON LogHours.JobListingID = JobListing.JobListingID WHERE LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreHourInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            sublabelRejectModal1.Text = reader.GetString(2);
+            sublabelRejectModal2.Text = reader.GetString(0);
+            sublabelRejectModal3.Text = "Hours: " + reader.GetInt32(1).ToString();
+        }
+
+        sql.Close();
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
