@@ -39,17 +39,13 @@
     
         
     <div class="form-group col-md-6">
-    
-        
-              
+      
     </div>
     
-        
   </div>
           
           <br />
           <br />
-
           
 <div>
         <%--Student Approve Modal--%>
@@ -146,55 +142,16 @@
         </div>
     </div>
 
-    <div>
-      <%-- Scholarship More Info Modal--%>
-        <div class="modal fade" id="jobMoreInfoModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                         <h4 class="modal-title">
-                            More Information</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <asp:Label ID="lblSOrganizationName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblSOrganizationDescription" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipDescription" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipMin" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipMax" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipQuantity" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipDueDate" runat="server"></asp:Label> <br />
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
-                    </div>
-                </div>
-            </div>
-            <script type='text/javascript'>
-                function openEditJModal() {
-                    $('[id*=jobMoreInfoModal]').modal('show');
-                } 
-            </script>
-        </div>
-    </div>
 
 <div>
-      <%-- Job More Info Modal--%>
+      <%-- Student More Info Modal--%>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                          <h4 class="modal-title">
-                            More Information</h4>
+                            More Informationhaha</h4>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
                     </div>
@@ -231,74 +188,7 @@
         </div>
     </div>
 
-<div>
-        <%--Scholarship Approve Modal--%>
-        <div class="modal fade" id="approveSModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
-                            Approve Scholarship</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <asp:Label ID="ApprovalLbl" runat="server" Text="Are you sure you want to approve this scholarship listing?"></asp:Label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptScholarshipButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-            <script type='text/javascript'>
-                function openApproveSModal() {
-                    $('[id*=approveSModal]').modal('show');
-                } 
-            </script>
-        </div>
-    </div>
-
-<div>
-        <%--Scholarship Reject Modal--%>
-        <div class="modal fade" id="rejectSModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
-                            Reject Scholarship</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label1" runat="server" Text="Are you sure you want to reject this scholarship listing?"></asp:Label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="rejectScholarshipButton" runat="server" Text="Reject" CssClass="btn btn-danger btn-circle" OnClick ="rejectScholarshipButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-            <script type='text/javascript'>
-                function openRejectSModal() {
-                    $('[id*=rejectSModal]').modal('show');
-                } 
-            </script>
-        </div>
-    </div>
 </form>
-
-
 
 </asp:Content>
 
