@@ -10,7 +10,7 @@
     <div class="form-group col-md-6">
       <label Class="form-control-lg font-weight-bold" for="inputJobs">Students To Approve </label>
        
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped " style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
             <Columns>
                 
                 <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" />
@@ -51,31 +51,45 @@
 
           
 <div>
-        <%--Job Approve Modal--%>
+        <%--Student Approve Modal--%>
         <div class="modal fade" id="approveXModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">
-                            Approve Job</h4>
+                        <div class="col-md-12 text-center">
+                                <div class="modal-title">
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <br>
+                                    <br>
+                                    <h5>Are you sure you want to approve?</h5>
+                                </div>
+                            </div>
                         <button type="button" class="close" data-dismiss="modal">
                             &times;</button>
                     </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <div class="modal-body" style="background-color: #4F79A3;">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
-                                <asp:Label ID="Label2" runat="server" Text="Are you sure you want to approve this student?"></asp:Label>
+                                <asp:Label ID="StudentApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                             </div>
-                        </div>
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                               <asp:Label ID="StudentSubApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                </div>
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                               <asp:Label ID="Student2ndSubApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                </div>
+                            </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="Button3" runat="server" Text="Message Organization" CssClass="btn btn-circle btn-primary" OnClick="Button3_Click1"  />
-                        <asp:Button ID="Button1" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptJobButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
+                        <div class="flex-center" style="text-align: center !important; margin: auto !important;">
+                        <asp:Button ID="Button1" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 200px; height: 60px;" CssClass="btn btn-circle" OnClick ="acceptJobButton_Click"/>
+                        <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;"  Class="btn btn-circle"data-dismiss="modal">Close</button>
                     </div>
+                        </div>
                 </div>
             </div>
+    </div>
             <script type='text/javascript'>
                 function openApproveXModal() {
                     $('[id*=approveXModal]').modal('show');
