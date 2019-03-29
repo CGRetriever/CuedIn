@@ -68,6 +68,18 @@
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
+                     <div class="wrap-input100 validate-input" data-validate = "Enter City">
+						<input runat="server" maxlength="30" class="input100" id="city" type="text" name="username" placeholder="City" required>
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
+                     
+                    
+                     <div class="wrap-input100 validate-input" data-validate = "Enter Zipcode">
+						<input runat="server" maxlength="30" class="input100" id="zipcode" type="text" name="username" placeholder="Zipcode" required>
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
+
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
 						<input runat="server" maxlength="30" class="input100" id="username" type="text" name="username" placeholder="Username" required>
@@ -81,8 +93,8 @@
     
 
                     <div class="ddl">
-                        <asp:DropDownList ID="role" runat="server" border-radius="50px" Width="390px" Height="50px" BackColor="#36536f" BorderColor="Transparent" ForeColor="#efefef" Font-Names="Poppins-Regular"  Font-Size="Medium" > 
-                             <asp:ListItem>Select A Role</asp:ListItem>
+                        <asp:DropDownList ID="role" runat="server"   border-radius="50px" Width="390px" Height="50px" BackColor="#36536f" BorderColor="Transparent" ForeColor="#efefef" Font-Names="Poppins-Regular"  Font-Size="Medium" > 
+                        
                             <asp:ListItem Text="Teacher"></asp:ListItem>
                             <asp:ListItem Text="Counselor"></asp:ListItem>
                             <asp:ListItem Text="Admin"></asp:ListItem>
@@ -90,12 +102,9 @@
                     </div>
                     <br />
                      <div class="ddl">
-                        <asp:DropDownList ID="DropDownList2" runat="server" border-radius="50px" Width="390px" Height="50px" BackColor="#36536f" BorderColor="Transparent" ForeColor="#efefef" Font-Names="Poppins-Regular"  Font-Size="Medium" > 
-                             <asp:ListItem>Select A School</asp:ListItem>
-                            <asp:ListItem Text="Harrisonburg High School"></asp:ListItem>
-                            <asp:ListItem Text="Skyline Middle School"></asp:ListItem>
-                            <asp:ListItem Text="Thomas Harrison Middle School"></asp:ListItem>
+                        <asp:DropDownList ID="DropDownList2" runat="server" border-radius="50px" Width="390px" Height="50px"  BackColor="#36536F" BorderColor="Transparent" ForeColor="#EFEFEF" Font-Names="Poppins-Regular"  Font-Size="Medium" DataSourceID="SqlDataSource1" DataTextField="SchoolName" DataValueField="SchoolEntityID"  > 
                         </asp:DropDownList>
+                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT [SchoolName], [SchoolEntityID] FROM [School]"></asp:SqlDataSource>
                     </div>
                     <br />
 
