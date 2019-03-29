@@ -6,13 +6,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class OpportunityActDec : System.Web.UI.Page
+public partial class StudentActDec : System.Web.UI.Page
 {
     public static String email;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       // GridView2.Columns[0].Visible = false;
+        GridView1.Columns[0].Visible = false;
     }
 
 
@@ -61,7 +61,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     }
 
-    protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
+    protected void approveStudentLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
@@ -69,9 +69,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
         GridViewRow row = GridView1.Rows[rowIndex];
 
-        int jobID = Convert.ToInt32(e.CommandArgument);
+        int applicationID = Convert.ToInt32(e.CommandArgument);
 
-        Session["selectedjobID"] = jobID.ToString();
+        Session["selectedapplicationID"] = applicationID.ToString();
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
@@ -82,17 +82,17 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         sql.Open();
-        System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
-        approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
-        approveJob.ExecuteNonQuery();
+        System.Data.SqlClient.SqlCommand approveStudent = new System.Data.SqlClient.SqlCommand();
+        approveStudent.Connection = sql;
+        approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y' where applicationID = " + Session["selectedapplicationID"];
+        approveStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/StudentActDec.aspx");
     }
 
 
-    protected void rejectJobLinkBtn_Click(object sender, CommandEventArgs e)
+    protected void rejectStudentLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
@@ -102,7 +102,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         int jobID = Convert.ToInt32(e.CommandArgument);
 
-        Session["selectedjobID"] = jobID.ToString();
+        Session["selectedapplicationID"] = jobID.ToString();
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
@@ -113,16 +113,16 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         sql.Open();
-        System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
-        rejectJob.Connection = sql;
-        rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
-        rejectJob.ExecuteNonQuery();
+        System.Data.SqlClient.SqlCommand rejectStudent = new System.Data.SqlClient.SqlCommand();
+        rejectStudent.Connection = sql;
+        rejectStudent.CommandText = "update applicationrequest set approvedflag = 'N' where applicationID = " + Session["selectedapplicationID"];
+        rejectStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/StudentActDec.aspx");
     }
 
-    protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
+    protected void moreInfoStudentLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
@@ -131,21 +131,27 @@ public partial class OpportunityActDec : System.Web.UI.Page
         GridViewRow row = GridView1.Rows[rowIndex];
 
 
-        int jobID = Convert.ToInt32(e.CommandArgument);
+        int applicationID = Convert.ToInt32(e.CommandArgument);
 
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
         moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID WHERE JobListing.JobListingID = " + jobID;
+        moreJobInfo.CommandText = "SELECT Student.FirstName, Student.LastName, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID INNER JOIN ApplicationRequest ON JobListing.JobListingID = ApplicationRequest.JobListingID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID where ApplicationRequest.ApplicationID = " + applicationID;
         System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
 
-        
+
 
         while (reader.Read())
         {
             //set labels to db values
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-            lblJOrganizationDescription.Text = "Organization Description: "+ reader.GetString(1);
+
+            lblStudentFirstName.Text = "Student First Name: " + reader.GetString(0);
+            lblStudentLastNameName.Text = "Student Last Name: " + reader.GetString(1);
+            //lblStudentGpa.Text = "Student GPA: " + reader.GetString(2);
+            //lblStudentTrack.Text = "Student on Graduation Track: " + reader.GetString(3);
+
+            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(8);
+            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(9);
             lblJobTitle.Text = "Job Title: " + reader.GetString(2);
             lblJobDescription.Text = "Job Description: " + reader.GetString(3);
             lblJobType.Text = "Job Type: " + reader.GetString(4);
@@ -155,7 +161,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         }
 
-        Session["selectedjobID"] = jobID.ToString();
+        Session["selectedapplicationID"] = applicationID.ToString();
 
 
 
@@ -191,7 +197,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        //GridViewRow row = GridView2.Rows[rowIndex];
+       // GridViewRow row = GridView2.Rows[rowIndex];
 
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
@@ -228,7 +234,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-        
+
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
        // GridViewRow row = GridView2.Rows[rowIndex];
 
@@ -266,7 +272,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
-        
+
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 
@@ -285,7 +291,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 
-    
+
 
 
     protected void Button3_Click1(object sender, EventArgs e)
