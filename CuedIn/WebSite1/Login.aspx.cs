@@ -95,10 +95,11 @@ public partial class Login : System.Web.UI.Page
             System.Data.SqlClient.SqlCommand query1 = new System.Data.SqlClient.SqlCommand();
           
             query1.Connection = sql;
-            query1.CommandText = "SELECT dbo.UserEntity.EntityType from dbo.userentity where upper(username) like upper(@userName1)";
+            query1.CommandText = "SELECT dbo.UserEntity.UserEntityID from dbo.userentity where upper(username) like upper(@userName1)";
 
             query1.Parameters.AddWithValue("@userName1", HttpUtility.HtmlEncode(username.Value));
             System.Data.SqlClient.SqlDataReader reader1 = query1.ExecuteReader();
+            int id = 0;
             while (reader1.Read())
             {
                 if (reader1.IsDBNull(0))
@@ -107,11 +108,25 @@ public partial class Login : System.Web.UI.Page
 
                 else
                 {
-                    permissions = reader1.GetString(0);
+                    id = reader1.GetInt32(0);
                 }
             }
             
+            query1.CommandText= "SELECT dbo.SchoolEmployee.SchoolEmployeeEntityType from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID";
+            query1.Parameters.AddWithValue("@SchoolEmployeeEntityID", id);
+            reader1.Close();
+            System.Data.SqlClient.SqlDataReader reader2 = query1.ExecuteReader();
+            while (reader2.Read())
+            {
+                if (reader2.IsDBNull(0))
+                    username.Value = "null";
 
+
+                else
+                {
+                    permissions = reader2.GetString(0);
+                }
+            }
 
 
             //Test the permsissions
