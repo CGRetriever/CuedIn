@@ -49,7 +49,8 @@
 					</span>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter first name">
-						<input runat="server" maxlength="30" class="input100" id="firstName" type="text" name="username" placeholder="First Name">
+						<input runat="server" maxlength="30" class="input100" id="firstName" type="text" name="username" placeholder="First Name" required data-error="Enter First Name">
+                       
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
                     <div class="wrap-input100 validate-input" data-validate = "Enter middle name">
@@ -58,23 +59,23 @@
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter last name">
-						<input runat="server"  maxlength="30" class="input100" id="lastName" type="text" name="username" placeholder="Last Name">
+						<input runat="server"  maxlength="30" class="input100" id="lastName" type="text" name="username" placeholder="Last Name" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter address">
-						<input runat="server" maxlength="30" class="input100" id="address" type="text" name="username" placeholder="Address">
+						<input runat="server" maxlength="30" class="input100" id="address" type="text" name="username" placeholder="Address" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input runat="server" maxlength="30" class="input100" id="username" type="text" name="username" placeholder="Username">
+						<input runat="server" maxlength="30" class="input100" id="username" type="text" name="username" placeholder="Username" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Enter email">
-						<input runat="server" maxlength="30" class="input100" id="email" type="text" name="username" placeholder="Email">
+						<input runat="server" maxlength="30" class="input100" id="email" type="text" name="username" placeholder="Email" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
     
@@ -99,13 +100,13 @@
                     <br />
 
 					<div class="wrap-input100  validate-input" data-validate="Enter password">
-						<input runat="server" maxlength="30" class="input100" id="password" type="password" name="pass" placeholder="Password">
+						<input runat="server" maxlength="30" class="input100" id="password" type="password" name="pass" placeholder="Password" required>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 
                     <div class="wrap-input100  validate-input" data-validate="Confirm password">
-						<input runat="server" maxlength="30" class="input100" id="password2" type="password" name="pass" placeholder="Confirm Password">
+						<input runat="server" maxlength="30" class="input100" id="password2" type="password" name="pass" placeholder="Confirm Password" required>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -123,6 +124,8 @@
 					</div>
                       <br />
                         <br />
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                         <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
@@ -152,9 +155,10 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
 </body>
          </form>
 </html>
+
 </asp:Content>
 

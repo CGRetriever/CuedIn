@@ -123,6 +123,10 @@ public partial class Login : System.Web.UI.Page
             {
                 Response.Redirect("CounselorJobPostingPrototype.aspx");
             }
+            else if(permissions.Equals("Teacher"))
+            {
+                Response.Redirect("TeacherJobPostingPrototype.aspx");
+            }
 
         }
         else

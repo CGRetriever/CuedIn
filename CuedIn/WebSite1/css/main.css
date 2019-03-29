@@ -41,7 +41,13 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
+.has-error input[type = "text"], .has-error input[type="email"], .has-error select
 
+{
+
+    border:1px solid #a94442;
+    
+}
 * {
 	margin: 0px; 
 	padding: 0px; 

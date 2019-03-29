@@ -51,7 +51,9 @@ public partial class CreateUser : System.Web.UI.Page
             //insert into the person table 
             insert.CommandText = "insert into dbo.userentity (UserName, EmailAddress, EntityType) " +
                 "values (@username, @emailaddress, @entitytype)";
-
+            username.Value.Trim();
+            email.Value.Trim();
+            
 
             insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(username.Value));
             insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(email.Value));
