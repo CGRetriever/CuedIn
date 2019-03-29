@@ -9,10 +9,11 @@ using System.Web.UI.WebControls;
 public partial class OpportunityActDec : System.Web.UI.Page
 {
     public static String email;
+    public static String fullName;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       GridView2.Columns[0].Visible = false;
+        GridView1.Columns[0].Visible = false;
     }
 
 
@@ -71,27 +72,24 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         int jobID = Convert.ToInt32(e.CommandArgument);
 
-        Session["selectedjobID"] = jobID.ToString();
+        Session["selectedLogID"] = jobID.ToString();
 
         sql.Open();
-        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-        moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobid"];
-        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
+        System.Data.SqlClient.SqlCommand moreHourInfo = new System.Data.SqlClient.SqlCommand();
+        moreHourInfo.Connection = sql;
+        moreHourInfo.CommandText = "SELECT JobListing.JobTitle, LogHours.HoursRequested, CONCAT(Student.FirstName,' ', Student.LastName) FROM LogHours INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN JobListing ON LogHours.JobListingID = JobListing.JobListingID WHERE LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreHourInfo.ExecuteReader();
 
         while (reader.Read())
         {
-            Label2.Text = reader.GetString(0);
-            sublabelapprovemodal.Text = reader.GetString(1);
-
+            sublabelapprovemodal1.Text = reader.GetString(2);
+            sublabelapprovemodal2.Text =  reader.GetString(0);
+            sublabelapprovemodal3.Text =  "Hours: " + reader.GetInt32(1).ToString();
         }
 
+        sql.Close();
 
-
-
-
+      
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
@@ -104,11 +102,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.CommandText = "update LogHours set CounselorApproval = 'Y' where logID = " + Session["selectedLogID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        GridView1.DataBind();
+
+        Response.Redirect("~/HoursApprovalPage.aspx");
     }
 
 
@@ -122,24 +122,22 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         int jobID = Convert.ToInt32(e.CommandArgument);
 
-        Session["selectedjobID"] = jobID.ToString();
-
+        Session["selectedLogID"] = jobID.ToString();
 
         sql.Open();
-        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-        moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobid"];
-        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
+        System.Data.SqlClient.SqlCommand moreHourInfo = new System.Data.SqlClient.SqlCommand();
+        moreHourInfo.Connection = sql;
+        moreHourInfo.CommandText = "SELECT JobListing.JobTitle, LogHours.HoursRequested, CONCAT(Student.FirstName,' ', Student.LastName) FROM LogHours INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN JobListing ON LogHours.JobListingID = JobListing.JobListingID WHERE LogHours.LogID = " + Session["selectedLogID"];
+        System.Data.SqlClient.SqlDataReader reader = moreHourInfo.ExecuteReader();
 
         while (reader.Read())
         {
-            Label3.Text = reader.GetString(0);
-            rejectjobsublabel.Text = reader.GetString(1);
-
+            sublabelRejectModal1.Text = reader.GetString(2);
+            sublabelRejectModal2.Text = reader.GetString(0);
+            sublabelRejectModal3.Text = "Hours: " + reader.GetInt32(1).ToString();
         }
 
+        sql.Close();
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
@@ -152,15 +150,19 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        rejectJob.CommandText = "update LogHours set CounselorApproval = 'N' where logID = " + Session["selectedLogID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        GridView1.DataBind();
+
+        Response.Redirect("~/HoursApprovalPage.aspx");
     }
 
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
+        // working here
+
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
@@ -169,35 +171,27 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         int jobID = Convert.ToInt32(e.CommandArgument);
+        Session["selectedLogID"] = jobID.ToString();
 
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
         moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID WHERE JobListing.JobListingID = " + jobID;
+        moreJobInfo.CommandText = "SELECT StudentComment.Comment, OrganizationComment.Comment AS Expr1 FROM OrganizationComment INNER JOIN StudentComment ON OrganizationComment.LogID = StudentComment.LogID INNER JOIN LogHours ON OrganizationComment.LogID = LogHours.LogID where LogHours.LogID = " + Session["selectedLogID"];
         System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-        
 
         while (reader.Read())
         {
-            //set labels to db values
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-            lblJOrganizationDescription.Text = "Organization Description: "+ reader.GetString(1);
-            lblJobTitle.Text = "Job Title: " + reader.GetString(2);
-            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-            lblJobType.Text = "Job Type: " + reader.GetString(4);
-            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
+            StudentComment.Text = reader.GetString(0);
+            BusinessComment.Text = reader.GetString(1);
         }
 
-        Session["selectedjobID"] = jobID.ToString();
+        sql.Close();
 
 
+     
 
 
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditSModal();", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
 
 
@@ -224,40 +218,40 @@ public partial class OpportunityActDec : System.Web.UI.Page
         ////String primarykey;
 
         ////  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
-        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+        //String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        //System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
-        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = GridView2.Rows[rowIndex];
-
-
-        int scholarshipID = Convert.ToInt32(e.CommandArgument);
-
-        sql.Open();
-        System.Data.SqlClient.SqlCommand moreScholarshipInfo = new System.Data.SqlClient.SqlCommand();
-        moreScholarshipInfo.Connection = sql;
-        moreScholarshipInfo.CommandText = "SELECT Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipQuantity, Scholarship.ScholarshipDueDate, Organization.OrganizationName, Organization.OrganizationDescription FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID WHERE Scholarship.ScholarshipID = " + scholarshipID;
-        System.Data.SqlClient.SqlDataReader reader = moreScholarshipInfo.ExecuteReader();
+        //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        ////GridViewRow row = GridView2.Rows[rowIndex];
 
 
+        //int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
-        while (reader.Read())
-        {
-            //set labels to db values
-            lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
-            lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
-            lblScholarshipName.Text = "Scholarship Name : " + reader.GetString(0);
-            lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: " + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: " + reader.GetSqlMoney(3);
-            lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
-            lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+        //sql.Open();
+        //System.Data.SqlClient.SqlCommand moreScholarshipInfo = new System.Data.SqlClient.SqlCommand();
+        //moreScholarshipInfo.Connection = sql;
+        //moreScholarshipInfo.CommandText = "SELECT Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipQuantity, Scholarship.ScholarshipDueDate, Organization.OrganizationName, Organization.OrganizationDescription FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID WHERE Scholarship.ScholarshipID = " + scholarshipID;
+        //System.Data.SqlClient.SqlDataReader reader = moreScholarshipInfo.ExecuteReader();
 
-        }
 
-        Session["selectedScholarshipID"] = scholarshipID.ToString();
 
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
+        //while (reader.Read())
+        //{
+        //    //set labels to db values
+        //    lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
+        //    lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
+        //    lblScholarshipName.Text = "Scholarship Name : " + reader.GetString(0);
+        //    lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
+        //    lblScholarshipMin.Text = "Scholarship Minimum: " + reader.GetSqlMoney(2);
+        //    lblScholarshipMax.Text = "Scholarship Maximum: " + reader.GetSqlMoney(3);
+        //    lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
+        //    lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+
+        //}
+
+        //Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        //ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
     }
 
@@ -265,29 +259,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-        
+
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = GridView2.Rows[rowIndex];
+        //GridViewRow row = GridView2.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
-
-
-        sql.Open();
-        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-        moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.ScholarshipID = " + Session["selectedScholarshipID"];
-        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-        while (reader.Read())
-        {
-            scholarApproveLabel.Text = reader.GetString(0);
-            subscholarApproveLabel.Text = reader.GetString(1);
-
-        }
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
@@ -299,29 +277,11 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = GridView2.Rows[rowIndex];
+        //GridViewRow row = GridView2.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
-
-        sql.Open();
-        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-        moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.ScholarshipID = " + Session["selectedScholarshipID"];
-        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-        while (reader.Read())
-        {
-            scholarRejectLabel.Text = reader.GetString(0);
-            scholarsubRejectLabel.Text = reader.GetString(1);
-
-        }
-
-
-
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
@@ -337,7 +297,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
-        
+
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 
@@ -356,7 +316,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 
-    
+
 
 
     protected void Button3_Click1(object sender, EventArgs e)
@@ -388,5 +348,64 @@ public partial class OpportunityActDec : System.Web.UI.Page
         System.Diagnostics.Process.Start(command);
         //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
         //Response.Redirect("~/OpportunityActDec.aspx");
+    }
+
+    protected void approveJobLinkBtn_Command(object sender, CommandEventArgs e)
+    {
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
+    }
+
+
+    protected void btnStudentView_Click (object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        
+
+        int logID= Convert.ToInt32(e.CommandArgument);
+
+        Session["logID"] = logID.ToString();
+
+        //find student ID from logID
+        sql.Open();
+        System.Data.SqlClient.SqlCommand findStudentID = new System.Data.SqlClient.SqlCommand();
+        findStudentID.Connection = sql;
+        findStudentID.CommandText = "SELECT StudentEntityID FROM LogHours WHERE LogID = " + Session["logID"];
+        System.Data.SqlClient.SqlDataReader IDreader = findStudentID.ExecuteReader();
+
+        //declare studentID session variable
+        Session["studentID"] = 0;
+
+        while (IDreader.Read())
+        {
+            Session["studentID"] = IDreader.GetInt32(0);
+        }
+
+        sql.Close();
+
+        //get student info for selected student
+        sql.Open();
+        System.Data.SqlClient.SqlCommand getStudentInfo = new System.Data.SqlClient.SqlCommand();
+        getStudentInfo.Connection = sql;
+        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID FROM Student WHERE StudentEntityID = " + Session["studentID"];
+        System.Data.SqlClient.SqlDataReader studentReader = getStudentInfo.ExecuteReader();
+
+        while (studentReader.Read())
+        {
+            //fill labels in modal
+            
+            
+            lblStudentName.Text = studentReader.GetString(0);
+            lblGradeLevel.Text = "Grade Level: " + studentReader.GetString(1);
+            lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
+            lblSATScore.Text = "SAT Score: " + studentReader.GetInt32(3);
+            lblHoursWorked.Text = "WBL Hours Earned: " + studentReader.GetInt32(4);
+        }
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
 }
