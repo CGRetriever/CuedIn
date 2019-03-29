@@ -218,28 +218,38 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Comments</h4>
+                            <div class="col-md-12 text-center">
+                               <div class="modal-title">
+                                    <i class="fas fa-comments fa-4x progress-bar-animated rotateIn"></i>
+                                    <br>
+                                    <br>
+                                    <h5>Comments</h5>
+                                </div>
+                            </div>
                             <button type="button" class="close" data-dismiss="modal">
                                 &times;</button>
                         </div>
-                        <div class="modal-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <%-- <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">--%>
+                        <div class="modal-body" style="background-color: #4F79A3;">
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                <div class="form-group">
+                                    
                                     <asp:Label ID="Label4" runat="server" Text="Student Comment:"></asp:Label>
                                     <asp:Label ID="StudentComment" runat="server"></asp:Label>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                     <asp:Label ID="Label5" runat="server" Text="Organization Comment:"></asp:Label>
                                     <asp:Label ID="BusinessComment" runat="server"></asp:Label>
                                 </div>
 
 
+
                             </div>
 
-                        </div>
+                        
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-warning btn-circle" data-dismiss="modal">Close</button>
+                            <div class="flex-center" style="text-align: center !important; margin: auto !important;">
+                            <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
