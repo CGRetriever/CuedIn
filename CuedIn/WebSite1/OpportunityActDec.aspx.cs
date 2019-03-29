@@ -284,9 +284,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         while (reader.Read())
         {
+
             scholarApproveLabel.Text = reader.GetString(0);
             subscholarApproveLabel.Text = reader.GetString(1);
-
         }
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
@@ -317,7 +317,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             scholarRejectLabel.Text = reader.GetString(0);
             scholarsubRejectLabel.Text = reader.GetString(1);
-
         }
 
 

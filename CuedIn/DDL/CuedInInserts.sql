@@ -904,7 +904,9 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('1'
            ,'withSimplicity'
@@ -913,7 +915,9 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/withSimplicity.jpg'
+	   ,'https://withsimplicityllc.com/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -924,16 +928,20 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('2'
-           ,'Kanis Bakery & Catering'
-           ,'Mediterranean Restaurant'
+           ,'Kandis Bakery & Catering'
+           ,'Bakery'
            ,'182 Neff Avenue'
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/kanis.jpg'
+	   ,'https://www.kandiscakesandbakeshop.com/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -944,7 +952,9 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('3'
            ,'Arconic'
@@ -953,7 +963,9 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/arconic.jpg'
+	   ,'https://www.arconic.com/global/en/home.asp')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -964,7 +976,9 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('4'
            ,'Green Hummingbird'
@@ -973,7 +987,9 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/greenhummingbird.jpg'
+	   ,'http://www.greenhummingbird.net/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -984,7 +1000,9 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('5'
            ,'Jack Browns'
@@ -993,7 +1011,9 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/jackbrowns.jpg'
+	   ,'https://www.jackbrownsjoint.com/')
 GO
 
 INSERT INTO [dbo].[Organization]
@@ -1004,7 +1024,9 @@ INSERT INTO [dbo].[Organization]
            ,[Country]
            ,[City]
            ,[State]
-           ,[ZipCode])
+           ,[ZipCode]
+	   ,[Image]
+	   ,[ExternalLink])
      VALUES
            ('6'
            ,'Walmart Supercenter'
@@ -1013,7 +1035,9 @@ INSERT INTO [dbo].[Organization]
            ,'United States'
            ,'Harrisonburg'
            ,'Virginia'
-           ,'22801')
+           ,'22801'
+	   ,'img/walmart.jpg'
+	   ,'https://www.walmart.com/')
 GO
 
 
@@ -1273,6 +1297,7 @@ INSERT INTO [dbo].[Scholarship]
            ,[ScholarshipMax]
            ,[ScholarshipQuantity]
            ,[ScholarshipDueDate]
+	   ,[PostingDate]
            ,[OrganizationID]
            ,[Approved]
            ,[LastUpdated])
@@ -1284,6 +1309,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'20000'
            ,'3'
            ,'10-15-2019'
+	    ,'03-14-2019'
            ,'6'
            ,'pen'
            ,GETDATE())
@@ -1297,6 +1323,7 @@ INSERT INTO [dbo].[Scholarship]
            ,[ScholarshipMax]
            ,[ScholarshipQuantity]
            ,[ScholarshipDueDate]
+	    ,[PostingDate]
            ,[OrganizationID]
            ,[Approved]
            ,[LastUpdated])
@@ -1308,6 +1335,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'2000'
            ,'1'
            ,'10-01-2019'
+	    ,'09-12-2018'
            ,'5'
            ,'pen'
            ,GETDATE())
@@ -1321,6 +1349,7 @@ INSERT INTO [dbo].[Scholarship]
            ,[ScholarshipMax]
            ,[ScholarshipQuantity]
            ,[ScholarshipDueDate]
+	    ,[PostingDate]
            ,[OrganizationID]
            ,[Approved]
            ,[LastUpdated])
@@ -1332,6 +1361,7 @@ INSERT INTO [dbo].[Scholarship]
            ,'10000'
            ,'2'
            ,'12-15-2019'
+	    ,'02-15-2019'
            ,'3'
            ,'pen'
            ,GETDATE())

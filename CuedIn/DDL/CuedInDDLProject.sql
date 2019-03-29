@@ -105,6 +105,8 @@ Country varchar (50) not null,
 City varchar (50) not null,
 State varchar (50) not null,
 ZipCode int not null,
+ Image varchar (50),
+ ExternalLink varchar(100),
 primary key (OrganizationEntityID),
 Foreign key (OrganizationEntityID) references UserEntity (UserEntityID)
 );
@@ -149,6 +151,7 @@ ScholarshipMin money not null,
 ScholarshipMax money not null,
 ScholarshipQuantity int not null,
 ScholarshipDueDate datetime not null,
+ PostingDate datetime not null,
 OrganizationID int not null,
 Approved varchar(3) not null,
 LastUpdated datetime not null,
@@ -187,4 +190,32 @@ TechnicalSchoolSkill varchar(50) not null,
 Description varchar(50) not null,
 Primary Key (TechnicalSchoolID),
 Foreign Key (TechnicalSchoolID) references EducationInstitution (HigherEducationID),
+);
+
+Create Table StudentComment (
+LogID int,
+StudentEntityID int,
+Comment varchar (255),
+primary Key(LogID, StudentEntityID),
+Foreign Key (StudentEntityID) references student (StudentEntityID)
+);
+
+Create Table OrganizationComment (
+LogID int,
+OrganizationEntityID int,
+Comment varchar (255),
+primary Key(LogID, OrganizationEntityID),
+Foreign Key (OrganizationEntityID) references Organization (OrganizationEntityID)
+);
+
+Create Table LogHours (
+LogID int identity(1,1),
+JobListingID int, 
+HoursRequested int,
+CounselorApproval varchar (10),
+OrganizationApproval varchar(10),
+StudentEntityID int,
+Primary key (LogID),
+Foreign key (JobListingID) references JobListing (JobListingID),
+Foreign key (StudentEntityID) references Student (StudentEntityID)
 );

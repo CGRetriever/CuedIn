@@ -2,6 +2,7 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <div class='tableauPlaceholder' id='viz1553211444276' style='position: relative'>
@@ -23,6 +24,7 @@
         </object>
     </div>
     <script type='text/javascript'>                    var divElement = document.getElementById('viz1553211444276'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.minWidth = '1200px'; vizElement.style.maxWidth = '2560px'; vizElement.style.width = '100%'; vizElement.style.height = '307px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
 
     <form id="form1" runat="server">
         <div class="form-row">
@@ -354,8 +356,6 @@
             </div>
         </div>
     </form>
-
-
 
 </asp:Content>
 
