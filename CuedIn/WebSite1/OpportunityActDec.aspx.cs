@@ -73,6 +73,26 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedjobID"] = jobID.ToString();
 
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobid"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            Label2.Text = reader.GetString(0);
+            sublabelapprovemodal.Text = reader.GetString(1);
+
+        }
+
+
+
+
+
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
 
@@ -103,6 +123,23 @@ public partial class OpportunityActDec : System.Web.UI.Page
         int jobID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedjobID"] = jobID.ToString();
+
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobid"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            Label3.Text = reader.GetString(0);
+            rejectjobsublabel.Text = reader.GetString(1);
+
+        }
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
@@ -236,6 +273,22 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
 
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.ScholarshipID = " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            scholarApproveLabel.Text = reader.GetString(0);
+            subscholarApproveLabel.Text = reader.GetString(1);
+
+        }
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
 
@@ -251,6 +304,24 @@ public partial class OpportunityActDec : System.Web.UI.Page
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.ScholarshipID = " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            scholarRejectLabel.Text = reader.GetString(0);
+            scholarsubRejectLabel.Text = reader.GetString(1);
+
+        }
+
+
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
