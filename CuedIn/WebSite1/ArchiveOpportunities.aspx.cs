@@ -36,11 +36,11 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.CommandText = "update joblisting set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/ArchiveOpportunities.aspx");
     }
     //Modal More Info
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
@@ -105,7 +105,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         //UPDATE WITH QUERIES
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/ArchiveOpportunities.aspx");
     }
     //Gridview Approve Button
     protected void btnScholarshipApprove_Click(object sender, CommandEventArgs e)
@@ -131,11 +131,11 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.CommandText = "update scholarship set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/ArchiveOpportunities.aspx");
     }
     //Gridview View More Button
     protected void btnScholarshipViewMore_Click(object sender, CommandEventArgs e)
