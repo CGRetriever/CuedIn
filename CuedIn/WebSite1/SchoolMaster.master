@@ -80,6 +80,28 @@
                         <a href="ScholarshipBoard.aspx">Scholarship Cards</a>
                     </li>
                 </ul>
+
+
+                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                  <i class="fas fa-chart-line"></i>
+                     Admin Dashboard
+                </a>
+                <ul class="collapse list-unstyled" id="Dashboard">
+                    <li>
+                        <a href="#">Administrative Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Work Based Learning Map</a>
+                    </li>
+                     <li>
+                        <a href="#">Scholarship Map</a>
+                    </li>
+                </ul>
+
+                <a href="#">
+                <i class="fas fa-school"></i>
+                My School
+                </a>
                 </li>
 
               
