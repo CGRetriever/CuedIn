@@ -46,9 +46,6 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
-
-
-
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
     //Modal Approve Button
@@ -143,6 +140,26 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where ScholarshipID = " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            lblScholarApprove.Text = reader.GetString(1);
+            lblScholarSubApprove.Text = reader.GetString(2);
+
+        }
+
+        sql.Close();
+
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
