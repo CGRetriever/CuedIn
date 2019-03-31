@@ -174,9 +174,9 @@ public partial class StudentActDec : System.Web.UI.Page
             }
 
             lblOrgName.Text = "OrgName: " + reader.GetString(9);
-            lblOrgDesc.Text = "Description: " + reader.GetString(10);
+            //lblOrgDesc.Text = "Description: " + reader.GetString(10);
             lblJobTitle.Text = "JobTitle: " + reader.GetString(3);
-            lblJobDesc.Text = "JobDesc: " + reader.GetString(4);
+            //lblJobDesc.Text = "JobDesc: " + reader.GetString(4);
             lblJobLocation.Text = "Location: " + reader.GetString(6);
             lblJobDeadline.Text = "Deadline: " + reader.GetDateTime(7).ToString();
             lblNumberOfApplicants.Text = "Number Of Applicants: " + reader.GetInt32(8).ToString();
