@@ -108,7 +108,8 @@
                                     <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
                                     <br />
                                     <br />
-                                    <h5>Are you sure you want to approve?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <asp:Label ID="Label1" runat="server" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold;" Text="Are you sure you want to approve these hours?"></asp:Label>
                                 </div>
                             </div>
                             
@@ -116,15 +117,10 @@
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <div class="form-group">
-                                    <asp:Label ID="Label2" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;" Text="Are you sure you want to approve these hours?"></asp:Label>
-                                </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                     <asp:Label ID="sublabelapprovemodal1" runat="server" Text=" " Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                <br />
                                     <asp:Label ID="sublabelapprovemodal2" runat="server" Text=" " Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                <br />
                                     <asp:Label ID="sublabelapprovemodal3" runat="server" Text=" " Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
                             </div>
@@ -157,7 +153,8 @@
                                     <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to reject?</h5>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                    <asp:Label ID="Label2" runat="server" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold;" Text="Are you sure you want to reject these hours?"></asp:Label>
                                 </div>
                             </div>
                            
@@ -165,11 +162,10 @@
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <div class="form-group">
-                                    <asp:Label ID="Label3" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;" Text="Are you sure you want to reject these hours?"></asp:Label>
-                                </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                     <asp:Label ID="sublabelRejectModal1" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    <br />
                                     <asp:Label ID="sublabelRejectModal2" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                    <br />
                                     <asp:Label ID="sublabelRejectModal3" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 
                                 </div>

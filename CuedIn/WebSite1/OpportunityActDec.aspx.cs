@@ -193,8 +193,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
             lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
             lblScholarshipName.Text = "Scholarship Name : " + reader.GetString(0);
             lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: " + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: " + reader.GetSqlMoney(3);
+            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
             lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
             lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
 
