@@ -111,8 +111,7 @@
                                     <h5>Are you sure you want to approve?</h5>
                                 </div>
                             </div>
-                            <button type="button" class="close" data-dismiss="modal">
-                                &times;</button>
+                            
                         </div>
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
@@ -161,8 +160,7 @@
                                     <h5>Are you sure you want to reject?</h5>
                                 </div>
                             </div>
-                            <button type="button" class="close" data-dismiss="modal">
-                                &times;</button>
+                           
                         </div>
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
@@ -205,22 +203,22 @@
                                     <i class="fas fa-comments fa-4x progress-bar-animated rotateIn"></i>
                                     <br>
                                     <br>
-                                    <h5>Comments</h5>
+                                    <%--<h5>Comments</h5>--%>
+                                    <asp:Label ID="lblComments" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="Comments"></asp:Label>
                                 </div>
                             </div>
-                            <button type="button" class="close" data-dismiss="modal">
-                                &times;</button>
+                            
                         </div>
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <div class="form-group">
                                     
-                                    <asp:Label ID="Label4" runat="server" Text="Student Comment:"></asp:Label>
-                                    <asp:Label ID="StudentComment" runat="server"></asp:Label>
+                                    <asp:Label ID="Label4" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" Text="Student Comment:"></asp:Label>
+                                    <asp:Label ID="StudentComment" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server"></asp:Label>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
-                                    <asp:Label ID="Label5" runat="server" Text="Organization Comment:"></asp:Label>
-                                    <asp:Label ID="BusinessComment" runat="server"></asp:Label>
+                                    <asp:Label ID="Label5" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" Text="Organization Comment:"></asp:Label>
+                                    <asp:Label ID="BusinessComment" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server"></asp:Label>
                                 </div>
                                 </div>
                             </div>
