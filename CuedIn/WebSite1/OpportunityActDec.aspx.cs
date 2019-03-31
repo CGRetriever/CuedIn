@@ -50,9 +50,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         }
 
-
-
-
+        sql.Close();
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);

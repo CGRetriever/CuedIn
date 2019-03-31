@@ -25,6 +25,30 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         Session["selectedjobID"] = jobID.ToString();
 
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            lblJobApprove.Text = reader.GetString(0);
+            lblJobSubApprove.Text = reader.GetString(1);
+
+        }
+
+        sql.Close();
+
+
+
+
+
+
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
     //Modal Approve Button
