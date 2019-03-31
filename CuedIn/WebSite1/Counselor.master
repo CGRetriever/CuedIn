@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SchoolMaster.master.cs" Inherits="SchoolMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Counselor.master.cs" Inherits="Counselor" %>
 
 <!DOCTYPE html>
 
@@ -37,51 +37,58 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                        Home
+                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tasks"></i>
+                        Manage Postings
                     </a>
+                    <ul class="collapse list-unstyled" id="OppPages">
+                        <li>
+                            <a href="CounselorOpportunityActDec.aspx">Manage Opportunities</a>
+                        </li>
+                        <li>
+                            <a href="CounselorArchiveOpportunities.aspx">Archived Opportunities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <li>
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-portrait"></i>
+                    Students
+                </a>
+                <ul class="collapse list-unstyled" id="StudentPages">
+                    <li>
+                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
+                    </li>
+                    <li>
+                        <a href="CounselorStudentActDec.aspx">Student Application Request</a>
+                    </li>
+                </ul>
+                </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fas fa-school"></i>
-                        My School
-                    </a>
-                    <a href="OpportunityActDec.aspx">
-                       <i class="fas fa-tachometer-alt"></i>
-                        Dashboard
-                    </a>
+                    <li>
 
-                <li>
-                    <a href="JobPostingsPrototype.aspx">
-                        <i class="fas fa-briefcase"></i>
-                        Jobs
-                    </a>
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                   <i class="fas fa-check-square"></i>
+                     Approved Postings
+                </a>
+                <ul class="collapse list-unstyled" id="ApprovedPostings">
+                    <li>
+                        <a href="CounselorJobPostingPrototype.aspx">Job Cards</a>
+                    </li>
+                    <li>
+                        <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>
+                    </li>
+                </ul>
                 </li>
-                <li>
-                    <a href="#">
-                       <i class="fas fa-inbox"></i>
-                        Inbox
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-cog"></i>
-                        Settings
-                    </a>
-                </li>
-                <li>
-                    <a href="CreateUser.aspx">
-                        <i class="fas fa-user-circle"></i>
-                        Create Users
-                    </a>
-                </li>
-                 <li>
+                  <li>
                     <a href="Login.aspx">
                         <i class="fas fa-ban"></i>
                         Logout
                     </a>
                 </li>
+
+              
             </ul>
 
 

@@ -1,10 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SchoolMaster.master.cs" Inherits="SchoolMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Teacher.master.cs" Inherits="Teacher" %>
 
 <!DOCTYPE html>
 
 
 <head>
-        <title>CommUp</title>
+        <title>Sass Bootstrap Template</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="">
@@ -47,13 +47,9 @@
                         <i class="fas fa-school"></i>
                         My School
                     </a>
-                    <a href="OpportunityActDec.aspx">
-                       <i class="fas fa-tachometer-alt"></i>
-                        Dashboard
-                    </a>
 
                 <li>
-                    <a href="JobPostingsPrototype.aspx">
+                    <a href="TeacherJobPostingPrototype.aspx">
                         <i class="fas fa-briefcase"></i>
                         Jobs
                     </a>
@@ -68,12 +64,6 @@
                     <a href="#">
                         <i class="fas fa-cog"></i>
                         Settings
-                    </a>
-                </li>
-                <li>
-                    <a href="CreateUser.aspx">
-                        <i class="fas fa-user-circle"></i>
-                        Create Users
                     </a>
                 </li>
                  <li>
@@ -128,8 +118,7 @@
         });
     </script>
 
-    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    <asp:ContentPlaceHolder id="ContentPlaceHolder3" runat="server">
     </asp:ContentPlaceHolder>
 </body>
 </html>
-
