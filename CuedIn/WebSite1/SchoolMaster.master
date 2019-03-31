@@ -37,39 +37,52 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                        Home
+                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tasks"></i>
+                        Manage Postings
                     </a>
+                    <ul class="collapse list-unstyled" id="OppPages">
+                        <li>
+                            <a href="OpportunityActDec.aspx">Manage Opportunities</a>
+                        </li>
+                        <li>
+                            <a href="ArchiveOpportunities.aspx">Archived Opportunities</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <li>
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fas fa-portrait"></i>
+                    Students
+                </a>
+                <ul class="collapse list-unstyled" id="StudentPages">
+                    <li>
+                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
+                    </li>
+                    <li>
+                        <a href="StudentActDec.aspx">Student Application Request</a>
+                    </li>
+                </ul>
+                </li>
 
-                <li>
-                    <a href="#">
-                        <i class="fas fa-school"></i>
-                        My School
-                    </a>
-                    <a href="OpportunityActDec.aspx">
-                       <i class="fas fa-tachometer-alt"></i>
-                        Dashboard
-                    </a>
+                    <li>
 
-                <li>
-                    <a href="JobPostingsPrototype.aspx">
-                        <i class="fas fa-briefcase"></i>
-                        Jobs
-                    </a>
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                   <i class="fas fa-check-square"></i>
+                     Approved Postings
+                </a>
+                <ul class="collapse list-unstyled" id="ApprovedPostings">
+                    <li>
+                        <a href="JobPostings.aspx">Job Cards</a>
+                    </li>
+                    <li>
+                        <a href="ScholarshipBoard.aspx">Scholarship Cards</a>
+                    </li>
+                </ul>
                 </li>
-                <li>
-                    <a href="#">
-                       <i class="fas fa-inbox"></i>
-                        Inbox
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-cog"></i>
-                        Settings
-                    </a>
-                </li>
+
+              
             </ul>
 
 
