@@ -145,7 +145,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             //set labels to db values
             lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
             lblJOrganizationDescription.Text = "Organization Description: "+ reader.GetString(1);
-            lblJobTitle.Text = "Job Title: " + reader.GetString(2);
+            lblJobName.Text = "Job Title: " + reader.GetString(2);
             lblJobDescription.Text = "Job Description: " + reader.GetString(3);
             lblJobType.Text = "Job Type: " + reader.GetString(4);
             lblJobLocation.Text = "Job Location: " + reader.GetString(5);
