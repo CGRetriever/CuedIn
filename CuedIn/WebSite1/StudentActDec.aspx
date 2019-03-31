@@ -150,7 +150,7 @@
                     <div class="modal-header">
                           <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-address-card fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
                                     <br>
                                     <br>
                                     <h5>More Information</h5>
@@ -168,30 +168,24 @@
                         
                     </div>
                     <div class="modal-body" style="background-color: #4F79A3;">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
+                                <asp:Label ID="lblOrgName" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblOrgDesc" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+
+                                    <asp:Label ID="lblJobTitle" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblJobDesc" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblJobLocation" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblJobDeadline" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblNumberOfApplicants" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
                                 
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                   <asp:Label ID="lblOrgName" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <asp:Label ID="lblOrgDesc" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <asp:Label ID="lblJobTitle" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <asp:Label ID="lblJobDesc" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <asp:Label ID="lblJobLocation" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <asp:Label ID="lblJobDeadline" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <asp:Label ID="lblNumberOfApplicants" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                    </div>
                                     
                             </div>
                         </div>
