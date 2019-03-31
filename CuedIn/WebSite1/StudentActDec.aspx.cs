@@ -173,13 +173,13 @@ public partial class StudentActDec : System.Web.UI.Page
                 lblStudentStatus.Text = "Student not on Track";
             }
 
-            lblOrgName.Text = reader.GetString(9);
-            lblOrgDesc.Text = reader.GetString(10);
-            lblJobTitle.Text = reader.GetString(3);
-            lblJobDesc.Text = reader.GetString(4);
-            lblJobLocation.Text = reader.GetString(6);
-            lblJobDeadline.Text = reader.GetDateTime(7).ToString();
-            lblNumberOfApplicants.Text = reader.GetInt32(8).ToString();
+            lblOrgName.Text = "OrgName: " + reader.GetString(9);
+            lblOrgDesc.Text = "Description: " + reader.GetString(10);
+            lblJobTitle.Text = "JobTitle: " + reader.GetString(3);
+            lblJobDesc.Text = "JobDesc: " + reader.GetString(4);
+            lblJobLocation.Text = "Location: " + reader.GetString(6);
+            lblJobDeadline.Text = "Deadline: " + reader.GetDateTime(7).ToString();
+            lblNumberOfApplicants.Text = "Number Of Applicants: " + reader.GetInt32(8).ToString();
 
         }
 
