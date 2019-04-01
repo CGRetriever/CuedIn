@@ -154,7 +154,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         while (reader.Read())
         {
-            Label3.Text = reader.GetString(0);
+            Label66.Text = reader.GetString(0);
             rejectjobsublabel.Text = reader.GetString(1);
 
         }
