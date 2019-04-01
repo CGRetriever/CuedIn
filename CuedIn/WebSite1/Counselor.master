@@ -135,9 +135,8 @@
                 </div>
             </nav>
             <!---End Sidebar Nav--->
-              <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
-            </div>
+              
+            
             
           
                 
@@ -156,6 +155,11 @@
             });
         });
     </script>
+            
+
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+            </div>
 
     
 </body>
