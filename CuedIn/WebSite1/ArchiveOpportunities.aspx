@@ -70,10 +70,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to approve?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <asp:Label ID="Label4" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve?"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -111,13 +112,13 @@
                         <div class="modal-header">
                             <div class ="col-md-12 text-center">
                             <div class="modal-title">
-                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
+                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                 <br />
                                 <br />
                                 <%--<h5>More Information</h5>--%>
-                                <asp:Label ID="Label1" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="More Information"></asp:Label>
+                                <asp:Label ID="Label1" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="More Information"></asp:Label>
                                 <br />
-                                <asp:Label ID="lblJobName" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server"></asp:Label>
+                                <asp:Label ID="lblJobName" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server"></asp:Label>
                             </div>
                             </div>
                             
@@ -168,10 +169,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to reject?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <asp:Label ID="Label5" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve?"></asp:Label> 
                                 </div>
                             </div>
                             
@@ -185,6 +187,58 @@
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                     <asp:Label ID="rejectjobsublabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <script type='text/javascript'>
+                    function openApproveSModal() {
+                        $('[id*=approveSModal]').modal('show');
+                    }
+                </script>
+            </div>
+        </div>
+        <div>
+            <%-- Scholarship More Info Modal--%>
+            <div class="modal fade" id="jobMoreInfoModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class ="col-md-12 text-center">
+                            <div class="modal-title">
+                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
+                                <br />
+                                <br />
+                                <%--<h5>More Information</h5>--%>
+                                <asp:Label ID="Label2"  Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" ForeColor="Black" Text="More Information"></asp:Label>
+                                <br />
+                                <asp:Label ID="Label3"  Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" ForeColor="Black"></asp:Label>
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <div class="modal-body" style="background-color: #4F79A3;">
+                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                <div class="form-group">
+                                    <asp:Label ID="lblSOrganizationName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;"  runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblSOrganizationDescription" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                   <%-- <asp:Label ID="lblScholarshipName" runat="server" ForeColor="White"></asp:Label>
+                                    <br />--%>
+                                    <asp:Label ID="lblScholarshipDescription" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblScholarshipMin" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblScholarshipMax" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblScholarshipQuantity" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblScholarshipDueDate" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+
 
                             </div>
                         </div>
