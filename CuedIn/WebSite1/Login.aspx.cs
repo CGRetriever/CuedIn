@@ -132,15 +132,15 @@ public partial class Login : System.Web.UI.Page
             //Test the permsissions
             if (permissions.Equals("Admin"))
                 {
-                    Response.Redirect("JobPostingsPrototype.aspx");
+                    Response.Redirect("JobPostings.aspx");
                 }
             else if (permissions.Equals("Counselor"))
             {
-                Response.Redirect("CounselorJobPostingPrototype.aspx");
+                Response.Redirect("CounselorJobPosting.aspx");
             }
             else if(permissions.Equals("Teacher"))
             {
-                Response.Redirect("TeacherJobPostingPrototype.aspx");
+                Response.Redirect("TeacherJobPosting.aspx");
             }
 
         }

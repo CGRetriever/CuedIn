@@ -58,7 +58,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="StudentPages">
                     <li>
-                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
+                        <a href="CounselorHoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                     <li>
                         <a href="CounselorStudentActDec.aspx">Student Application Request</a>
@@ -74,7 +74,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="CounselorJobPostingPrototype.aspx">Job Cards</a>
+                        <a href="CounselorJobPosting.aspx">Job Cards</a>
                     </li>
                     <li>
                         <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>

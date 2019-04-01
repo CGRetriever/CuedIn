@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 
-
 <head>
         <title>CommUp</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -37,7 +36,9 @@
 
             <ul class="list-unstyled components">
                 <li>
-                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+
                         <i class="fas fa-tasks"></i>
                         Manage Postings
                     </a>
@@ -52,7 +53,9 @@
                 </li>
                 <li>
                     <li>
-                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+
                     <i class="fas fa-portrait"></i>
                     Students
                 </a>
@@ -68,7 +71,10 @@
 
                     <li>
 
-                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+
+
                    <i class="fas fa-check-square"></i>
                      Approved Postings
                 </a>
@@ -82,7 +88,10 @@
                 </ul>
 
 
-                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+
+                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+
+
                   <i class="fas fa-chart-line"></i>
                      Admin Metrics
                 </a>
@@ -98,10 +107,7 @@
                     </li>
                 </ul>
 
-                <a href="#">
-                <i class="fas fa-school"></i>
-                My School
-                </a>
+
                 </li>
                 <li>
                     <a href="CreateUser.aspx">
@@ -109,8 +115,8 @@
                         Create Users
                     </a>
                 </li>
-                 <li>
-                    <a href="Login.aspx">
+                    <li>
+                    <a href="Login.aspx" style="font-size: 1em">
                         <i class="fas fa-ban"></i>
                         Logout
                     </a>
