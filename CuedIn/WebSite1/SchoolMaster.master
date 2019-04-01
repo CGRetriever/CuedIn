@@ -97,10 +97,7 @@
                     </li>
                 </ul>
 
-                <a href="#">
-                <i class="fas fa-school"></i>
-                My School
-                </a>
+                
                 </li>
                 <li>
                     <a href="CreateUser.aspx">
