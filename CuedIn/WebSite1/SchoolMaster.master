@@ -102,6 +102,12 @@
                 My School
                 </a>
                 </li>
+                <li>
+                    <a href="CreateUser.aspx">
+                        <i class="fas fa-user-circle"></i>
+                        Create Users
+                    </a>
+                </li>
                     <li>
                     <a href="Login.aspx" style="font-size: 1em">
                         <i class="fas fa-ban"></i>
