@@ -22,7 +22,7 @@ a:focus {
 
 .navbar {
     padding: 15px 10px;
-    background: #4F79A3;
+    background: #E6E6E6;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
@@ -41,7 +41,7 @@ a:focus {
 		 }
 
 .bg-light {
-    background-color: #81C341!important;
+    background-color: #E6E6E6!important;
     top: 0px;
     left: 0px;
 }
