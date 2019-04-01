@@ -74,7 +74,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="CounselorJobPostingPrototype.aspx">Job Cards</a>
+                        <a href="CounselorJobPosting.aspx">Job Cards</a>
                     </li>
                     <li>
                         <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>

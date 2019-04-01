@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Counselor.master" AutoEventWireup="true" CodeFile="CounselorHoursApprovalPage.aspx.cs" Inherits="CounselorHoursApprovalPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Teacher.master" AutoEventWireup="true" CodeFile="TeacherHoursApprovalPage.aspx.cs" Inherits="TeacherHoursApprovalPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 

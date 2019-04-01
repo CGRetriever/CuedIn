@@ -136,11 +136,11 @@ public partial class Login : System.Web.UI.Page
                 }
             else if (permissions.Equals("Counselor"))
             {
-                Response.Redirect("CounselorJobPostingPrototype.aspx");
+                Response.Redirect("CounselorJobPosting.aspx");
             }
             else if(permissions.Equals("Teacher"))
             {
-                Response.Redirect("TeacherJobPostingPrototype.aspx");
+                Response.Redirect("TeacherJobPosting.aspx");
             }
 
         }
