@@ -7,7 +7,7 @@
     <form id="form1" runat="server">
         <div class="form-row">
        <div class="col-md-12 text-center">
-      <label Class="form-control-lg font-weight-bold" for="inputJobs">Hours To Approve </label>
+      <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
        <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
