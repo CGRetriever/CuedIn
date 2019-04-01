@@ -20,7 +20,6 @@
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-
     </head>
 
     <body>
@@ -122,9 +121,8 @@
                 </div>
             </nav>
             <!---End Sidebar Nav--->
-              <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
-            </div>
+             
+     
             
           
                 
@@ -143,7 +141,8 @@
             });
         });
     </script>
-
-    
+ <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+                   </div>
 </body>
 </html>
