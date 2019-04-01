@@ -27,8 +27,8 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
         Response.Redirect("~/ArchiveOpportunities.aspx");
     }
-    //Gridview View More Button
-    protected void btnScholarshipViewMore_Click(object sender, CommandEventArgs e)
+    //Gridview Rejected View More Button
+    protected void btnRejScholarshipViewMore_Click(object sender, CommandEventArgs e)
     {
 
         //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
@@ -189,5 +189,60 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
         Response.Redirect("~/OpportunityActDec.aspx");
     }
-    //approve 
+
+    //Gridview Accepted View More Button
+    protected void btnAccScholarshipViewMore_Click(object sender, CommandEventArgs e)
+    {
+
+        //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        //GridViewRow row = GridView2.Rows[rowIndex];
+        ////lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
+        ////lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
+        ////txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
+
+        //String sName;
+        //String sDesc;
+
+        //sName = GridView2.Rows[rowIndex].Cells[0].Text;
+        //sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
+
+        ////String primarykey;
+
+        ////  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = GridView1.Rows[rowIndex];
+
+
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreScholarshipInfo = new System.Data.SqlClient.SqlCommand();
+        moreScholarshipInfo.Connection = sql;
+        moreScholarshipInfo.CommandText = "SELECT Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipQuantity, Scholarship.ScholarshipDueDate, Organization.OrganizationName, Organization.OrganizationDescription FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID WHERE Scholarship.ScholarshipID = " + scholarshipID;
+        System.Data.SqlClient.SqlDataReader reader = moreScholarshipInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            //set labels to db values
+            lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
+            lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
+            Label3.Text = "Scholarship Name : " + reader.GetString(0);
+            lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
+            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
+            lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
+            lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+
+        }
+
+        Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
+
+    }
 }
