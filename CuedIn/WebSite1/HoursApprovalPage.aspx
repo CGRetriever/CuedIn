@@ -7,7 +7,7 @@
     <form id="form1" runat="server">
         <div class="form-row">
        <div class="col-md-12 text-center">
-      <label Class="form-control-lg font-weight-bold" for="inputJobs">Hours To Approve </label>
+      <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
        <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
@@ -105,11 +105,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br />
                                     <br />
                                     <%--<h5>Are you sure you want to approve?</h5>--%>
-                                    <asp:Label ID="Label1" runat="server" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold;" Text="Are you sure you want to approve these hours?"></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve these hours?"></asp:Label>
                                 </div>
                             </div>
                             
@@ -127,7 +127,7 @@
                         </div>
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                <asp:Button ID="Button1" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 200px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptJobButton_Click" />
+                                <asp:Button ID="Button1" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptJobButton_Click" />
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                             </div>
                         </div>
@@ -150,11 +150,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
                                     <%--<h5>Are you sure you want to reject?</h5>--%>
-                                    <asp:Label ID="Label2" runat="server" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold;" Text="Are you sure you want to reject these hours?"></asp:Label>
+                                    <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject these hours?"></asp:Label>
                                 </div>
                             </div>
                            
@@ -196,11 +196,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                <div class="modal-title">
-                                    <i class="fas fa-comments fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-comments fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
                                     <%--<h5>Comments</h5>--%>
-                                    <asp:Label ID="lblComments" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="Comments"></asp:Label>
+                                    <asp:Label ID="lblComments" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold" runat="server" Text="Comments"></asp:Label>
                                 </div>
                             </div>
                             
