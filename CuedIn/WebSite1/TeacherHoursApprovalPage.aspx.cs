@@ -71,7 +71,7 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
 
         GridView1.DataBind();
 
-        Response.Redirect("~/HoursApprovalPage.aspx");
+        Response.Redirect("~/TeacherHoursApprovalPage.aspx");
     }
 
     //click reject in gridview-- open modal-- fill modal
@@ -119,7 +119,7 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
 
         GridView1.DataBind();
 
-        Response.Redirect("~/HoursApprovalPage.aspx");
+        Response.Redirect("~/TeacherHoursApprovalPage.aspx");
     }
     //open comment modal
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
