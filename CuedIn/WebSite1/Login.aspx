@@ -5,8 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <!DOCTYPE html>
 
-<head>
-	<title>Login V3</title>
+
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -31,8 +31,8 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-</head>
-<body>
+
+
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
@@ -44,15 +44,16 @@
 
 					<span class="login100-form-title p-b-34 p-t-27">
 						Log in
+					
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input runat="server" class="input100" id="username" type="text" name="username" placeholder="Username">
+						<input runat="server" class="input100" id="username" type="text" name="username" placeholder="Username" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100  validate-input" data-validate="Enter password">
-						<input runat="server" class="input100" id="password" type="password" name="pass" placeholder="Password">
+						<input runat="server" class="input100" id="password" type="password" name="pass" placeholder="Password" required>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -64,15 +65,23 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<asp:Button class="login100-form-btn" Text="Login" runat="server" OnClick="btn_click">
+						<asp:Button class="login100-form-btn" Text="Login" runat="server" OnClick="LoginButton_Click">
 							
 						</asp:Button>
 					</div>
+                  <br />
+                    
+                    <div style="margin-left: auto; margin-right: auto; text-align: center;">
+                    <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
+
 
 					<div class="text-center p-t-90">
 						<a class="txt1" href="#">
 							Forgot Password?
 						</a>
+                        <br />
+                        
+                       
 					</div>
 				</form>
 			</div>

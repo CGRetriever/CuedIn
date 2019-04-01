@@ -25,6 +25,27 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         Session["selectedjobID"] = jobID.ToString();
 
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID = " + Session["selectedjobID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            lblJobApprove.Text = reader.GetString(0);
+            lblJobSubApprove.Text = reader.GetString(1);
+
+        }
+
+        sql.Close();
+
+
+
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
     //Modal Approve Button
@@ -67,7 +88,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
             //set labels to db values
             lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
             lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-            lblJobTitle.Text = "Job Title: " + reader.GetString(2);
+            lblJobName.Text = "Job Title: " + reader.GetString(2);
             lblJobDescription.Text = "Job Description: " + reader.GetString(3);
             lblJobType.Text = "Job Type: " + reader.GetString(4);
             lblJobLocation.Text = "Job Location: " + reader.GetString(5);
@@ -119,6 +140,26 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedScholarshipID"] = scholarshipID.ToString();
+
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where ScholarshipID = " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            lblScholarApprove.Text = reader.GetString(1);
+            lblScholarSubApprove.Text = reader.GetString(2);
+
+        }
+
+        sql.Close();
+
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
@@ -178,10 +219,10 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
             //set labels to db values
             lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
             lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
-            lblScholarshipName.Text = "Scholarship Name : " + reader.GetString(0);
+            Label3.Text = "Scholarship Name : " + reader.GetString(0);
             lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: " + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: " + reader.GetSqlMoney(3);
+            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
             lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
             lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
 

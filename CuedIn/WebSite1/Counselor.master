@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SchoolMaster.master.cs" Inherits="SchoolMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Counselor.master.cs" Inherits="Counselor" %>
 
 <!DOCTYPE html>
 
@@ -43,10 +43,10 @@
                     </a>
                     <ul class="collapse list-unstyled" id="OppPages">
                         <li>
-                            <a href="OpportunityActDec.aspx">Manage Opportunities</a>
+                            <a href="CounselorOpportunityActDec.aspx">Manage Opportunities</a>
                         </li>
                         <li>
-                            <a href="ArchiveOpportunities.aspx">Archived Opportunities</a>
+                            <a href="CounselorArchiveOpportunities.aspx">Archived Opportunities</a>
                         </li>
                     </ul>
                 </li>
@@ -61,7 +61,7 @@
                         <a href="HoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                     <li>
-                        <a href="StudentActDec.aspx">Student Application Request</a>
+                        <a href="CounselorStudentActDec.aspx">Student Application Request</a>
                     </li>
                 </ul>
                 </li>
@@ -74,48 +74,21 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="JobPostings.aspx">Job Cards</a>
+                        <a href="CounselorJobPostingPrototype.aspx">Job Cards</a>
                     </li>
                     <li>
-                        <a href="ScholarshipBoard.aspx">Scholarship Cards</a>
+                        <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>
                     </li>
                 </ul>
-
-
-                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                  <i class="fas fa-chart-line"></i>
-                     Admin Metrics
-                </a>
-                <ul class="collapse list-unstyled" id="Dashboard">
-                    <li>
-                        <a href="#">Administrative Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#">Work Based Learning Map</a>
-                    </li>
-                     <li>
-                        <a href="#">Scholarship Map</a>
-                    </li>
-                </ul>
-
-                <a href="#">
-                <i class="fas fa-school"></i>
-                My School
-                </a>
                 </li>
-                <li>
-                    <a href="CreateUser.aspx">
-                        <i class="fas fa-user-circle"></i>
-                        Create Users
-                    </a>
-                </li>
-                 <li>
+                  <li>
                     <a href="Login.aspx">
                         <i class="fas fa-ban"></i>
                         Logout
                     </a>
                 </li>
 
+              
             </ul>
 
 
@@ -123,24 +96,7 @@
 
         <!-- Page Content  -->
         <div id="content">
-            <div class="containter-fluid" id="maincont" style="background-color:#4F79A3;">
-               <div class="row">
-                   <div class="col-md-3">
-                       <img class="img" src="images/comlogo.png" alt="company logo" style="height:200px; width:400px;">
-                   </div>
-                   <div class="col-md-6 text-center">
-                       <br>
-                       <br>
-                       <br>
-                       <%--<h1 style=" color:#fff;  letter-spacing: 6px;"> STUDENT OUTCOMES</h1>--%>
-                       <asp:Label ID="lblMaster" runat="server" Text="" Style="color: #fff; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
 
-
-               </div>
-
-           </div>
-       </div>
-            <br>
             <nav class="navbar navbar-expand-lg <%--navbar-light--%> <%--bg-light--%>">
                 <div class="container-fluid">
 
