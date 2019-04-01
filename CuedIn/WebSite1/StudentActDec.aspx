@@ -56,7 +56,7 @@
                     <div class="modal-header">
                         <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
                                     <%--<h5>Are you sure you want to approve?</h5>--%>
@@ -106,7 +106,7 @@
                     <div class="modal-header">
                         <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
                                     <%--<h5>Are you sure you want to reject?</h5>--%>
@@ -153,7 +153,7 @@
                     <div class="modal-header">
                           <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
                                     <%--<h5>More Information</h5>--%>
