@@ -86,10 +86,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to approve?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <asp:Label ID="Label5" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve?"></asp:Label>
                                 </div>
                             </div>
                             
@@ -130,10 +131,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to reject?</h5>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                     <asp:Label ID="Label6" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
                                 </div>
                             </div>
                             
@@ -175,12 +177,12 @@
                         <div class="modal-header">
                             <div class ="col-md-12 text-center">
                             <div class="modal-title">
-                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
+                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                 <br />
                                 <br />
                                 <%--<h5>More Information</h5>--%>
-                                <asp:Label ID="Label1" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="More Information"></asp:Label>
-                                <asp:Label ID="lblScholarshipName" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server"></asp:Label>
+                                <asp:Label ID="Label1" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="More Information"></asp:Label>
+                                <asp:Label ID="lblScholarshipName" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server"></asp:Label>
                             </div>
                             </div>
                             
@@ -231,13 +233,13 @@
                         <div class="modal-header">
                             <div class ="col-md-12 text-center">
                             <div class="modal-title">
-                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
+                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                 <br />
                                 <br />
                                 <%--<h5>More Information</h5>--%>
-                                <asp:Label ID="Label4" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="More Information"></asp:Label>
+                                <asp:Label ID="Label4" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" Text="More Information"></asp:Label>
                                 <br />
-                                <asp:Label ID="lblJobName" Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server"></asp:Label>
+                                <asp:Label ID="lblJobName" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server"></asp:Label>
                             </div>
                             </div>
                             
@@ -287,10 +289,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to approve?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                     <asp:Label ID="Label7" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve?"></asp:Label>
                                 </div>
                             </div>
                         
@@ -307,7 +310,7 @@
                                 </div>
                                 <div class="modal-footer">
                                    <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                    <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 200px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptScholarshipButton_Click" />
+                                    <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptScholarshipButton_Click" />
                                     <button type="button" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                                 </div>
                                     </div>
@@ -334,10 +337,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to reject?</h5>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                     <asp:Label ID="Label8" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
                                 </div>
                             </div>
                             
