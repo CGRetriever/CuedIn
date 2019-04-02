@@ -12,10 +12,18 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        GridView2.Columns[0].Visible = false;
-        ((Label)Master.FindControl("lblMaster2")).Text = "Manage Opportunities";
-    }
 
+        if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            GridView2.Columns[0].Visible = false;
+            ((Label)Master.FindControl("lblMaster2")).Text = "Manage Opportunities";
+        }
+
+    }
 
 
     public override void VerifyRenderingInServerForm(Control control)

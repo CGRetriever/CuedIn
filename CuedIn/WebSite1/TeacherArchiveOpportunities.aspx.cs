@@ -10,8 +10,17 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        gridviewRejJobs.Columns[2].Visible = false;
-        gridviewAccJobs.Columns[2].Visible = false;
+
+        if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+           gridviewRejJobs.Columns[2].Visible = false;
+           gridviewAccJobs.Columns[2].Visible = false;
+        }
+
     }
     //Gridview Approve Button in Reject Gridview
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)

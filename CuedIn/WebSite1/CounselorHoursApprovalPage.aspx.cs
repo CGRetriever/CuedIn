@@ -13,8 +13,17 @@ public partial class CounselorHoursApprovalPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        GridView1.Columns[0].Visible = false;
-        ((Label)Master.FindControl("lblMaster2")).Text = "Hours to Approve";
+
+        if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            GridView1.Columns[0].Visible = false;
+            ((Label)Master.FindControl("lblMaster2")).Text = "Hours to Approve";
+        }
+
     }
 
 

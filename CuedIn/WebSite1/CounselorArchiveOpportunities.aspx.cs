@@ -10,9 +10,18 @@ public partial class CounselorArchiveOpportunities : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        gridviewRejJobs.Columns[2].Visible = false;
-        gridviewAccJobs.Columns[2].Visible = false;
-        ((Label)Master.FindControl("lblMaster2")).Text = "Archived Jobs";
+
+        if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            gridviewRejJobs.Columns[2].Visible = false;
+            gridviewAccJobs.Columns[2].Visible = false;
+            ((Label)Master.FindControl("lblMaster2")).Text = "Archived Jobs";
+        }
+
     }
     //Gridview Approve Button in Reject Gridview
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)

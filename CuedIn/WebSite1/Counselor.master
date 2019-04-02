@@ -52,6 +52,9 @@
                            <li>
                             <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
                         </li>
+                         <li>
+                            <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
+                        </li>
                     </ul>
                 </li>
             
@@ -85,20 +88,22 @@
                     </li>
                 </ul>
                 </li>
+                <li>
+                      <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
 
-                   <li>
-                    <a href="#DashBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                      <i class="fas fa-chart-line"></i>
-                        Dashboard
-                    </a>
-                    <ul class="collapse list-unstyled" id="DashBoard">
-                        <li>
+
+                  <i class="fas fa-chart-line"></i>
+                     Admin Metrics
+                </a>
+                <ul class="collapse list-unstyled" id="Dashboard">
+                    <li>
                         <a href="CounselorStudentMetricsDashboard.aspx">Administrative Dashboard</a>
                     </li>
-                       <li>
+                    <li>
                         <a href="CounselorScholarshipDashboard.aspx">Scholarship Dashboard</a>
                     </li>
-                      <li>
+                    <li>
+
                         <a href="CounselorJobListingDashboard.aspx">Job Listing Dashboard</a>
                     </li>
                     <li>
@@ -107,12 +112,11 @@
                      <li>
                         <a href="CounselorScholarshipMap.aspx">Scholarship Map</a>
                     </li>
-                    </ul>
+
+                </ul>
                 </li>
 
-
-    
-
+              
 
                   <li>
                     <a href="Login.aspx">

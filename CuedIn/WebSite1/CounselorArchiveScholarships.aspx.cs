@@ -10,7 +10,15 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ((Label)Master.FindControl("lblMaster2")).Text = "Archive Scholarships";
+
+        if (Session["user"] == null ||  !Session["permission"].Equals("Counselor"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+          ((Label)Master.FindControl("lblMaster2")).Text = "Archive Scholarships";
+        }
     }
 
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)
@@ -25,19 +33,19 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
+
         Response.Redirect("~/ArchiveScholarships.aspx");
     }
     //Gridview Rejected View More Button
     protected void btnRejScholarshipViewMore_Click(object sender, CommandEventArgs e)
     {
 
-
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = rejScholarshipGridview.Rows[rowIndex];
 
+        GridViewRow row = rejScholarshipGridview.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
@@ -90,16 +98,20 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         //UPDATE WITH QUERIES
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+
         Response.Redirect("~/ArchiveScholarships.aspx");
     }
     //Gridview Approve Button in Rejected GridView
+
     protected void btnScholarshipApprove_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+
         GridViewRow row = rejScholarshipGridview.Rows[rowIndex];
+
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
@@ -128,13 +140,16 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
 
+
     //reject button clicked in accept scholarship gridview
     protected void btnScholarshipReject_Click(object sender, CommandEventArgs e)
+
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+
         GridViewRow row = acceptScholarshipGridview.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
@@ -173,18 +188,20 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 
+
         Response.Redirect("~/ArchiveScholarships.aspx");
     }
 
     //Gridview Accepted View More Button
     protected void btnAccScholarshipViewMore_Click(object sender, CommandEventArgs e)
     {
+
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = acceptScholarshipGridview.Rows[rowIndex];
 
+        GridViewRow row = acceptScholarshipGridview.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
