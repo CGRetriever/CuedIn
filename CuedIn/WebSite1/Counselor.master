@@ -88,7 +88,7 @@
 
                    <li>
                     <a href="#DashBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-tasks"></i>
+                      <i class="fas fa-chart-line"></i>
                         Dashboard
                     </a>
                     <ul class="collapse list-unstyled" id="DashBoard">
