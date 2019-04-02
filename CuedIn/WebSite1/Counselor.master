@@ -87,18 +87,7 @@
                 </li>
 
 
-            <a href="#Dashboards" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                   <i class="fas fa-chart-line"></i>
-                     Dashboards
-                </a>
-                <ul class="collapse list-unstyled" id="Dashboards">
-                    <li>
-                        <a href="CounselorJobPosting.aspx">Job Cards</a>
-                    </li>
-                    <li>
-                        <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>
-                    </li>
-                </ul>
+    
                 </li>
 
                   <li>
