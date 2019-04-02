@@ -44,7 +44,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         reader = recentJobPost.ExecuteReader();
 
-
+        ((Label)Master.FindControl("lblMaster")).Text = "Job Board";
 
         while (reader.Read())
         {

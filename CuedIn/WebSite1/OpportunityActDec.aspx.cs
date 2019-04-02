@@ -13,7 +13,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
        GridView2.Columns[0].Visible = false;
-       ((Label)Master.FindControl("lblMaster")).Text = "Opportunities to Approve";
+       ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
     }
 
 
