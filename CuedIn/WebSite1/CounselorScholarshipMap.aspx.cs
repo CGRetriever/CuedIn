@@ -9,6 +9,7 @@ public partial class CounselorScholarshipMap : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
         {
             Response.Redirect("Login.aspx");
@@ -16,5 +17,6 @@ public partial class CounselorScholarshipMap : System.Web.UI.Page
         else
         {
         }
+
     }
 }

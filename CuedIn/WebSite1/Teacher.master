@@ -20,7 +20,6 @@
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-
     </head>
 
     <body>
@@ -81,9 +80,26 @@
 
         </nav>
 
-        <!-- Page Content  -->
+       <!-- Page Content  -->
         <div id="content">
+            <div class="containter-fluid" id="maincont" style="background-color:#4F79A3;">
+               <div class="row">
+                   <div class="col-md-3">
+                       <img class="img" src="images/comlogo.png" alt="company logo" style="height:200px; width:400px;">
+                   </div>
+                   
+                       <br>
+                       <br>
+                       <br>
+                       <%--<h1 style=" color:#fff;  letter-spacing: 6px;"> STUDENT OUTCOMES</h1>--%>
+                       <asp:Label ID="lblMaster2" runat="server" Text="" Style="color: #fff; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
 
+
+               
+
+           </div>
+      </div>
+            <br>
             <nav class="navbar navbar-expand-lg <%--navbar-light--%> <%--bg-light--%>">
                 <div class="container-fluid">
 
@@ -105,7 +121,11 @@
                 </div>
             </nav>
             <!---End Sidebar Nav--->
-
+             
+     
+            
+          
+                
 
                     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -121,8 +141,8 @@
             });
         });
     </script>
-
-    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+ <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
+                   </div>
 </body>
 </html>

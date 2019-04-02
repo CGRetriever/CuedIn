@@ -6,19 +6,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class ArchiveScholarships : System.Web.UI.Page
+public partial class TeacherArchiveScholarships : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["user"] == null || (!Session["permission"].Equals("Admin") && !Session["permission"].Equals("Counselor")))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-          ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
-        }
     }
 
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)

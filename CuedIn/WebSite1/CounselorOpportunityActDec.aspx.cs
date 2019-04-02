@@ -12,6 +12,7 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
         {
             Response.Redirect("Login.aspx");
@@ -19,7 +20,9 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
         else
         {
             GridView2.Columns[0].Visible = false;
+            ((Label)Master.FindControl("lblMaster2")).Text = "Manage Opportunities";
         }
+
     }
 
 

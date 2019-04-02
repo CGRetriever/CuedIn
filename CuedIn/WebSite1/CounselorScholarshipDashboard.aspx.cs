@@ -15,6 +15,7 @@ public partial class CounselorScholarshipDashboard : System.Web.UI.Page
         }
         else
         {
+          ((Label)Master.FindControl("lblMaster2")).Text = "Scholarship Dashboard";
         }
     }
 }

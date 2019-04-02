@@ -62,7 +62,7 @@
                 <!--End of Recent Job Posting-->
     
                     
-                    <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%" > </asp:Table>
+              <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%" > </asp:Table>
 
    
     </form>

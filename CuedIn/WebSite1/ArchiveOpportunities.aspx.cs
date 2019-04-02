@@ -10,24 +10,28 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (Session["user"] == null || !Session["permission"].Equals("Admin"))
         {
             Response.Redirect("Login.aspx");
         }
         else
         {
-            gridviewArchivedJobs.Columns[2].Visible = false;
-            approveGridview.Columns[2].Visible = false;
+            gridviewRejJobs.Columns[2].Visible = false;
+            gridviewAccJobs.Columns[2].Visible = false;
+            ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs";
         }
+
+        
     }
-    //Gridview Approve Button
+    //Gridview Approve Button in Reject Gridview
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = gridviewArchivedJobs.Rows[rowIndex];
+        GridViewRow row = gridviewRejJobs.Rows[rowIndex];
 
         int jobID = Convert.ToInt32(e.CommandArgument);
 
@@ -56,7 +60,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
-    //Modal Approve Button
+    //Modal Approve Button in Rej Gridview
     protected void acceptJobButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -71,14 +75,57 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         Response.Redirect("~/ArchiveOpportunities.aspx");
     }
-    //Modal More Info
-    protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
+    //Modal More Info in reject 
+    protected void moreInfoRejJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = gridviewArchivedJobs.Rows[rowIndex];
+        GridViewRow row = gridviewRejJobs.Rows[rowIndex];
+
+
+        int jobID = Convert.ToInt32(e.CommandArgument);
+
+        sql.Open();
+        System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
+        moreJobInfo.Connection = sql;
+        moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID WHERE JobListing.JobListingID = " + jobID;
+        System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
+
+
+
+        while (reader.Read())
+        {
+            //set labels to db values
+            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
+            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
+            lblJobName.Text = "Job Title: " + reader.GetString(2);
+            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
+            lblJobType.Text = "Job Type: " + reader.GetString(4);
+            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
+            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
+            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
+
+        }
+
+        Session["selectedjobID"] = jobID.ToString();
+
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditSModal();", true);
+
+    }
+
+    //Modal More Info in accept
+    protected void moreInfoAccJobLinkBtn_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+        GridViewRow row = gridviewAccJobs.Rows[rowIndex];
 
 
         int jobID = Convert.ToInt32(e.CommandArgument);
@@ -137,14 +184,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         Response.Redirect("~/ArchiveOpportunities.aspx");
     }
 
-    //reject button clicked in gridview-- populates modal
+    //reject button clicked in approve gridview-- populates modal
     protected void rejectJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        GridViewRow row = approveGridview.Rows[rowIndex];
+        GridViewRow row = gridviewAccJobs.Rows[rowIndex];
 
         int jobID = Convert.ToInt32(e.CommandArgument);
 
@@ -161,7 +208,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         while (reader.Read())
         {
-            Label66.Text = reader.GetString(0);
+            lblOrgName.Text = reader.GetString(0);
             rejectjobsublabel.Text = reader.GetString(1);
 
         }
@@ -182,7 +229,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/ArchiveOpportunities.aspx");
     }
 
 
