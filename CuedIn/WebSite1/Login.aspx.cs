@@ -9,14 +9,18 @@ using System.Configuration;
 
 public partial class Login : System.Web.UI.Page
 {
- 
+
     public Login()
     {
 
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
+        Session.Remove("user");
+        Session.Remove("permission");
+        Session["user"] = "";
+        Session["permission"] = "";
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -24,7 +28,7 @@ public partial class Login : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = sql;
-      
+
 
 
         //testing to see if we already made the username column in person.person
@@ -41,7 +45,7 @@ public partial class Login : System.Web.UI.Page
         }
 
         sql.Close();
-        
+
     }
 
 
@@ -55,7 +59,7 @@ public partial class Login : System.Web.UI.Page
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-        
+
         sql.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = sql;
@@ -89,11 +93,12 @@ public partial class Login : System.Web.UI.Page
         //method to validate if password in hashed textbox matches our hashed password in the DB
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
+
             Label1.Text = "Success!";
             String permissions = " ";
             sql.Open();
             System.Data.SqlClient.SqlCommand query1 = new System.Data.SqlClient.SqlCommand();
-          
+
             query1.Connection = sql;
             query1.CommandText = "SELECT dbo.UserEntity.UserEntityID from dbo.userentity where upper(username) like upper(@userName1)";
 
@@ -111,8 +116,8 @@ public partial class Login : System.Web.UI.Page
                     id = reader1.GetInt32(0);
                 }
             }
-            
-            query1.CommandText= "SELECT dbo.SchoolEmployee.SchoolEmployeeEntityType from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID";
+
+            query1.CommandText = "SELECT dbo.SchoolEmployee.SchoolEmployeeEntityType from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID";
             query1.Parameters.AddWithValue("@SchoolEmployeeEntityID", id);
             reader1.Close();
             System.Data.SqlClient.SqlDataReader reader2 = query1.ExecuteReader();
@@ -131,15 +136,21 @@ public partial class Login : System.Web.UI.Page
 
             //Test the permsissions
             if (permissions.Equals("Admin"))
-                {
-                    Response.Redirect("JobPostings.aspx");
-                }
+            {
+                Session["user"] = username.Value;
+                Session["permission"] = permissions;
+                Response.Redirect("JobPostings.aspx");
+            }
             else if (permissions.Equals("Counselor"))
             {
+                Session["user"] = username.Value;
+                Session["permission"] = permissions;
                 Response.Redirect("CounselorJobPosting.aspx");
             }
-            else if(permissions.Equals("Teacher"))
+            else if (permissions.Equals("Teacher"))
             {
+                Session["user"] = username.Value;
+                Session["permission"] = permissions;
                 Response.Redirect("TeacherJobPosting.aspx");
             }
 
@@ -150,12 +161,18 @@ public partial class Login : System.Web.UI.Page
 
             username.Value = "";
             password.Value = "";
-            
-            
+
+
         }
 
 
     }
 
-   
+
 }
+
+
+
+
+
+

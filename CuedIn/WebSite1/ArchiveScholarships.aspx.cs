@@ -10,7 +10,13 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+        }
     }
 
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)

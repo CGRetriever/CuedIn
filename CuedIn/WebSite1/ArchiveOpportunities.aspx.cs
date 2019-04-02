@@ -10,8 +10,15 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        gridviewArchivedJobs.Columns[2].Visible = false;
-        approveGridview.Columns[2].Visible = false;
+        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            gridviewArchivedJobs.Columns[2].Visible = false;
+            approveGridview.Columns[2].Visible = false;
+        }
     }
     //Gridview Approve Button
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
