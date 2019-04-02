@@ -107,10 +107,16 @@
                         </div>
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                <asp:HyperLink ID="MailButtonLink" NavigateUrl="~/TeacherStudentActDec.aspx" runat="server">Message Organization</asp:HyperLink>
-                                <asp:Button ID="Button3" runat="server" Text="Message Organization" Style="background-color: #102B3F; color: #fff; width: 200px; height: 60px;" CssClass="btn btn-circle" OnClick="Button3_Click1" />
+                                <asp:HyperLink ID="MailButtonLink" NavigateUrl="~/TeacherStudentActDec.aspx" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px; text-align: center; display:table-cell;" CssClass="btn btn-circle" runat="server" Text="Message Organization"></asp:HyperLink>
+                               </div> 
+                               <div class="row">
+                                   <div>
                                 <asp:Button ID="Button1" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptJobButton_Click" />
+                                <asp:Label ID="Label9" runat="server" Text="&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                                <asp:Label ID="Label10" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+                                   </div>
+                                   </div>
                             </div>
                         </div>
                     </div>
