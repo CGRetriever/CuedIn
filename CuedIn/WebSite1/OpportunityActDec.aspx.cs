@@ -64,7 +64,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         EmailQuery.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = EmailQuery;
-        query.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedjobID"];
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE JobListing.JobListingID = " + Session["selectedjobID"];
         System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
 
 
@@ -78,7 +78,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-        MailButtonLink.NavigateUrl = "";
+        MailButtonLink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Job Approval";
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
