@@ -54,7 +54,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+            
                     <li>
                 <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fas fa-portrait"></i>
@@ -86,9 +86,33 @@
                 </ul>
                 </li>
 
+                   <li>
+                    <a href="#DashBoard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-tasks"></i>
+                        Dashboard
+                    </a>
+                    <ul class="collapse list-unstyled" id="DashBoard">
+                        <li>
+                        <a href="CounselorStudentMetricsDashboard.aspx">Administrative Dashboard</a>
+                    </li>
+                       <li>
+                        <a href="CounselorScholarshipDashboard.aspx">Scholarship Dashboard</a>
+                    </li>
+                      <li>
+                        <a href="CounselorJobListingDashboard.aspx">Job Listing Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="CounselorJobListingMap.aspx">Work Based Learning Map</a>
+                    </li>
+                     <li>
+                        <a href="CounselorScholarshipMap.aspx">Scholarship Map</a>
+                    </li>
+                    </ul>
+                </li>
+
 
     
-                </li>
+
 
                   <li>
                     <a href="Login.aspx">
@@ -97,7 +121,7 @@
                     </a>
                 </li>
 
-              
+              </ul>
           
 
 
