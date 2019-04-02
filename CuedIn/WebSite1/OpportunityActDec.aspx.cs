@@ -36,6 +36,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         Session["selectedjobID"] = jobID.ToString();
 
+        String temp = Session["selectedjobID"].ToString();
+
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
         moreJobInfo.Connection = sql;
@@ -52,6 +54,31 @@ public partial class OpportunityActDec : System.Web.UI.Page
         }
 
         sql.Close();
+
+
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedjobID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+             email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+
+        MailButtonLink.NavigateUrl = "";
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
@@ -328,9 +355,11 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         sql.Close();
 
-        string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "%26argument=Number1";
-        string command = "mailto:" + email + "?subject=CommUp: Job Approval";
-        System.Diagnostics.Process.Start(command);
+
+
+        //string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "%26argument=Number1";
+        //string command = "mailto:" + email + "?subject=CommUp: Job Approval";
+        //System.Diagnostics.Process.Start(command);
         //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
         //Response.Redirect("~/OpportunityActDec.aspx");
     }
