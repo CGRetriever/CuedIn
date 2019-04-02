@@ -10,7 +10,13 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+        }
     }
     //Gridview Approve Button
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)

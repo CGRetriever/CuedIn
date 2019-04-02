@@ -47,7 +47,10 @@
                             <a href="OpportunityActDec.aspx">Manage Opportunities</a>
                         </li>
                         <li>
-                            <a href="ArchiveOpportunities.aspx">Archived Opportunities</a>
+                            <a href="ArchiveOpportunities.aspx">Archived Job Listings</a>
+                        </li>
+                         <li>
+                            <a href="ArchiveScholarships.aspx">Archived Scholarships</a>
                         </li>
                     </ul>
                 </li>
@@ -96,14 +99,20 @@
                      Admin Metrics
                 </a>
                 <ul class="collapse list-unstyled" id="Dashboard">
-                    <li>
+                     <li>
                         <a href="#">Administrative Dashboard</a>
                     </li>
                     <li>
-                        <a href="#">Work Based Learning Map</a>
+                        <a href="ScholarshipDashboard.aspx">Scholarship Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="JobListingDashboard.aspx">Job Listing Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="JobListingMap.aspx">Work Based Learning Map</a>
                     </li>
                      <li>
-                        <a href="#">Scholarship Map</a>
+                        <a href="ScholarshipMap.aspx">Scholarship Map</a>
                     </li>
                 </ul>
 

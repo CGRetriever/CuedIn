@@ -48,6 +48,9 @@
                         <li>
                             <a href="CounselorArchiveOpportunities.aspx">Archived Opportunities</a>
                         </li>
+                         <li>
+                            <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -78,6 +81,31 @@
                     </li>
                     <li>
                         <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>
+                    </li>
+                </ul>
+                </li>
+                <li>
+                      <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+
+
+                  <i class="fas fa-chart-line"></i>
+                     Admin Metrics
+                </a>
+                <ul class="collapse list-unstyled" id="Dashboard">
+                    <li>
+                        <a href="#">Administrative Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="ScholarshipDashboard.aspx">Scholarship Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="JobListingDashboard.aspx">Job Listing Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="JobListingMap.aspx">Work Based Learning Map</a>
+                    </li>
+                     <li>
+                        <a href="ScholarshipMap.aspx">Scholarship Map</a>
                     </li>
                 </ul>
                 </li>
