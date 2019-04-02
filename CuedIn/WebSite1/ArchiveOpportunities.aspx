@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="row">
         <div class="col-12 ">
-            <p>Archived Opportunities</p>
+            
         </div>
     </div>
     <form id="form1" runat="server">

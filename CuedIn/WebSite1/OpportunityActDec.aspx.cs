@@ -13,7 +13,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
        GridView2.Columns[0].Visible = false;
-       ((Label)Master.FindControl("lblMaster")).Text = "Ball is life";
+       ((Label)Master.FindControl("lblMaster")).Text = "Opportunities to Approve";
     }
 
 
@@ -65,7 +65,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.CommandText = "update joblisting set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -113,7 +113,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        rejectJob.CommandText = "update joblisting set approved = 'N', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
@@ -279,7 +279,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.CommandText = "update scholarship set approved = 'N', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
         
@@ -294,7 +294,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.CommandText = "update scholarship set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 

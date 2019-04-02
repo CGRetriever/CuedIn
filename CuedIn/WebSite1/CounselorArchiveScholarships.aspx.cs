@@ -10,7 +10,7 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ((Label)Master.FindControl("lblMaster2")).Text = "Archive Scholarships";
     }
 
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)
