@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Counselor.master" AutoEventWireup="true" CodeFile="CounselorArchiveScholarships.aspx.cs" Inherits="CounselorArchiveScholarships" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <div class="row">
+       <div class="row">
         <div class="col-12 ">
             <p>Archived Scholarships</p>
         </div>
     </div>
     <form id="form1" runat="server">
-                <%--Rejected Scholarships Gridview--%>
+        <%--Rejected Scholarships Gridview--%>
         <div class="form-row">
         <div class="form-group col-md-6">
             <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Rejected Scholarships</label>
@@ -16,7 +16,7 @@
 
             
 
-            <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+            <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
                 <Columns>
                     
                     <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
@@ -39,14 +39,14 @@
 
             
 
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
+            <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
                 <Columns>
                     
                     <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
                     <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
-                            <asp:LinkButton ID="btnScholarshipReject" CssClass="btn btn-circle btn-danger" Text="Reject" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"></asp:LinkButton>
+                            <asp:LinkButton ID="btnScholarshipReject" CssClass="btn btn-circle btn-danger" Text="Reject" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnScholarshipReject_Click"></asp:LinkButton>
                             <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnAccScholarshipViewMore_Click"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -83,9 +83,9 @@
                             </div>
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                            <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptScholarshipButton_Click" />
-                            <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
-                                </div>
+                                <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptScholarshipButton_Click" />
+                                <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                 </script>
             </div>
 
-                        <%--Scholarship Reject Modal--%>
+            <%--Scholarship Reject Modal--%>
             <div class="modal fade" id="rejectSModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
