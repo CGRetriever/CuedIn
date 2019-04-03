@@ -12,15 +12,10 @@ public partial class StudentActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-            GridView1.Columns[0].Visible = false;
-            ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
-        }
+
+        GridView1.Columns[0].Visible = false;
+        ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
+        
     }
 
 

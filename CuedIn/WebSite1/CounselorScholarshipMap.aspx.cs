@@ -10,14 +10,10 @@ public partial class CounselorScholarshipMap : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-            ((Label)Master.FindControl("lblMaster2")).Text = "Scholarship Map";
-        }
+
+        
+        ((Label)Master.FindControl("lblMaster2")).Text = "Scholarship Map";
+        
 
     }
 }
