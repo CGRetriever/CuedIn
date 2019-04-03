@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Counselor.master" AutoEventWireup="true" CodeFile="CounselorScholarshipBoard.aspx.cs" Inherits="CounselorScholarshipBoard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <form id="form1" runat="server">
+     <form id="form1" runat="server">
     <head>
         <title>Scholarship Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -44,13 +44,13 @@
                     </div>             <!-- End column div -->
                     <div class ='col-md-4 col-sm-4 col-xs-4'>  <!-- Start column div -->
                         <div id='money'> <!-- Start min amount -->
-                        <i class='fab fa-usd'></i>
-                        <p><%=scholarshipMin%></p>
+                        
+                        <p><i class="fas fa-dollar-sign"></i></i>   <%=scholarshipMin%></p>
                         </div>  <!-- Start max amount -->
-                        <i class='far fa-usd'></i><i class='far fa-usd'></i><i class='far fa-usd'></i>
-                        <p><%=scholarshipMax%></p>
-                        <i class='fas fa-clock-o'></i>
-                        <p><%=scholarshipDueDate%></p>
+                        
+                        <p><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i>   <%=scholarshipMax%></p>
+                        
+                        <p><i class='fas fa-clock'></i>   <%=scholarshipDueDate%></p>
                     </div>             <!-- End column div -->
                 </div><!-- End row Diiv -->
                 <div class='row'>       <!-- Row start div -->

@@ -19,7 +19,7 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
+        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
         {
             Response.Redirect("Login.aspx");
         }
@@ -31,7 +31,7 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
             sc.Open();
 
             System.Data.SqlClient.SqlCommand sqlrecentScholarshipID = new System.Data.SqlClient.SqlCommand();
-            sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where postingDate = (select max(postingDate) from scholarship)";
+            sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where ScholarshipID = (select max(scholarshipID) from scholarship)";
             sqlrecentScholarshipID.Connection = sc;
             System.Data.SqlClient.SqlDataReader reader = sqlrecentScholarshipID.ExecuteReader();
 
@@ -62,7 +62,6 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
                 orgName = reader.GetString(5);
                 orgDescription = reader.GetString(6);
                 orgImage = reader.GetString(7);
-
             }
         }
     }
@@ -138,7 +137,7 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
                     c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
                     c.Text += "<div class='font-weight-bold indigo-text py-2'>" + scholarshipNameArray[count] + "</div>";
                     c.Text += "<div class = 'card-text'>" + scholarshipDescriptionArray[count] + "</div>";
-                    c.Text += "<a type ='button' class = 'btn-primary btn-medium' style = 'background-color:#102b3f' href='" + linkArray[count] + "' target = '_blank'>Icon Button PlaceHolder</a>";
+                    c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
