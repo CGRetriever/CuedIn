@@ -19,9 +19,5 @@ public partial class Counselor : System.Web.UI.MasterPage
             Response.Redirect("Login.aspx");
         }
 
-        else
-        {
-            ((Label)Master.FindControl("lblMaster2")).Text = "Work Based Learning Map";
-        }
     }
 }

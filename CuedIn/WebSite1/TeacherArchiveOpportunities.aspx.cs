@@ -11,16 +11,11 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-           // ((Label)Master.FindControl("lblMaster2")).Text = "Teacher Archive";
-            gridviewRejJobs.Columns[2].Visible = false;
-           gridviewAccJobs.Columns[2].Visible = false;
-        }
+        
+        // ((Label)Master.FindControl("lblMaster2")).Text = "Teacher Archive";
+        gridviewRejJobs.Columns[2].Visible = false;
+        gridviewAccJobs.Columns[2].Visible = false;
+        
 
     }
     //Gridview Approve Button in Reject Gridview

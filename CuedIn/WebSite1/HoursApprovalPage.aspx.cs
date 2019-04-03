@@ -13,15 +13,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-            GridView1.Columns[0].Visible = false;
-            ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
-        }
+
+        GridView1.Columns[0].Visible = false;
+        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";  
     }
 
 

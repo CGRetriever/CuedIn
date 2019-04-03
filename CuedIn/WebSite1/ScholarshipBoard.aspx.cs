@@ -19,14 +19,9 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null ||  !Session["permission"].Equals("Admin"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-            ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Cards";
-            String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+
+        ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Cards";
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         sc.Open();
 
@@ -63,7 +58,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                 orgDescription = reader.GetString(6);
                 orgImage = reader.GetString(7);
             }
-        }
+        
     }
     protected void scholarshipTable_Load(object sender, EventArgs e)
     {

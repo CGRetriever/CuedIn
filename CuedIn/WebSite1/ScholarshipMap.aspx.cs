@@ -9,13 +9,8 @@ public partial class ScholarshipMap : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null ||  !Session["permission"].Equals("Admin"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-            ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Map";
-        }
-        }
+
+        ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Map";
+        
+    }
 }
