@@ -74,7 +74,6 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
-        int x = 2;
     }
     //Modal Approve Button
     protected void acceptJobButton_Click(object sender, EventArgs e)
