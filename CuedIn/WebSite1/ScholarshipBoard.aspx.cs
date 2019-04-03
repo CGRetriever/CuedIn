@@ -73,7 +73,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countScholarships = new System.Data.SqlClient.SqlCommand();
-        countScholarships.CommandText = "select count(ScholarshipID) from Scholarship where approved = 'yes' and scholarshipID <> " + recentPostID;
+        countScholarships.CommandText = "select count(ScholarshipID) from Scholarship where approved = 'Y' and scholarshipID <> " + recentPostID;
         countScholarships.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countScholarships.ExecuteReader();
@@ -89,7 +89,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullScholarshipInfo = new System.Data.SqlClient.SqlCommand();
-        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'yes' AND scholarshipID <>" + recentPostID;
+        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'Y' AND scholarshipID <>" + recentPostID;
         pullScholarshipInfo.Connection = sc;
 
 
