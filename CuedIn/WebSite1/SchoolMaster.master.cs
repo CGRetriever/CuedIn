@@ -9,9 +9,16 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
-        //Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
-        //Response.Cache.SetNoStore();
+        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+
+        else if (!Session.IsNewSession && Request.UrlReferrer == null)
+        {
+            Response.Redirect("Login.aspx");
+        }
+
     }
 
     protected void btn(object sender, EventArgs e)

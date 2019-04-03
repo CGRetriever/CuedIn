@@ -20,64 +20,51 @@ public partial class TeacherJobPosting : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
+ 
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
+        sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
+        sqlrecentJobPostID.Connection = sc;
+        System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
+
+        while (reader.Read())
         {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-            String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-            sc.Open();
-
-            System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
-            sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
-            sqlrecentJobPostID.Connection = sc;
-            System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
-
-            while (reader.Read())
-            {
-                recentPostID = reader.GetInt32(0);
-            }
-
-            sc.Close();
-
-            sc.Open();
-
-
-            System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
-            recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
-            recentJobPost.Connection = sc;
-
-            reader = recentJobPost.ExecuteReader();
-
-        ((Label)Master.FindControl("lblMaster2")).Text = "Job Cards";
-
-
-
-            while (reader.Read())
-            {
-                jobTitle = reader.GetString(0);
-                jobDescription = reader.GetString(1);
-                jobType = reader.GetString(2);
-                jobLocation = reader.GetString(3);
-                jobDeadline = reader.GetDateTime(4);
-                numOfApplicants = reader.GetInt32(5);
-                orgName = reader.GetString(6);
-                orgDescription = reader.GetString(7);
-                orgImage = reader.GetString(8);
-
-            }
-
-
+            recentPostID = reader.GetInt32(0);
         }
 
+        sc.Close();
+
+        sc.Open();
+
+
+        System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
+        recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
+        recentJobPost.Connection = sc;
+
+        reader = recentJobPost.ExecuteReader();
+
+    ((Label)Master.FindControl("lblMaster2")).Text = "Job Cards";
+
+
+
+        while (reader.Read())
+        {
+            jobTitle = reader.GetString(0);
+            jobDescription = reader.GetString(1);
+            jobType = reader.GetString(2);
+            jobLocation = reader.GetString(3);
+            jobDeadline = reader.GetDateTime(4);
+            numOfApplicants = reader.GetInt32(5);
+            orgName = reader.GetString(6);
+            orgDescription = reader.GetString(7);
+            orgImage = reader.GetString(8);
+
+        }
 
     }
-
-
-
-
 
 
     protected void jobPostingTable_Load(object sender, EventArgs e)
