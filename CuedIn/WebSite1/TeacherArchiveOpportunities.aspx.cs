@@ -17,7 +17,8 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
         }
         else
         {
-           gridviewRejJobs.Columns[2].Visible = false;
+           // ((Label)Master.FindControl("lblMaster2")).Text = "Teacher Archive";
+            gridviewRejJobs.Columns[2].Visible = false;
            gridviewAccJobs.Columns[2].Visible = false;
         }
 
@@ -71,7 +72,7 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
         approveJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/ArchiveOpportunities.aspx");
+        Response.Redirect("~/TeacherArchiveOpportunities.aspx");
     }
     //Modal More Info in reject 
     protected void moreInfoRejJobLinkBtn_Click(object sender, CommandEventArgs e)
@@ -179,7 +180,7 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
         //UPDATE WITH QUERIES
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
-        Response.Redirect("~/ArchiveOpportunities.aspx");
+        Response.Redirect("~/TeacherArchiveOpportunities.aspx");
     }
 
     //reject button clicked in approve gridview-- populates modal
@@ -227,6 +228,6 @@ public partial class TeacherArchiveOpportunities : System.Web.UI.Page
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/ArchiveOpportunities.aspx");
+        Response.Redirect("~/TeacherArchiveOpportunities.aspx");
     }
 }

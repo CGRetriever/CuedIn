@@ -15,6 +15,7 @@ public partial class ScholarshipMap : System.Web.UI.Page
         }
         else
         {
+            ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Map";
         }
         }
 }

@@ -15,6 +15,7 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
         }
         else
         {
+            ((Label)Master.FindControl("lblMaster")).Text = "Administrative Dashboard";
         }
         }
 }

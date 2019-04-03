@@ -19,6 +19,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         else
         {
             GridView1.Columns[0].Visible = false;
+            ((Label)Master.FindControl("lblMaster2")).Text = "Student Application Requests";
         }
 
     }
@@ -82,7 +83,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         approveStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/StudentActDec.aspx");
+        Response.Redirect("~/CounselorStudentActDec.aspx");
     }
 
 
@@ -138,7 +139,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         rejectStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/StudentActDec.aspx");
+        Response.Redirect("~/CounselorStudentActDec.aspx");
     }
 
     protected void moreInfoStudentLinkBtn_Click(object sender, CommandEventArgs e)

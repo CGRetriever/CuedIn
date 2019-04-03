@@ -18,16 +18,16 @@ public partial class CreateUser : System.Web.UI.Page
         //{
         //}
         //    //DropDownList2.DataBind();
-            //role.DataBind();
-            //role.Items.Insert(0, new ListItem("Please Select a Role", ""));
-            //role.Items[0].Selected = true;
-            //role.Items[0].Attributes["disabled"] = "disabled";
+        //role.DataBind();
+        //role.Items.Insert(0, new ListItem("Please Select a Role", ""));
+        //role.Items[0].Selected = true;
+        //role.Items[0].Attributes["disabled"] = "disabled";
 
-            //DropDownList2.Items.Insert(0, new ListItem("Please Select a School", ""));
-            //DropDownList2.Items[0].Selected = true;
-            //DropDownList2.Items[0].Attributes["disabled"] = "disabled";
-
-        }
+        //DropDownList2.Items.Insert(0, new ListItem("Please Select a School", ""));
+        //DropDownList2.Items[0].Selected = true;
+        //DropDownList2.Items[0].Attributes["disabled"] = "disabled";
+        ((Label)Master.FindControl("lblMaster")).Text = "Create Users";
+    }
 
     protected void CreateUserClick(object sender, EventArgs e)
     {

@@ -17,7 +17,7 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         }
         else
         {
-          ((Label)Master.FindControl("lblMaster2")).Text = "Archive Scholarships";
+          ((Label)Master.FindControl("lblMaster2")).Text = "Archived Scholarships";
         }
     }
 
@@ -34,7 +34,7 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         sql.Close();
 
 
-        Response.Redirect("~/ArchiveScholarships.aspx");
+        Response.Redirect("~/CounselorArchiveScholarships.aspx");
     }
     //Gridview Rejected View More Button
     protected void btnRejScholarshipViewMore_Click(object sender, CommandEventArgs e)
@@ -99,7 +99,7 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
 
-        Response.Redirect("~/ArchiveScholarships.aspx");
+        Response.Redirect("~/CounselorArchiveScholarships.aspx");
     }
     //Gridview Approve Button in Rejected GridView
 
@@ -189,7 +189,7 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         sql.Close();
 
 
-        Response.Redirect("~/ArchiveScholarships.aspx");
+        Response.Redirect("~/CounselorArchiveScholarships.aspx");
     }
 
     //Gridview Accepted View More Button

@@ -21,7 +21,7 @@ public partial class CounselorHoursApprovalPage : System.Web.UI.Page
         else
         {
             GridView1.Columns[0].Visible = false;
-            ((Label)Master.FindControl("lblMaster2")).Text = "Hours to Approve";
+            ((Label)Master.FindControl("lblMaster2")).Text = "Student Log Hours";
         }
 
     }
@@ -81,7 +81,7 @@ public partial class CounselorHoursApprovalPage : System.Web.UI.Page
 
         GridView1.DataBind();
 
-        Response.Redirect("~/HoursApprovalPage.aspx");
+        Response.Redirect("~/CounselorHoursApprovalPage.aspx");
     }
 
     //click reject in gridview-- open modal-- fill modal
@@ -129,7 +129,7 @@ public partial class CounselorHoursApprovalPage : System.Web.UI.Page
 
         GridView1.DataBind();
 
-        Response.Redirect("~/HoursApprovalPage.aspx");
+        Response.Redirect("~/CounselorHoursApprovalPage.aspx");
     }
     //open comment modal
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)

@@ -51,7 +51,7 @@ public partial class CounselorJobPosting : System.Web.UI.Page
 
             reader = recentJobPost.ExecuteReader();
 
-           ((Label)Master.FindControl("lblMaster2")).Text = "Job Board";
+           ((Label)Master.FindControl("lblMaster2")).Text = "Job Cards";
 
 
 

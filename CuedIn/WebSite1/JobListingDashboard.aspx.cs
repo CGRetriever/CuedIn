@@ -15,6 +15,7 @@ public partial class JobListingDashboard : System.Web.UI.Page
         }
         else
         {
+            ((Label)Master.FindControl("lblMaster")).Text = "Job Listings Dashboard";
         }
     }
 }

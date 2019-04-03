@@ -19,7 +19,7 @@ public partial class StudentActDec : System.Web.UI.Page
         else
         {
             GridView1.Columns[0].Visible = false;
-            ((Label)Master.FindControl("lblMaster")).Text = "Student";
+            ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         }
     }
 

@@ -15,6 +15,7 @@ public partial class JobListingMap : System.Web.UI.Page
         }
         else
         {
+            ((Label)Master.FindControl("lblMaster")).Text = "Work Based Learning Map";
         }
     }
 }
