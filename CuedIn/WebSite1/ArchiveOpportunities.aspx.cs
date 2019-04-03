@@ -79,7 +79,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
-        MailButtonLink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Job Approval";
+        MailButtonLink.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Approval!";
 
 
 
@@ -262,7 +262,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
-        MailButtonLink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Job Rejection";
+        RejectMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Rejection";
 
 
 

@@ -153,7 +153,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         EmailQuery.Close();
 
 
-        AcceptSMaillink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Scholarship Approval";
+        AcceptSMaillink.NavigateUrl = "mailto:" + email + "?subject = CommUP: Scholarship Approval!";
 
 
 
@@ -208,7 +208,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         EmailQuery.Close();
 
 
-        AcceptSMaillink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Scholarship Rejection";
+        RejectSMaillink.NavigateUrl = "mailto:" + email + "?subject = CommUP: Scholarship Rejection";
 
 
 
