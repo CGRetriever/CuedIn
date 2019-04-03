@@ -17,7 +17,7 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         }
         else
         {
-          ((Label)Master.FindControl("lblMaster2")).Text = "Archive Scholarships";
+          ((Label)Master.FindControl("lblMaster2")).Text = "Archived Scholarships";
         }
     }
 

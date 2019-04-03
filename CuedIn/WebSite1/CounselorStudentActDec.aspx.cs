@@ -19,7 +19,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         else
         {
             GridView1.Columns[0].Visible = false;
-           // ((Label)Master.FindControl("lblMaster2")).Text = "Scholarship Dashboard";
+            ((Label)Master.FindControl("lblMaster2")).Text = "Student Application Requests";
         }
 
     }

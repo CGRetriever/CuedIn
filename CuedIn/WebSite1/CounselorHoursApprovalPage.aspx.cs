@@ -21,7 +21,7 @@ public partial class CounselorHoursApprovalPage : System.Web.UI.Page
         else
         {
             GridView1.Columns[0].Visible = false;
-            ((Label)Master.FindControl("lblMaster2")).Text = "Hours to Approve";
+            ((Label)Master.FindControl("lblMaster2")).Text = "Student Log Hours";
         }
 
     }

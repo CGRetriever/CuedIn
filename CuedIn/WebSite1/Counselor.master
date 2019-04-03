@@ -46,13 +46,10 @@
                             <a href="CounselorOpportunityActDec.aspx">Manage Opportunities</a>
                         </li>
                         <li>
-                            <a href="CounselorArchiveOpportunities.aspx">Archived JobListings</a>
+                            <a href="CounselorArchiveOpportunities.aspx">Archived Job Listings</a>
                         </li>
 
                            <li>
-                            <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
-                        </li>
-                         <li>
                             <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
                         </li>
                     </ul>
