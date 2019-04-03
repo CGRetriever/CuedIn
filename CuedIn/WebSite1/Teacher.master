@@ -87,12 +87,13 @@
                    <div class="col-md-3">
                        <img class="img" src="images/comlogo.png" alt="company logo" style="height:200px; width:400px;">
                    </div>
-                   
+                   <div class="col-md-6 text-center">
                        <br>
                        <br>
                        <br>
                        <%--<h1 style=" color:#fff;  letter-spacing: 6px;"> STUDENT OUTCOMES</h1>--%>
                        <asp:Label ID="lblMaster2" runat="server" Text="" Style="color: #fff; text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
+                       </div>
 
 
                
