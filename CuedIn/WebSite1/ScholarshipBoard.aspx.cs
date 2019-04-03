@@ -19,7 +19,14 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        if (Session["user"] == null ||  !Session["permission"].Equals("Admin"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Cards";
+            String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         sc.Open();
 
@@ -45,17 +52,17 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
 
 
-        while (reader.Read())
-        {
-            scholarshipName = reader.GetString(0);
-            scholarshipDescription = reader.GetString(1);
-            scholarshipMin = (double)reader.GetDecimal(2);
-            scholarshipMax = (double)reader.GetDecimal(3);
-            scholarshipDueDate = reader.GetDateTime(4);
-            orgName = reader.GetString(5);
-            orgDescription = reader.GetString(6);
-            orgImage = reader.GetString(7);
-
+            while (reader.Read())
+            {
+                scholarshipName = reader.GetString(0);
+                scholarshipDescription = reader.GetString(1);
+                scholarshipMin = (double)reader.GetDecimal(2);
+                scholarshipMax = (double)reader.GetDecimal(3);
+                scholarshipDueDate = reader.GetDateTime(4);
+                orgName = reader.GetString(5);
+                orgDescription = reader.GetString(6);
+                orgImage = reader.GetString(7);
+            }
         }
     }
     protected void scholarshipTable_Load(object sender, EventArgs e)

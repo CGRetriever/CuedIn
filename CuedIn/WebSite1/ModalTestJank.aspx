@@ -1,38 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ModalTestJank.aspx.cs" Inherits="ModalTestPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Counselor.master" AutoEventWireup="true" CodeFile="ModalTestJank.aspx.cs" Inherits="ModalTestJank" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        body
-        {
-            font-family: Arial;
-            font-size: 10pt;
-        }
-        table
-        {
-            border: 1px solid #ccc;
-        }
-        table th
-        {
-            background-color: #F7F7F7;
-            color: #333;
-            font-weight: bold;
-        }
-        table th, table td
-        {
-            padding: 5px;
-            border-color: #ccc;
-        }
-    </style>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-</head>
-<body>
-    <form id="form1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+     <form id="form1" runat="server">
     <div>
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-striped table-hover"
             DataKeyNames="student_Id" AutoGenerateColumns="false" GridLines="None">
@@ -114,7 +83,8 @@
         </div>
     </div>
     </form>
-</body>
-</html>
-    </head>
-C#
+
+
+
+</asp:Content>
+

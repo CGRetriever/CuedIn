@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class ModalTestPage : System.Web.UI.Page
+public partial class ModalTestJank : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

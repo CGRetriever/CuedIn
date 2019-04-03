@@ -12,7 +12,17 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-       GridView2.Columns[0].Visible = false;
+
+        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
+        {
+            Response.Redirect("Login.aspx");
+        }
+        else
+        {
+            GridView2.Columns[0].Visible = false;
+            ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
+        }
+
     }
 
 
@@ -22,45 +32,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         /* Verifies that the control is rendered */
     }
 
-    protected void GridView1_OnRowCommand(object sender, GridViewCommandEventArgs e)
-
-    {
-        int jobID = Convert.ToInt32(e.CommandArgument);
-        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-        if (e.CommandName == "JApprove")
-        {
-            //sql.Open();
-            //System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
-            //approveJob.Connection = sql;
-            //approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            //approveJob.ExecuteNonQuery();
-            //sql.Close();
-
-            //Maybe pop-up box that says "Job XYZ Approved, would you like to send to a student?"//
-            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openModal();", true);
-
-        }
-        else if (e.CommandName == "JReject")
-        {
-            //sql.Open();
-            //System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
-            //rejectJob.Connection = sql;
-            //rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + jobID;
-            //rejectJob.ExecuteNonQuery();
-            //sql.Close();
-
-            //Maybe pop-up box that says "Job XYZ Rejected, would you like to message the business??"//
-        }
-
-
-
-
-        Response.Redirect(Request.RawUrl);
-
-    }
-
+    //approve button clicked in gridview--opens modal-- populates modal
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -72,6 +44,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
         int jobID = Convert.ToInt32(e.CommandArgument);
 
         Session["selectedjobID"] = jobID.ToString();
+
+        String temp = Session["selectedjobID"].ToString();
 
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
@@ -88,14 +62,37 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         }
 
+        sql.Close();
 
 
 
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE JobListing.JobListingID = " + Session["selectedjobID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+             email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+
+        MailButtonLink.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Approval!";
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
-
+    //yes button clicked in modal-- sends to DB
     protected void acceptJobButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -104,14 +101,14 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.CommandText = "update joblisting set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
         Response.Redirect("~/OpportunityActDec.aspx");
     }
 
-
+    //reject button clicked in gridview-- populates modal
     protected void rejectJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -140,10 +137,34 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         }
 
+        sql.Close();
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE JobListing.JobListingID = " + Session["selectedjobID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+
+        RejectMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Rejection";
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
-
+    //reject button clicked in modal-- sends to DB
     protected void rejectJobButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -152,13 +173,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update joblisting set approved = 'no', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        rejectJob.CommandText = "update joblisting set approved = 'N', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
         Response.Redirect("~/OpportunityActDec.aspx");
     }
-
+    //more info button clicked in gridview
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -183,7 +204,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             //set labels to db values
             lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
             lblJOrganizationDescription.Text = "Organization Description: "+ reader.GetString(1);
-            lblJobTitle.Text = "Job Title: " + reader.GetString(2);
+            lblJobName.Text = "Job Title: " + reader.GetString(2);
             lblJobDescription.Text = "Job Description: " + reader.GetString(3);
             lblJobType.Text = "Job Type: " + reader.GetString(4);
             lblJobLocation.Text = "Job Location: " + reader.GetString(5);
@@ -205,25 +226,10 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-
+    //more info button clicked in scholarship gridview
     protected void LinkButton1_Click(object sender, CommandEventArgs e)
     {
 
-        //int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        //GridViewRow row = GridView2.Rows[rowIndex];
-        ////lblstudentid.Text = (row.FindControl("lblstudent_Id") as Label).Text;
-        ////lblmonth.Text = (row.FindControl("lblMonth_Name") as Label).Text; ;
-        ////txtAmount.Text = (row.FindControl("lblAmount") as Label).Text;
-
-        //String sName;
-        //String sDesc;
-
-        //sName = GridView2.Rows[rowIndex].Cells[0].Text;
-        //sDesc = GridView2.Rows[rowIndex].Cells[1].Text;
-
-        ////String primarykey;
-
-        ////  primarykey = GridView2.Rows[rowIndex].Cells[0].Text;
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
@@ -248,8 +254,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
             lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
             lblScholarshipName.Text = "Scholarship Name : " + reader.GetString(0);
             lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: " + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: " + reader.GetSqlMoney(3);
+            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
             lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
             lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
 
@@ -260,7 +266,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
     }
-
+    //approve button clicked in scholarship gridview
     protected void LinkButton2_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -289,10 +295,36 @@ public partial class OpportunityActDec : System.Web.UI.Page
             subscholarApproveLabel.Text = reader.GetString(1);
         }
 
+        sql.Close();
+
+
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+        AcceptSMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Scholarship Approval!";
+
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
 
-
+    //reject button clicked in scholarship gridview
     protected void LinkButton3_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -319,12 +351,34 @@ public partial class OpportunityActDec : System.Web.UI.Page
             scholarsubRejectLabel.Text = reader.GetString(1);
         }
 
+        sql.Close();
+
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
 
 
 
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+        RejectSMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Scholarship Rejection";
+        
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
-
+    //reject button clicked in modal-- updates DB
     protected void rejectScholarshipButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -333,13 +387,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update scholarship set approved = 'no', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.CommandText = "update scholarship set approved = 'N', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
         
         Response.Redirect("~/OpportunityActDec.aspx");
     }
-
+    //approve button clicked in modal-- updates DB
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -348,7 +402,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update scholarship set approved = 'yes', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.CommandText = "update scholarship set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
@@ -357,7 +411,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     
 
-
+    //mail bullshit
     protected void Button3_Click1(object sender, EventArgs e)
     {
         // Stopped here before class. Need to get the query result from the database (the business email) and store that as a variable to pass
@@ -382,9 +436,11 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         sql.Close();
 
-        string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "%26argument=Number1";
-        string command = "mailto:" + email + "?subject=CommUp: Job Approval";
-        System.Diagnostics.Process.Start(command);
+
+
+        //string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "%26argument=Number1";
+        //string command = "mailto:" + email + "?subject=CommUp: Job Approval";
+        //System.Diagnostics.Process.Start(command);
         //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
         //Response.Redirect("~/OpportunityActDec.aspx");
     }

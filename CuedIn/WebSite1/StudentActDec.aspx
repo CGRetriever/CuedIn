@@ -6,9 +6,10 @@
 
 <form id="form1" runat="server">
       <div class="form-row">
-    
-      <label Class="form-control-lg font-weight-bold" for="inputJobs">Students To Approve </label>
-       
+       <div class="col-md-12 text-center">
+   
+           </div>
+       <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
             <Columns>
                 
@@ -29,6 +30,7 @@
             </Columns>
             <RowStyle CssClass="cursor-pointer" />
         </asp:GridView>
+           </div>
 
 
         <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
@@ -37,17 +39,13 @@
     
         
     <div class="form-group col-md-6">
-    
-        
-              
+      
     </div>
     
-        
   </div>
           
           <br />
           <br />
-
           
 <div>
         <%--Student Approve Modal--%>
@@ -58,31 +56,33 @@
                     <div class="modal-header">
                         <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to approve?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <asp:Label ID="Label1" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve?"></asp:Label>
                                 </div>
                             </div>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
+                        
                     </div>
                     <div class="modal-body" style="background-color: #4F79A3;">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
                                 <asp:Label ID="StudentApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                            </div>
-                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                            <br />
+                            
                                <asp:Label ID="StudentSubApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                </div>
-                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                               <br />
+                            
                                <asp:Label ID="Student2ndSubApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                </div>
+                                
                             </div>
-                    </div>
+                            </div>
+                            </div>
+                    
                     <div class="modal-footer">
                         <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                        <asp:Button ID="Button1" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 200px; height: 60px;" CssClass="btn btn-circle" OnClick ="acceptJobButton_Click"/>
+                        <asp:Button ID="Button1" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick ="acceptJobButton_Click"/>
                         <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;"  Class="btn btn-circle"data-dismiss="modal">Close</button>
                     </div>
                         </div>
@@ -94,7 +94,7 @@
                     $('[id*=approveXModal]').modal('show');
                 } 
             </script>
-        </div>
+        
     
 
 <div>
@@ -106,24 +106,23 @@
                     <div class="modal-header">
                         <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to reject?</h5>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                    <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
                                 </div>
                             </div>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
+                        
                     </div>
                     <div class="modal-body" style="background-color: #4F79A3;">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
                                 <asp:Label ID="StudentRejectLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                            </div>
-                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                            <br />
                                     <asp:Label ID="StudentRejectSubLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
-                                </div>
-                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                <br />
+                            
                                     <asp:Label ID="Student2ndRejectSubLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
                                 </div>
                         </div>
@@ -143,82 +142,63 @@
             </script>
         </div>
     </div>
-
-    <div>
-      <%-- Scholarship More Info Modal--%>
-        <div class="modal fade" id="jobMoreInfoModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                         <h4 class="modal-title">
-                            More Information</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <asp:Label ID="lblSOrganizationName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblSOrganizationDescription" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipDescription" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipMin" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipMax" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipQuantity" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblScholarshipDueDate" runat="server"></asp:Label> <br />
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
-                    </div>
-                </div>
-            </div>
-            <script type='text/javascript'>
-                function openEditJModal() {
-                    $('[id*=jobMoreInfoModal]').modal('show');
-                } 
-            </script>
-        </div>
-    </div>
+    
 
 <div>
-      <%-- Job More Info Modal--%>
+      <%-- Student More Info Modal--%>
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                         <h4 class="modal-title">
-                            More Information</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
+                          <div class="col-md-12 text-center">
+                                <div class="modal-title">
+                                    <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
+                                    <br>
+                                    <br>
+                                    <%--<h5>More Information</h5>--%>
+                                    <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.7em; font-weight: bold;" Text="More Information"></asp:Label>
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                        </div>
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                     <asp:Label ID="lblSudentGPA" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                        </div>
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
+                                     <asp:Label ID="lblStudentStatus" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
+                                        </div>
+                                </div>
+                            </div>
+                        
                     </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                    <div class="modal-body" style="background-color: #4F79A3;">
+                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
                             <div class="form-group">
-                                <asp:Label ID="lblStudentFirstName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentLastNameName" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentGpa" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblStudentGraduationTrack" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblLabelBlank" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobTitle" runat="server"></asp:Label> <br />
-                                <asp:Label ID ="lblJobDescription" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobType" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobLocation" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJobDeadline" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblNumOfApplicants" runat="server"></asp:Label> <br />
-                                <asp:Label ID="lblJOrganizationName" runat="server"></asp:Label> <br />
-                                <asp:Label ID ="lblJOrganizationDescription" runat="server"></asp:Label> <br />
-                            
+                                <asp:Label ID="lblOrgName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblOrgDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+
+                                    <asp:Label ID="lblJobTitle" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblJobDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblJobLocation" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblJobDeadline" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="lblNumberOfApplicants" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                
+                                    
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" Class="btn btn-warning btn-circle" data-dismiss="modal"> Close</button>
+                        <div class="flex-center" style="text-align: center !important; margin: auto !important;">
+                        <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" Class="btn btn-circle" data-dismiss="modal"> Close</button>
                     </div>
+                        </div>
                 </div>
             </div>
             <script type='text/javascript'>
@@ -229,74 +209,7 @@
         </div>
     </div>
 
-<div>
-        <%--Scholarship Approve Modal--%>
-        <div class="modal fade" id="approveSModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
-                            Approve Scholarship</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <asp:Label ID="ApprovalLbl" runat="server" Text="Are you sure you want to approve this scholarship listing?"></asp:Label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" CssClass="btn btn-success btn-circle" OnClick ="acceptScholarshipButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-            <script type='text/javascript'>
-                function openApproveSModal() {
-                    $('[id*=approveSModal]').modal('show');
-                } 
-            </script>
-        </div>
-    </div>
-
-<div>
-        <%--Scholarship Reject Modal--%>
-        <div class="modal fade" id="rejectSModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
-                            Reject Scholarship</h4>
-                        <button type="button" class="close" data-dismiss="modal">
-                            &times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="form-group">
-                                <asp:Label ID="Label1" runat="server" Text="Are you sure you want to reject this scholarship listing?"></asp:Label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="rejectScholarshipButton" runat="server" Text="Reject" CssClass="btn btn-danger btn-circle" OnClick ="rejectScholarshipButton_Click"/>
-                        <button type="button" Class="btn btn-warning btn-circle"data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-            <script type='text/javascript'>
-                function openRejectSModal() {
-                    $('[id*=rejectSModal]').modal('show');
-                } 
-            </script>
-        </div>
-    </div>
 </form>
-
-
 
 </asp:Content>
 

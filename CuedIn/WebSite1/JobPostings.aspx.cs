@@ -20,50 +20,60 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
-
-        System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
-        sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
-        sqlrecentJobPostID.Connection = sc;
-        System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
-
-        while (reader.Read())
+        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
         {
-            recentPostID = reader.GetInt32(0);
+            Response.Redirect("Login.aspx");
         }
-
-        sc.Close();
-
-        sc.Open();
-
-        System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
-        recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
-        recentJobPost.Connection = sc;
-
-        reader = recentJobPost.ExecuteReader();
-
-
-
-        while (reader.Read())
+        else
         {
-            jobTitle = reader.GetString(0);
-            jobDescription = reader.GetString(1);
-            jobType = reader.GetString(2);
-            jobLocation = reader.GetString(3);
-            jobDeadline = reader.GetDateTime(4);
-            numOfApplicants = reader.GetInt32(5);
-            orgName = reader.GetString(6);
-            orgDescription = reader.GetString(7);
-            orgImage = reader.GetString(8);
+
+            String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+            sc.Open();
+
+            System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
+            sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
+            sqlrecentJobPostID.Connection = sc;
+            System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
+
+            while (reader.Read())
+            {
+                recentPostID = reader.GetInt32(0);
+            }
+
+            sc.Close();
+
+            sc.Open();
+
+
+            System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
+            recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
+            recentJobPost.Connection = sc;
+
+            reader = recentJobPost.ExecuteReader();
+
+            ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
+
+
+
+            while (reader.Read())
+            {
+                jobTitle = reader.GetString(0);
+                jobDescription = reader.GetString(1);
+                jobType = reader.GetString(2);
+                jobLocation = reader.GetString(3);
+                jobDeadline = reader.GetDateTime(4);
+                numOfApplicants = reader.GetInt32(5);
+                orgName = reader.GetString(6);
+                orgDescription = reader.GetString(7);
+                orgImage = reader.GetString(8);
+
+            }
+
 
         }
-
 
     }
-
-
 
 
 
@@ -143,7 +153,7 @@ public partial class JobPostings : System.Web.UI.Page
                             c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
                             c.Text += "<div class='font-weight-bold indigo-text py-2'>" + jobTitleArray[count] + "</div>";
                             c.Text += "<div class = 'card-text'>" + jobDescriptionArray[count] + "</div>";
-                            c.Text += "<a type ='button' class = 'btn-primary btn-medium btn-round' style = 'background-color:#102b3f' href='" + linkArray[count] + "' target = '_blank'><i class='fab fa-dribbble' > </i></a>";
+                            c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
                             c.Text += "</div>";
                             c.Text += "</div>";
                             c.Text += "</div>";
