@@ -49,9 +49,6 @@
                             <a href="CounselorArchiveOpportunities.aspx">Archived JobListings</a>
                         </li>
 
-                           <li>
-                            <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
-                        </li>
                          <li>
                             <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
                         </li>
@@ -81,10 +78,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="CounselorJobPosting.aspx">Job Cards</a>
+                        <a href="CounselorJobPosting.aspx">Jobs</a>
                     </li>
                     <li>
-                        <a href="CounselorScholarshipBoard.aspx">Scholarship Cards</a>
+                        <a href="CounselorScholarshipBoard.aspx">Scholarship</a>
                     </li>
                 </ul>
                 </li>

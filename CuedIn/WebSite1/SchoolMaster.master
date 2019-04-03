@@ -85,10 +85,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="JobPostings.aspx">Job Cards</a>
+                        <a href="JobPostings.aspx">Jobs</a>
                     </li>
                     <li>
-                        <a href="ScholarshipBoard.aspx">Scholarship Cards</a>
+                        <a href="ScholarshipBoard.aspx">Scholarships</a>
                     </li>
                 </ul>
 
