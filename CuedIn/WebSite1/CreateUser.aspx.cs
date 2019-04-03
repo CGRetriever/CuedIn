@@ -86,19 +86,22 @@ public partial class CreateUser : System.Web.UI.Page
 
 
             insert.ExecuteNonQuery();
-            
+             
 
             //inserting into the password 
             insert.CommandText = "insert into dbo.Password (PasswordID, PasswordHash, passwordSalt, UserEntityID, lastupdated)  " +
                 "values (@passwordID, @passwordHash, @passwordSalt, @userentityID, getDate())";
 
+
+
             String hashedPass = PasswordHash.HashPassword(password.Value);
             insert.Parameters.AddWithValue("@passwordID", userID);
-            insert.Parameters.AddWithValue("@passwordHash", hashedPass);
+            insert.Parameters.AddWithValue("@passwordHash", hashedPass.Substring(0,10));
 
+            string test = PasswordHash.returnSalt(hashedPass);
 
             //had to use only the substring and not the full salt value because there is a max length of 10 in the DB.
-            insert.Parameters.AddWithValue("@passwordSalt", PasswordHash.returnSalt(hashedPass).Substring(0, 24));
+            insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0,10));
             insert.Parameters.AddWithValue("@userentityID", userID);
             insert.ExecuteNonQuery();
 
