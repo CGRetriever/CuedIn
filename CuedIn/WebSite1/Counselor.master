@@ -90,11 +90,11 @@
 
 
                   <i class="fas fa-chart-line"></i>
-                     Admin Metrics
+                      Metrics
                 </a>
                 <ul class="collapse list-unstyled" id="Dashboard">
                     <li>
-                        <a href="CounselorStudentMetricsDashboard.aspx">Administrative Dashboard</a>
+                        <a href="CounselorStudentMetricsDashboard.aspx">Student Metrics Dashboard</a>
                     </li>
                     <li>
                         <a href="CounselorScholarshipDashboard.aspx">Scholarship Dashboard</a>
