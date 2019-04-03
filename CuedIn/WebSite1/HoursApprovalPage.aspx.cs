@@ -20,7 +20,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         else
         {
             GridView1.Columns[0].Visible = false;
-            ((Label)Master.FindControl("lblMaster")).Text = "Hours to approve";
+            ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
         }
     }
 
