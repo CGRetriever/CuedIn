@@ -79,7 +79,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
-        MailButtonLink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Job Approval";
+        MailButtonLink.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Approval!";
 
 
 
@@ -238,6 +238,32 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
             rejectjobsublabel.Text = reader.GetString(1);
 
         }
+
+        sql.Close();
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE JobListing.JobListingID = " + Session["selectedjobID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+
+        RejectMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Rejection";
+
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);

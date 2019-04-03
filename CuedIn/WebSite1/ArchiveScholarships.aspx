@@ -64,10 +64,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to approve?</h5>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <asp:Label ID="Label4" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to approve?"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -83,9 +84,16 @@
                             </div>
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
+                                 <asp:HyperLink ID="AcceptSMaillink" NavigateUrl="~/OpportunityActDec.aspx" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px; text-align: center; display:table-cell;" CssClass="btn btn-circle" runat="server" Text="Message Organization"></asp:HyperLink>
+                                </div>
+                            <div class="row">
+                                <div>
                                 <asp:Button ID="acceptScholarshipButton" runat="server" Text="Approve" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="acceptScholarshipButton_Click" />
+                                <asp:Label ID="Label9" runat="server" Text="&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                                 <asp:Label ID="Label10" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
                             </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -105,13 +113,13 @@
                         <div class="modal-header">
                             <div class ="col-md-12 text-center">
                             <div class="modal-title">
-                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn"></i>
+                                <i class="fas fa-info-circle fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                 <br />
                                 <br />
                                 <%--<h5>More Information</h5>--%>
-                                <asp:Label ID="Label2"  Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" ForeColor="Black" Text="More Information"></asp:Label>
+                                <asp:Label ID="Label2"  Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" ForeColor="Black" Text="More Information"></asp:Label>
                                 <br />
-                                <asp:Label ID="Label3"  Style="color: black; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" ForeColor="Black"></asp:Label>
+                                <asp:Label ID="Label3"  Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.4em; font-weight: bold" runat="server" ForeColor="Black"></asp:Label>
                             </div>
                             </div>
                             
@@ -159,10 +167,11 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Are you sure you want to reject?</h5>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                    <asp:Label ID="Label1" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
                                 </div>
                             </div>
                             
@@ -180,9 +189,18 @@
                         
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                            <asp:Button ID="rejectScholarshipButton" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectScholarshipButton_Click" />
-                            <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                                 <asp:HyperLink ID="RejectSMaillink" NavigateUrl="~/OpportunityActDec.aspx" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px; text-align: center; display:table-cell;" CssClass="btn btn-circle" runat="server" Text="Message Organization"></asp:HyperLink>
                                 </div>
+                            <div class="row">
+                                <div>
+                            <asp:Button ID="rejectScholarshipButton" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectScholarshipButton_Click" />
+                            <asp:Label ID="Label5" runat="server" Text="&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+                            <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                            <asp:Label ID="Label6" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
