@@ -87,7 +87,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-        MailButtonLink.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Approval!";
+        MailButtonLink.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Job%20Approval!";
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
@@ -160,7 +160,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-        RejectMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Job Rejection";
+        RejectMailButton.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Job%20Rejection";
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
@@ -319,7 +319,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         EmailQuery.Close();
 
 
-        AcceptSMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Scholarship Approval!";
+        AcceptSMailButton.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Scholarship%20Approval!";
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
@@ -374,7 +374,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         EmailQuery.Close();
 
 
-        RejectSMailButton.NavigateUrl = "mailto:" + email + "?subject = CommUP: Scholarship Rejection";
+        RejectSMailButton.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Scholarship%20Rejection";
         
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
