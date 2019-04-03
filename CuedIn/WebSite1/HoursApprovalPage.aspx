@@ -54,16 +54,16 @@
                         <div class="modal-header">
                             <div class="col-md-12 text-center">
                                 <div class="modal-title">
-                                    <i class="fas fa-address-card fa-4x progress-bar-animated rotateIn"></i>
+                                    <i class="fas fa-address-card fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <h5>Student Information</h5>
+                                    <%--<h5>Student Information</h5>--%>
+                                     <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Student Information"></asp:Label>
                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
 
                                 </div>
                             </div>
-                            <button type="button" class="close" data-dismiss="modal">
-                                &times;</button>
+                           
                         </div>
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
