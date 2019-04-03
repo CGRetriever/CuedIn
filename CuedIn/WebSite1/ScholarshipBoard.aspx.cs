@@ -25,6 +25,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         }
         else
         {
+            
             String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         sc.Open();
