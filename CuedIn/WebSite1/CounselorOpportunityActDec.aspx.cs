@@ -77,7 +77,7 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
         approveJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/CounselorOpportunityActDec.aspx");
     }
 
     //reject button clicked in gridview-- populates modal
@@ -125,7 +125,7 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/CounselorOpportunityActDec.aspx");
     }
     //more info button clicked in gridview
     protected void moreInfoJobLinkBtn_Click(object sender, CommandEventArgs e)
@@ -291,7 +291,7 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/CounselorOpportunityActDec.aspx");
     }
     //approve button clicked in modal-- updates DB
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)
@@ -306,7 +306,7 @@ public partial class CounselorOpportunityActDec : System.Web.UI.Page
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/OpportunityActDec.aspx");
+        Response.Redirect("~/CounselorOpportunityActDec.aspx");
     }
 
 

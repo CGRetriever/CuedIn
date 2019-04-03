@@ -10,14 +10,14 @@ public partial class CreateUser : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-        else
-        {
-        }
-            //DropDownList2.DataBind();
+        //if (Session["user"] == null || !Session["permission"].Equals("Admin"))
+        //{
+        //    Response.Redirect("Login.aspx");
+        //}
+        //else
+        //{
+        //}
+        //    //DropDownList2.DataBind();
             //role.DataBind();
             //role.Items.Insert(0, new ListItem("Please Select a Role", ""));
             //role.Items[0].Selected = true;
