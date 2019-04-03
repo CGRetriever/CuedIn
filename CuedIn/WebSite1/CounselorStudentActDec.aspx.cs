@@ -82,7 +82,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         approveStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/StudentActDec.aspx");
+        Response.Redirect("~/CounselorStudentActDec.aspx");
     }
 
 
@@ -138,7 +138,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         rejectStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/StudentActDec.aspx");
+        Response.Redirect("~/CounselorStudentActDec.aspx");
     }
 
     protected void moreInfoStudentLinkBtn_Click(object sender, CommandEventArgs e)
