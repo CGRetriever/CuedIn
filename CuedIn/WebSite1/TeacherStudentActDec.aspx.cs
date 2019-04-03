@@ -18,6 +18,7 @@ public partial class TeacherStudentActDec : System.Web.UI.Page
         }
         else
         {
+            ((Label)Master.FindControl("lblMaster2")).Text = "Student Application Requests";
             GridView1.Columns[0].Visible = false;
         }
 

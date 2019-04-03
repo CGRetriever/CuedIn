@@ -19,6 +19,7 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
         }
         else
         {
+            ((Label)Master.FindControl("lblMaster2")).Text = "Student Log Hours";
             GridView1.Columns[0].Visible = false;
         }
     }
