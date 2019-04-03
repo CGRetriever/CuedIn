@@ -6,7 +6,7 @@
 <form id="form1" runat="server">
       <div class="form-row">
        <div class="col-md-12 text-center">
-      <label Class="form-control-lg font-weight-bold" for="inputJobs">Students To Approve </label>
+
            </div>
        <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
