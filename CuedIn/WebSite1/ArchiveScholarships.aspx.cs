@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 
 public partial class ArchiveScholarships : System.Web.UI.Page
 {
+    public static String email;
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -130,6 +132,28 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         }
 
         sql.Close();
+
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+        AcceptSMaillink.NavigateUrl = "mailto:" + email + " ? subject = CommUP : Scholarship Approval";
 
 
 
