@@ -32,6 +32,7 @@
         </asp:GridView>
            </div>
 
+          <asp:Button ID="Button3" runat="server" Text="Button" OnClick="TestClick" />
 
         <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
 
@@ -46,6 +47,17 @@
           
           <br />
           <br />
+
+
+
+    <script type="text/javascript">
+        function setFont()
+        {
+            document.getElementById("Label1").style.fontSize = '3.3em';
+
+        }
+
+    </script>
           
 <div>
         <%--Student Approve Modal--%>

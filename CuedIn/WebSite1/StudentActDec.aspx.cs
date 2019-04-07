@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -197,5 +198,26 @@ public partial class StudentActDec : System.Web.UI.Page
 
 
 
+    }
+
+
+
+    protected void TestClick(object sender, EventArgs e)
+    {
+
+
+        //FontFamily f = new FontFamily("Poppins");
+        //float fontsize = 69;
+        //Font temp = new Font(f, fontsize, FontStyle.Regular, GraphicsUnit.Pixel);
+        //Label1.Font = temp;
+
+        
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "setFont();", true);
+        int t = 2;
+
+        
     }
 }
