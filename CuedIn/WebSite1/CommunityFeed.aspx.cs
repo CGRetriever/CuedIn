@@ -15,18 +15,22 @@ public partial class CommunityFeed : System.Web.UI.Page
     {
         ((Label)Master.FindControl("lblMaster")).Text = "Community Feed";
 
+        String ConsumerAPIKey = "DniQmv9b00q3fUmIsJ1XUfsVk";
+        String ConsumerSecretKey = "2XxjzfYbyQgQfvK0T8tXntG6BOV7XGC2sJo4zUdOFY2LbqJojs";
 
-        Auth.SetUserCredentials("pfWh2IF2nun7O27NDqTTUFn7a",
-            "ApbSuKZGfN92AZwuv5TaZG1HW4bDY5UcBawkbbJPLmA7I3cxmH",
-            "411549308-AgIWJT3aFpIsTh0RHI7OrLusBKnnRqpU5LG0BmN1",
-            "weQ7m0qkZdFORveMZOhvOQ5rGM8ZPCk4S4Av96LbXfkvs");
+        String accessToken = "411549308-HzZFxXI32uraK0fUsLGoVxYfD6AXDjZFDwA4LAvZ";
+        String accessSecretToken = "rOqotd9WCARD5nrtU3wOFpOJhFRhBEmnNE7oKZ0vqdGL0";
+
+        Auth.SetUserCredentials(ConsumerAPIKey, ConsumerSecretKey, accessToken, accessSecretToken);
+
+        var authUser = Tweetinvi.User.GetAuthenticatedUser();
+
+        var profPic = authUser.GetProfileImageStream(Tweetinvi.Models.ImageSize.normal);
+
+        ProfilePicture.ImageUrl = authUser.ProfileImageUrl;
 
 
 
-
-
-
-    
 
 
     }
