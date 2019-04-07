@@ -10,8 +10,8 @@
     <asp:Label ID="NewsFeedLabel" runat="server" Text="Our Feed" Font-Bold="True"></asp:Label>
         
         <div class ="container">
-            <asp:Panel ID="ProfilePanel" runat="server">
-                <asp:Image ID="ProfilePicture" runat="server" />
+            <asp:Panel ID="ProfilePanel" runat="server" BackColor="gray">
+                <asp:Image ID="ProfilePicture" runat="server" CssClass="img-fluid" />
                
             </asp:Panel>
         </div>
