@@ -9,7 +9,7 @@ public partial class OA : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("OA"))
+        if (Session["user"] == null || !Session["permission"].Equals("Op Admin"))
         {
             Response.Redirect("Login.aspx");
         }
