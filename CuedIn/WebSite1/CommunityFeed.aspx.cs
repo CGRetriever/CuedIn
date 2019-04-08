@@ -25,10 +25,8 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         var authUser = Tweetinvi.User.GetAuthenticatedUser();
 
-        var bannerPic = authUser.ProfileBannerURL;
         var profilePic = authUser.ProfileImageUrlFullSize;
 
-        BannerPicture.ImageUrl = bannerPic;
         profilePicture.ImageUrl = profilePic;
 
         UserNameLabel.Text = authUser.UserIdentifier.ToString();
