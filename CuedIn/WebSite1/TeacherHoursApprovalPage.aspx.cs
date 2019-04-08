@@ -10,10 +10,12 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
 {
     public static String email;
     public static String fullName;
+    
 
     protected void Page_Load(object sender, EventArgs e)
     {
         
+        btn
         ((Label)Master.FindControl("lblMaster2")).Text = "Student Log Hours";
         GridView1.Columns[0].Visible = false;
         
@@ -36,6 +38,8 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
         GridViewRow row = GridView1.Rows[rowIndex];
 
         int jobID = Convert.ToInt32(e.CommandArgument);
+
+        
 
         Session["selectedLogID"] = jobID.ToString();
 
@@ -205,6 +209,7 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
 
     protected void btnStudentView_Click(object sender, CommandEventArgs e)
     {
+       
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
