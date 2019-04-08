@@ -93,7 +93,7 @@ public partial class Login : System.Web.UI.Page
         //method to validate if password in hashed textbox matches our hashed password in the DB
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
-
+           
             Label1.Text = "Success!";
             String permissions = " ";
             sql.Open();
