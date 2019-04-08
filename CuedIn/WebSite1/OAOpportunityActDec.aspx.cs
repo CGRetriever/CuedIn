@@ -14,7 +14,7 @@ public partial class OAOpportunityActDec : System.Web.UI.Page
     {
 
         GridView2.Columns[0].Visible = false;
-        ((Label)Master.FindControl("lblMaster2")).Text = "Manage Opportunities";
+        ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
 
 
     }

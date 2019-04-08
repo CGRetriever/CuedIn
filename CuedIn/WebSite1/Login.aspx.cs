@@ -153,6 +153,12 @@ public partial class Login : System.Web.UI.Page
                 Session["permission"] = permissions;
                 Response.Redirect("TeacherJobPosting.aspx");
             }
+            else if (permissions.Equals("Op Admin"))
+            {
+                Session["user"] = username.Value;
+                Session["permission"] = permissions;
+                Response.Redirect("OAJobPostings.aspx");
+            }
 
         }
         else
