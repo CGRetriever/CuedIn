@@ -211,7 +211,10 @@ public partial class StudentActDec : System.Web.UI.Page
         //Font temp = new Font(f, fontsize, FontStyle.Regular, GraphicsUnit.Pixel);
         //Label1.Font = temp;
 
-        
+        //StudentApproveLabel.Font.Size = FontUnit.XXLarge;
+
+        StudentApproveLabel.Font.Size = FontUnit.Parse("70px");
+
 
 
 
