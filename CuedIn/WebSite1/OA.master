@@ -44,15 +44,15 @@
                     </a>
                     <ul class="collapse list-unstyled" id="OppPages">
                         <li>
-                            <a href="OpportunityActDec.aspx">Manage Opportunities</a>
+                            <a href="OAOpportunityActDec.aspx">Manage Opportunities</a>
                         </li>
                         <li>
-                            <a href="ArchiveOpportunities.aspx">Archived Job Listings</a>
+                            <a href="OAArchiveOpportunities.aspx">Archived Job Listings</a>
                         </li>
 
 
                         <li>
-                            <a href="ArchiveScholarships.aspx">Archived Scholarships</a>
+                            <a href="OAArchiveScholarships.aspx">Archived Scholarships</a>
                         </li>
                     </ul>
                 </li>
@@ -66,10 +66,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="StudentPages">
                     <li>
-                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
+                        <a href="OAHoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                     <li>
-                        <a href="StudentActDec.aspx">Student Application Request</a>
+                        <a href="OAStudentActDec.aspx">Student Application Request</a>
                     </li>
                 </ul>
                 </li>
@@ -85,10 +85,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="JobPostings.aspx">Jobs</a>
+                        <a href="OAJobPostings.aspx">Jobs</a>
                     </li>
                     <li>
-                        <a href="ScholarshipBoard.aspx">Scholarships</a>
+                        <a href="OAScholarshipBoard.aspx">Scholarships</a>
                     </li>
                 </ul>
 
@@ -102,26 +102,26 @@
                 </a>
                 <ul class="collapse list-unstyled" id="Dashboard">
                      <li>
-                        <a href="StudentMetricsDashboard.aspx">Student Metrics Dashboard</a>
+                        <a href="OAStudentMetricsDashboard.aspx">Student Metrics Dashboard</a>
                     </li>
                     <li>
-                        <a href="ScholarshipDashboard.aspx">Scholarship Dashboard</a>
+                        <a href="OAScholarshipDashboard.aspx">Scholarship Dashboard</a>
                     </li>
                     <li>
-                        <a href="JobListingDashboard.aspx">Job Listing Dashboard</a>
+                        <a href="OAJobListingDashboard.aspx">Job Listing Dashboard</a>
                     </li>
                     <li>
-                        <a href="JobListingMap.aspx">Work Based Learning Map</a>
+                        <a href="OAJobListingMap.aspx">Work Based Learning Map</a>
                     </li>
                      <li>
-                        <a href="ScholarshipMap.aspx">Scholarship Map</a>
+                        <a href="OAScholarshipMap.aspx">Scholarship Map</a>
                     </li>
                 </ul>
 
 
                 </li>
                 <li>
-                    <a href="CreateUser.aspx">
+                    <a href="OACreateUser.aspx">
                         <i class="fas fa-user-circle"></i>
                         Create Users
                     </a>

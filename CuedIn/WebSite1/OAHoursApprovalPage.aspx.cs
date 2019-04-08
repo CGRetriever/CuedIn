@@ -16,7 +16,7 @@ public partial class OAHoursApprovalPage : System.Web.UI.Page
 
 
         GridView1.Columns[0].Visible = false;
-        ((Label)Master.FindControl("lblMaster2")).Text = "Student Log Hours";
+        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
 
 
     }
