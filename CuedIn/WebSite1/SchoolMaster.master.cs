@@ -35,6 +35,8 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
         //Label StudentApproveLabel = (Label)ContentPlaceHolder1.FindControl("StudentApproveLabel");
         //StudentApproveLabel.Font.Size = FontUnit.Parse("3.3em");
 
+        int x = 2;
+
 
 
     }
