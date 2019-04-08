@@ -31,8 +31,11 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
 
     protected void StudentSizeBtn_Click(object sender, EventArgs e)
     {
-        TextBox TextBox1 = (TextBox)ContentPlaceHolder1.FindControl("TextBox1");
-        Label StudentApproveLabel = (Label)ContentPlaceHolder1.FindControl("StudentApproveLabel");
-        StudentApproveLabel.Font.Size = FontUnit.Parse("3.3em");
+        //TextBox TextBox1 = (TextBox)ContentPlaceHolder1.FindControl("TextBox1");
+        //Label StudentApproveLabel = (Label)ContentPlaceHolder1.FindControl("StudentApproveLabel");
+        //StudentApproveLabel.Font.Size = FontUnit.Parse("3.3em");
+
+
+
     }
 }
