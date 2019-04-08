@@ -35,13 +35,20 @@ public partial class CommunityFeed : System.Web.UI.Page
 
 
 
-
-
+    }
+    protected void TweetButtonClick(object sender, CommandEventArgs e)
+    {
+        Tweet.Text = TweetBox.Text;
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openTweetVerification();", true);
+        
 
     }
 
 
 
-
  
+
+
+
+
 }

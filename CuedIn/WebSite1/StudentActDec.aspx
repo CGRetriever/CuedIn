@@ -104,6 +104,8 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
+
+
                         <div class="col-md-12 text-center">
                                 <div class="modal-title">
                                     <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
