@@ -29,7 +29,7 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         profilePicture.ImageUrl = profilePic;
 
-        UserNameLabel.Text = authUser.UserIdentifier.ToString();
+        UserNameLabel.Text = "@"+ authUser.UserIdentifier.ToString();
 
 
 
