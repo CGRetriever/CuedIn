@@ -73,7 +73,7 @@
                     <div class="modal-body" style="background-color: #4F79A3;">
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                             <div class="form-group">
-                                <asp:Label ID="StudentApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; /*font-size: 2.1em;*/ font-weight: bold;" Font-Size="40px"></asp:Label>
+                                <asp:Label ID="StudentApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; /*font-size: 2.1em;*/ font-weight: bold;" Font-Size="2.1em"></asp:Label>
                             <br />
                             
                                <asp:Label ID="StudentSubApproveLabel" runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
@@ -214,15 +214,6 @@
         </div>
     </div>
 
-
-    <script type="text/javascript">
-        function setFont()
-        {
-            document.getElementById("StudentApproveLabel").style.fontSize = "25px";
-
-        }
-
-    </script>
 
 </form>
 
