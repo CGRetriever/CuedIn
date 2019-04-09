@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <form id="form1" runat="server">
+ 
         <div class="form-row">
        <div class="col-md-12 text-center">
            </div>
@@ -37,13 +37,8 @@
 
 </div>
 
-
-
-        <br />
-        <br />
-
         <div>
-            <%--Student View Modal--%>
+            <%--Hours Approve Modal--%>
             <div class="modal fade" id="viewStudentModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
@@ -54,7 +49,7 @@
                                     <i class="fas fa-address-card fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <%--<h5>Student Information</h5>--%>
+                                    <%--<h5>Are you sure you want to approve?</h5>--%>
                                     <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Student Information"></asp:Label>
                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
 
@@ -94,7 +89,7 @@
 
 
         <div>
-            <%--Hours Approve Modal--%>
+            <%--Hours Reject Modal--%>
             <div class="modal fade" id="approveXModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
@@ -105,7 +100,7 @@
                                     <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br />
                                     <br />
-                                    <%--<h5>Are you sure you want to approve?</h5>--%>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
                                     <asp:Label ID="Label1" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold;" Text="Are you sure you want to approve these hours?"></asp:Label>
                                 </div>
                             </div>
@@ -139,7 +134,7 @@
         </div>
 
         <div>
-            <%--Hours Reject Modal--%>
+            <%-- Hours More Info Modal--%>
             <div class="modal fade" id="rejectJModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
@@ -150,7 +145,7 @@
                                     <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
                                     <br>
-                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                    <%--<h5>Comments</h5>--%>
                                     <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.5em; font-weight: bold;" Text="Are you sure you want to reject these hours?"></asp:Label>
                                 </div>
                             </div>
@@ -233,7 +228,7 @@
         </div>
 
             
-    </form>
+   
 
  
 

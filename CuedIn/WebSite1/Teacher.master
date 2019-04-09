@@ -21,7 +21,7 @@
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     </head>
-
+<form id="form1" runat="server">
     <body>
         <!--Interactive Sidebar Star -->
 
@@ -29,7 +29,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>CommUp</h3>
+                <h3><asp:ImageButton ID="HomeButton" runat="server" ImageUrl="~/images/CommUpMainLogo.png" OnClick="HomeButton_Click" style="height:100px; width:200px;" /></h3>
                 <strong>CU</strong>
             </div>
 
@@ -146,4 +146,4 @@
     </asp:ContentPlaceHolder>
                    </div>
 </body>
-</html>
+        </form>

@@ -15,7 +15,6 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        btn
         ((Label)Master.FindControl("lblMaster2")).Text = "Student Log Hours";
         GridView1.Columns[0].Visible = false;
         
@@ -260,4 +259,6 @@ public partial class TeacherHoursApprovalPage : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
+
+
 }
