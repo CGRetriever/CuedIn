@@ -4,8 +4,9 @@
 
     <form id="form1" runat="server">
 
+
 <div class="form-row">
-     <div class ="form-group col-md-4">
+     <div class ="form-group col-lg-4">
 
         <div class ="card text-center" style="width:30rem;">
             <div class="card-header">
@@ -35,14 +36,15 @@
               </div>
         </div>
 
-         <div class ="form-group col-md-4">
+         <div class ="form-group col-lg-4">
 
         <div class ="card text-center" style="width:30rem;">
                 <div class="card-header">
                     <asp:Label ID="Label1" runat="server" Text="Tweets" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    <a class="twitter-timeline"  href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="400" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a class="twitter-timeline"  
+                        href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="400" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
               </div>
 
@@ -51,7 +53,7 @@
 
              <div class ="form-group col-md-4">
 
-        <div class ="card text-center" style="width:25rem;">
+        <div class ="card text-center" style="width:20rem;">
                 <div class="card-header">
                     <asp:Label ID="Label2" runat="server" Text="Tweets" Font-Bold="True"></asp:Label>
                 </div>
