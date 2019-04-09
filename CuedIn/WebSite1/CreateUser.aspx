@@ -38,7 +38,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" runat="server">
+				<div class="login100-form validate-form" runat="server">
 					<span>
 						<img src="images/CommUpMainLogo.png" alt="logo" class="RoundedElement">
 					</span>
@@ -145,7 +145,7 @@
 
 				
 					</div>
-				</form>
+				
 			</div>
 		</div>
 	</div>
@@ -171,7 +171,7 @@
 	<script src="js/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
 </body>
-         </form>
+         
 </html>
 
 </asp:Content>

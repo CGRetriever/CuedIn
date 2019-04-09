@@ -27,7 +27,6 @@
     <script type='text/javascript'>                    var divElement = document.getElementById('viz1553211444276'); var vizElement = divElement.getElementsByTagName('object')[0]; vizElement.style.minWidth = '1200px'; vizElement.style.maxWidth = '2560px'; vizElement.style.width = '100%'; vizElement.style.height = '307px'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
 
-    <form id="form1" runat="server">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve </label>
@@ -373,7 +372,6 @@
                 </script>
             </div>
         </div>
-    </form>
 
 </asp:Content>
 

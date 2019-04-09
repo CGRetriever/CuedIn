@@ -4,7 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <form id="form1" runat="server">
         <div class="form-row">
        <div class="col-md-12 text-center">
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
@@ -236,7 +235,6 @@
         </div>
 
             
-    </form>
 
 
 
