@@ -5,9 +5,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <form id="form1" runat="server">
-        <div class="form-row">
-       <div class="col-md-12 text-center">
-      <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
+        <div class="form-row container-fluid">
+         <div class="col-md-12 text-center">
+             <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
+             <asp:DropDownList ID="GPAList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="GPAList_SelectedIndexChanged">
+                 <asp:ListItem>All</asp:ListItem>
+                 <asp:ListItem>1.0</asp:ListItem>
+                 <asp:ListItem>2.0</asp:ListItem>
+                 <asp:ListItem>3.0</asp:ListItem>
+             </asp:DropDownList>
+
+
            </div>
        <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">

@@ -255,4 +255,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
+
+    protected void GPAList_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (GPAList.SelectedIndex == 1)
+        {
+            JobOpportunity.SelectCommand = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested, Student.StudentGPA FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE(LogHours.CounselorApproval = 'P') and Student.StudentGPA >= '1.0'";
+            GridView1.DataBind();
+        }
+    }
 }
