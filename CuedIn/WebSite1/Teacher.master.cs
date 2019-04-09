@@ -19,4 +19,9 @@ public partial class Teacher : System.Web.UI.MasterPage
             Response.Redirect("Login.aspx");
         }
     }
+
+    protected void HomeButton_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("TeacherJobPosting.aspx");
+    }
 }
