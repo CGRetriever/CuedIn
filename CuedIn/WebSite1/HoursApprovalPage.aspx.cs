@@ -236,7 +236,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand getStudentInfo = new System.Data.SqlClient.SqlCommand();
         getStudentInfo.Connection = sql;
-        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID FROM Student WHERE StudentEntityID = " + Session["studentID"];
+        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID, StudentImage FROM Student WHERE StudentEntityID = " + Session["studentID"];
         System.Data.SqlClient.SqlDataReader studentReader = getStudentInfo.ExecuteReader();
 
         while (studentReader.Read())
@@ -249,6 +249,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
             lblSATScore.Text = "SAT Score: " + studentReader.GetInt32(3);
             lblHoursWorked.Text = "WBL Hours Earned: " + studentReader.GetInt32(4);
+            imgStudent.ImageUrl = studentReader.GetString(6);
         }
 
 
