@@ -5,8 +5,12 @@
 
 
 <form id="form1" runat="server">
-      <div class="form-row">
+      <div class="form-row container-fluid">
        <div class="col-md-12 text-center">
+           <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+   
+           <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Button" />
    
            </div>
        <div class="col-auto container-fluid text-center">
