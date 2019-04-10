@@ -22,15 +22,15 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         String[] imageArray = new string[5];
+        String[] jobTitleArray = new string[5];
         int x = 0;
 
         while (reader.Read())
         {
 
             imageArray[x] = reader.GetString(2);
+            jobTitleArray[x] = reader.GetString(1);
             x++;
-            
-
 
         }
 
@@ -41,6 +41,12 @@ public partial class LandingPage : System.Web.UI.Page
         Image3.ImageUrl = imageArray[2];
         Image4.ImageUrl = imageArray[3];
         Image5.ImageUrl = imageArray[4];
+
+        Label1.Text = jobTitleArray[0];
+        Label2.Text = jobTitleArray[1];
+        Label3.Text = jobTitleArray[2];
+        Label4.Text = jobTitleArray[3];
+        Label5.Text = jobTitleArray[4];
 
 
 
