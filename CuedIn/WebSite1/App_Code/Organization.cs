@@ -19,9 +19,10 @@ public class Organization
     private String image;
     private String externalLink;
 
-    public Organization(String organizationName, String organizationDescription, String streetAddress,
+    public Organization(int organizationEntityID, String organizationName, String organizationDescription, String streetAddress,
         String country, String city, String state, int zipcode, String image, String externalLink)
     {
+        this.organizationEntityID = organizationEntityID;
         this.organizationName = organizationName;
         this.organizationDescription = organizationDescription;
         this.streetAddress = streetAddress;
@@ -33,6 +34,8 @@ public class Organization
         this.externalLink = externalLink;
       
     }
+
+    public int GetOrganizationEntityID() { return this.organizationEntityID; }
 
 
     public String GetOrganizationName() { return this.organizationName; }
