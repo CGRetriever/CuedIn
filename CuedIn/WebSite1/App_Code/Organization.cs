@@ -57,7 +57,7 @@ public class Organization
     public void SetImage(String image) { this.image = image; }
 
     public String GetLink() { return this.externalLink; }
-    public void SetLink(String link) { this.externalLink = externalLink; }
+    public void SetLink(String link) { this.externalLink = link; }
 
 
 
