@@ -4,10 +4,20 @@
 
     <form id="form1" runat="server">
         <div class="form-row">
-       <div class="col-md-12 text-center">
-      
-           </div>
        <div class="col-auto container-fluid text-center">
+           <br />
+   
+
+    <script type="text/javascript">
+        //Initialize popover with jQuery
+        $(document).ready(function () {
+            $('.popovers').popover();
+        });
+    </script>
+           <asp:Button ID="btnTop0" runat="server" CssClass="btn btn-success btn-sm popovers" data-content="&lt;img src='images/CommUpLogo.JPG' width='400' /&gt;" data-html="true" data-placement="top" data-trigger="hover" Text="Approve" />
+           <asp:Button ID="btnBottom0" runat="server" CssClass="btn btn-warning btn-sm popovers" data-content="More Information Button" data-placement="bottom" data-trigger="hover" Text="More Information" title="Title here" />
+           <asp:Button ID="btnLeft0" runat="server" CssClass="btn btn-info btn-sm popovers" data-content="Hyperlink Button" data-placement="left" data-trigger="hover" Text="Hyperlink" title="Title here" />
+           <asp:Button ID="btnRight0" runat="server" CssClass="btn btn-danger btn-sm popovers" data-content="Deny Button" data-placement="right" data-trigger="hover" Text="Deny" title="Title here" />
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
@@ -38,7 +48,52 @@
 
 </div>
 
+        <head>
+   
 
+    <script type="text/javascript">
+        //Initialize popover with jQuery
+        $(document).ready(function () {
+            $('.popovers').popover();
+        });
+    </script>
+</head>
+
+<body>
+            
+            <asp:Button ID="btnTop" runat="server" Text="Approve" CssClass="btn btn-success btn-sm popovers" data-trigger="hover" data-placement="top" data-html="true" data-content="<img src='images/CommUpLogo.JPG' width='400' />" />
+            <asp:Button ID="btnBottom" runat="server" Text="More Information" CssClass="btn btn-warning btn-sm popovers" data-trigger="hover" data-placement="bottom" title="Title here"  data-content="More Information Button" />
+            <asp:Button ID="btnLeft" runat="server" Text="Hyperlink" CssClass="btn btn-info btn-sm popovers" data-trigger="hover" data-placement="left" title="Title here"  data-content="Hyperlink Button" />
+            <asp:Button ID="btnRight" runat="server" Text="Deny" CssClass="btn btn-danger btn-sm popovers" data-trigger="hover" data-placement="right" title="Title here"  data-content="Deny Button" />
+            <br />
+            <br />
+            <br />
+</body>
+
+        <style type="text/css">
+.modalBackground {
+background-color:Gray;
+filter:alpha(opacity=70);
+opacity:0.7;
+}
+.modalPopup{
+background-color:#ffffdd;
+border-width:3px;
+border-style:solid;
+border-color:Gray;
+padding:3px;
+}
+</style>
+
+
+
+
+
+
+<asp:Panel ID="PanelGuest" runat="server" CssClass="modalPopup" style="display:none; width:75%"><center><font>foo</font></center>
+          
+
+    </asp:Panel>
 
         <br />
         <br />
@@ -91,7 +146,7 @@
                </script>
             </div>
         </div>
-
+       
 
 
         <div>
