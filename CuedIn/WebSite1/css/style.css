@@ -297,4 +297,9 @@ a.article:hover {
     .modal-body {
         background-color: #4F79A3;
     }
+
+    .space {
+        padding: 0 5px 0 5px;
+        margin:auto;
+    }
 }
