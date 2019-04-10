@@ -7,15 +7,18 @@
 <form id="form1" runat="server">
       <div class="form-row container-fluid">
        
-           
-           <div class="col-md-12 text-center rounded" style="background-color:#102B3F;">
-           <asp:Label ID="Label4" runat="server" Text="Search" Style="text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
    
            <asp:TextBox ID="SearchBox" runat="server" ></asp:TextBox>
            <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Button" />
            </div>
            
-       <div class="col-auto container-fluid text-center">
+
+          
+           
+       
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
             <Columns>
                 
@@ -44,9 +47,7 @@
 
     
         
-    <div class="form-group col-md-6">
-      
-    </div>
+    
     
   </div>
           
