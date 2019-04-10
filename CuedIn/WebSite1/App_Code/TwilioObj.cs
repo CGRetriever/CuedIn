@@ -17,7 +17,7 @@ public class TwilioObj
         TwilioClient.Init(accountSid, authToken);
 
         var message = MessageResource.Create(
-            body: "Join Earth's mightiest heroes. Like Kevin Bacon.",
+            body: "Kenny Phan is a smokeshow");
             from: new Twilio.Types.PhoneNumber("+15402534874"),
             to: new Twilio.Types.PhoneNumber("+16316268854")
         );
