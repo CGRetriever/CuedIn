@@ -19,7 +19,7 @@ public class School
 
     public School()
     {
-
+       
     }
 
     public void setSchoolEntityID(int schoolEntityID)
@@ -61,7 +61,6 @@ public class School
     {
         this.zipCode = zipCode;
     }
-
 
     public int getSchoolEntityID()
     {
