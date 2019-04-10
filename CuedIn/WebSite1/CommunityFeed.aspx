@@ -40,7 +40,7 @@
 
         <div class ="card text-center" style="width:30rem;">
                 <div class="card-header">
-                    <asp:Label ID="Label1" runat="server" Text="Tweets" Font-Bold="True"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="Community Feed" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
                     <a class="twitter-timeline"  id="TweeterFeedLink" runat="server"

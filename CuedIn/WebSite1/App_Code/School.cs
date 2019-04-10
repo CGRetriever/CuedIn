@@ -8,18 +8,95 @@ using System.Web;
 /// </summary>
 public class School
 {
-    int SchoolEntityID;
-    String SchoolName;
-    String StreetAddress;
-    String Country;
-    String City;
-    String State;
-    String SchoolCounty;
-    int ZipCode;
-
+    int schoolEntityID;
+    String schoolName;
+    String streetAddress;
+    String country;
+    String city;
+    String state;
+    String schoolCounty;
+    int zipCode;
 
     public School()
     {
 
     }
+
+    public void setSchoolEntityID(int schoolEntityID)
+    {
+        this.schoolEntityID = schoolEntityID;
+    }
+
+    public void setSchoolName(String schoolName)
+    {
+        this.schoolName = schoolName;
+    }
+
+    public void setStreetAddress(String streetAddress)
+    {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setCountry(String country)
+    {
+        this.country = country;
+    }
+
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
+    public void setState(String state)
+    {
+        this.state = state;
+    }
+
+    public void setSchoolCounty(String schoolCounty)
+    {
+        this.schoolCounty = schoolCounty;
+    }
+
+    public void setZipcode(int zipCode)
+    {
+        this.zipCode = zipCode;
+    }
+
+
+    public int getSchoolEntityID()
+    {
+        return this.schoolEntityID;
+    }
+
+    public String getSchoolName()
+    {
+        return this.schoolName;
+    }
+
+    public String getStreetAddress()
+    {
+        return this.streetAddress;
+    }
+
+    public String getCountry()
+    {
+        return this.country;
+    }
+
+    public String getState()
+    {
+        return this.state;
+    }
+
+    public String getSchoolCounty()
+    {
+        return this.schoolCounty;
+    }
+
+    public int getZipCode()
+    {
+        return this.zipCode;
+    }
+
+
 }

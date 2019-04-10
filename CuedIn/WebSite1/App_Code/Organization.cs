@@ -8,16 +8,16 @@ using System.Web;
 /// </summary>
 public class Organization
 {
-    int organizationEntityID;
-    String organizationName;
-    String organizationDescription;
-    String streetAddress;
-    String country;
-    String city;
-    String state;
-    int zipcode;
-    String image;
-    String externalLink;
+    private int organizationEntityID;
+    private String organizationName;
+    private String organizationDescription;
+    private String streetAddress;
+    private String country;
+    private String city;
+    private String state;
+    private int zipcode;
+    private String image;
+    private String externalLink;
 
     public Organization()
     {
@@ -25,8 +25,5 @@ public class Organization
     }
 
     
-
-
-
 
 }
