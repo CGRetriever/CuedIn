@@ -133,6 +133,7 @@
                         </div>
                     </div>
                 </div>
+
                 <script type='text/javascript'>
                     function openApproveXModal() {
                         $('[id*=approveXModal]').modal('show');
