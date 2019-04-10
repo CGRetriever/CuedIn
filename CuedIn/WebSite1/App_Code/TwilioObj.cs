@@ -5,9 +5,9 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 
 
-class TwilioObj
+public class TwilioObj
 {
-    static void Main(string[] args)
+    public TwilioObj()
     {
         // Find your Account Sid and Token at twilio.com/console
         // DANGER! This is insecure. See http://twil.io/secure
