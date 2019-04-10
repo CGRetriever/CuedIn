@@ -17,14 +17,14 @@
             <div class="card-body ">
                 <asp:Label ID="UserNameLabel" CssClass="card-text" runat="server"  Font-Bold="True"></asp:Label>
                 <asp:TextBox id="TweetBox" rows="5" CssClass="form-control" TextMode="multiline" runat="server" BorderColor="Silver" ValidationGroup="Group1" Font-Size="Smaller" />
-             
+                </div>
          
 
                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass ="invalid-feedback" runat="server" ControlToValidate="TweetBox" ErrorMessage="Must be filled out" ValidationGroup="Group1" ForeColor="Red"></asp:RequiredFieldValidator>--%>
             <div class="card-footer">
                 <asp:LinkButton  ID="SendItButton" runat="server" OnCommand="TweetButtonClick"><i class="fas fa-paper-plane fa-3x"></i></asp:LinkButton>
             </div>
-            </div>
+         
         </div>
           <div class ="card text-center" style="width:30rem;">
                 <div class="card-header">
@@ -43,8 +43,9 @@
                     <asp:Label ID="Label1" runat="server" Text="Tweets" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    <a class="twitter-timeline"  
-                        href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="400" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a class="twitter-timeline"  id="TweeterFeedLink" runat="server"
+                        href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="800" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    
                 </div>
               </div>
 
@@ -53,19 +54,19 @@
 
              <div class ="form-group col-md-4">
 
-        <div class ="card text-center" style="width:20rem;">
+        <div class ="card text-center" style="width:15rem;">
                 <div class="card-header">
-                    <asp:Label ID="Label2" runat="server" Text="Tweets" Font-Bold="True"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" Text="Contacts" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    <a class="twitter-timeline"  href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="400" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    
                 </div>
               </div>
 
 
     </div>
-        
 </div>
+
 
 
 

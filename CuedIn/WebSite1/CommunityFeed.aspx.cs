@@ -40,7 +40,11 @@ public partial class CommunityFeed : System.Web.UI.Page
     {
         Tweet.Text = TweetBox.Text;
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openTweetVerification();", true);
-        
+
+
+        TweeterFeedLink.HRef = "https://twitter.com/TA_FCA?ref_src=twsrc%5Etfw";
+
+
 
     }
 
