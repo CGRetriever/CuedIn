@@ -21,16 +21,30 @@ public partial class LandingPage : System.Web.UI.Page
         System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
 
+        String[] imageArray = new string[5];
+        int x = 0;
 
         while (reader.Read())
         {
 
-            Image1.ImageUrl = reader.GetString(2);
+            imageArray[x] = reader.GetString(2);
+            x++;
+            
 
 
         }
 
-        //sql.Close();
+      
+
+        Image1.ImageUrl = imageArray[0];
+        Image2.ImageUrl = imageArray[1];
+        Image3.ImageUrl = imageArray[2];
+        Image4.ImageUrl = imageArray[3];
+        Image5.ImageUrl = imageArray[4];
+
+
+
+        sql.Close();
 
 
 
