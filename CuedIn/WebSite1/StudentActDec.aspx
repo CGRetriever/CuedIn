@@ -7,7 +7,7 @@
 <form id="form1" runat="server">
       <div class="form-row container-fluid">
        <div class="col-md-12 text-center">
-           <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+           <asp:Label ID="Label4" runat="server" Text="Search" Style="text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
    
            <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
            <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Button" />
