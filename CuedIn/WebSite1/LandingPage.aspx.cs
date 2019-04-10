@@ -74,9 +74,7 @@ public partial class LandingPage : System.Web.UI.Page
 
     protected void Icon1_Click(object sender, EventArgs e)
     {
-        int r = 4;
-        int p = 2;
-        int t = 5;
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openIconModal();", true);
 
     }
 
