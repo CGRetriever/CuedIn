@@ -1,43 +1,51 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="LandingPage.aspx.cs" Inherits="LandingPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="form-row col-12">
+    <div class="form-row col-12 container-fluid">
         <div class="card col-2" style="width: 18rem;">
             <asp:Image ID="Image1" runat="server" ImageUrl="~/img/jackbrowns.jpg" CssClass="img-fluid" />
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <div class="card-body text-center">
+              <asp:Label ID="Label1" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
           </div>
        </div>
 
+        <div class="col-1.8"></div>
 
-        <div class="card col-2" style="width: 18rem;">
+
+        <div class="card col-2 card-img-top" style="width: 18rem;">
             <asp:Image ID="Image2" runat="server" ImageUrl="~/img/sentara.jpg" CssClass="img-fluid" />
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <asp:Label ID="Label2" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
           </div>
        </div>
 
+        <div class="col-1.8"></div>
 
         <div class="card col-2" style="width: 18rem;">
             <asp:Image ID="Image3" runat="server" ImageUrl="~/img/foodlion.jpg" CssClass="img-fluid" />
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <asp:Label ID="Label3" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
           </div>
        </div>
+
+        <div class="col-1.8"></div>
 
         <div class="card col-2" style="width: 18rem;">
             <asp:Image ID="Image4" runat="server" ImageUrl="~/img/greenhummingbird.jpg" CssClass="img-fluid" />
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <asp:Label ID="Label4" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
           </div>
        </div>
+
+        <div class="col-1.8"></div>
 
         <div class="card col-2" style="width: 18rem;">
             <asp:Image ID="Image5" runat="server" ImageUrl="~/img/eltoneye.jpg" CssClass="img-fluid" />
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <asp:Label ID="Label5" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
           </div>
        </div>
+
 
 
 
