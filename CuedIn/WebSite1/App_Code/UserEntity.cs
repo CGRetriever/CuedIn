@@ -12,8 +12,8 @@ public class UserEntity
     String userName;
     String emailAddress;
     String entityType;
-    String TwitterHandle;
-    String TwitterLink;
+    String twitterHandle;
+    String twitterLink;
     
     public UserEntity(String userName, String emailAddress, String entityType)
     {
@@ -24,10 +24,15 @@ public class UserEntity
 
     }
 
-    public UserEntity(String TwitterHandle, String TwitterLink)
+    //community Feed Class
+    public UserEntity(int userEntityID, String userName, String emailAddress, String entityType, String twitterHandle, String twitterLink)
     {
-        setTwitterHandle(TwitterHandle);
-        setTwitterLink(TwitterLink);
+        setUserEntityID(userEntityID);
+        setUserName(userName);
+        setEmailAddress(emailAddress);
+        setEntityType(entityType);
+        setTwitterHandle(twitterHandle);
+        setTwitterLink(twitterLink);
     }
 
 
@@ -51,14 +56,14 @@ public class UserEntity
         this.entityType = entityType;
     }
 
-    public void setTwitterHandle(String TwitterHandle)
+    public void setTwitterHandle(String twitterHandle)
     {
-        this.TwitterHandle = TwitterHandle;
+        this.twitterHandle = twitterHandle;
     }
 
-    public void setTwitterLink(String TwitterLink)
+    public void setTwitterLink(String twitterLink)
     {
-        this.TwitterLink = TwitterLink;
+        this.twitterLink = twitterLink;
     }
 
 
@@ -80,6 +85,16 @@ public class UserEntity
     public String getEntityType()
     {
         return this.entityType;
+    }
+
+    public String getTwitterHandle()
+    {
+        return this.twitterHandle;
+    }
+
+    public String getTwitterLink()
+    {
+        return this.twitterLink;
     }
 
 }

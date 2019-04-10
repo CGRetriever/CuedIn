@@ -8,15 +8,17 @@ using System.Web;
 /// </summary>
 public class Organization
 {
-    int SchoolEntityID;
-    String SchoolName;
-    String StreetAddress;
-    String Country;
-    String City;
-    String State;
-    String SchoolCounty;
-    int ZipCode;
-  
+    int organizationEntityID;
+    String organizationName;
+    String organizationDescription;
+    String streetAddress;
+    String country;
+    String city;
+    String state;
+    int zipcode;
+    String image;
+    String externalLink;
+
     public Organization()
     {
       

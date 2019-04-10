@@ -8,10 +8,18 @@ using System.Web;
 /// </summary>
 public class School
 {
+    int SchoolEntityID;
+    String SchoolName;
+    String StreetAddress;
+    String Country;
+    String City;
+    String State;
+    String SchoolCounty;
+    int ZipCode;
+
+
     public School()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+
     }
 }
