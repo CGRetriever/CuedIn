@@ -44,7 +44,7 @@
                 </div>
                 <div class="card-body">
                     <a class="twitter-timeline"  id="TweeterFeedLink" runat="server"
-                        href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="800" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        href="https://twitter.com/RockinghamTODAY?ref_src=twsrc%5Etfw" data-width="400" data-height="800" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     
                 </div>
               </div>
@@ -60,24 +60,7 @@
                 </div>
                 <div class="card-body">
 
-                    <asp:GridView ID="ContactsGridView" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
-                        <Columns>
-                            <asp:BoundField DataField="SchoolName" HeaderText="SchoolName" ReadOnly="True" SortExpression="SchoolName" />
-                            <asp:BoundField DataField="TwitterHandle" HeaderText="TwitterHandle" ReadOnly="True" SortExpression="TwitterHandle" />
-                            <asp:BoundField DataField="TwitterLink" HeaderText="TwitterLink" ReadOnly="True" SortExpression="TwitterLink" />
-                        </Columns>
-                    </asp:GridView>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" SelectCommand="SELECT        School.SchoolName, UserEntity.TwitterHandle, UserEntity.TwitterLink
-FROM            UserEntity INNER JOIN
-                         School ON UserEntity.UserEntityID = School.SchoolEntityID where TwitterHandle is not null
-                         
-
-union
-
-SELECT        Organization.OrganizationName, UserEntity.TwitterHandle, UserEntity.TwitterLink
-FROM            UserEntity INNER JOIN
-                         Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID where TwitterHandle is not null"></asp:SqlDataSource>
-
+                    <asp:Table ID="ContactsTable" runat="server"></asp:Table>
                 </div>
               </div>
 
