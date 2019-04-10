@@ -35,8 +35,59 @@ public class Organization
       
     }
 
-    public int GetOrganizationEntityID() { return this.organizationEntityID; }
 
+    public void setOrganizationEntityID(int organizationEntityID)
+    {
+        this.organizationEntityID = organizationEntityID;
+    }
+
+    public void setOrganizationName(String organizationName)
+    {
+        this.organizationName = organizationName;
+    }
+
+    public void setOrganizationDescription(String organizationDescription)
+    {
+        this.organizationDescription = organizationDescription;
+    }
+
+    public void setStreetAddress(String streetAddress)
+    {
+        this.streetAddress = streetAddress;
+    }
+
+    public void setCountry(String country)
+    {
+        this.country = country;
+    }
+
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
+    public void setState(String state)
+    {
+        this.state = state;
+    }
+
+    public void setZipCode(int zipcode)
+    {
+        this.zipcode = zipcode;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
+    public void setExternalLink(String externalLink)
+    {
+        this.externalLink = externalLink;
+    }
+
+
+    public int GetOrganizationEntityID() { return this.organizationEntityID; }
 
     public String GetOrganizationName() { return this.organizationName; }
     public void SetOrganizationName(String organizationName) { this.organizationName = organizationName; }

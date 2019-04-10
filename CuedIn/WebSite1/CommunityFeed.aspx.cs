@@ -34,14 +34,14 @@ public partial class CommunityFeed : System.Web.UI.Page
 
 
 
-        for (int i = 0; i <= 10; i++)
-        {
-            TableRow row = new TableRow();
-            TableCell cell = new TableCell();
-            cell.Text = "testing" + i;
-            row.Cells.Add(cell);
-            Table1.Rows.Add(row);
-        }
+        //for (int i = 0; i <= 10; i++)
+        //{
+        //    TableRow row = new TableRow();
+        //    TableCell cell = new TableCell();
+        //    cell.Text = "testing" + i;
+        //    row.Cells.Add(cell);
+        //    Table1.Rows.Add(row);
+        //}
 
 
     }

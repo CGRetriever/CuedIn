@@ -59,7 +59,25 @@
                     <asp:Label ID="Label2" runat="server" Text="Contacts" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    <asp:Table ID="Table1" runat="server"></asp:Table>
+
+                    <asp:GridView ID="ContactsGridView" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                        <Columns>
+                            <asp:BoundField DataField="SchoolName" HeaderText="SchoolName" ReadOnly="True" SortExpression="SchoolName" />
+                            <asp:BoundField DataField="TwitterHandle" HeaderText="TwitterHandle" ReadOnly="True" SortExpression="TwitterHandle" />
+                            <asp:BoundField DataField="TwitterLink" HeaderText="TwitterLink" ReadOnly="True" SortExpression="TwitterLink" />
+                        </Columns>
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" SelectCommand="SELECT        School.SchoolName, UserEntity.TwitterHandle, UserEntity.TwitterLink
+FROM            UserEntity INNER JOIN
+                         School ON UserEntity.UserEntityID = School.SchoolEntityID where TwitterHandle is not null
+                         
+
+union
+
+SELECT        Organization.OrganizationName, UserEntity.TwitterHandle, UserEntity.TwitterLink
+FROM            UserEntity INNER JOIN
+                         Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID where TwitterHandle is not null"></asp:SqlDataSource>
+
                 </div>
               </div>
 
