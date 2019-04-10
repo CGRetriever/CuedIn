@@ -25,7 +25,7 @@ public class UserEntity
     }
 
     //community Feed Class
-    public UserEntity(int userEntityID, String userName, String emailAddress, String entityType, String twitterHandle, String twitterLink)
+    public UserEntity(int userEntityID, String userName, String emailAddress, String twitterHandle, String twitterLink, String entityType)
     {
         setUserEntityID(userEntityID);
         setUserName(userName);
