@@ -57,4 +57,54 @@ public partial class LandingPage : System.Web.UI.Page
 
 
     }
+
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        /* Verifies that the control is rendered */
+    }
+
+
+
+
+
+    
+
+
+
+
+    protected void Icon1_Click(object sender, EventArgs e)
+    {
+        int r = 4;
+        int p = 2;
+        int t = 5;
+
+    }
+
+    protected void Icon2_Click(object sender, EventArgs e)
+    {
+        int r = 4;
+        int p = 2;
+        int t = 5;
+    }
+
+    protected void Icon3_Click(object sender, EventArgs e)
+    {
+        int r = 4;
+        int p = 2;
+        int t = 5;
+    }
+
+    protected void Icon4_Click(object sender, EventArgs e)
+    {
+        int r = 4;
+        int p = 2;
+        int t = 5;
+    }
+
+    protected void Icon5_Click(object sender, EventArgs e)
+    {
+        int r = 4;
+        int p = 2;
+        int t = 5;
+    }
 }

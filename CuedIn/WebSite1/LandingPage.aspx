@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="LandingPage.aspx.cs" Inherits="LandingPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <form id="form1" runat="server">
+    
     <div class="form-row col-12 container-fluid">
         <div class="card col-2" style="width: 18rem;">
             <div class="card-img-top">
@@ -10,6 +13,9 @@
           <div class="card-body">
               <div class="card-text text-center">
               <asp:Label ID="Label1" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
+                  <div>
+                  <asp:LinkButton ID="Icon1" runat="server" CausesValidation="false" OnClick="Icon1_Click" CssClass="btn"><i class="fa fa-question-circle"></i></asp:LinkButton>
+                      </div>
                   </div>
           </div>
        </div>
@@ -25,6 +31,9 @@
           <div class="card-body">
               <div class="card-text text-center">
             <asp:Label ID="Label2" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
+                  <div>
+                  <asp:LinkButton ID="Icon2" runat="server" CausesValidation="false" OnClick="Icon2_Click"><i class="fa fa-question-circle" aria-hidden="true"></i></asp:LinkButton>
+                      </div>
                   </div>
           </div>
        </div>
@@ -36,6 +45,9 @@
           <div class="card-body">
               <div class="card-text text-center">
             <asp:Label ID="Label3" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
+                  <div>
+                  <asp:LinkButton ID="Icon3" runat="server" CausesValidation="false" OnClick="Icon3_Click"><i class="fa fa-question-circle" aria-hidden="true"></i></asp:LinkButton>
+                      </div>
                   </div>
           </div>
        </div>
@@ -47,6 +59,9 @@
           <div class="card-body">
               <div class="card-text text-center">
             <asp:Label ID="Label4" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
+                  <div>
+                  <asp:LinkButton ID="Icon4" runat="server" CausesValidation="false" OnClick="Icon4_Click"><i class="fa fa-question-circle" aria-hidden="true"></i></asp:LinkButton>
+                      </div>
                   </div>
           </div>
        </div>
@@ -58,6 +73,9 @@
           <div class="card-body">
               <div class="card-text text-center">
             <asp:Label ID="Label5" runat="server" CssClass="font-weight-bold" Text="Label"></asp:Label>
+                  <div>
+                  <asp:LinkButton ID="Icon5" runat="server" CausesValidation="false" OnClick="Icon5_Click" CssClass="align-content-center"><i class="fa fa-question-circle" aria-hidden="true"></i></asp:LinkButton>
+                      </div>
                   </div>
           </div>
        </div>
@@ -68,6 +86,6 @@
     </div>
 
 
-
+        </form>
 </asp:Content>
 
