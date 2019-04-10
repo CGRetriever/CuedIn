@@ -12,8 +12,17 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        GridView1.Columns[2].Visible = false;
+        GridView1.Columns[3].Visible = false;
+        GridView1.Columns[4].Visible = false;
+        GridView1.Columns[5].Visible = false;
         GridView2.Columns[0].Visible = false;
+        
+        
+        GridView2.Columns[3].Visible = false;
+        GridView2.Columns[4].Visible = false;
+        GridView2.Columns[6].Visible = false;
+
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
         
 
@@ -442,28 +451,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void btnCheckGridView_Click(object sender, EventArgs e)
     {
 
-        if (chkOrgDescription.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Organization Description")
-                {
-                    GridView1.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Organization Description")
-                {
-                    GridView1.Columns[i].Visible = true;
-
-                }
-            }
-        }
 
         if (chkJobDescription.Checked != true)
         {
@@ -541,7 +528,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Organization Website")
+                if (GridView1.Columns[i].HeaderText == " Website")
                 {
                     GridView1.Columns[i].Visible = false;
 
@@ -552,9 +539,86 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Organization Website")
+                if (GridView1.Columns[i].HeaderText == " Website")
                 {
                     GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin.Checked != true)
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    GridView2.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    GridView2.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax.Checked != true)
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    GridView2.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    GridView2.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkExternalLink2.Checked != true)
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Website")
+                {
+                    GridView2.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Website")
+                {
+                    GridView2.Columns[i].Visible = true;
 
                 }
             }

@@ -10,7 +10,8 @@
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
 
-        <div class="col-md-12 text-center rounded" style="background-color:#102B3F;">
+            <div class="col-auto container-fluid text-center">
+        <div class="text-center rounded" style="background-color:#102B3F;">
             <asp:CheckBox ID="chkImage" Style="color:white;" runat="server" Text="Image"  Checked="false" />
             <asp:CheckBox ID="chkGradeLevel" Style="color:white;" runat="server" Text="Grade Level"  Checked="false" />
             <asp:CheckBox ID="chkGPA" Style="color:white;" runat="server" Text="GPA"  Checked="false" />
@@ -21,7 +22,7 @@
             <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" style="background-color: white; color:#102B3F;" class="btn btn-circle" />
         </div>
             <br />
-       <div class="col-auto container-fluid text-center">
+       
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
@@ -31,7 +32,7 @@
                         <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField ShowHeader="false" HeaderStyle-BorderColor="Black">
+                <asp:TemplateField HeaderText="Student Name" HeaderStyle-BorderColor="Black">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("LogID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                     </ItemTemplate>

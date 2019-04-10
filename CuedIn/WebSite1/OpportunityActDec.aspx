@@ -29,11 +29,11 @@
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
 
                 <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
-                    <asp:CheckBox ID="chkOrgDescription" Style="color: white;" runat="server" Text="Organization Description" Checked="false" />
+                    
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
                     <asp:CheckBox ID="chkJobLocation" Style="color: white;" runat="server" Text="Location" Checked="false" />
-                    <asp:CheckBox ID="chkOrgWebsite" Style="color: white;" runat="server" Text="Organization Website" Checked="false" />
+                    <asp:CheckBox ID="chkOrgWebsite" Style="color: white;" runat="server" Text="Website" Checked="false" />
                     
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
@@ -44,12 +44,12 @@
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
-                        <asp:BoundField DataField="OrganizationDescription" HeaderText="Organization Description" ItemStyle-Wrap="true"/>
+                        
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" />
                         <asp:BoundField DataField="JobType" HeaderText="Job Type" />
                         <asp:BoundField DataField="Location" HeaderText="Location" />
-                        <asp:TemplateField HeaderText="Organization Website">
+                        <asp:TemplateField HeaderText=" Website">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnOrgLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
                             </ItemTemplate>
@@ -73,11 +73,12 @@
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
 
                     <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
-                    <asp:CheckBox ID="chkOrgDescription2" Style="color: white;" runat="server" Text="Organization Description" Checked="false" />
-                    <asp:CheckBox ID="chkScholarshipDescription" Style="color: white;" runat="server" Text="Scholarship Description" Checked="false" />
-                    <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Minimum Amount" Checked="false" />
-                    <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Maximum Amount" Checked="false" />
-                    <asp:CheckBox ID="chkExternalLink2" Style="color: white;" runat="server" Text="Organization Website" Checked="false" />
+                    
+                    
+                    <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" />
+                    <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" />
+
+                    <asp:CheckBox ID="chkExternalLink2" Style="color: white;" runat="server" Text="Website" Checked="false" />
                     
 
                     <asp:Button ID="btnCheckGridView2" runat="server" Text="Apply" OnClick="btnCheckGridView2_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
@@ -90,12 +91,15 @@
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" />
                         <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="ScholarshipMin" HeaderText="Minimum Amount" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="ScholarshipMax" HeaderText="Maximum Amount" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}"/>
+                        <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" />
 
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="OrganizationDescription" HeaderText="OrganizationDescription" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="ExternalLink" HeaderText="Organization Website" InsertVisible="False" ReadOnly="True" />
+                        <asp:TemplateField HeaderText="Website">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnOrgLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
