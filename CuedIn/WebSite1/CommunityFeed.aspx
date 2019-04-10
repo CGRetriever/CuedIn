@@ -59,7 +59,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Contacts" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    
+                    <asp:Table ID="Table1" runat="server"></asp:Table>
                 </div>
               </div>
 
@@ -99,7 +99,7 @@
                     
                     <div class="modal-footer">
                         <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                        <asp:Button ID="SendTweet" runat="server" Text="Send It!" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" />
+                        <asp:Button ID="SendTweet" runat="server" Text="Send It!" OnClick="SendTweet_Click" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" />
                         <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" Class="btn btn-circle"data-dismiss="modal">Close</button>
                          </div>
                         

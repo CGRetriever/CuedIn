@@ -34,6 +34,15 @@ public partial class CommunityFeed : System.Web.UI.Page
 
 
 
+        for (int i = 0; i <= 10; i++)
+        {
+            TableRow row = new TableRow();
+            TableCell cell = new TableCell();
+            cell.Text = "testing" + i;
+            row.Cells.Add(cell);
+            Table1.Rows.Add(row);
+        }
+
 
     }
     protected void TweetButtonClick(object sender, CommandEventArgs e)
@@ -41,18 +50,21 @@ public partial class CommunityFeed : System.Web.UI.Page
         Tweet.Text = TweetBox.Text;
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openTweetVerification();", true);
 
-
-        TweeterFeedLink.HRef = "https://twitter.com/TA_FCA?ref_src=twsrc%5Etfw";
-
-
+        //TweeterFeedLink.HRef = "https://twitter.com/TA_FCA?ref_src=twsrc%5Etfw";
 
     }
 
 
 
- 
 
 
 
 
+
+
+    protected void SendTweet_Click(object sender, EventArgs e)
+    {
+        String yeet = Tweet.Text;
+        var firstTweet = Tweetinvi.Tweet.PublishTweet(yeet);
+    }
 }
