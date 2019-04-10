@@ -298,8 +298,9 @@ a.article:hover {
         background-color: #4F79A3;
     }
 
-    .space {
-        padding: 0 60px 0 60px;
-        margin:auto;
+    .card-img-top {
+        width: 100%;
+        height: 69vw;
+        object-fit: cover;
     }
 }
