@@ -144,7 +144,14 @@ public partial class LandingPage : System.Web.UI.Page
             y++;
         }
 
-        int yy = 2;
+        StudentImage.ImageUrl = StudentImageArray[0];
+        FrontStudentName.Text = StudentNamearray[0];
+        BackStudentName.Text = StudentNamearray[0];
+        StudentJobTitlelbl.Text = AppJobTitleArray[0];
+        OrgTitlelbl.Text = AppOrgTitleArray[0];
+        StudentGPAlbl.Text = AppStudentGPAArray[0];
+
+        sql.Close();
     }
 
 
