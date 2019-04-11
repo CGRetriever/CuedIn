@@ -39,7 +39,7 @@
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" />
                         <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton2_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton3" CssClass="btn btn-danger btn-circle" Text="Decline" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"><i class="fas fa-times"></i></asp:LinkButton>
