@@ -6,18 +6,12 @@
 
     <form id="form1" runat="server">
         <div class="form-row container-fluid">
-         <div class="col-md-12 text-center">
-             <asp:Label ID="Label6" runat="server" Text="Label"></asp:Label>
-             <asp:DropDownList ID="GPAList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="GPAList_SelectedIndexChanged">
-                 <asp:ListItem>All</asp:ListItem>
-                 <asp:ListItem>1.0</asp:ListItem>
-                 <asp:ListItem>2.0</asp:ListItem>
-                 <asp:ListItem>3.0</asp:ListItem>
-             </asp:DropDownList>
-
-
+         <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label6" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" CssClass="btn" />
            </div>
-       <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
