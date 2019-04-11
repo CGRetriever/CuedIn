@@ -145,8 +145,9 @@ public partial class CommunityFeed : System.Web.UI.Page
             TableCell cell2 = new TableCell();
             //make a new link button to instatntiate it later
             LinkButton twitterContactLink = new LinkButton();
+            twitterContactLink.CssClass = "btn-block";
             System.Web.UI.WebControls.Image twitterAvi = new System.Web.UI.WebControls.Image();
-
+            twitterAvi.CssClass = "rounded-circle";
             
             for (int j = 0; j <= schoolList.Count - 1; j++)
             {
