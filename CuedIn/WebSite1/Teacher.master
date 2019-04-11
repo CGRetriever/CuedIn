@@ -24,7 +24,7 @@
 
     <body>
         <!--Interactive Sidebar Star -->
-
+        <a href="Teacher.master">Teacher.master</a>
         <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
