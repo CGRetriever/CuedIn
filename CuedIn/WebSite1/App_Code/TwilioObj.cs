@@ -1,11 +1,12 @@
 ﻿// Install the C# / .NET helper library from twilio.com/docs/csharp/install
 
+using Quartz;
 using System;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 
 
-public class TwilioObj
+public class TwilioObj : IJob
 {
     public TwilioObj(int scholarshipNum, int jobNum)
     {
@@ -26,5 +27,10 @@ public class TwilioObj
     
 
         Console.WriteLine(message.Sid);
+    }
+
+    public void Execute(IJobExecutionContext context)
+    {
+        throw new NotImplementedException();
     }
 }
