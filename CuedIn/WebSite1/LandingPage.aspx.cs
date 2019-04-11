@@ -144,12 +144,42 @@ public partial class LandingPage : System.Web.UI.Page
             y++;
         }
 
+
+        // First Student Request Card
         StudentImage.ImageUrl = StudentImageArray[0];
         FrontStudentName.Text = StudentNamearray[0];
         BackStudentName.Text = StudentNamearray[0];
         StudentJobTitlelbl.Text = AppJobTitleArray[0];
         OrgTitlelbl.Text = AppOrgTitleArray[0];
         StudentGPAlbl.Text = AppStudentGPAArray[0];
+
+
+        // Second Student Request Card
+        StudentImage2.ImageUrl = StudentImageArray[1];
+        FrontStudentName2.Text = StudentNamearray[1];
+        BackStudentName2.Text = StudentNamearray[1];
+        StudentJobTitlelbl2.Text = AppJobTitleArray[1];
+        OrgTitlelbl2.Text = AppOrgTitleArray[1];
+        StudentGPAlbl2.Text = AppStudentGPAArray[1];
+
+        // Third Student Request Card
+        StudentImage3.ImageUrl = StudentImageArray[2];
+        FrontStudentName3.Text = StudentNamearray[2];
+        BackStudentName3.Text = StudentNamearray[2];
+        StudentJobTitlelbl3.Text = AppJobTitleArray[2];
+        OrgTitlelbl3.Text = AppOrgTitleArray[2];
+        StudentGPAlbl3.Text = AppStudentGPAArray[2];
+
+        // Fourth Student Request Card
+        StudentImage4.ImageUrl = StudentImageArray[3];
+        FrontStudentName4.Text = StudentNamearray[3];
+        BackStudentName4.Text = StudentNamearray[3];
+        StudentJobTitlelbl4.Text = AppJobTitleArray[3];
+        OrgTitlelbl4.Text = AppOrgTitleArray[3];
+        StudentGPAlbl4.Text = AppStudentGPAArray[3];
+
+
+
 
         sql.Close();
     }

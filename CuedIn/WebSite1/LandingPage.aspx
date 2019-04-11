@@ -243,17 +243,30 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="img/kyle.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Kyle Kim</h4>
+                                    <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
+                                    <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                  <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:Label ID="BackStudentName2" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="form-group text-left">
+                                    <asp:Label ID="JTitle2" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentJobTitlelbl2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                     <asp:Label ID="OrgTitle2" runat="server" CssClass="card-text font-weight-bold" Text="Organization Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="OrgTitlelbl2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPA2" runat="server" CssClass="card-text font-weight-bold" Text="Student GPA:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPAlbl2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                        </div>
+                                    <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -268,17 +281,30 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="img/marissa.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Marissa Scholler</h4>
+                                    <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
+                                    <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                     <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:Label ID="BackStudentName3" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="form-group text-left">
+                                    <asp:Label ID="JTitle3" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentJobTitlelbl3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                     <asp:Label ID="OrgTitle3" runat="server" CssClass="card-text font-weight-bold" Text="Organization Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="OrgTitlelbl3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPA3" runat="server" CssClass="card-text font-weight-bold" Text="Student GPA:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPAlbl3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                        </div>
+                                    <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -293,17 +319,30 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="img/ryan.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Ryan Nigro</h4>
+                                    <p><asp:Image ID="StudentImage4" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
+                                    <asp:Label ID="FrontStudentName4" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                     <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:Label ID="BackStudentName4" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="form-group text-left">
+                                    <asp:Label ID="JTitle4" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentJobTitlelbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                     <asp:Label ID="OrgTitle4" runat="server" CssClass="card-text font-weight-bold" Text="Organization Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="OrgTitlelbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPA4" runat="server" CssClass="card-text font-weight-bold" Text="Student GPA:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPAlbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                        </div>
+                                    <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
