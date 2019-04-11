@@ -25,6 +25,12 @@ public partial class LandingPage : System.Web.UI.Page
 
 
     // Student request arrays
+    public static String[] StudentImageArray = new string[5];
+    public static String[] applicationIDArray = new string[5];
+    public static String[] StudentNamearray = new string[5];
+    public static String[] AppJobTitleArray = new string[5];
+    public static String[] AppOrgTitleArray = new string[5];
+    public static String[] AppStudentGPAArray = new string[5];
 
 
 
@@ -121,11 +127,18 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentRequests = new System.Data.SqlClient.SqlCommand();
         RecentRequests.Connection = sql;
-        RecentRequests.CommandText = "SELECT  TOP(5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
+        RecentRequests.CommandText = "SELECT  TOP(5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
         System.Data.SqlClient.SqlDataReader result = RecentJobs.ExecuteReader();
 
 
         int y = 0;
+
+        while (result.Read())
+        {
+            applicationIDArray[y] = result.GetInt32(0).ToString();
+            StudentNamearray[y] = result.GetString(1);
+            AppJobTitleArray[y] = result.GetString(2);
+        }
 
 
 
