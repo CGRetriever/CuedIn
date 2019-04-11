@@ -17,9 +17,16 @@ public class School
     String schoolCounty;
     int zipCode;
 
-    public School()
+    public School(int schoolEntityID, String schoolName, String streetAddress,
+        String country, String city, String state, String schoolCounty, int zipCode)
     {
-       
+        setSchoolEntityID(schoolEntityID);
+        setSchoolName(schoolName);
+        setStreetAddress(streetAddress);
+        setCountry(country);
+        setCity(city);
+        setSchoolCounty(schoolCounty);
+        setZipCode(zipCode);
     }
 
     public void setSchoolEntityID(int schoolEntityID)
@@ -57,7 +64,7 @@ public class School
         this.schoolCounty = schoolCounty;
     }
 
-    public void setZipcode(int zipCode)
+    public void setZipCode(int zipCode)
     {
         this.zipCode = zipCode;
     }

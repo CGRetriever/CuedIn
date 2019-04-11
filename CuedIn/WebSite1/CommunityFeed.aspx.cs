@@ -59,8 +59,8 @@ public partial class CommunityFeed : System.Web.UI.Page
             rows = reader.GetInt32(0);
         }
 
-        
         sc.Close();
+       
 
         //initialize arrays of objects!!!
         List<UserEntity> userEntityList = new List<UserEntity>();
@@ -70,10 +70,10 @@ public partial class CommunityFeed : System.Web.UI.Page
         //Populating these arrays with some fully loaded info for flexibility and future usage
         sc.Open();
         System.Data.SqlClient.SqlCommand populateUsers = new System.Data.SqlClient.SqlCommand();
-
+        populateUsers.Connection = sc;
         //get all of that jaunt
         populateUsers.CommandText = "Select * from UserEntity where TwitterHandle is not null and EntityType != 'STUD'";
-
+        
         reader = populateUsers.ExecuteReader();
 
         //populate our array with fully loaded UserEntityObjects
@@ -93,7 +93,10 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         }
 
+        sc.Close();
+
         //Schools
+        sc.Open();
         populateUsers.CommandText = "SELECT SchoolEntityID,SchoolName,StreetAddress,Country,City,State,SchoolCounty,ZipCode FROM UserEntity " +
             "INNER JOIN School ON UserEntity.UserEntityID = School.SchoolEntityID where TwitterHandle is not null";
 
@@ -101,29 +104,65 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         while (reader.Read())
         {
+            int schoolEntityID = reader.GetInt32(0);
+            String schoolName = reader.GetString(1);
+            String streetAddress = reader.GetString(2);
+            String country = reader.GetString(3);
+            String city = reader.GetString(4);
+            String state = reader.GetString(5);
+            String schoolCounty = reader.GetString(6);
+            int zipCode = reader.GetInt32(7);
+
+            School schoolObj = new School(schoolEntityID, schoolName, streetAddress,
+               country, city, state, schoolCounty, zipCode);
+
+            schoolList.Add(schoolObj);
+        }
+
+        sc.Close();
+
+        //Organization populate
+        sc.Open();
+
+        populateUsers.CommandText = "SELECT  OrganizationEntityID,OrganizationName,OrganizationDescription,StreetAddress,Country,City,State,ZipCode,Image,ExternalLink FROM " +
+            "UserEntity INNER JOIN Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID where TwitterHandle is not null";
+
+        reader = populateUsers.ExecuteReader();
+
+        while (reader.Read())
+        {
+            int organizationEntityID = reader.GetInt32(0);
+            String organizationName = reader.GetString(1);
+            String organizationDescription = reader.GetString(2);
+            String streetAddress = reader.GetString(3);
+            String country = reader.GetString(4);
+            String city = reader.GetString(5);
+            String state = reader.GetString(6);
+            int zipCode = reader.GetInt32(7);
+            String image = reader.GetString(8);
+            String externalLink = reader.GetString(9);
+
+            Organization organizationObj = new Organization(organizationEntityID, organizationName, organizationDescription, streetAddress,
+                country, city, state, zipCode, image, externalLink);
+
+            organizationList.Add(organizationObj);
 
         }
 
 
 
-
-
-
-
-
-
-
-        //for (int i = 0; i <= rows; i++)
-        //{
-        //    TableRow row = new TableRow();
-        //    TableCell cell = new TableCell();
-        //    LinkButton zing = new LinkButton();
-        //    zing.Text = "hello";
-        //    zing.ID = "sheesh" + i;
-        //    cell.Controls.Add(zing);
-        //    row.Cells.Add(cell);
-        //    ContactsTable.Rows.Add(row);
-        //}
+        // logic time bby
+        for (int i = 0; i <= rows -1; i++)
+        {
+            TableRow row = new TableRow();
+            TableCell cell = new TableCell();
+            LinkButton zing = new LinkButton();
+            zing.Text = "hello";
+            zing.ID = "sheesh" + i;
+            cell.Controls.Add(zing);
+            row.Cells.Add(cell);
+            ContactsTable.Rows.Add(row);
+        }
 
 
     }
