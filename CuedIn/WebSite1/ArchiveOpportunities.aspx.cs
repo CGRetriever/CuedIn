@@ -279,4 +279,17 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        RejectSource.SelectParameters.Add("term", term);
+
+        RejectSource.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and(JobListing.JobTitle like '%" + @term + "%') or(Organization.OrganizationName like '%" + @term + "%')";
+        RejectSource.DataBind();
+        gridviewRejJobs.DataBind();
+
+        RejectSource.SelectParameters.Clear();
+    }
 }
