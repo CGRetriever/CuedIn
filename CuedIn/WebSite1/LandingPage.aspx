@@ -58,7 +58,7 @@
                                     <asp:Label ID="lblOrgDescription" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:HyperLink ID="JobLink1" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                     <asp:Label ID="lblOrgDescription2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                   <a class="btn btn-primary" href="#" role="button">View More</a>
+                                   <asp:HyperLink ID="JobLink2" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <asp:Label ID="lblOrgDescription3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:HyperLink ID="JobLink3" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -181,7 +181,7 @@
                                     <asp:Label ID="lblOrgDescription4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                   <a class="btn btn-primary" href="#" role="button">View More</a>
+                                   <asp:HyperLink ID="JobLink4" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>

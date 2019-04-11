@@ -20,6 +20,7 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] jobDeadLineArray = new string[5];
     public static String[] jobDescArray = new string[5];
     public static String[] OrgDescArray = new string[5];
+    public static String[] OrgWebURLArray = new string[5];
 
 
 
@@ -45,7 +46,7 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentJobs = new System.Data.SqlClient.SqlCommand();
         RecentJobs.Connection = sql;
-        RecentJobs.CommandText = "SELECT  TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved, Organization.OrganizationName, JobListing.JobType, JobListing.JobDescription, JobListing.Location,  JobListing.NumOfApplicants, JobListing.Deadline, Organization.OrganizationDescription FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE (JobListing.Approved = 'P') ORDER BY JobListing.JobListingID DESC";
+        RecentJobs.CommandText = "SELECT TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved, Organization.OrganizationName, JobListing.JobType, JobListing.JobDescription, JobListing.Location,  JobListing.NumOfApplicants, JobListing.Deadline, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE (JobListing.Approved = 'P') ORDER BY JobListing.JobListingID DESC";
         System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
 
@@ -64,6 +65,7 @@ public partial class LandingPage : System.Web.UI.Page
             numOfapplicantsArray[x] = reader.GetInt32(8);
             jobDeadLineArray[x] = reader.GetDateTime(9).ToString();
             OrgDescArray[x] = reader.GetString(10);
+            OrgWebURLArray[x] = reader.GetString(11);
             x++;
 
         }
@@ -77,10 +79,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription.Text = jobDescArray[0];
         lblJobType.Text = jobTypeArray[0];
         lblOrgDescription.Text = OrgDescArray[0];
-        //lblJobLocatio.Text = jobLocationArray[0];
-        //lblNumOfApplicants.Text = numOfapplicantsArray[0].ToString();
-        //lblJobDeadline.Text = jobDeadLineArray[0];
-
+        JobLink1.NavigateUrl = OrgWebURLArray[0];
 
 
         // Second card
@@ -91,6 +90,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription2.Text = jobDescArray[1];
         lblJobType2.Text = jobTypeArray[1];
         lblOrgDescription2.Text = OrgDescArray[1];
+        JobLink2.NavigateUrl = OrgWebURLArray[1];
 
 
         // Third card
@@ -101,6 +101,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription3.Text = jobDescArray[2];
         lblJobType3.Text = jobTypeArray[2];
         lblOrgDescription3.Text = OrgDescArray[2];
+        JobLink3.NavigateUrl = OrgWebURLArray[2];
 
 
         // Fourth card
@@ -111,6 +112,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription4.Text = jobDescArray[3];
         lblJobType4.Text = jobTypeArray[3];
         lblOrgDescription4.Text = OrgDescArray[3];
+        JobLink4.NavigateUrl = OrgWebURLArray[3];
 
 
         sql.Close();
@@ -192,196 +194,10 @@ public partial class LandingPage : System.Web.UI.Page
 
 
 
-
-
-    
-
-
-
-
-    protected void Icon1_Click(object sender, EventArgs e)
-    {
-
-
-        //String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        //System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-        //sql.Open();
-        //System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-        //moreJobInfo.Connection = sql;
-        //moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID where JobListing.JobListingID = " + jobListingIDArray[0];
-        //System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-        //while (reader.Read())
-        //{
-        //    //set labels to db values
-        //    lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-        //    lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-        //    lblJobName.Text = "Job Title: " + reader.GetString(2);
-        //    lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-        //    lblJobType.Text = "Job Type: " + reader.GetString(4);
-        //    lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-        //    lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-        //    lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
-        //}
-
-        //sql.Close();
-
-
-
-
-
-
-
-    //    ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openIconModal();", true);
-
+    //protected void JobLink1_Click(object sender, EventArgs e)
+    //{
+    //    JobLink1.PostBackUrl = "https://www.walmart.com/";
     //}
 
-    //protected void Icon2_Click(object sender, EventArgs e)
-    //{
 
-    //    String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-    //    System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-    //    sql.Open();
-    //    System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-    //    moreJobInfo.Connection = sql;
-    //    moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID where JobListing.JobListingID = " + jobListingIDArray[1];
-    //    System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-    //    while (reader.Read())
-    //    {
-    //        //set labels to db values
-    //        lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-    //        lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-    //        lblJobName.Text = "Job Title: " + reader.GetString(2);
-    //        lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-    //        lblJobType.Text = "Job Type: " + reader.GetString(4);
-    //        lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-    //        lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-    //        lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
-    //    }
-
-    //    sql.Close();
-
-
-
-
-
-    //    ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openIconModal();", true);
-    //}
-
-    //protected void Icon3_Click(object sender, EventArgs e)
-    //{
-    //    String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-    //    System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-    //    sql.Open();
-    //    System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-    //    moreJobInfo.Connection = sql;
-    //    moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID where JobListing.JobListingID = " + jobListingIDArray[2];
-    //    System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-    //    while (reader.Read())
-    //    {
-    //        //set labels to db values
-    //        lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-    //        lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-    //        lblJobName.Text = "Job Title: " + reader.GetString(2);
-    //        lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-    //        lblJobType.Text = "Job Type: " + reader.GetString(4);
-    //        lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-    //        lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-    //        lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
-    //    }
-
-    //    sql.Close();
-
-
-
-
-
-    //    ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openIconModal();", true);
-    //}
-
-    //protected void Icon4_Click(object sender, EventArgs e)
-    //{
-    //    String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-    //    System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-    //    sql.Open();
-    //    System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-    //    moreJobInfo.Connection = sql;
-    //    moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID where JobListing.JobListingID = " + jobListingIDArray[3];
-    //    System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-    //    while (reader.Read())
-    //    {
-    //        //set labels to db values
-    //        lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-    //        lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-    //        lblJobName.Text = "Job Title: " + reader.GetString(2);
-    //        lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-    //        lblJobType.Text = "Job Type: " + reader.GetString(4);
-    //        lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-    //        lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-    //        lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
-    //    }
-
-    //    sql.Close();
-
-
-
-
-
-    //    ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openIconModal();", true);
-    //}
-
-    //protected void Icon5_Click(object sender, EventArgs e)
-    //{
-    //    String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-    //    System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-    //    sql.Open();
-    //    System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
-    //    moreJobInfo.Connection = sql;
-    //    moreJobInfo.CommandText = "SELECT Organization.OrganizationName, Organization.OrganizationDescription, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants FROM Organization INNER JOIN JobListing ON Organization.OrganizationEntityID = JobListing.OrganizationID where JobListing.JobListingID = " + jobListingIDArray[4];
-    //    System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
-
-
-
-    //    while (reader.Read())
-    //    {
-    //        //set labels to db values
-    //        lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-    //        lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
-    //        lblJobName.Text = "Job Title: " + reader.GetString(2);
-    //        lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-    //        lblJobType.Text = "Job Type: " + reader.GetString(4);
-    //        lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-    //        lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-    //        lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
-
-    //    }
-
-    //    sql.Close();
-
-
-
-
-
-    //    ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openIconModal();", true);
-    }
 }
