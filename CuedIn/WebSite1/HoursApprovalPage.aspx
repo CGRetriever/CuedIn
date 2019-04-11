@@ -10,26 +10,32 @@
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
        <div class="col-auto container-fluid text-center">
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+           <asp:DropDownList ID="dropDownSort" runat="server" OnSelectedIndexChanged="sortGridview" AutoPostBack="true">
+               <asp:ListItem Text="Student Name" Value="StudentName"></asp:ListItem>
+               <asp:ListItem Text="Organization Name" Value="OrganizationName"></asp:ListItem>
+               <asp:ListItem Text="Job Title" Value="JobTitle"></asp:ListItem>
+               <asp:ListItem Text="Hours Requested" Value="HoursRequested"></asp:ListItem>
+           </asp:DropDownList>
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" AllowSorting="true">
             <Columns>
 
                 <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" />
-                <asp:TemplateField ShowHeader="false" HeaderStyle-BorderColor="Black">
+                <asp:TemplateField HeaderText="Student Name">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("LogID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
-                <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
-                <asp:BoundField DataField="HoursRequested" HeaderText="HoursRequested" SortExpression="HoursRequested" />
-                <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
+                <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName"/>
+                <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
+                <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" />
+                <asp:TemplateField ShowHeader="False">
                     <ItemTemplate>
                         <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                         <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle" Text="Decline" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                         <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle" Text="View Comments" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="moreInfoJobLinkBtn_Click"><i class="fas fa-comments"></i></asp:LinkButton>
                     </ItemTemplate>
 
-                    <HeaderStyle BorderColor="Black"></HeaderStyle>
+                    
                 </asp:TemplateField>
             </Columns>
             <RowStyle CssClass="cursor-pointer" />

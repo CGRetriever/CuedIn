@@ -255,4 +255,33 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
+
+    //protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
+    //{
+    //    if (e.Row.RowType == DataControlRowType.Header)
+    //    {
+    //        foreach (TableCell tc in e.Row.Cells)
+    //        {
+    //            if (tc.HasControls())
+    //            {
+    //                LinkButton lb = (LinkButton)tc.Controls[0];
+    //                if (lb != null)
+    //                {
+    //                    Image icon = new Image();
+    //                    icon.ImageUrl = "~/img/sort.png";
+
+
+    //                        tc.Controls.Add(new LiteralControl(" "));
+    //                        tc.Controls.Add(icon);
+
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
+    protected void sortGridview(object sender, EventArgs e)
+    {
+        GridView1.Sort(dropDownSort.SelectedValue, SortDirection.Ascending);
+    }
 }
