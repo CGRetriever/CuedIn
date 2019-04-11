@@ -6,6 +6,7 @@
 
 .btn-primary:hover,
 .btn-primary:focus {
+
     background-color: #fff;
     color:#102B3F !important;
     border-color: #4F79A3;
@@ -14,6 +15,7 @@
 }
 
 .btn-primary {
+
     color: #ffff !important;
     background-color: #102B3F;
     border-color: #4F79A3;
@@ -115,6 +117,7 @@ section .section-title {
 .backside .card a {
     font-size: 18px;
     color: #102B3F ;
+
 }
 
 .frontside .card .card-title,
@@ -124,6 +127,8 @@ section .section-title {
 
 .frontside .card .card-body img {
     width: 200px;
+
     height: 175px;
+
     border-radius: 0%;
 }
