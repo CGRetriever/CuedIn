@@ -139,7 +139,7 @@ public partial class LandingPage : System.Web.UI.Page
             StudentNamearray[y] = result.GetString(1);
             AppJobTitleArray[y] = result.GetString(2);
             AppOrgTitleArray[y] = result.GetString(3);
-            AppStudentGPAArray[y] = result.GetFloat(4).ToString();
+            AppStudentGPAArray[y] = result.GetDouble(4).ToString();
             StudentImageArray[y] = result.GetString(5);
             y++;
         }
