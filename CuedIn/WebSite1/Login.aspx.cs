@@ -57,13 +57,15 @@ public partial class Login : System.Web.UI.Page
 
     protected void LoginButton_Click(object sender, EventArgs e)
     {
+        username.Value = username.Value.Trim();
+        password.Value = password.Value.Trim();
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         sql.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = sql;
-
+        
         //query to grab the password of the username entered in
         query.CommandText = "SELECT DISTINCT dbo.Password.PasswordHash FROM dbo.Password INNER JOIN  " +
             "dbo.UserEntity ON dbo.Password.UserEntityID = dbo.UserEntity.UserEntityID where upper(username) = upper(@userName)";
