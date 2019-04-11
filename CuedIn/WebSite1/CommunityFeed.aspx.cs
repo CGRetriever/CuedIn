@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Tweetinvi;
 using System.Configuration;
+using System.Drawing;
 
 
 public partial class CommunityFeed : System.Web.UI.Page
@@ -79,7 +80,7 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         sc.Close();
 
-        //Schools
+        //Schools populate
         sc.Open();
         populateUsers.CommandText = "SELECT SchoolEntityID,SchoolName,StreetAddress,Country,City,State,SchoolCounty,ZipCode FROM UserEntity " +
             "INNER JOIN School ON UserEntity.UserEntityID = School.SchoolEntityID where TwitterHandle is not null";
@@ -138,7 +139,15 @@ public partial class CommunityFeed : System.Web.UI.Page
         // associate jobnames,schoolnames, with twitter (associating userEntities, with schools and organizations)
         for (int i = 0; i <= userEntityList.Count - 1; i++)
         {
-            //
+            //New row and add a new cell to the row
+            TableRow row = new TableRow();
+            TableCell cell = new TableCell();
+            TableCell cell2 = new TableCell();
+            //make a new link button to instatntiate it later
+            LinkButton twitterContactLink = new LinkButton();
+            System.Web.UI.WebControls.Image twitterAvi = new System.Web.UI.WebControls.Image();
+
+            
             for (int j = 0; j <= schoolList.Count - 1; j++)
             {
                 //match with the userID's and if they match set the obj aligned with other
@@ -148,6 +157,23 @@ public partial class CommunityFeed : System.Web.UI.Page
                     userEntityList[i].setSchool(schoolList[j]);
                     var schoolUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
                     userEntityList[i].getSchool().setImage(schoolUser.ProfileImageUrl);
+
+                    //this particular component is a school we are going to make the button display the school name
+                    //then we are going to add it into a row and cell
+                    //then add a commandeventhandler dynamically
+
+                    twitterContactLink.Text = userEntityList[i].getSchool().getSchoolName() + "\n";
+                    twitterContactLink.ID = "TwitterContactLink" + i;
+                    twitterAvi.ImageUrl = userEntityList[i].getSchool().getImage();
+                    cell.Controls.Add(twitterContactLink);
+                    
+                    cell2.Controls.Add(twitterAvi);
+                    row.Cells.Add(cell);
+                    row.Cells.Add(cell2);                  
+                    ContactsTable.Rows.Add(row);
+
+                    twitterContactLink.Command += new CommandEventHandler(this.Button_click);
+                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
                     break;
 
                 }
@@ -162,42 +188,33 @@ public partial class CommunityFeed : System.Web.UI.Page
                     userEntityList[i].setOrganization(organizationList[j]);
                     var organizationUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
                     userEntityList[i].getOrganization().setImage(organizationUser.ProfileImageUrl);
+
+                    //this particular component is a school we are going to make the button display the school name
+                    //then we are going to add it into a row and cell
+                    //then add a commandeventhandler dynamically
+
+                    twitterContactLink.Text = userEntityList[i].getOrganization().getOrganizationName() + "\n";
+                    twitterContactLink.ID = "TwitterContactLink" + i;
+                    cell.Controls.Add(twitterContactLink);
+                    twitterAvi.ImageUrl = userEntityList[i].getOrganization().GetImage();
+                    cell.Controls.Add(twitterContactLink);
+                    cell2.Controls.Add(twitterAvi);
+                    row.Cells.Add(cell);
+                    row.Cells.Add(cell2);
+                    
+                 
+                    ContactsTable.Rows.Add(row);
+
+
+                    twitterContactLink.Command += new CommandEventHandler(this.Button_click);
+                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
                     break;
                 }
 
-
-            }
-                TableRow row = new TableRow();
-                TableCell cell = new TableCell();
-                LinkButton twitterContactLink = new LinkButton();
-
-                if (userEntityList[i].getSchool() != null)
-                {
-                    twitterContactLink.Text = userEntityList[i].getSchool().getSchoolName();
-                    twitterContactLink.ID = "TwitterContactLink" + i;
-                    cell.Controls.Add(twitterContactLink);
-                    row.Cells.Add(cell);
-                    ContactsTable.Rows.Add(row);
-                    
-                    twitterContactLink.Command += new CommandEventHandler(this.Button_click);
-                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
-                }
-                else if (userEntityList[i].getOrganization() != null)
-                {
-                    twitterContactLink.Text = userEntityList[i].getOrganization().getOrganizationName();
-                    twitterContactLink.ID = "TwitterContactLink" + i;
-                    cell.Controls.Add(twitterContactLink);
-                    row.Cells.Add(cell);
-                    ContactsTable.Rows.Add(row);
-
-                    twitterContactLink.Command += new CommandEventHandler(this.Button_click);
-                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
             }
 
-            }
-        
-
-
+        }
+      
     }
     protected void TweetButtonClick(object sender, CommandEventArgs e)
     {

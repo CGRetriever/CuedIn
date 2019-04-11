@@ -54,13 +54,13 @@
 
              <div class ="form-group col-md-4">
 
-        <div class ="card text-center" style="width:15rem;">
+        <div class ="card text-center" style="width:20rem;">
                 <div class="card-header">
                     <asp:Label ID="Label2" runat="server" Text="Contacts" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
 
-                    <asp:Table ID="ContactsTable" runat="server"></asp:Table>
+                    <asp:Table ID="ContactsTable" runat="server" CellPadding="1" CellSpacing="1" CssClass="table-striped"></asp:Table>
                 </div>
               </div>
 
