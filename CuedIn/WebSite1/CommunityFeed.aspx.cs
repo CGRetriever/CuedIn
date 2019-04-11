@@ -23,11 +23,11 @@ public partial class CommunityFeed : System.Web.UI.Page
         ((Label)Master.FindControl("lblMaster")).Text = "Community Feed";
 
         //API Keys Consumers
-        String ConsumerAPIKey = "DniQmv9b00q3fUmIsJ1XUfsVk";
-        String ConsumerSecretKey = "2XxjzfYbyQgQfvK0T8tXntG6BOV7XGC2sJo4zUdOFY2LbqJojs";
+        String ConsumerAPIKey = "m1OiqyDwhR4N6qhUZKPs5Ol8v";
+        String ConsumerSecretKey = "AcgglHiet3ZZ06X7tBIjf2BdQmy4os7wRLHvjFz8mWcMHwdaop";
         //API keys Secret/Tokens
-        String accessToken = "411549308-HzZFxXI32uraK0fUsLGoVxYfD6AXDjZFDwA4LAvZ";
-        String accessSecretToken = "rOqotd9WCARD5nrtU3wOFpOJhFRhBEmnNE7oKZ0vqdGL0";
+        String accessToken = "1116437883563458560-cS8oBkKGbtz9JW8Q4X4fm8k49os1ao";
+        String accessSecretToken = "pkCNEQZ4pmVASwoYPzX2O4u0EPV9ItI1akFje9Jfhwwcm";
 
         //Set up the Auth for Twitter
         Auth.SetUserCredentials(ConsumerAPIKey, ConsumerSecretKey, accessToken, accessSecretToken);

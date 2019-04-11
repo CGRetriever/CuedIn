@@ -21,6 +21,8 @@ public partial class Login : System.Web.UI.Page
         Session.Remove("permission");
         Session["user"] = "";
         Session["permission"] = "";
+        Session["school"] = "";
+
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;

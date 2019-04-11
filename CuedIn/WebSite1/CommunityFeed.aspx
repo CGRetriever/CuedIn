@@ -22,7 +22,7 @@
          
 
                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass ="invalid-feedback" runat="server" ControlToValidate="TweetBox" ErrorMessage="Must be filled out" ValidationGroup="Group1" ForeColor="Red"></asp:RequiredFieldValidator>--%>
-            <div class="card-footer">
+            <div class="card-body">
                 <asp:LinkButton  ID="SendItButton" runat="server" OnCommand="TweetButtonClick" CssClass="btn"><i class="fas fa-paper-plane fa-3x"></i></asp:LinkButton>
                 <p class="card-text font-weight-bold font-black">Send Tweet </p>
             </div>
@@ -33,7 +33,7 @@
                     <asp:Label ID="TweetStream" runat="server" Text="Our Tweets" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    <a class="twitter-timeline"  href="https://twitter.com/KyleKim09?ref_src=twsrc%5Etfw" data-width="400" data-height="400" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a class="twitter-timeline" href="https://twitter.com/ValleyConsulti1?ref_src=twsrc%5Etfw" data-width="400" data-height="400">Tweets by ValleyConsulti1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
               </div>
              </div>
@@ -70,7 +70,6 @@
 
     </div>
 </div>
-        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
 
 
 
