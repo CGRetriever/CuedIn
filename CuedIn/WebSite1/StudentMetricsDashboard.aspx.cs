@@ -35,7 +35,7 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
 
     protected void SendSMS(int scholarshipNum, int jobNum)
     {
-      TwilioObj twilioObj = new TwilioObj(scholarshipNum, jobNum);
+      //TwilioObj twilioObj = new TwilioObj(scholarshipNum, jobNum);
     }
 
  
