@@ -10,9 +10,8 @@
            <div class="col-auto container-fluid text-center">
            <div class="col-auto text-center rounded" style="background-color:#102B3F;">
            <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-   
-           <asp:TextBox ID="SearchBox" runat="server" ></asp:TextBox>
-           <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Button" />
+           <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" CssClass="btn" />
            </div>
            
 
