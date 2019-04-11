@@ -12,6 +12,12 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] jobTitleArray = new string[5];
     public static int[] jobListingIDArray = new int[5];
     public static String[] orgNameArray = new string[5];
+    public static String[] jobTypeArray = new string[5];
+    public static String[] jobLocationArray = new string[5];
+    public static int[] numOfapplicantsArray = new int[5];
+    public static String[] jobDeadLineArray = new string[5];
+    public static String[] jobDescArray = new string[5];
+    public static String[] OrgDescArray = new string[5];
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +31,7 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentJobs = new System.Data.SqlClient.SqlCommand();
         RecentJobs.Connection = sql;
-        RecentJobs.CommandText = "SELECT TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE (JobListing.Approved = 'P') ORDER BY JobListing.JobListingID DESC";
+        RecentJobs.CommandText = "SELECT  TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved, Organization.OrganizationName, JobListing.JobType, JobListing.JobDescription, JobListing.Location,  JobListing.NumOfApplicants, JobListing.Deadline, Organization.OrganizationDescription FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE (JobListing.Approved = 'P') ORDER BY JobListing.JobListingID DESC";
         System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
 
@@ -38,31 +44,45 @@ public partial class LandingPage : System.Web.UI.Page
             jobTitleArray[x] = reader.GetString(1);
             jobListingIDArray[x] = reader.GetInt32(0);
             orgNameArray[x] = reader.GetString(4);
+            jobTypeArray[x] = reader.GetString(5);
+            jobLocationArray[x] = reader.GetString(7);
+            jobDescArray[x] = reader.GetString(6);
+            numOfapplicantsArray[x] = reader.GetInt32(8);
+            jobDeadLineArray[x] = reader.GetDateTime(9).ToString();
+            OrgDescArray[x] = reader.GetString(10);
             x++;
 
         }
 
+
+        // First Card
         Image1.ImageUrl = imageArray[0];
         CompanyNamelbl.Text = orgNameArray[0];
         JobTitlelbl.Text = jobTitleArray[0];
         CompanyNamelbl2.Text = orgNameArray[0];
-        
-
-        //Image1.ImageUrl = imageArray[0];
-        //Image2.ImageUrl = imageArray[1];
-        //Image3.ImageUrl = imageArray[2];
-        //Image4.ImageUrl = imageArray[3];
-        //Image5.ImageUrl = imageArray[4];
-
-        //Label1.Text = jobTitleArray[0];
-        //Label2.Text = jobTitleArray[1];
-        //Label3.Text = jobTitleArray[2];
-        //Label4.Text = jobTitleArray[3];
-        //Label5.Text = jobTitleArray[4];
+        lblJOrganizationDescription.Text = jobDescArray[0];
+        lblJobType.Text = jobTypeArray[0];
+        lblOrgDescription.Text = OrgDescArray[0];
+        //lblJobLocatio.Text = jobLocationArray[0];
+        //lblNumOfApplicants.Text = numOfapplicantsArray[0].ToString();
+        //lblJobDeadline.Text = jobDeadLineArray[0];
 
 
 
-        //sql.Close();
+        // Second card
+        Image2.ImageUrl = imageArray[1];
+        CompanyNamelbl3.Text = orgNameArray[1];
+        JobTitlelbl2.Text = jobTitleArray[1];
+        CompanyNamelbl4.Text = orgNameArray[1];
+        lblJOrganizationDescription2.Text = jobDescArray[1];
+        lblJobType2.Text = jobTypeArray[1];
+        lblOrgDescription2.Text = OrgDescArray[1];
+
+
+
+
+
+        sql.Close();
 
 
 
