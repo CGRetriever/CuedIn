@@ -30,7 +30,7 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] StudentNamearray = new string[5];
     public static String[] AppJobTitleArray = new string[5];
     public static String[] AppOrgTitleArray = new string[5];
-    public static String[] AppStudentGPAArray = new string[5];
+    public static String[] AppStudentGPAArray = new String[5];
 
 
 
@@ -128,7 +128,7 @@ public partial class LandingPage : System.Web.UI.Page
         System.Data.SqlClient.SqlCommand RecentRequests = new System.Data.SqlClient.SqlCommand();
         RecentRequests.Connection = sql;
         RecentRequests.CommandText = "SELECT  TOP(5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
-        System.Data.SqlClient.SqlDataReader result = RecentJobs.ExecuteReader();
+        System.Data.SqlClient.SqlDataReader result = RecentRequests.ExecuteReader();
 
 
         int y = 0;
@@ -138,14 +138,15 @@ public partial class LandingPage : System.Web.UI.Page
             applicationIDArray[y] = result.GetInt32(0).ToString();
             StudentNamearray[y] = result.GetString(1);
             AppJobTitleArray[y] = result.GetString(2);
+            AppOrgTitleArray[y] = result.GetString(3);
+            AppStudentGPAArray[y] = result.GetFloat(4).ToString();
+            StudentImageArray[y] = result.GetString(5);
+            y++;
         }
 
-
-
-
-
-
+        int yy = 2;
     }
+
 
     public override void VerifyRenderingInServerForm(Control control)
     {
