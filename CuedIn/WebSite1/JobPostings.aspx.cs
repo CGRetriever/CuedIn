@@ -22,48 +22,48 @@ public partial class JobPostings : System.Web.UI.Page
     {
 
 
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
+        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        //sc.Open();
 
-        System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
-        sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
-        sqlrecentJobPostID.Connection = sc;
-        System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
+        //System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
+        //sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
+        //sqlrecentJobPostID.Connection = sc;
+        //System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
 
-        while (reader.Read())
-        {
-            recentPostID = reader.GetInt32(0);
-        }
+        //while (reader.Read())
+        //{
+        //    recentPostID = reader.GetInt32(0);
+        //}
 
-        sc.Close();
+        //sc.Close();
 
-        sc.Open();
+        //sc.Open();
 
 
-        System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
-        recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
-        recentJobPost.Connection = sc;
+        //System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
+        //recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
+        //recentJobPost.Connection = sc;
 
-        reader = recentJobPost.ExecuteReader();
+        //reader = recentJobPost.ExecuteReader();
 
         ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
 
 
 
-        while (reader.Read())
-        {
-            jobTitle = reader.GetString(0);
-            jobDescription = reader.GetString(1);
-            jobType = reader.GetString(2);
-            jobLocation = reader.GetString(3);
-            jobDeadline = reader.GetDateTime(4);
-            numOfApplicants = reader.GetInt32(5);
-            orgName = reader.GetString(6);
-            orgDescription = reader.GetString(7);
-            orgImage = reader.GetString(8);
+        //while (reader.Read())
+        //{
+        //    jobTitle = reader.GetString(0);
+        //    jobDescription = reader.GetString(1);
+        //    jobType = reader.GetString(2);
+        //    jobLocation = reader.GetString(3);
+        //    jobDeadline = reader.GetDateTime(4);
+        //    numOfApplicants = reader.GetInt32(5);
+        //    orgName = reader.GetString(6);
+        //    orgDescription = reader.GetString(7);
+        //    orgImage = reader.GetString(8);
 
-        }
+        //}
 
 
         
@@ -84,7 +84,7 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
-        countJobPostings.CommandText = "select count(JobListingID) from JobListing where approved = 'Y' and jobListingID <> " + recentPostID;
+        countJobPostings.CommandText = "select count(JobListingID) from JobListing where approved = 'Y'";
         countJobPostings.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();
@@ -100,7 +100,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where jobListingID <>" + recentPostID + "and approved = 'Y' ";
+        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
         pullJobInfo.Connection = sc;
 
 
@@ -113,6 +113,12 @@ public partial class JobPostings : System.Web.UI.Page
             String[] jobDescriptionArray = new String[countTotalJobs];
             String[] imageArray = new string[countTotalJobs];
             String[] linkArray = new string[countTotalJobs];
+            String[] jobLocationArray = new string[countTotalJobs];
+            int[] numOfApplicantsArray = new int[countTotalJobs];
+            String[] organizationDescriptionArray = new string[countTotalJobs];
+            DateTime[] deadlineArray = new DateTime[countTotalJobs];
+
+
             int x = 0;
             while (reader.Read())
             {
@@ -121,6 +127,10 @@ public partial class JobPostings : System.Web.UI.Page
                 jobDescriptionArray[x] = reader.GetString(2);
                 imageArray[x] = reader.GetString(3);
                 linkArray[x] = reader.GetString(4);
+                jobLocationArray[x] = reader.GetString(5);
+                deadlineArray[x] = reader.GetDateTime(6);
+                numOfApplicantsArray[x] = reader.GetInt32(7);
+                organizationDescriptionArray[x] = reader.GetString(8);
                 x++;
 
             }
@@ -141,18 +151,55 @@ public partial class JobPostings : System.Web.UI.Page
                                 break;
                             }
                             TableCell c = new TableCell();
-                            c.Text += "<div class = 'card card-cascade>";
-                            c.Text += "<div class = 'view view-cascade overlay'>";
-                            c.Text += "<img class = 'card-img-top' src='" + imageArray[count] + "'>";
-                            c.Text += "<div class = 'card-body card-body-cascade text-center'>";
-                            c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
-                            c.Text += "<div class='font-weight-bold indigo-text py-2'>" + jobTitleArray[count] + "</div>";
-                            c.Text += "<div class = 'card-text'>" + jobDescriptionArray[count] + "</div>";
-                            c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
-                            c.Text += "</div>";
-                            c.Text += "</div>";
-                            c.Text += "</div>";
-                            c.Text += "</div>";
+                    //c.Text += "<div class='col-xs-12 col-sm-6 col-md-4'>";
+                    c.Text += "<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>";
+                    c.Text += "<div class='mainflip'>";
+                    c.Text += "<div class='frontside'>";
+                    c.Text += "<div class='card'>";
+                    c.Text += "<div class='card-body text-center'>";
+                    c.Text += "<p><img class='img-fluid' src='"+imageArray[count]+"' alt='card image'></p>";
+                    c.Text += "<h4 class='card-title'>"+orgNameArray[count]+"</h4>";
+                    c.Text += "<p class='card-text'>"+jobTitleArray[count]+"</p>";
+                    c.Text += "<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "<div class='backside'>";
+                    c.Text += "<div class='card'>";
+                    c.Text += "<div class='card-body text-center'>";
+                    c.Text += "<h4 class='card-title'>" + orgNameArray[count] + "</h4>";
+                    c.Text += "<p class='card-text'>" + jobTitleArray[count] + "</p>";
+                    c.Text += "<p class='card-text'> Job Description: " + jobDescriptionArray[count] + "</p>";
+                    c.Text += "<p class='card-text'> Location: " + jobLocationArray[count] + "</p>";
+                    c.Text += "<p class='card-text'>  Deadline: " + deadlineArray[count].ToString() + "</p>";
+                    c.Text += "<p class='card-text'>  Number of Applicants: " + numOfApplicantsArray[count] + "</p>";
+                    c.Text += "<ul class='list-inline'>";
+                    c.Text += "<li class='list-inline-item'>";
+                    c.Text += "<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count]+"'>";
+                    c.Text += "<i class='fas fa-external-link-alt'></i>";
+                    c.Text += "</a>";
+                    c.Text += "</li>";
+                    c.Text += "</ul>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+
+
+
+                    //c.Text += "<div class = 'card card-cascade>";
+                    //        c.Text += "<div class = 'view view-cascade overlay'>";
+                    //        c.Text += "<img class = 'card-img-top' src='" + imageArray[count] + "'>";
+                    //        c.Text += "<div class = 'card-body card-body-cascade text-center'>";
+                    //        c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
+                    //        c.Text += "<div class='font-weight-bold indigo-text py-2'>" + jobTitleArray[count] + "</div>";
+                    //        c.Text += "<div class = 'card-text'>" + jobDescriptionArray[count] + "</div>";
+                    //        c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
+                    //        c.Text += "</div>";
+                    //        c.Text += "</div>";
+                    //        c.Text += "</div>";
+                    //        c.Text += "</div>";
                             c.Style.Add("width", "33%");
                             r.Cells.Add(c);
                             count++;
