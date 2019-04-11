@@ -8,6 +8,7 @@
     <div class='tableauPlaceholder' id='viz1554158134733' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ap&#47;ApprovalDashboard_CuedIn_Dark_Extra_Large_Device&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='views&#47;ApprovalDashboard_CuedIn_Dark_Extra_Large_Device&#47;Dashboard1?:embed=y&amp;:display_count=y' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ap&#47;ApprovalDashboard_CuedIn_Dark_Extra_Large_Device&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1554158134733');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.minWidth='1200px';vizElement.style.maxWidth='2560px';vizElement.style.width='100%';vizElement.style.height='307px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
     <form id="form1" runat="server">
+        		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
@@ -56,6 +57,13 @@
 
         <br />
         <br />
+
+        <script>
+       //Initialize popover with jQuery
+        $(document).ready(function () {
+            $('.popovers').popover();
+        });
+        </script>
 
 
         <div>
@@ -106,6 +114,7 @@
                     function openApproveXModal() {
                         $('[id*=approveXModal]').modal('show');
                     }
+
                 </script>
             </div>
 

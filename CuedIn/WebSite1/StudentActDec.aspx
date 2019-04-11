@@ -9,6 +9,8 @@
        <div class="col-md-12 text-center">
    
            </div>
+          <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+
        <div class="col-auto container-fluid text-center">
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
             <Columns>
@@ -46,6 +48,12 @@
           
           <br />
           <br />
+    <script>
+         //Initialize popover with jQuery
+        $(document).ready(function () {
+            $('.popovers').popover();
+        });
+    </script>
           
 <div>
         <%--Student Approve Modal--%>

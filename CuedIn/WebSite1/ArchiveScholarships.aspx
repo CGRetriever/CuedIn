@@ -9,6 +9,7 @@
     <form id="form1" runat="server">
         <%--Rejected Scholarships Gridview--%>
         <div class="form-row">
+                        <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
         <div class="form-group col-md-6">
             <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Rejected Scholarships</label>
 
@@ -54,6 +55,12 @@
                 <RowStyle CssClass="cursor-pointer" />
             </asp:GridView>
         </div>
+            <script>
+                //Initialize popover with jQuery
+                $(document).ready(function () {
+                    $('.popovers').popover();
+                });
+            </script>
             </div>
                 <div>
             <%--Scholarship Approve Modal--%>

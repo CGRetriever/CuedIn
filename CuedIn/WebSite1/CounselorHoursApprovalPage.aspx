@@ -7,13 +7,6 @@
        <div class="col-auto container-fluid text-center">
            <br />
    
-
-    <script type="text/javascript">
-        //Initialize popover with jQuery
-        $(document).ready(function () {
-            $('.popovers').popover();
-        });
-    </script>
            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers" data-content="&lt;img src='images/CommUpLogo.JPG' width='250' height='150' /&gt;" style="margin-left:1155px; color:white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
            
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
