@@ -58,7 +58,7 @@
                                     <asp:Label ID="lblOrgDescription" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <asp:HyperLink ID="JobLink1" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
+                                    <asp:LinkButton ID="JobLink1" runat="server" CssClass="btn-lg"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                     <asp:Label ID="lblOrgDescription2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                   <asp:HyperLink ID="JobLink2" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
+                                   <asp:LinkButton ID="JobLink2" runat="server" CssClass="btn-lg"><i class="fas fa-arrow-circle-right fa-1x"></i></asp:LinkButton>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                     <asp:Label ID="lblOrgDescription3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <asp:HyperLink ID="JobLink3" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -194,9 +194,9 @@
 
 
         <!-- Student Cards -->
-
+        <br />
         <div class="container container-fluid">
-        <h3 class="">Students Pending Approval</h3>
+        <h3 class="">Student Applications Pending Approval</h3>
         <div class="row">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-3">
@@ -228,7 +228,7 @@
                                     <asp:Label ID="StudentGPAlbl" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:HyperLink ID="StudentLink1" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +266,7 @@
                                     <asp:Label ID="StudentGPAlbl2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:HyperLink ID="StudentLink2" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -304,7 +304,7 @@
                                     <asp:Label ID="StudentGPAlbl3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:HyperLink ID="StudentLink3" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -342,7 +342,7 @@
                                     <asp:Label ID="StudentGPAlbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <a class="btn btn-primary" href="#" role="button">View More</a>
+                                    <asp:HyperLink ID="StudentLink4" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>

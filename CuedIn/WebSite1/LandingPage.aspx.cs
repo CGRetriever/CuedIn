@@ -20,7 +20,7 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] jobDeadLineArray = new string[5];
     public static String[] jobDescArray = new string[5];
     public static String[] OrgDescArray = new string[5];
-    public static String[] OrgWebURLArray = new string[5];
+    
 
 
 
@@ -31,7 +31,8 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] StudentNamearray = new string[5];
     public static String[] AppJobTitleArray = new string[5];
     public static String[] AppOrgTitleArray = new string[5];
-    public static String[] AppStudentGPAArray = new String[5];
+    public static String[] AppStudentGPAArray = new string[5];
+    
 
 
 
@@ -65,7 +66,6 @@ public partial class LandingPage : System.Web.UI.Page
             numOfapplicantsArray[x] = reader.GetInt32(8);
             jobDeadLineArray[x] = reader.GetDateTime(9).ToString();
             OrgDescArray[x] = reader.GetString(10);
-            OrgWebURLArray[x] = reader.GetString(11);
             x++;
 
         }
@@ -79,7 +79,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription.Text = jobDescArray[0];
         lblJobType.Text = jobTypeArray[0];
         lblOrgDescription.Text = OrgDescArray[0];
-        JobLink1.NavigateUrl = OrgWebURLArray[0];
+        
 
 
         // Second card
@@ -90,7 +90,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription2.Text = jobDescArray[1];
         lblJobType2.Text = jobTypeArray[1];
         lblOrgDescription2.Text = OrgDescArray[1];
-        JobLink2.NavigateUrl = OrgWebURLArray[1];
+        
 
 
         // Third card
@@ -101,7 +101,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription3.Text = jobDescArray[2];
         lblJobType3.Text = jobTypeArray[2];
         lblOrgDescription3.Text = OrgDescArray[2];
-        JobLink3.NavigateUrl = OrgWebURLArray[2];
+        
 
 
         // Fourth card
@@ -112,7 +112,7 @@ public partial class LandingPage : System.Web.UI.Page
         lblJOrganizationDescription4.Text = jobDescArray[3];
         lblJobType4.Text = jobTypeArray[3];
         lblOrgDescription4.Text = OrgDescArray[3];
-        JobLink4.NavigateUrl = OrgWebURLArray[3];
+        
 
 
         sql.Close();
@@ -129,7 +129,7 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentRequests = new System.Data.SqlClient.SqlCommand();
         RecentRequests.Connection = sql;
-        RecentRequests.CommandText = "SELECT  TOP(5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
+        RecentRequests.CommandText = "SELECT TOP (5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage,  Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
         System.Data.SqlClient.SqlDataReader result = RecentRequests.ExecuteReader();
 
 
@@ -154,6 +154,7 @@ public partial class LandingPage : System.Web.UI.Page
         StudentJobTitlelbl.Text = AppJobTitleArray[0];
         OrgTitlelbl.Text = AppOrgTitleArray[0];
         StudentGPAlbl.Text = AppStudentGPAArray[0];
+        
 
 
         // Second Student Request Card
@@ -163,6 +164,7 @@ public partial class LandingPage : System.Web.UI.Page
         StudentJobTitlelbl2.Text = AppJobTitleArray[1];
         OrgTitlelbl2.Text = AppOrgTitleArray[1];
         StudentGPAlbl2.Text = AppStudentGPAArray[1];
+        
 
         // Third Student Request Card
         StudentImage3.ImageUrl = StudentImageArray[2];
@@ -171,6 +173,7 @@ public partial class LandingPage : System.Web.UI.Page
         StudentJobTitlelbl3.Text = AppJobTitleArray[2];
         OrgTitlelbl3.Text = AppOrgTitleArray[2];
         StudentGPAlbl3.Text = AppStudentGPAArray[2];
+       
 
         // Fourth Student Request Card
         StudentImage4.ImageUrl = StudentImageArray[3];
@@ -179,7 +182,7 @@ public partial class LandingPage : System.Web.UI.Page
         StudentJobTitlelbl4.Text = AppJobTitleArray[3];
         OrgTitlelbl4.Text = AppOrgTitleArray[3];
         StudentGPAlbl4.Text = AppStudentGPAArray[3];
-
+        
 
 
 
