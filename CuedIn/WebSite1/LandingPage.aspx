@@ -156,67 +156,33 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="img/arconic.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    <p><asp:Image ID="Image3" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
+                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="text-center">
+                                    <asp:Label ID="JobTitlelbl3" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        </div>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-twitter-square"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                               <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="img/simplicity.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
+                                    <asp:Label ID="CompanyNamelbl6" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="form-group text-left">
+                                    <asp:Label ID="Label8" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="lblJobType3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                     <asp:Label ID="Label12" runat="server" CssClass="card-text font-weight-bold" Text="Job Description:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="lblJOrganizationDescription3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="Label14" runat="server" CssClass="card-text font-weight-bold" Text="Organization Description:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="lblOrgDescription3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                        </div>
+                                    <%--<ul class="list-inline">
                                         <li class="list-inline-item">
                                             <a class="social-icon text-xs-center" target="_blank" href="#">
                                                 <i class="fab fa-facebook"></i>
@@ -237,7 +203,69 @@
                                                 <i class="fab fa-google"></i>
                                             </a>
                                         </li>
-                                    </ul>
+                                    </ul>--%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><asp:Image ID="Image4" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
+                                    <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="text-center">
+                                    <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center mt-4">
+                                    <asp:Label ID="CompanyNamelbl8" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="form-group text-left">
+                                    <asp:Label ID="Label10" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="lblJobType4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                     <asp:Label ID="Label15" runat="server" CssClass="card-text font-weight-bold" Text="Job Description:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="lblJOrganizationDescription4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="Label17" runat="server" CssClass="card-text font-weight-bold" Text="Organization Description:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="lblOrgDescription4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                        </div>
+                                    <%--<ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fab fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fab fa-twitter-square"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="#">
+                                                <i class="fab fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>--%>
                                 </div>
                             </div>
                         </div>

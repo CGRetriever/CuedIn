@@ -79,7 +79,24 @@ public partial class LandingPage : System.Web.UI.Page
         lblOrgDescription2.Text = OrgDescArray[1];
 
 
+        // Third card
+        Image3.ImageUrl = imageArray[2];
+        CompanyNamelbl5.Text = orgNameArray[2];
+        JobTitlelbl3.Text = jobTitleArray[2];
+        CompanyNamelbl6.Text = orgNameArray[2];
+        lblJOrganizationDescription3.Text = jobDescArray[2];
+        lblJobType3.Text = jobTypeArray[2];
+        lblOrgDescription3.Text = OrgDescArray[2];
 
+
+        // Fourth card
+        Image4.ImageUrl = imageArray[3];
+        CompanyNamelbl7.Text = orgNameArray[3];
+        JobTitlelbl4.Text = jobTitleArray[3];
+        CompanyNamelbl8.Text = orgNameArray[3];
+        lblJOrganizationDescription4.Text = jobDescArray[3];
+        lblJobType4.Text = jobTypeArray[3];
+        lblOrgDescription4.Text = OrgDescArray[3];
 
 
         sql.Close();
