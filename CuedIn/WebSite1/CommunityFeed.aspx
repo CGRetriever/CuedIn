@@ -52,7 +52,7 @@
 
     </div>
 
-             <div class ="form-group col-md-4">
+             <div>
 
         <div class ="card text-center" style="width:20rem;">
                 <div class="card-header">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="card-body">
 
-                    <asp:Table ID="ContactsTable" runat="server" CellPadding="1" CellSpacing="1" CssClass="table-striped"></asp:Table>
+                    <asp:Table ID="ContactsTable" runat="server" CellPadding="1" CellSpacing="1" CssClass="show"></asp:Table>
                 </div>
               </div>
 
