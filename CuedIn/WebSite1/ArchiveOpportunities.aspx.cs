@@ -14,7 +14,15 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     {
 
         gridviewRejJobs.Columns[2].Visible = false;
+        gridviewRejJobs.Columns[3].Visible = false;
+        gridviewRejJobs.Columns[4].Visible = false;
+        gridviewRejJobs.Columns[5].Visible = false;
+
         gridviewAccJobs.Columns[2].Visible = false;
+        gridviewAccJobs.Columns[3].Visible = false;
+        gridviewAccJobs.Columns[4].Visible = false;
+        gridviewAccJobs.Columns[5].Visible = false;
+
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs Listings";
        
 
@@ -279,4 +287,214 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
+
+    protected void btnCheckGridView_Click(object sender, EventArgs e)
+    {
+        {
+
+
+            if (chkJobDescription.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Description")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Description")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+
+            if (chkJobType.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Type")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Type")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+
+            if (chkJobLocation.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Location")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Location")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+
+            if (chkOrgWebsite.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == " Website")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == " Website")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+
+        }
+
+
+
+ 
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkJobDescription1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Description")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Description")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Type")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Type")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobLocation1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Location")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Location")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkOrgWebsite1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == " Website")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == " Website")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+    }
 }

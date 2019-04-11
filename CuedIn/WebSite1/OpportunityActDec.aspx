@@ -44,7 +44,6 @@
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
-                        
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" />
                         <asp:BoundField DataField="JobType" HeaderText="Job Type" />
