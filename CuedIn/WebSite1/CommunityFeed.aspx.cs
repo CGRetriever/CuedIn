@@ -43,24 +43,7 @@ public partial class CommunityFeed : System.Web.UI.Page
         //Get twitter handle and set it to a label in a card
         UserNameLabel.Text = "@"+ authUser.UserIdentifier.ToString();
 
-        //Now lets make query for the amount of rows we need for our contacts table
-        int rows = 0;
-        sc.Open();
-        System.Data.SqlClient.SqlCommand countRowsQuery = new System.Data.SqlClient.SqlCommand();
-        countRowsQuery.Connection = sc;
 
-        //bang bang get the query to get the amount of people with twitter @s
-        countRowsQuery.CommandText = "select count(UserEntityID) from userEntity where [TwitterHandle] is not null";
-
-        System.Data.SqlClient.SqlDataReader reader = countRowsQuery.ExecuteReader();
-
-        //set-up the rows we need
-        while(reader.Read()){
-            rows = reader.GetInt32(0);
-        }
-
-        sc.Close();
-       
 
         //initialize arrays of objects!!!
         List<UserEntity> userEntityList = new List<UserEntity>();
@@ -71,10 +54,11 @@ public partial class CommunityFeed : System.Web.UI.Page
         sc.Open();
         System.Data.SqlClient.SqlCommand populateUsers = new System.Data.SqlClient.SqlCommand();
         populateUsers.Connection = sc;
+      
         //get all of that jaunt
         populateUsers.CommandText = "Select * from UserEntity where TwitterHandle is not null and EntityType != 'STUD'";
-        
-        reader = populateUsers.ExecuteReader();
+
+        System.Data.SqlClient.SqlDataReader reader = populateUsers.ExecuteReader();
 
         //populate our array with fully loaded UserEntityObjects
         while (reader.Read()){
@@ -151,18 +135,67 @@ public partial class CommunityFeed : System.Web.UI.Page
 
 
 
-        // logic time bby
-        for (int i = 0; i <= rows -1; i++)
+        // associate jobnames,schoolnames, with twitter (associating userEntities, with schools and organizations)
+        for (int i = 0; i <= userEntityList.Count - 1; i++)
         {
-            TableRow row = new TableRow();
-            TableCell cell = new TableCell();
-            LinkButton zing = new LinkButton();
-            zing.Text = "hello";
-            zing.ID = "sheesh" + i;
-            cell.Controls.Add(zing);
-            row.Cells.Add(cell);
-            ContactsTable.Rows.Add(row);
-        }
+            //
+            for (int j = 0; j <= schoolList.Count - 1; j++)
+            {
+                //match with the userID's and if they match set the obj aligned with other
+                //after set the image to the twitter image url
+                if (userEntityList[i].getUserEntityID() == schoolList[j].getSchoolEntityID())
+                {
+                    userEntityList[i].setSchool(schoolList[j]);
+                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
+                    userEntityList[i].getSchool().setImage(schoolUser.ProfileImageUrl);
+                    break;
+
+                }
+            }
+
+            for (int j = 0; j <= organizationList.Count - 1; j++)
+            {
+                //match with the userID's and if they match set the obj aligned with other
+                //after set the image to the twitter image url
+                if (userEntityList[i].getUserEntityID() == organizationList[j].GetOrganizationEntityID())
+                {
+                    userEntityList[i].setOrganization(organizationList[j]);
+                    var organizationUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
+                    userEntityList[i].getOrganization().setImage(organizationUser.ProfileImageUrl);
+                    break;
+                }
+
+
+            }
+                TableRow row = new TableRow();
+                TableCell cell = new TableCell();
+                LinkButton twitterContactLink = new LinkButton();
+
+                if (userEntityList[i].getSchool() != null)
+                {
+                    twitterContactLink.Text = userEntityList[i].getSchool().getSchoolName();
+                    twitterContactLink.ID = "TwitterContactLink" + i;
+                    cell.Controls.Add(twitterContactLink);
+                    row.Cells.Add(cell);
+                    ContactsTable.Rows.Add(row);
+                    
+                    twitterContactLink.Command += new CommandEventHandler(this.Button_click);
+                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
+                }
+                else if (userEntityList[i].getOrganization() != null)
+                {
+                    twitterContactLink.Text = userEntityList[i].getOrganization().getOrganizationName();
+                    twitterContactLink.ID = "TwitterContactLink" + i;
+                    cell.Controls.Add(twitterContactLink);
+                    row.Cells.Add(cell);
+                    ContactsTable.Rows.Add(row);
+
+                    twitterContactLink.Command += new CommandEventHandler(this.Button_click);
+                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
+            }
+
+            }
+        
 
 
     }
@@ -185,9 +218,10 @@ public partial class CommunityFeed : System.Web.UI.Page
     }
 
 
-    public void Button_click(object sender, EventArgs e, String tweetLink)
+    public void Button_click(object sender, CommandEventArgs e)
     {
         LinkButton btn = sender as LinkButton;
-        
+        String twitterLink = e.CommandArgument.ToString();
+        TweeterFeedLink.HRef = twitterLink;
     }
 }

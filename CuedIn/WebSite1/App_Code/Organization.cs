@@ -89,7 +89,11 @@ public class Organization
 
     public int GetOrganizationEntityID() { return this.organizationEntityID; }
 
-    public String GetOrganizationName() { return this.organizationName; }
+    public String getOrganizationName() {
+
+        return this.organizationName;
+    }
+
     public void SetOrganizationName(String organizationName) { this.organizationName = organizationName; }
 
     public String GetOrganizationDescription() { return this.organizationDescription; }

@@ -16,6 +16,7 @@ public class School
     String state;
     String schoolCounty;
     int zipCode;
+    String image;
 
     public School(int schoolEntityID, String schoolName, String streetAddress,
         String country, String city, String state, String schoolCounty, int zipCode)
@@ -69,6 +70,11 @@ public class School
         this.zipCode = zipCode;
     }
 
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
     public int getSchoolEntityID()
     {
         return this.schoolEntityID;
@@ -104,5 +110,9 @@ public class School
         return this.zipCode;
     }
 
+    public String getImage()
+    {
+        return this.image;
+    }
 
 }

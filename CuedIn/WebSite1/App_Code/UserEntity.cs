@@ -8,12 +8,14 @@ using System.Web;
 /// </summary>
 public class UserEntity
 {
-    int userEntityID;
-    String userName;
-    String emailAddress;
-    String entityType;
-    String twitterHandle;
-    String twitterLink;
+    private int userEntityID;
+    private String userName;
+    private String emailAddress;
+    private String entityType;
+    private String twitterHandle;
+    private String twitterLink;
+    private Organization organization;
+    private School school;
     
     public UserEntity(String userName, String emailAddress, String entityType)
     {
@@ -66,6 +68,16 @@ public class UserEntity
         this.twitterLink = twitterLink;
     }
 
+    public void setSchool (School school)
+    {
+        this.school = school;
+    }
+
+    public void setOrganization(Organization organization)
+    {
+        this.organization = organization;
+    }
+
 
     public int getUserEntityID()
     {
@@ -95,6 +107,16 @@ public class UserEntity
     public String getTwitterLink()
     {
         return this.twitterLink;
+    }
+
+    public School getSchool()
+    {
+        return this.school;
+    }
+
+    public Organization getOrganization()
+    {
+        return this.organization;
     }
 
 }
