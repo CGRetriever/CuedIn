@@ -10,7 +10,7 @@
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
 
-            <div class="col-auto container-fluid text-center">
+            <div class="col-12 container-fluid text-center">
         <div class="text-center rounded" style="background-color:#102B3F;">
             <asp:CheckBox ID="chkImage" Style="color:white;" runat="server" Text="Image"  Checked="false" />
             <asp:CheckBox ID="chkGradeLevel" Style="color:white;" runat="server" Text="Grade Level"  Checked="false" />
@@ -44,7 +44,7 @@
                 <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
                 <asp:BoundField DataField="JobType" HeaderText="Job Type" SortExpression="JobTitle" />
                 <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" />
-                <asp:TemplateField HeaderText="Organization Link">
+                <asp:TemplateField HeaderText="Website">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnExternalLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
                     </ItemTemplate>

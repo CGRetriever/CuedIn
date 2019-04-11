@@ -389,7 +389,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Organization Link")
+                if (GridView1.Columns[i].HeaderText == "Website")
                 {
                     GridView1.Columns[i].Visible = false;
                     
@@ -400,7 +400,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Organization Link")
+                if (GridView1.Columns[i].HeaderText == "Website")
                 {
                     GridView1.Columns[i].Visible = true;
                     
