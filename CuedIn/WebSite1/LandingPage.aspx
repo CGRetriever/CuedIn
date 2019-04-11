@@ -22,7 +22,7 @@
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
     
-    <div class="container">
+    <div class="container container-fluid">
         <h3 class="">Manage Posts</h3>
         <div class="row">
             <!-- Team member -->
@@ -58,28 +58,7 @@
                                     <asp:Label ID="lblOrgDescription" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <%--<ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-twitter-square"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>--%>
+                                    <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -120,28 +99,7 @@
                                     <asp:Label ID="lblOrgDescription2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <%--<ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-twitter-square"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>--%>
+                                   <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -182,28 +140,7 @@
                                     <asp:Label ID="lblOrgDescription3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <%--<ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-twitter-square"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>--%>
+                                    <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -244,28 +181,7 @@
                                     <asp:Label ID="lblOrgDescription4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <%--<ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-twitter-square"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fab fa-google"></i>
-                                            </a>
-                                        </li>
-                                    </ul>--%>
+                                   <a class="btn btn-primary" href="#" role="button">View More</a>
                                 </div>
                             </div>
                         </div>
@@ -277,8 +193,9 @@
         </div>
 
 
+        <!-- Student Cards -->
 
-        <div class="container">
+        <div class="container container-fluid">
         <h3 class="">Students Pending Approval</h3>
         <div class="row">
             <!-- Team member -->
@@ -288,18 +205,30 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid" src="img/kevin.jpg" alt="card image"></p>
-                                    <h4 class="card-title">Kevin Painter</h4>
+                                    <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
+                                    <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
+                                    <asp:Label ID="BackStudentName" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <div class="form-group text-left">
+                                    <asp:Label ID="JTitle" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentJobTitlelbl" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                     <asp:Label ID="OrgTitle" runat="server" CssClass="card-text font-weight-bold" Text="Organization Title:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="OrgTitlelbl" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPA" runat="server" CssClass="card-text font-weight-bold" Text="Student GPA:"></asp:Label>
+                                        <br />
+                                    <asp:Label ID="StudentGPAlbl" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
+                                        <br />
+                                        </div>
                                     <a class="btn btn-primary" href="#" role="button">View More</a>
-                                
                                 </div>
                             </div>
                         </div>

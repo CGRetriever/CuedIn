@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 
 public partial class LandingPage : System.Web.UI.Page
 {
+
+    // Job posting arrays
     public static String[] imageArray = new string[5];
     public static String[] jobTitleArray = new string[5];
     public static int[] jobListingIDArray = new int[5];
@@ -18,6 +20,12 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] jobDeadLineArray = new string[5];
     public static String[] jobDescArray = new string[5];
     public static String[] OrgDescArray = new string[5];
+
+
+
+
+    // Student request arrays
+
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -100,6 +108,25 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         sql.Close();
+
+
+
+
+
+
+
+
+
+        // Team member queries and setting
+        sql.Open();
+        System.Data.SqlClient.SqlCommand RecentRequests = new System.Data.SqlClient.SqlCommand();
+        RecentRequests.Connection = sql;
+        RecentRequests.CommandText = "SELECT  TOP(5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
+        System.Data.SqlClient.SqlDataReader result = RecentJobs.ExecuteReader();
+
+
+        int y = 0;
+
 
 
 
