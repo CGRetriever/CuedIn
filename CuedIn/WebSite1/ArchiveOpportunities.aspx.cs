@@ -284,12 +284,26 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     {
         String term = SearchBox1.Text;
 
-        RejectSource.SelectParameters.Add("term", term);
+        SQLDataSource1.SelectParameters.Add("term", term);
 
-        RejectSource.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and(JobListing.JobTitle like '%" + @term + "%') or(Organization.OrganizationName like '%" + @term + "%')";
-        RejectSource.DataBind();
+        SQLDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SQLDataSource1.DataBind();
         gridviewRejJobs.DataBind();
 
-        RejectSource.SelectParameters.Clear();
+        SQLDataSource1.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and (JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        JobOpportunity.DataBind();
+        gridviewAccJobs.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+
     }
 }
