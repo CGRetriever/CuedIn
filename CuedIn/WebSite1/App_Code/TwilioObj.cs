@@ -7,7 +7,7 @@ using Twilio.Rest.Api.V2010.Account;
 
 public class TwilioObj
 {
-    public TwilioObj()
+    public TwilioObj(int scholarshipNum, int jobNum)
     {
         // Find your Account Sid and Token at twilio.com/console
         // DANGER! This is insecure. See http://twil.io/secure
@@ -17,7 +17,7 @@ public class TwilioObj
         TwilioClient.Init(accountSid, authToken);
 
         var message = MessageResource.Create(
-            body: "Kenny Phan is a smokeshow",
+            body: "You have " + scholarshipNum + " pending scholarships and " + jobNum + " jobs pending approval.",
             from: new Twilio.Types.PhoneNumber("+15402534874"),
             to: new Twilio.Types.PhoneNumber("+16316268854")
         );
