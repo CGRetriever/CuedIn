@@ -23,7 +23,9 @@
     </head>
     
     <div class="container container-fluid">
-        <h3 class="">Manage Posts</h3>
+        <h3 class="">Manage Posts
+        <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+            </h3>
         <div class="row">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-3">
@@ -58,7 +60,7 @@
                                     <asp:Label ID="lblOrgDescription" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    <asp:LinkButton ID="JobLink1" runat="server" CssClass="btn-lg"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+                                    <asp:HyperLink ID="JobLink1" runat="server"><i class="fas fa-external-link-alt"></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +101,7 @@
                                     <asp:Label ID="lblOrgDescription2" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                   <asp:LinkButton ID="JobLink2" runat="server" CssClass="btn-lg"><i class="fas fa-arrow-circle-right fa-1x"></i></asp:LinkButton>
+                                   <asp:HyperLink ID="JobLink2" runat="server"><i class="fas fa-external-link-alt"></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +142,7 @@
                                     <asp:Label ID="lblOrgDescription3" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
                                         <br />
                                         </div>
-                                    
+                                    <asp:HyperLink ID="JobLink3" runat="server"><i class="fas fa-external-link-alt"></i></asp:HyperLink>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +198,9 @@
         <!-- Student Cards -->
         <br />
         <div class="container container-fluid">
-        <h3 class="">Student Applications Pending Approval</h3>
+        <h3 class="">Student Applications Pending Approval
+            <asp:LinkButton ID="StudentPageLink" runat="server" CssClass="btn" PostBackUrl="~/StudentActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+        </h3>
         <div class="row">
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-3">
