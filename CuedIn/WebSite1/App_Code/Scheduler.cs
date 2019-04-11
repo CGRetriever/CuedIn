@@ -17,7 +17,7 @@ namespace Quartz1 {
               (s =>
                   s.WithIntervalInHours(24)
                   .OnEveryDay()
-                  .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(23, 40))
+                  .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(9, 00))
                 
               )
              .Build();

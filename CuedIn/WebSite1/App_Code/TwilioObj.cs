@@ -7,6 +7,7 @@ using Twilio.Rest.Api.V2010.Account;
 
 
 public class TwilioObj : IJob
+
 {
     public TwilioObj(int scholarshipNum, int jobNum)
     {
@@ -31,6 +32,15 @@ public class TwilioObj : IJob
 
     public void Execute(IJobExecutionContext context)
     {
-        throw new NotImplementedException();
+        const string accountSid = "AC8037eb8af9379976245f3cf6f232ab66";
+        const string authToken = "8bf06472bc5fc06603aa06068e7e252f";
+
+        TwilioClient.Init(accountSid, authToken);
+
+        var message = MessageResource.Create(
+            body: "You have "+ " pending scholarships and " + " jobs pending approval.",
+            from: new Twilio.Types.PhoneNumber("+15402534874"),
+            to: new Twilio.Types.PhoneNumber("+16316268854")
+        );
     }
 }
