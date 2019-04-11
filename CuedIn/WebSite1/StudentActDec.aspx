@@ -114,7 +114,7 @@
                                         <br>
                                         <br>
                                         <%--<h5>Are you sure you want to reject?</h5>--%>
-                                        <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
+                                        <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline?"></asp:Label>
                                     </div>
                                 </div>
 
@@ -133,7 +133,7 @@
                             </div>
                             <div class="modal-footer">
                                 <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                    <asp:Button ID="Button2" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
+                                    <asp:Button ID="Button2" runat="server" Text="Decline" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
                                     <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
