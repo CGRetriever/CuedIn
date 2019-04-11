@@ -11,51 +11,42 @@ public partial class LandingPage : System.Web.UI.Page
     public static String[] imageArray = new string[5];
     public static String[] jobTitleArray = new string[5];
     public static int[] jobListingIDArray = new int[5];
+    public static String[] orgNameArray = new string[5];
 
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        //System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-
-        //sql.Open();
-        //System.Data.SqlClient.SqlCommand RecentJobs = new System.Data.SqlClient.SqlCommand();
-        //RecentJobs.Connection = sql;
-        //RecentJobs.CommandText = "SELECT top 5 JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where Approved = 'P' order by JobListing.JobListingID desc";
-        //System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
 
-        ////String[] imageArray = new string[5];
-        ////String[] jobTitleArray = new string[5];
-        ////int[] jobListingIDArray = new int[5];
-        //int x = 0;
 
-        //while (reader.Read())
-        //{
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
-        //    imageArray[x] = reader.GetString(2);
-        //    jobTitleArray[x] = reader.GetString(1);
-        //    jobListingIDArray[x] = reader.GetInt32(0);
-        //    x++;
+        sql.Open();
+        System.Data.SqlClient.SqlCommand RecentJobs = new System.Data.SqlClient.SqlCommand();
+        RecentJobs.Connection = sql;
+        RecentJobs.CommandText = "SELECT TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE (JobListing.Approved = 'P') ORDER BY JobListing.JobListingID DESC";
+        System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
-        //}
 
-      
+        int x = 0;
+
+        while (reader.Read())
+        {
+
+            imageArray[x] = reader.GetString(2);
+            jobTitleArray[x] = reader.GetString(1);
+            jobListingIDArray[x] = reader.GetInt32(0);
+            orgNameArray[x] = reader.GetString(4);
+            x++;
+
+        }
+
+        Image1.ImageUrl = imageArray[0];
+        CompanyNamelbl.Text = orgNameArray[0];
+        JobTitlelbl.Text = jobTitleArray[0];
+        CompanyNamelbl2.Text = orgNameArray[0];
+        
 
         //Image1.ImageUrl = imageArray[0];
         //Image2.ImageUrl = imageArray[1];
