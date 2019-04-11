@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <form id="form1" runat="server" style="background-color: #E6E6E6;">
+    <form id="form1" runat="server" >
 
 
 <div class="form-row">
