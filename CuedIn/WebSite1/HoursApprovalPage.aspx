@@ -12,18 +12,48 @@
            <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
            <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" CssClass="btn" />
            </div>
+
+
+            <div class="col-12 container-fluid text-center">
+        <div class="text-center rounded" style="background-color:#102B3F;">
+            <asp:CheckBox ID="chkImage" Style="color:white;" runat="server" Text="Image"  Checked="false" />
+            <asp:CheckBox ID="chkGradeLevel" Style="color:white;" runat="server" Text="Grade Level"  Checked="false" />
+            <asp:CheckBox ID="chkGPA" Style="color:white;" runat="server" Text="GPA"  Checked="false" />
+            <asp:CheckBox ID="chkHoursWBL" Style="color:white;" runat="server" Text="Hours of WBL"  Checked="false" />
+            <asp:CheckBox ID="chkJobType" Style="color:white;" runat="server" Text="Job Type"  Checked="false" />
+            <asp:CheckBox ID="chkLink" Style="color:white;" runat="server" Text="Organization Link"  Checked="false" />
+            
+            <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" style="background-color: white; color:#102B3F;" class="btn btn-circle" />
+        </div>
+            <br />
+       
+
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
                 <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" />
-                <asp:TemplateField ShowHeader="false" HeaderStyle-BorderColor="Black">
+                <asp:TemplateField HeaderText="Image">
+                    <ItemTemplate>
+                        <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Student Name" HeaderStyle-BorderColor="Black">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("LogID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
-                <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
-                <asp:BoundField DataField="HoursRequested" HeaderText="HoursRequested" SortExpression="HoursRequested" />
+                <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" SortExpression="GradeLevel" />
+                <asp:BoundField DataField="StudentGPA" HeaderText="GPA" SortExpression="GPA" />
+                <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours of WBL" SortExpression="HoursOfWorkPlaceExp" />
+                <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" />
+                <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
+                <asp:BoundField DataField="JobType" HeaderText="Job Type" SortExpression="JobTitle" />
+                <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" />
+                <asp:TemplateField HeaderText="Website">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnExternalLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
                     <ItemTemplate>
                         <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
@@ -37,7 +67,7 @@
             <RowStyle CssClass="cursor-pointer" />
         </asp:GridView>
            </div>
-        <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where CounselorApproval = 'P'"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y'"></asp:SqlDataSource>
 
 
 </div>

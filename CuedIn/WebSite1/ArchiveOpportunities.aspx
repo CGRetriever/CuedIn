@@ -20,8 +20,39 @@
            </div>
 
 
+                 <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
+                    
+                    <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
+                    <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
+                    <asp:CheckBox ID="chkJobLocation" Style="color: white;" runat="server" Text="Location" Checked="false" />
+                    <asp:CheckBox ID="chkOrgWebsite" Style="color: white;" runat="server" Text="Website" Checked="false" />
+                    
+
+                    <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
+                </div>
+
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'N'"></asp:SqlDataSource>
+
+
                 <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
+
+
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
+                        
+                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" />
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" />
+                        <asp:BoundField DataField="Location" HeaderText="Location" />
+                        <asp:TemplateField HeaderText=" Website">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnOrgLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="btnJobApprove" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"></asp:LinkButton>
+                            <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"></asp:LinkButton>
 
                         <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
                         <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
@@ -30,6 +61,7 @@
                         <ItemTemplate>
                             <asp:LinkButton ID="btnJobApprove" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                             <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
+
                         </ItemTemplate>
                     </asp:TemplateField>
                     </Columns>
@@ -56,8 +88,39 @@
            </div>
 
 
+                                 <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
+                    
+                    <asp:CheckBox ID="chkJobDescription1" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
+                    <asp:CheckBox ID="chkJobType1" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
+                    <asp:CheckBox ID="chkJobLocation1" Style="color: white;" runat="server" Text="Location" Checked="false" />
+                    <asp:CheckBox ID="chkOrgWebsite1" Style="color: white;" runat="server" Text="Website" Checked="false" />
+                    
+
+                    <asp:Button ID="btnCheckGridView2" runat="server" Text="Apply" OnClick="btnCheckGridView2_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
+                </div>
+
+                <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'Y'"></asp:SqlDataSource>
+
+
                 <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
+
+
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
+                        
+                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" />
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" />
+                        <asp:BoundField DataField="Location" HeaderText="Location" />
+                        <asp:TemplateField HeaderText=" Website">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnOrgLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ShowHeader="False">
+                            <ItemTemplate>
+                            <asp:LinkButton ID="btnJobReject" CssClass="btn btn-circle btn-danger" Text="Reject" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"></asp:LinkButton>
+                            <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"></asp:LinkButton>
 
                         <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
                         <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
@@ -66,6 +129,7 @@
                         <ItemTemplate>
                             <asp:LinkButton ID="btnJobReject" CssClass="btn btn-circle btn-danger" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                             <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
+
                         </ItemTemplate>
                     </asp:TemplateField>
                     </Columns>
