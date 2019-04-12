@@ -31,11 +31,11 @@
            <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
            <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" CssClass="btn" />
            </div>
-           
 
-          
-           
-       
+          <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+
+       <div class="col-auto container-fluid text-center">
+
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
             <Columns>
 
@@ -85,13 +85,29 @@
 
         
 
-            <%--Student Approve Modal--%>
-            <div class="modal fade" id="approveXModal" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="col-md-12 text-center">
+    <div class="form-group col-md-6">
+      
+    </div>
+    
+  </div>
+          
+          <br />
+          <br />
+    <script>
+         //Initialize popover with jQuery
+        $(document).ready(function () {
+            $('.popovers').popover();
+        });
+    </script>
+          
+<div>
+        <%--Student Approve Modal--%>
+        <div class="modal fade" id="approveXModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-md-12 text-center">
                                 <div class="modal-title">
                                     <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
