@@ -17,6 +17,25 @@ public partial class CommunityFeed : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+        if(Session["userCounty"].ToString() == ("Rockingham County"))
+        {
+            TweeterFeedLink.HRef = "https://twitter.com/RockinghamTODAY?ref_src=twsrc%5Etfw";
+
+        }
+
+        else if(Session["userCounty"].ToString() == ("Louisa County"))
+        {
+            TweeterFeedLink.HRef = "https://twitter.com/LCPSchools?ref_src=twsrc%5Etfw";
+
+        }
+
+        else if (Session["userCounty"].ToString() == ("Harrisonburg City Public Schools"))
+        {
+            TweeterFeedLink.HRef = "https://twitter.com/LCPSchools?ref_src=twsrc%5Etfw";
+
+        }
+
         //set up connection String
         sc.ConnectionString = connectionString;
 
@@ -215,6 +234,9 @@ public partial class CommunityFeed : System.Web.UI.Page
             }
 
         }
+
+
+
       
     }
     protected void TweetButtonClick(object sender, CommandEventArgs e)
