@@ -9,14 +9,14 @@ public partial class Teacher : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
-        {
-            Response.Redirect("Login.aspx");
-        }
+        //if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
+        //{
+        //    Response.Redirect("Login.aspx");
+        //}
 
-        else if (!Session.IsNewSession && Request.UrlReferrer == null)
-        {
-            Response.Redirect("Login.aspx");
-        }
+        //else if (!Session.IsNewSession && Request.UrlReferrer == null)
+        //{
+        //    Response.Redirect("Login.aspx");
+        //}
     }
 }
