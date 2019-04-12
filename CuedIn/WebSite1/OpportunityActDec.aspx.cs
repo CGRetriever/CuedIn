@@ -12,16 +12,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        GridView1.Columns[2].Visible = false;
-        GridView1.Columns[3].Visible = false;
-        GridView1.Columns[4].Visible = false;
-        GridView1.Columns[5].Visible = false;
-        GridView2.Columns[0].Visible = false;
         
-        
-        GridView2.Columns[3].Visible = false;
-        GridView2.Columns[4].Visible = false;
-        GridView2.Columns[6].Visible = false;
+
 
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
         
@@ -525,29 +517,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
         }
 
 
-        if (chkOrgWebsite.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == " Website")
-                {
-                    GridView1.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == " Website")
-                {
-                    GridView1.Columns[i].Visible = true;
-
-                }
-            }
-        }
-
 
     }
 
@@ -601,29 +570,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
             }
         }
 
-
-        if (chkExternalLink2.Checked != true)
-        {
-            for (int i = 0; i < GridView2.Columns.Count; i++)
-            {
-                if (GridView2.Columns[i].HeaderText == "Website")
-                {
-                    GridView2.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView2.Columns.Count; i++)
-            {
-                if (GridView2.Columns[i].HeaderText == "Website")
-                {
-                    GridView2.Columns[i].Visible = true;
-
-                }
-            }
-        }
     }
 
 

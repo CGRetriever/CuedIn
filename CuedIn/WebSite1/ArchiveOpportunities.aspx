@@ -77,7 +77,7 @@
             <%--Accepted Jobs Gridview--%>
        
             <div class="form-group col-md-6">
-                <div class="container-fluid text-center">
+                <div class=" container-fluid text-center">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Accepted Jobs </label>
 
        
