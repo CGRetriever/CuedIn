@@ -17,14 +17,14 @@
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Rejected Jobs </label>
      
     
-           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <div class="col-auto text-center" style="background-color:#102B3F;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
            <asp:Button ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" CssClass="btn" />
            </div>
 
 
-                 <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
+                 <div class="text-center" style="background-color: #102B3F;width:auto;">
                     
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
@@ -37,7 +37,7 @@
 
 
               
-
+               <div class="container-fluid">
                 <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
 
@@ -66,6 +66,7 @@
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
+                   </div>
                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'N'"></asp:SqlDataSource>
              </div>
                                   </div>
@@ -81,14 +82,14 @@
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Accepted Jobs </label>
 
        
-           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <div class="col-auto text-center" style="background-color:#102B3F;">
            <asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
            <asp:Button ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" CssClass="btn" />
            </div>
 
 
-                                 <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
+                                 <div class="text-center" style="background-color: #102B3F;width:auto;">
                     
                     <asp:CheckBox ID="chkJobDescription1" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType1" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
