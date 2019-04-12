@@ -7,10 +7,25 @@
     <form id="form1" runat="server">
         <div class="form-row">
        <div class="col-md-12 text-center">
+           <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" >
+               <asp:ListItem>Choose Year</asp:ListItem>
+               <asp:ListItem>Freshman</asp:ListItem>
+               <asp:ListItem>Sophomore</asp:ListItem>
+               <asp:ListItem>Junior</asp:ListItem>
+               <asp:ListItem>Senior</asp:ListItem>
+           </asp:DropDownList>
+           <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
+               <asp:ListItem>Choose GPA</asp:ListItem>
+               <asp:ListItem Value="0 - 0.9">0 - 0.9</asp:ListItem>
+               <asp:ListItem>3.0 - 4.0</asp:ListItem>
+               <asp:ListItem>1.0 - 1.9</asp:ListItem>
+               <asp:ListItem>2.0 - 2.9</asp:ListItem>
+           </asp:DropDownList>
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
        <div class="col-auto container-fluid text-center">
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+         
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
                 <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" />
@@ -19,11 +34,12 @@
                         <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("LogID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
-                <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
-                <asp:BoundField DataField="HoursRequested" HeaderText="HoursRequested" SortExpression="HoursRequested" />
+                <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" />
+                <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
+                <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" />
                 <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
                     <ItemTemplate>
+                        
                         <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="approveJobLinkBtn_Click"></asp:LinkButton>
                         <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="rejectJobLinkBtn_Click"></asp:LinkButton>
                         <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle" Text="View Comments" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="moreInfoJobLinkBtn_Click"></asp:LinkButton>
@@ -234,6 +250,22 @@
                 function openEditJModal() {
                     $('[id*=jobMoreInfoModal]').modal('show');
                 }
+            </script>
+            <script>
+                var dropdown = $('DropdownList2');
+var item = $('.item');
+
+item.on('click', function() {
+  item.toggleClass('collapse');
+  
+  if (dropdown.hasClass('dropped')) {
+    dropdown.toggleClass('dropped');
+  } else {
+    setTimeout(function() {
+      dropdown.toggleClass('dropped');
+    }, 150);
+  }
+})
             </script>
         </div>
 
