@@ -374,4 +374,9 @@ public partial class StudentActDec : System.Web.UI.Page
 
 
     }
+
+    protected void chkOrgWebsite_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }

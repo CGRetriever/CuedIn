@@ -4,12 +4,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-
+    <div class="container-fluid">
     <form id="form1" runat="server">
-        <div class="form-row">
-            <div class="col-md-12 text-center">
-            </div>
-            <div class="col-auto container-fluid text-center">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+            
                 <div class="text-center rounded" style="background-color: #102B3F; width: auto;">
 
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" />
@@ -18,7 +16,7 @@
                     <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" />
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
-                    <asp:CheckBox ID="chkOrgWebsite" Style="color: white;" runat="server" Text="Website" Checked="false" />
+                    <asp:CheckBox ID="chkOrgWebsite" Style="color: white;" runat="server" Text="Website" Checked="false" OnCheckedChanged="chkOrgWebsite_CheckedChanged" />
 
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
@@ -61,23 +59,18 @@
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
                     
-            </div>
-
+           
+        </div>
 
             <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
 
 
+    
 
+        <br>
+        <br>
 
-            <div class="form-group col-md-6">
-            </div>
-
-        </div>
-
-        <br />
-        <br />
-
-        <div>
+        
             <%--Student Approve Modal--%>
             <div class="modal fade" id="approveXModal" role="dialog">
                 <div class="modal-dialog">
@@ -239,6 +232,7 @@
                 </div>
             </div>
     </form>
-
+</div>
 </asp:Content>
+
 
