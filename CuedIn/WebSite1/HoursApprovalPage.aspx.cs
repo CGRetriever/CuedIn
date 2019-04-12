@@ -255,4 +255,19 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
+
+
+
+    protected void SearchButton_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or(JobListing.JobTitle like '%" + @term + "%'))";
+        JobOpportunity.DataBind();
+        GridView1.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+    }
 }

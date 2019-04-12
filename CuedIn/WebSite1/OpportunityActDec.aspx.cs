@@ -438,4 +438,30 @@ public partial class OpportunityActDec : System.Web.UI.Page
         //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
         //Response.Redirect("~/OpportunityActDec.aspx");
     }
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        JobOpportunity.DataBind();
+        GridView1.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+        ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'P') and(Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        ScholarshipOpportunity.DataBind();
+        GridView2.DataBind();
+
+        ScholarshipOpportunity.SelectParameters.Clear();
+    }
 }

@@ -3,62 +3,67 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
     <form id="form1" runat="server">
-        <div class="form-row">
-            <div class="col-md-12 text-center">
-            </div>
-            <div class="col-auto container-fluid text-center">
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
-                    <Columns>
+      <div class="form-row container-fluid">
+       
+           <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" CssClass="btn" />
+           </div>
+           
 
-                        <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" />
-                        <asp:TemplateField ShowHeader="false">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" />
-                        <asp:TemplateField ShowHeader="False">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="approveStudentLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="approveStudentLinkBtn_Click"></asp:LinkButton>
-                                <asp:LinkButton ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"></asp:LinkButton>
-                                <asp:LinkButton ID="moreInfoStudentLinkBtn" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="moreInfoStudentLinkBtn_Click"></asp:LinkButton>
-                            </ItemTemplate>
+          
+           
+       
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
+            <Columns>
+                
+                <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" />
+                <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" />
+                <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
+                <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" />
+                <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
+            <ItemTemplate>
+                <asp:LinkButton  ID="approveStudentLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="approveStudentLinkBtn_Click"></asp:LinkButton>
+                <asp:LinkButton  ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"></asp:LinkButton>
+                <asp:LinkButton ID="moreInfoStudentLinkBtn" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="moreInfoStudentLinkBtn_Click"></asp:LinkButton>
+            </ItemTemplate>
 
-                            
-                        </asp:TemplateField>
+<HeaderStyle BorderColor="Black"></HeaderStyle>
+        </asp:TemplateField>
 
-                    </Columns>
-                    <RowStyle CssClass="cursor-pointer" />
-                </asp:GridView>
-            </div>
-
-
-            <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
-
+            </Columns>
+            <RowStyle CssClass="cursor-pointer" />
+        </asp:GridView>
+           </div>
 
 
+        <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
 
-            <div class="form-group col-md-6">
-            </div>
 
-        </div>
+    
+        
+    
+    
+  </div>
+          
+          <br />
+          <br />
+          
+<div>
+        <%--Student Approve Modal--%>
+        <div class="modal fade" id="approveXModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="col-md-12 text-center">
 
-        <br />
-        <br />
-
-        <div>
-            <%--Student Approve Modal--%>
-            <div class="modal fade" id="approveXModal" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="col-md-12 text-center">
                                 <div class="modal-title">
                                     <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
