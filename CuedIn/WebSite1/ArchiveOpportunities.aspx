@@ -1,19 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="ArchiveOpportunities.aspx.cs" Inherits="ArchiveOpportunities" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="row">
-        <div class="col-12 ">
-        </div>
-    </div>
+
+
     <form id="form1" runat="server">
         <%--Rejected Jobs Gridview--%>
+           <div class="row">
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+        </div>
         <div class="form-row">
-                            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-            <div class="form-group col-md-6">
-
+   
+                <div class="form-group col-md-6">
+                <div class="container-fluid text-center">
+                      
+      
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Rejected Jobs </label>
-                <div class="form-row container-fluid">
-         <div class="col-auto container-fluid text-center">
+     
+    
            <div class="col-auto text-center rounded" style="background-color:#102B3F;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
@@ -33,7 +36,7 @@
                 </div>
 
 
-
+              
 
                 <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
@@ -65,17 +68,19 @@
                 </asp:GridView>
                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'N'"></asp:SqlDataSource>
              </div>
-                    </div>
+                                  </div>
+           
                 
 
 
-            </div>
+        
             <%--Accepted Jobs Gridview--%>
-
+       
             <div class="form-group col-md-6">
+                <div class="container-fluid text-center">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Accepted Jobs </label>
-                <div class="form-row container-fluid">
-         <div class="col-auto container-fluid text-center">
+
+       
            <div class="col-auto text-center rounded" style="background-color:#102B3F;">
            <asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
@@ -125,17 +130,23 @@
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
-                
-
+             </div>
+                </div>
 
             </div>
+
+
+
+
+
+   
             <script>
                 //Initialize popover with jQuery
                 $(document).ready(function () {
                     $('.popovers').popover();
                 });
             </script>
-            </div>
+         
         
 
  
@@ -187,7 +198,7 @@
                     }
                 </script>
         </div>
-        </div>
+
         <div>
             <%-- Job More Info Modal--%>
             <div class="modal fade" id="myModal" role="dialog">
