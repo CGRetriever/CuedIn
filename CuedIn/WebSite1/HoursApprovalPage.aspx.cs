@@ -395,4 +395,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataBind();
         }
     }
+
+    protected void sortGridview(object sender, EventArgs e)
+    {
+        GridView1.Sort(dropDownSort.SelectedValue, SortDirection.Ascending);
+    }
 }

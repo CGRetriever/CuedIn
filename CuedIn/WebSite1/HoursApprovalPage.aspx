@@ -15,13 +15,25 @@
                <asp:ListItem>Junior</asp:ListItem>
                <asp:ListItem>Senior</asp:ListItem>
            </asp:DropDownList>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         
            <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
                <asp:ListItem>Choose GPA</asp:ListItem>
                <asp:ListItem Value="0 - 0.9">0 - 0.9</asp:ListItem>
-               <asp:ListItem>3.0 - 4.0</asp:ListItem>
                <asp:ListItem>1.0 - 1.9</asp:ListItem>
                <asp:ListItem>2.0 - 2.9</asp:ListItem>
+               <asp:ListItem>3.0 - 4.0</asp:ListItem>
+           </asp:DropDownList>
+
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+           <asp:DropDownList ID="dropDownSort" runat="server" OnSelectedIndexChanged="sortGridview"  AutoPostBack="true" >
+               <asp:ListItem >Sort By Name</asp:ListItem>
+               <asp:ListItem >Student Name</asp:ListItem>
+               <asp:ListItem >Organization Name</asp:ListItem>
+               <asp:ListItem >Job Title</asp:ListItem>
+               <asp:ListItem>Hours Requested</asp:ListItem>
            </asp:DropDownList>
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
