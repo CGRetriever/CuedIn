@@ -26,14 +26,13 @@
                <asp:ListItem>3.0 - 4.0</asp:ListItem>
            </asp:DropDownList>
 
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-           <asp:DropDownList ID="dropDownSort" runat="server" OnSelectedIndexChanged="sortGridview"  AutoPostBack="true" >
-
-               <asp:ListItem> Student Name</asp:ListItem>
-               <asp:ListItem >Organization Name</asp:ListItem>
-               <asp:ListItem >Job Title</asp:ListItem>
-               <asp:ListItem>Hours Requested</asp:ListItem>
+          Sort By<asp:DropDownList ID="dropDownSort" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="sortGridview" >
+               <asp:ListItem Text="Student Name" Value="StudentName"></asp:ListItem>
+               <asp:ListItem Text="Organization Name" Value="OrganizationName"></asp:ListItem>
+               <asp:ListItem Text="Job Title" Value="JobTitle"></asp:ListItem>
+               <asp:ListItem Text="Hours Requested" Value="HoursRequested"></asp:ListItem>
            </asp:DropDownList>
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
