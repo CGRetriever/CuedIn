@@ -282,13 +282,7 @@
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
                                 <asp:HyperLink ID="RejectMailButton" NavigateUrl="~/OpportunityActDec.aspx" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px; text-align: center; display: table-cell;" CssClass="btn btn-circle" runat="server" Text="Message Organization"></asp:HyperLink>
                             </div>
-                            <div class="row">
-                                <div>
-                                    <asp:Button ID="Button3" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
-                                    <asp:Label ID="Label11" runat="server" Text="&nbsp;&nbsp;" Style="color: #ffffff"></asp:Label>
-                                    <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
-                                    <asp:Label ID="Label12" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" Style="color: #ffffff"></asp:Label>
-                                </div>
+
 
                                <div class="row">
                                     <div>
