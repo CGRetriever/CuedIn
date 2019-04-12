@@ -271,7 +271,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
     {
 
-        if(DropDownList3.SelectedIndex == 0)
+        if(DropDownList3.SelectedIndex == 1)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                 "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = " +
@@ -285,7 +285,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
-        else if (DropDownList3.SelectedIndex == 1)
+        else if (DropDownList3.SelectedIndex == 2)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                 "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID" +
@@ -300,7 +300,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataBind();
         }
 
-        else if (DropDownList3.SelectedIndex == 2)
+        else if (DropDownList3.SelectedIndex == 3)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                 "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
@@ -315,7 +315,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataBind();
         }
 
-        else if (DropDownList3.SelectedIndex == 3)
+        else if (DropDownList3.SelectedIndex == 4)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                 "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
@@ -336,7 +336,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (DropDownList2.SelectedIndex == 0)
+        if (DropDownList2.SelectedIndex == 1)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                 "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
@@ -350,7 +350,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
-        else if (DropDownList2.SelectedIndex == 1)
+        else if (DropDownList2.SelectedIndex == 2)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                 "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
@@ -365,7 +365,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataBind();
         }
 
-        else if (DropDownList2.SelectedIndex == 2)
+        else if (DropDownList2.SelectedIndex == 3)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
                   "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
@@ -380,7 +380,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             GridView1.DataBind();
         }
 
-        else if (DropDownList2.SelectedIndex == 3)
+        else if (DropDownList2.SelectedIndex == 4)
         {
             string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
               "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +

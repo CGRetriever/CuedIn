@@ -3,17 +3,19 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
+    <link rel="stylesheet" type="text/css" href="css/dropdown.css">
     <form id="form1" runat="server">
+    <span class="color-picker"></span>
         <div class="form-row">
-       <div class="col-md-12 text-center">
-           <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" >
+       <div class="col-md-12 text-center custom-dropdown big">
+           <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" class="custom-dropdown big">
                <asp:ListItem>Choose Year</asp:ListItem>
                <asp:ListItem>Freshman</asp:ListItem>
                <asp:ListItem>Sophomore</asp:ListItem>
                <asp:ListItem>Junior</asp:ListItem>
                <asp:ListItem>Senior</asp:ListItem>
            </asp:DropDownList>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
                <asp:ListItem>Choose GPA</asp:ListItem>
                <asp:ListItem Value="0 - 0.9">0 - 0.9</asp:ListItem>
@@ -24,7 +26,7 @@
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
        <div class="col-auto container-fluid text-center">
-         
+        
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
@@ -267,6 +269,7 @@ item.on('click', function() {
   }
 })
             </script>
+          
         </div>
 
             
