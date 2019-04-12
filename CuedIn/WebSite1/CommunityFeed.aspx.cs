@@ -17,22 +17,26 @@ public partial class CommunityFeed : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        String countyFeed = "";
         if(Session["userCounty"].ToString() == ("Rockingham County"))
         {
             TweeterFeedLink.HRef = "https://twitter.com/RockinghamTODAY?ref_src=twsrc%5Etfw";
-
+            countyFeed = TweeterFeedLink.HRef;
+            //countyTwitter = "RockinghamToday";
         }
 
         else if(Session["userCounty"].ToString() == ("Louisa County"))
         {
             TweeterFeedLink.HRef = "https://twitter.com/LCPSchools?ref_src=twsrc%5Etfw";
+            countyFeed = TweeterFeedLink.HRef;
+            //countyTwitter= "LCPSchools"
 
         }
 
         else if (Session["userCounty"].ToString() == ("Harrisonburg City Public Schools"))
         {
             TweeterFeedLink.HRef = "https://twitter.com/LCPSchools?ref_src=twsrc%5Etfw";
+            countyFeed = TweeterFeedLink.HRef;
 
         }
 
@@ -153,19 +157,28 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         }
 
+        TableRow row = new TableRow();
+        TableCell cell = new TableCell();
+        TableCell cell2 = new TableCell();
+        LinkButton CountyContactLink = new LinkButton();
+        CountyContactLink.CssClass = "btn-block";
+        System.Web.UI.WebControls.Image twitterAvi = new System.Web.UI.WebControls.Image();
+        twitterAvi.CssClass = "rounded-circle";
+        CountyContactLink.Text = "County Feed";
+
 
 
         // associate jobnames,schoolnames, with twitter (associating userEntities, with schools and organizations)
         for (int i = 0; i <= userEntityList.Count - 1; i++)
         {
             //New row and add a new cell to the row
-            TableRow row = new TableRow();
-            TableCell cell = new TableCell();
-            TableCell cell2 = new TableCell();
+            row = new TableRow();
+            cell = new TableCell();
+            cell2 = new TableCell();
             //make a new link button to instatntiate it later
             LinkButton twitterContactLink = new LinkButton();
             twitterContactLink.CssClass = "btn-block";
-            System.Web.UI.WebControls.Image twitterAvi = new System.Web.UI.WebControls.Image();
+            twitterAvi = new System.Web.UI.WebControls.Image();
             twitterAvi.CssClass = "rounded-circle";
             
             for (int j = 0; j <= schoolList.Count - 1; j++)
@@ -237,7 +250,9 @@ public partial class CommunityFeed : System.Web.UI.Page
 
 
 
-      
+
+
+
     }
     protected void TweetButtonClick(object sender, CommandEventArgs e)
     {
