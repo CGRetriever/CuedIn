@@ -11,6 +11,14 @@
             <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Rejected Jobs </label>
+                <div class="form-row container-fluid">
+         <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" CssClass="btn" />
+           </div>
+
 
                  <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
                     
@@ -25,8 +33,10 @@
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'N'"></asp:SqlDataSource>
 
+
                 <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
+
 
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
@@ -43,11 +53,25 @@
                             <ItemTemplate>
                             <asp:LinkButton ID="btnJobApprove" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"></asp:LinkButton>
                             <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"></asp:LinkButton>
+
+                        <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
+                        <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
+                        <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" />
+                                            <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnJobApprove" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
+                            <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
+
                         </ItemTemplate>
                     </asp:TemplateField>
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
+
+                <asp:SqlDataSource ID="SQLDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'N'"></asp:SqlDataSource>
+             </div>
+                    </div>
+                
 
 
             </div>
@@ -55,6 +79,14 @@
         
             <div class="form-group col-md-6">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Accepted Jobs </label>
+                <div class="form-row container-fluid">
+         <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" CssClass="btn" />
+           </div>
+
 
                                  <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
                     
@@ -69,8 +101,10 @@
 
                 <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'Y'"></asp:SqlDataSource>
 
+
                 <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
+
 
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
@@ -87,11 +121,21 @@
                             <ItemTemplate>
                             <asp:LinkButton ID="btnJobReject" CssClass="btn btn-circle btn-danger" Text="Reject" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"></asp:LinkButton>
                             <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"></asp:LinkButton>
+
+                        <asp:BoundField DataField="JobTitle" HeaderText="JobTitle" SortExpression="JobTitle" />
+                        <asp:BoundField DataField="OrganizationName" HeaderText="OrganizationName" SortExpression="OrganizationName" />
+                        <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" />
+                                            <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnJobReject" CssClass="btn btn-circle btn-danger" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
+                            <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
+
                         </ItemTemplate>
                     </asp:TemplateField>
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
+                <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'Y'"></asp:SqlDataSource>
 
 
             </div>
@@ -218,7 +262,7 @@
                                     <br>
                                     <br>
                                     <%--<h5>Are you sure you want to reject?</h5>--%>
-                                    <asp:Label ID="Label5" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label> 
+                                    <asp:Label ID="Label5" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline?"></asp:Label> 
                                 </div>
                             </div>
                             
@@ -242,7 +286,7 @@
                                 </div>
                                <div class="row">
                                     <div>
-                                <asp:Button ID="Button3" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
+                                <asp:Button ID="Button3" runat="server" Text="Decline" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
                                 <asp:Label ID="Label11" runat="server" Text="&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                                 <asp:Label ID="Label12" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
@@ -305,7 +349,7 @@
 
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                <asp:Button ID="Button2" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
+                                <asp:Button ID="Button2" runat="server" Text="Decline" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                             </div>
                         </div>

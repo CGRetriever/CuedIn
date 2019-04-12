@@ -28,6 +28,7 @@
             <div class="form-group col-md-6">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
 
+
                 <div class="text-center rounded" style="background-color: #102B3F;width:auto;">
                     
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
@@ -42,6 +43,18 @@
 
                 <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'P'"></asp:SqlDataSource>
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+
+
+                <div class="form-row container-fluid">
+         <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" CssClass="btn" />
+           </div>
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+
+
                     <Columns>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
@@ -55,16 +68,20 @@
                         </asp:TemplateField>
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
-                                <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"></asp:LinkButton>
-                                <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Reject" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"></asp:LinkButton>
-                                <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoJobLinkBtn_Click"></asp:LinkButton>
+                                <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
+                                <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
+                                <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
                             </ItemTemplate>
 
                         </asp:TemplateField>
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
+                <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where joblisting.approved = 'P'"></asp:SqlDataSource>
 
+             </div>
+                    </div>
+                
 
             </div>
 
@@ -86,6 +103,18 @@
 
                 <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'P'"></asp:SqlDataSource>
                 <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+
+                <div class="form-row container-fluid">
+         <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label18" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" CssClass="btn" />
+           </div>
+
+                <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'P'"></asp:SqlDataSource>
+                <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+
                     <Columns>
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" />
                         <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
@@ -94,6 +123,7 @@
                         <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" />
 
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
+
                         <asp:TemplateField HeaderText="Website">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnOrgLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
@@ -105,6 +135,13 @@
                                 <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton2_Click"></asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton3" CssClass="btn btn-danger btn-circle btn-block" Text="Reject" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"></asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click"></asp:LinkButton>
+
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton2_Click"><i class="fas fa-check"></i></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton3" CssClass="btn btn-danger btn-circle" Text="Decline" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"><i class="fas fa-times"></i></asp:LinkButton>
+                                <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning btn-circle"  Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click"><i class="fas fa-info"></i></asp:LinkButton>
+
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -183,7 +220,9 @@
                                     <br>
                                     <br>
                                     <%--<h5>Are you sure you want to reject?</h5>--%>
-                                    <asp:Label ID="Label6" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
+
+                                     <asp:Label ID="Label6" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline?"></asp:Label>
+
                                 </div>
                             </div>
 
@@ -202,7 +241,16 @@
                         </div>
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                <asp:HyperLink ID="RejectMailButton" NavigateUrl="~/OpportunityActDec.aspx" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px; text-align: center; display: table-cell;" CssClass="btn btn-circle" runat="server" Text="Message Organization"></asp:HyperLink>
+
+                                <asp:HyperLink ID="RejectMailButton" NavigateUrl="~/OpportunityActDec.aspx" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px; text-align: center; display:table-cell;" CssClass="btn btn-circle" runat="server" Text="Message Organization"></asp:HyperLink>
+                               </div> 
+                                <div class="row">
+                                    <div>
+                                <asp:Button ID="Button2" runat="server" Text="Decline" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
+                                <asp:Label ID="Label11" runat="server" Text="&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+                                <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                                 <asp:Label ID="Label12" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+
                             </div>
                             <div class="row">
                                 <div>
@@ -390,20 +438,20 @@
 
 
 
-                <%--Scholarship Reject Modal--%>
-                <div class="modal fade" id="rejectSModal" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <div class="col-md-12 text-center">
-                                    <div class="modal-title">
-                                        <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
-                                        <br>
-                                        <br>
-                                        <%--<h5>Are you sure you want to reject?</h5>--%>
-                                        <asp:Label ID="Label8" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject?"></asp:Label>
-                                    </div>
+            <%--Scholarship Reject Modal--%>
+            <div class="modal fade" id="rejectSModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="col-md-12 text-center">
+                                <div class="modal-title">
+                                    <i class="fas fa-times fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
+                                    <br>
+                                    <br>
+                                    <%--<h5>Are you sure you want to reject?</h5>--%>
+                                     <asp:Label ID="Label8" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline?"></asp:Label>
+
                                 </div>
 
                             </div>
@@ -424,10 +472,13 @@
                                 </div>
                                 <div class="row">
                                     <div>
-                                        <asp:Button ID="rejectScholarshipButton" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectScholarshipButton_Click" />
-                                        <asp:Label ID="Label15" runat="server" Text="&nbsp;&nbsp;" Style="color: #ffffff"></asp:Label>
-                                        <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
-                                        <asp:Label ID="Label16" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" Style="color: #ffffff"></asp:Label>
+
+                            <asp:Button ID="rejectScholarshipButton" runat="server" Text="Decline" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectScholarshipButton_Click" />
+                            <asp:Label ID="Label15" runat="server" Text="&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+                            <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
+                            <asp:Label ID="Label16" runat="server" Text="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="Color: #ffffff"></asp:Label>
+                                </div>
+
                                     </div>
                                 </div>
                             </div>

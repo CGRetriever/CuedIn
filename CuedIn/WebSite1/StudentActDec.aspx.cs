@@ -205,6 +205,7 @@ public partial class StudentActDec : System.Web.UI.Page
 
     }
 
+
     protected void btnCheckGridView_Click(object sender, EventArgs e)
     {
 
@@ -379,4 +380,76 @@ public partial class StudentActDec : System.Web.UI.Page
     {
 
     }
+
+
+    protected void SearchButton_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox.Text;
+
+        StudentOpportunity.SelectParameters.Add("term", term);
+
+        StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%'))";
+        StudentOpportunity.DataBind();
+        GridView1.DataBind();
+
+        StudentOpportunity.SelectParameters.Clear();
+    }
+
+
+
+    protected void btnStudentView_Click(object sender, CommandEventArgs e)
+    {
+        String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
+
+
+        int applicationID = Convert.ToInt32(e.CommandArgument);
+
+        Session["applicationID"] = applicationID.ToString();
+
+        //find student ID from logID
+        sql.Open();
+        System.Data.SqlClient.SqlCommand findStudentID = new System.Data.SqlClient.SqlCommand();
+        findStudentID.Connection = sql;
+        findStudentID.CommandText = "SELECT StudentEntityID FROM ApplicationRequest WHERE applicationID = " + Session["applicationID"];
+        System.Data.SqlClient.SqlDataReader IDreader = findStudentID.ExecuteReader();
+
+        //declare studentID session variable
+        Session["studentID"] = 0;
+
+        while (IDreader.Read())
+        {
+            Session["studentID"] = IDreader.GetInt32(0);
+        }
+
+        sql.Close();
+
+        //get student info for selected student
+        sql.Open();
+        System.Data.SqlClient.SqlCommand getStudentInfo = new System.Data.SqlClient.SqlCommand();
+        getStudentInfo.Connection = sql;
+        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID, StudentImage FROM Student WHERE StudentEntityID = " + Session["studentID"];
+        System.Data.SqlClient.SqlDataReader studentReader = getStudentInfo.ExecuteReader();
+
+        while (studentReader.Read())
+        {
+            //fill labels in modal
+
+
+            lblStudentName.Text = studentReader.GetString(0);
+            lblGradeLevel.Text = "Grade Level: " + studentReader.GetString(1);
+            lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
+            lblSATScore.Text = "SAT Score: " + studentReader.GetInt32(3);
+            lblHoursWorked.Text = "WBL Hours Earned: " + studentReader.GetInt32(4);
+            imgStudent.ImageUrl = studentReader.GetString(6);
+        }
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
+    }
+
+
 }

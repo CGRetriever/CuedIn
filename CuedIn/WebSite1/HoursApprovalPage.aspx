@@ -5,10 +5,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <form id="form1" runat="server">
-        <div class="form-row">
-       <div class="col-md-12 text-center">
-      <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
+        <div class="form-row container-fluid">
+         <div class="col-auto container-fluid text-center">
+           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
+           <asp:Label ID="Label6" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+           <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+           <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" CssClass="btn" />
            </div>
+
 
             <div class="col-12 container-fluid text-center">
         <div class="text-center rounded" style="background-color:#102B3F;">
@@ -23,6 +27,7 @@
         </div>
             <br />
        
+
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
@@ -51,9 +56,9 @@
                 </asp:TemplateField>
                 <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
                     <ItemTemplate>
-                        <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="approveJobLinkBtn_Click"></asp:LinkButton>
-                        <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="rejectJobLinkBtn_Click"></asp:LinkButton>
-                        <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle" Text="View Comments" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="moreInfoJobLinkBtn_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
+                        <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle" Text="Decline" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
+                        <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle" Text="View Comments" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="moreInfoJobLinkBtn_Click"><i class="fas fa-comments"></i></asp:LinkButton>
                     </ItemTemplate>
 
                     <HeaderStyle BorderColor="Black"></HeaderStyle>
@@ -181,7 +186,7 @@
                                     <br>
                                     <br>
                                     <%--<h5>Are you sure you want to reject?</h5>--%>
-                                    <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to reject these hours?"></asp:Label>
+                                    <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline these hours?"></asp:Label>
                                 </div>
                             </div>
                            
@@ -200,7 +205,7 @@
                         </div>
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                <asp:Button ID="Button2" runat="server" Text="Reject" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
+                                <asp:Button ID="Button2" runat="server" Text="Decline" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="rejectJobButton_Click" />
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                             </div>
                         </div>

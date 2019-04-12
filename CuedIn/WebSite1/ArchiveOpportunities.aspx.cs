@@ -288,6 +288,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
+
     protected void btnCheckGridView_Click(object sender, EventArgs e)
     {
         {
@@ -494,6 +495,32 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
                 }
             }
         }
+
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        SQLDataSource1.SelectParameters.Add("term", term);
+
+        SQLDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SQLDataSource1.DataBind();
+        gridviewRejJobs.DataBind();
+
+        SQLDataSource1.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and (JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        JobOpportunity.DataBind();
+        gridviewAccJobs.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
 
 
     }
