@@ -19,10 +19,11 @@
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
+         <link rel='stylesheet' href='css/card.css'>
+        <link rel='stylesheet' href='css/style.css'>
 
     </head>
-            <!--Most Recent Job Posting-->
+<%--            <!--Most Recent Job Posting-->
 
             <div class='container'>     <!-- Main container div -->
                 <div class='row'>       <!-- Row start div -->
@@ -59,11 +60,13 @@
                     <p>More Job Postings</p>
                 </div>                  <!-- Close Job Reccomend text div -->
 
-                <!--End of Recent Job Posting-->
+                <!--End of Recent Job Posting-->--%>
     
                     
+                    <div class="container">
                     <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%" > </asp:Table>
-
+                    </div>
+                    
    
     </form>
    

@@ -12,8 +12,17 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        GridView1.Columns[2].Visible = false;
+        GridView1.Columns[3].Visible = false;
+        GridView1.Columns[4].Visible = false;
+        GridView1.Columns[5].Visible = false;
         GridView2.Columns[0].Visible = false;
+        
+        
+        GridView2.Columns[3].Visible = false;
+        GridView2.Columns[4].Visible = false;
+        GridView2.Columns[6].Visible = false;
+
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
         
 
@@ -437,5 +446,212 @@ public partial class OpportunityActDec : System.Web.UI.Page
         //System.Diagnostics.Process.Start(command);
         //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
         //Response.Redirect("~/OpportunityActDec.aspx");
+    }
+
+
+    protected void btnCheckGridView_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkJobDescription.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Description")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Description")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobLocation.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Location")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Location")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkOrgWebsite.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == " Website")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == " Website")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin.Checked != true)
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    GridView2.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    GridView2.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax.Checked != true)
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    GridView2.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    GridView2.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkExternalLink2.Checked != true)
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Website")
+                {
+                    GridView2.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView2.Columns.Count; i++)
+            {
+                if (GridView2.Columns[i].HeaderText == "Website")
+                {
+                    GridView2.Columns[i].Visible = true;
+
+                }
+            }
+        }
+    }
+
+
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        JobOpportunity.DataBind();
+        GridView1.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+        ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'P') and(Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        ScholarshipOpportunity.DataBind();
+        GridView2.DataBind();
+
+        ScholarshipOpportunity.SelectParameters.Clear();
+
     }
 }

@@ -12,8 +12,16 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        rejScholarshipGridview.Columns[0].Visible = false;
+        rejScholarshipGridview.Columns[4].Visible = false;
+        rejScholarshipGridview.Columns[5].Visible = false;
+        rejScholarshipGridview.Columns[6].Visible = false;
 
-        
+        acceptScholarshipGridview.Columns[0].Visible = false;
+        acceptScholarshipGridview.Columns[4].Visible = false;
+        acceptScholarshipGridview.Columns[5].Visible = false;
+        acceptScholarshipGridview.Columns[6].Visible = false;
+
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
         
     }
@@ -265,4 +273,160 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
     }
+
+
+ protected void btnCheckGridView1_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkExternalLink2.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Website")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Website")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkExternalLink1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Website")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Website")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+    }
+
 }
