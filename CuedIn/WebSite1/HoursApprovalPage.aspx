@@ -29,8 +29,8 @@
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
            <asp:DropDownList ID="dropDownSort" runat="server" OnSelectedIndexChanged="sortGridview"  AutoPostBack="true" >
-               <asp:ListItem >Sort By Name</asp:ListItem>
-               <asp:ListItem >Student Name</asp:ListItem>
+
+               <asp:ListItem> Student Name</asp:ListItem>
                <asp:ListItem >Organization Name</asp:ListItem>
                <asp:ListItem >Job Title</asp:ListItem>
                <asp:ListItem>Hours Requested</asp:ListItem>
@@ -39,7 +39,7 @@
            </div>
        <div class="col-auto container-fluid text-center">
         
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" CellPadding="1" BackColor="#102B40" ForeColor="White">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" CellPadding="1" BackColor="#102B40" ForeColor="White" AllowSorting="true" OnSorting="sortGridview">
             <Columns>
 
                 <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" />
