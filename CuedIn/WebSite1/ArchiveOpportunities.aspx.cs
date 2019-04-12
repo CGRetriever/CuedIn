@@ -18,6 +18,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         gridviewRejJobs.Columns[4].Visible = false;
         gridviewRejJobs.Columns[5].Visible = false;
 
+        gridviewAccJobs.Columns[0].Visible = false;
         gridviewAccJobs.Columns[2].Visible = false;
         gridviewAccJobs.Columns[3].Visible = false;
         gridviewAccJobs.Columns[4].Visible = false;
@@ -495,19 +496,20 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
                 }
             }
         }
+    }
 
 
     protected void SearchButton1_Click(object sender, EventArgs e)
     {
         String term = SearchBox1.Text;
 
-        SQLDataSource1.SelectParameters.Add("term", term);
+        SqlDataSource1.SelectParameters.Add("term", term);
 
-        SQLDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
-        SQLDataSource1.DataBind();
+        SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SqlDataSource1.DataBind();
         gridviewRejJobs.DataBind();
 
-        SQLDataSource1.SelectParameters.Clear();
+        SqlDataSource1.SelectParameters.Clear();
     }
 
     protected void SearchButton2_Click(object sender, EventArgs e)

@@ -275,7 +275,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Image")
                 {
                     GridView1.Columns[i].Visible = false;
-             
+
                 }
             }
         }
@@ -286,7 +286,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Image")
                 {
                     GridView1.Columns[i].Visible = true;
-                 
+
                 }
             }
         }
@@ -298,7 +298,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Grade Level")
                 {
                     GridView1.Columns[i].Visible = false;
-                
+
                 }
             }
         }
@@ -309,7 +309,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Grade Level")
                 {
                     GridView1.Columns[i].Visible = true;
-             
+
                 }
             }
         }
@@ -322,7 +322,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "GPA")
                 {
                     GridView1.Columns[i].Visible = false;
-                    
+
                 }
             }
         }
@@ -333,7 +333,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "GPA")
                 {
                     GridView1.Columns[i].Visible = true;
-                   
+
                 }
             }
         }
@@ -346,7 +346,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Hours of WBL")
                 {
                     GridView1.Columns[i].Visible = false;
-                   
+
                 }
             }
         }
@@ -357,7 +357,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Hours of WBL")
                 {
                     GridView1.Columns[i].Visible = true;
-                    
+
                 }
             }
         }
@@ -370,7 +370,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Job Type")
                 {
                     GridView1.Columns[i].Visible = false;
-                    
+
                 }
             }
         }
@@ -381,7 +381,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Job Type")
                 {
                     GridView1.Columns[i].Visible = true;
-                    
+
                 }
             }
         }
@@ -393,7 +393,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Website")
                 {
                     GridView1.Columns[i].Visible = false;
-                    
+
                 }
             }
         }
@@ -404,10 +404,11 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 if (GridView1.Columns[i].HeaderText == "Website")
                 {
                     GridView1.Columns[i].Visible = true;
-                    
+
                 }
             }
         }
+    }
 
 
 

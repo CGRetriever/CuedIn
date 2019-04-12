@@ -624,6 +624,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 }
             }
         }
+    }
 
 
 

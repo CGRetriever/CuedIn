@@ -25,12 +25,6 @@
                 <br />
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-
-    <form id="form1" runat="server">
-      <div class="form-row container-fluid">
-       
            <div class="col-auto container-fluid text-center">
            <div class="col-auto text-center rounded" style="background-color:#102B3F;">
            <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
@@ -250,34 +244,7 @@
 
                             </div>
 
-                            <div class="modal-body" style="background-color: #4F79A3;">
-                                <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
-                                    <div class="form-group">
-                                        <asp:Label ID="lblOrgName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
-                                        <asp:Label ID="lblOrgDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
 
-                                        <asp:Label ID="lblJobTitle" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
-                                        <asp:Label ID="lblJobDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
-                                        <asp:Label ID="lblJobLocation" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
-                                        <asp:Label ID="lblJobDeadline" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
-                                        <asp:Label ID="lblNumberOfApplicants" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
-                                        <br />
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                    <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <script type='text/javascript'>
@@ -288,13 +255,9 @@
 
                         </div>
                     </div>
-                    <script type='text/javascript'>
-                        function openEditSModal() {
-                            $('[id*=myModal]').modal('show');
-                        }
-                    </script>
-                </div>
-            </div>
+
+       
+   
 
             <%--Student View Modal--%>
             <div class="modal fade" id="viewStudentModal" role="dialog">
