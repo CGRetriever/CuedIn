@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class JobPostings : System.Web.UI.Page
 {
-    public static int recentPostID = 0;
+    
     public String jobTitle = "";
     public String jobDescription = "";
     public String jobType = "";
@@ -21,12 +21,46 @@ public partial class JobPostings : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        //initialize array of Jobs
+        List<JobListing> jobListingList = new List<JobListing>();
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
 
-        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        //sc.Open();
+        System.Data.SqlClient.SqlCommand sqlJobInfo = new System.Data.SqlClient.SqlCommand();
+        sqlJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
+        sqlJobInfo.Connection = sc;
+        System.Data.SqlClient.SqlDataReader reader = sqlJobInfo.ExecuteReader();
+        while (reader.Read())
+        {
+            JobListing jobListingObj = new JobListing(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetString(9));
+            jobListingList.Add(jobListingObj);
+        }
 
-        //System.Data.SqlClient.SqlCommand sqlrecentJobPostID = new System.Data.SqlClient.SqlCommand();
+        sc.Close();
+
+        TableRow row = new TableRow();
+        TableCell cell = new TableCell();
+        TableCell cell2 = new TableCell();
+        TableCell cell3 = new TableCell();
+        //link Button for referrals
+        LinkButton referralLink = new LinkButton();
+        //link button for website
+        LinkButton websiteButton = new LinkButton();
+        
+        TextBox txtBox = new TextBox();
+
+
+
+
+
+
+
+
+
+
+
+
         //sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
         //sqlrecentJobPostID.Connection = sc;
         //System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
@@ -100,7 +134,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
+        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
         pullJobInfo.Connection = sc;
 
 
@@ -108,6 +142,7 @@ public partial class JobPostings : System.Web.UI.Page
         reader = pullJobInfo.ExecuteReader();
 
         {
+            int[] jobListingID = new int[countTotalJobs];
             String[] orgNameArray = new String[countTotalJobs];
             String[] jobTitleArray = new String[countTotalJobs];
             String[] jobDescriptionArray = new String[countTotalJobs];
@@ -122,6 +157,7 @@ public partial class JobPostings : System.Web.UI.Page
             int x = 0;
             while (reader.Read())
             {
+                
                 orgNameArray[x] = reader.GetString(0);
                 jobTitleArray[x] = reader.GetString(1);
                 jobDescriptionArray[x] = reader.GetString(2);
@@ -131,6 +167,7 @@ public partial class JobPostings : System.Web.UI.Page
                 deadlineArray[x] = reader.GetDateTime(6);
                 numOfApplicantsArray[x] = reader.GetInt32(7);
                 organizationDescriptionArray[x] = reader.GetString(8);
+                jobListingID[x] = reader.GetInt32(9);
                 x++;
 
             }
@@ -151,6 +188,13 @@ public partial class JobPostings : System.Web.UI.Page
                                 break;
                             }
                             TableCell c = new TableCell();
+
+                    LinkButton referralLink = new LinkButton();
+                    referralLink.ID = "referralLink" + count;
+                    referralLink.Click += referralButton_Click;
+                    referralLink.CommandArgument = jobListingID[count];
+
+
                     //c.Text += "<div class='col-xs-12 col-sm-6 col-md-4'>";
                     c.Text += "<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>";
                     c.Text += "<div class='mainflip'>";
@@ -185,6 +229,7 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
+                    
 
 
 
@@ -212,6 +257,12 @@ public partial class JobPostings : System.Web.UI.Page
             }
 
         }
+
+    public void referralButton_Click (object sender, CommandEventArgs e)
+    {
+
+    }
+
     }
 
 
