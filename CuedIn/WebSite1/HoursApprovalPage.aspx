@@ -5,30 +5,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <link rel="stylesheet" type="text/css" href="css/dropdown.css">
     <form id="form1" runat="server">
-    <span class="color-picker"></span>
         <div class="form-row">
-       <div class="col-md-12 text-center custom-dropdown big">
-           <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" class="custom-dropdown big">
+
+       <div class=" text-center custom-dropdown big" style ="padding-left:425px;">
+           <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" class="custom-dropdown big" >
                <asp:ListItem>Choose Year</asp:ListItem>
                <asp:ListItem>Freshman</asp:ListItem>
                <asp:ListItem>Sophomore</asp:ListItem>
                <asp:ListItem>Junior</asp:ListItem>
                <asp:ListItem>Senior</asp:ListItem>
            </asp:DropDownList>
+         <br />
+           <br />
+           <br />
          
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-         
-           <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
+           <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" class="custom-dropdown big">
                <asp:ListItem>Choose GPA</asp:ListItem>
                <asp:ListItem Value="0 - 0.9">0 - 0.9</asp:ListItem>
                <asp:ListItem>1.0 - 1.9</asp:ListItem>
                <asp:ListItem>2.0 - 2.9</asp:ListItem>
                <asp:ListItem>3.0 - 4.0</asp:ListItem>
            </asp:DropDownList>
-
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-          Sort By<asp:DropDownList ID="dropDownSort" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="sortGridview" >
+           <br />
+           <br />
+           <br />
+            
+             <asp:DropDownList ID="dropDownSort" runat="server" OnSelectedIndexChanged="sortGridview" AutoPostBack="true" class="custom-dropdown big">
+                  <asp:ListItem Text="Sort By" Value="StudentName"></asp:ListItem>
                <asp:ListItem Text="Student Name" Value="StudentName"></asp:ListItem>
                <asp:ListItem Text="Organization Name" Value="OrganizationName"></asp:ListItem>
                <asp:ListItem Text="Job Title" Value="JobTitle"></asp:ListItem>
@@ -36,13 +39,13 @@
            </asp:DropDownList>
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
            </div>
-       <div class="col-auto container-fluid text-center">
+       <div class="col-auto container-fluid text-center"  style="padding-bottom:1000px;">
         
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" CellPadding="1" BackColor="#102B40" ForeColor="White" AllowSorting="true" OnSorting="sortGridview">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; padding-right:300px; padding-bottom:3000px;" AutoGenerateColumns="False" DataKeyNames="LogID" CellPadding="1" BackColor="#102B40" ForeColor="White" AllowSorting="true">
             <Columns>
 
                 <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" />
-                <asp:TemplateField ShowHeader="false" HeaderStyle-BorderColor="Black">
+                <asp:TemplateField HeaderText="Student Name" SortExpression="StudentName">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("LogID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                     </ItemTemplate>
