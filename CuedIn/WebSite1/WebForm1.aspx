@@ -2,29 +2,30 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="form1" runat="server">
-        <asp:FileUpload ID="FileUpload1" runat="server" />
-&nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Upload" />
+            <div align="center">
+&nbsp;<asp:FileUpload ID="FileUpload1" runat="server" BorderColor="#003366" BorderWidth="1px" ForeColor="#003366" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Upload" />
         <br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CC9966" BorderStyle="None" BorderWidth="1px" CellPadding="4" OnRowCommand="GridView1_RowCommand">
+        
+        <div class="container col-md-4">
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;background-size:initial;width:auto" AutoGenerateColumns="False" CellPadding="1" BackColor="#102B40" ForeColor="White" OnRowCommand="GridView1_RowCommand">
             <Columns>
-                <asp:TemplateField HeaderText="File">
+                <asp:TemplateField HeaderText="File" ItemStyle-Font-Underline="true">
                     <ItemTemplate>
                         <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("File") %>' CommandName="Download" Text='<%# Eval("File") %>'></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
+
                 <asp:BoundField DataField="Size" HeaderText="Size In Bytes" />
                 <asp:BoundField DataField="Type" HeaderText="File Type" />
             </Columns>
-            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
-            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
-            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
-            <RowStyle BackColor="White" ForeColor="#330099" />
-            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
-            <SortedAscendingCellStyle BackColor="#FEFCEB" />
-            <SortedAscendingHeaderStyle BackColor="#AF0101" />
-            <SortedDescendingCellStyle BackColor="#F6F0C0" />
-            <SortedDescendingHeaderStyle BackColor="#7E0000" />
+                        <RowStyle CssClass="cursor-pointer" />
+
         </asp:GridView>
+            <br />
+
+            </div>
+
     </form>
 </asp:Content>
 
