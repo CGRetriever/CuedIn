@@ -5,11 +5,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class="container-fluid">
+
     <form id="form1" runat="server">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-            
-                <div class="text-center rounded" style="background-color: #102B3F; width: auto;">
+
+        <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+
+        <div class="form-group">
+            <div class="col-md-12 container-fluid text-center">
+
+                <div class="col-auto text-center rounded" style="background-color: #102B3F; width: auto;">
 
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" />
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />
@@ -17,97 +21,70 @@
                     <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" />
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
-                    <asp:CheckBox ID="chkOrgWebsite" Style="color: white;" runat="server" Text="Website" Checked="false" OnCheckedChanged="chkOrgWebsite_CheckedChanged" />
-
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
-                </div>
+             
                 <br />
 
+                <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+                <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" CssClass="btn" />
+                </div>
+                <div style="height: 5px; font-size: 10px;">&nbsp;</div>
+                <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
+                
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center"  HorizontalAlign="Center" Style="border-collapse: collapse;width:auto;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
+                    <Columns>
 
-           <div class="col-auto container-fluid text-center">
-           <div class="col-auto text-center rounded" style="background-color:#102B3F;">
-           <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-           <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-           <asp:Button ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" CssClass="btn" />
-           </div>
-
-          <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-
-       <div class="col-auto container-fluid text-center">
-
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive" style="border-collapse:collapse;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
-            <Columns>
-
-                        <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" />
-                        <asp:TemplateField HeaderText="Image">
+                        <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />
+                        <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
                                 <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
-                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" ItemStyle-Width="5%"/>
-                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" />
-                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" ReadOnly="True" HeaderStyle-Wrap="true" />
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true"  />
-                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ReadOnly="True" ItemStyle-Wrap="true"/>
-                        <asp:BoundField DataField="JobType" HeaderText="Job Type" ReadOnly="True" />
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true"/>
-                        <asp:TemplateField HeaderText=" Website">
+                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
+                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
+                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" />
+                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ReadOnly="True" ItemStyle-Wrap="true" Visible="false" />
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" ReadOnly="True" Visible="false" />
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true" />
+                        <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
-                                <asp:LinkButton ID="btnOrgLink" runat="server" href='<%#Eval("ExternalLink")%>' target="_blank"><i class="fas fa-external-link-alt"></i></asp:LinkButton>
+                                <asp:LinkButton ID="approveStudentLinkBtn" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="approveStudentLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
+                                <asp:LinkButton ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
+                                <asp:LinkButton ID="moreInfoStudentLinkBtn" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="moreInfoStudentLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
                             </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="False" HeaderStyle-BorderColor="Black">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="approveStudentLinkBtn" CssClass="btn btn-success btn-circle" Text="Approve" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="approveStudentLinkBtn_Click"></asp:LinkButton>
-                                <asp:LinkButton ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"></asp:LinkButton>
-                                <asp:LinkButton ID="moreInfoStudentLinkBtn" CssClass="btn btn-warning btn-circle" Text="View More" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="moreInfoStudentLinkBtn_Click"></asp:LinkButton>
-                            </ItemTemplate>
-
-                            <HeaderStyle BorderColor="Black"></HeaderStyle>
                         </asp:TemplateField>
 
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
-                    
-           
+                    </div>
+            
         </div>
 
-            <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P')"></asp:SqlDataSource>
 
 
-    
 
-        <br>
-        <br>
 
-        
 
-    <div class="form-group col-md-6">
-      
-    </div>
-    
-  </div>
-          
-          <br />
-          <br />
-    <script>
-         //Initialize popover with jQuery
-        $(document).ready(function () {
-            $('.popovers').popover();
-        });
-    </script>
-          
-<div>
-        <%--Student Approve Modal--%>
-        <div class="modal fade" id="approveXModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="col-md-12 text-center">
+        <script>
+            //Initialize popover with jQuery
+            $(document).ready(function () {
+                $('.popovers').popover();
+            });
+        </script>
+
+        <div>
+            <%--Student Approve Modal--%>
+            <div class="modal fade" id="approveXModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="col-md-12 text-center">
                                 <div class="modal-title">
                                     <i class="fas fa-check fa-4x progress-bar-animated rotateIn" style="color: #102B3F;"></i>
                                     <br>
@@ -269,11 +246,11 @@
                         }
                     </script>
 
-                        </div>
-                    </div>
+                </div>
+            </div>
 
-       
-   
+
+
 
             <%--Student View Modal--%>
             <div class="modal fade" id="viewStudentModal" role="dialog">
@@ -326,7 +303,7 @@
             </div>
     </form>
 
-</div>
+    </div>
 
 </asp:Content>
 

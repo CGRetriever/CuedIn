@@ -13,15 +13,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+      
 
-        GridView1.Columns[0].Visible = false;
-        GridView1.Columns[1].Visible = false;
-        GridView1.Columns[3].Visible = false;
-        GridView1.Columns[4].Visible = false;
-        GridView1.Columns[5].Visible = false;
-        GridView1.Columns[8].Visible = false;
-        GridView1.Columns[10].Visible = false;
-        
 
         ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";  
     }
@@ -386,28 +379,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
             }
         }
 
-        if (chkLink.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Website")
-                {
-                    GridView1.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Website")
-                {
-                    GridView1.Columns[i].Visible = true;
-
-                }
-            }
-        }
     }
 
 

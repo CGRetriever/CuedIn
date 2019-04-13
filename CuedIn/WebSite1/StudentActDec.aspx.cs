@@ -13,13 +13,6 @@ public partial class StudentActDec : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        GridView1.Columns[0].Visible = false;
-        GridView1.Columns[1].Visible = false;
-        GridView1.Columns[3].Visible = false;
-        GridView1.Columns[4].Visible = false;
-        GridView1.Columns[7].Visible = false;
-        GridView1.Columns[8].Visible = false;
-        GridView1.Columns[10].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         
     }
@@ -284,7 +277,7 @@ public partial class StudentActDec : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                if (GridView1.Columns[i].HeaderText == "Hours Of WBL")
                 {
                     GridView1.Columns[i].Visible = false;
 
@@ -295,7 +288,7 @@ public partial class StudentActDec : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                if (GridView1.Columns[i].HeaderText == "Hours Of WBL")
                 {
                     GridView1.Columns[i].Visible = true;
 
@@ -349,30 +342,6 @@ public partial class StudentActDec : System.Web.UI.Page
                 }
             }
         }
-
-        if (chkOrgWebsite.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Website")
-                {
-                    GridView1.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Website")
-                {
-                    GridView1.Columns[i].Visible = true;
-
-                }
-            }
-        }
-
 
     }
 

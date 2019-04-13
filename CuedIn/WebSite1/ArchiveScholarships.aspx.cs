@@ -12,15 +12,6 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        rejScholarshipGridview.Columns[0].Visible = false;
-        rejScholarshipGridview.Columns[4].Visible = false;
-        rejScholarshipGridview.Columns[5].Visible = false;
-        rejScholarshipGridview.Columns[6].Visible = false;
-
-        acceptScholarshipGridview.Columns[0].Visible = false;
-        acceptScholarshipGridview.Columns[4].Visible = false;
-        acceptScholarshipGridview.Columns[5].Visible = false;
-        acceptScholarshipGridview.Columns[6].Visible = false;
 
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
         
@@ -326,29 +317,6 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         }
 
 
-        if (chkExternalLink2.Checked != true)
-        {
-            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
-            {
-                if (rejScholarshipGridview.Columns[i].HeaderText == "Website")
-                {
-                    rejScholarshipGridview.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
-            {
-                if (rejScholarshipGridview.Columns[i].HeaderText == "Website")
-                {
-                    rejScholarshipGridview.Columns[i].Visible = true;
-
-                }
-            }
-        }
-
 
     }
 
@@ -403,28 +371,36 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         }
 
 
-        if (chkExternalLink1.Checked != true)
-        {
-            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
-            {
-                if (acceptScholarshipGridview.Columns[i].HeaderText == "Website")
-                {
-                    acceptScholarshipGridview.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
-            {
-                if (acceptScholarshipGridview.Columns[i].HeaderText == "Website")
-                {
-                    acceptScholarshipGridview.Columns[i].Visible = true;
 
-                }
-            }
-        }
+
+    }
+
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+        ScholarshipOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        ScholarshipOpportunity.DataBind();
+        rejScholarshipGridview.DataBind();
+
+        ScholarshipOpportunity.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        SqlDataSource1.SelectParameters.Add("term", term);
+
+        SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and (JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SqlDataSource1.DataBind();
+        acceptScholarshipGridview.DataBind();
+
+        SqlDataSource1.SelectParameters.Clear();
 
 
     }
