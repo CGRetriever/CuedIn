@@ -84,7 +84,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullScholarshipInfo = new System.Data.SqlClient.SqlCommand();
-        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'Y' AND scholarshipID <>" + recentPostID;
+        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'Y' AND scholarshipID <>" + recentPostID;
         pullScholarshipInfo.Connection = sc;
 
 
@@ -97,6 +97,10 @@ public partial class ScholarshipBoard : System.Web.UI.Page
             String[] scholarshipDescriptionArray = new String[countTotalScholarships];
             String[] imageArray = new string[countTotalScholarships];
             String[] linkArray = new string[countTotalScholarships];
+            decimal[] scholarshipMinArray = new decimal[countTotalScholarships];
+            decimal[] scholarshipMaxArray = new decimal[countTotalScholarships];
+            DateTime[] deadlineArray = new DateTime[countTotalScholarships];
+
             int x = 0;
             while (reader.Read())
             {
@@ -105,6 +109,9 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                 scholarshipDescriptionArray[x] = reader.GetString(2);
                 imageArray[x] = reader.GetString(3);
                 linkArray[x] = reader.GetString(4);
+                scholarshipMinArray[x] = reader.GetDecimal(5);
+                scholarshipMaxArray[x] = reader.GetDecimal(6);
+                deadlineArray[x] = reader.GetDateTime(7);
                 x++;
 
             }
@@ -125,14 +132,35 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                         break;
                     }
                     TableCell c = new TableCell();
-                    c.Text += "<div class = 'card card-cascade>";
-                    c.Text += "<div class = 'view view-cascade overlay'>";
-                    c.Text += "<img class = 'card-img-top' src='" + imageArray[count] + "'>";
-                    c.Text += "<div class = 'card-body card-body-cascade text-center'>";
-                    c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
-                    c.Text += "<div class='font-weight-bold indigo-text py-2'>" + scholarshipNameArray[count] + "</div>";
-                    c.Text += "<div class = 'card-text'>" + scholarshipDescriptionArray[count] + "</div>";
-                    c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
+                    c.Text += "<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>";
+                    c.Text += "<div class='mainflip'>";
+                    c.Text += "<div class='frontside'>";
+                    c.Text += "<div class='card'>";
+                    c.Text += "<div class='card-body text-center'>";
+                    c.Text += "<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>";
+                    c.Text += "<h4 class='card-title'>" + orgNameArray[count] + "</h4>";
+                    c.Text += "<p class='card-text'>" + scholarshipNameArray[count] + "</p>";
+                    c.Text += "<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "</div>";
+                    c.Text += "<div class='backside'>";
+                    c.Text += "<div class='card'>";
+                    c.Text += "<div class='card-body text-center'>";
+                    c.Text += "<h4 class='card-title'>" + orgNameArray[count] + "</h4>";
+                    c.Text += "<p class='card-text'>" + scholarshipNameArray[count] + "</p>";
+                    c.Text += "<p class='card-text'> Description: " + scholarshipDescriptionArray[count] + "</p>";
+                    c.Text += "<p class='card-text'> Minimum: " + scholarshipMinArray[count].ToString("$000.00") + "</p>";
+                    c.Text += "<p class='card-text'> Maximum: " + scholarshipMaxArray[count].ToString("$000.00") + "</p>";
+                    c.Text += "<p class='card-text'>  Deadline: " + deadlineArray[count].ToString() + "</p>";
+                    c.Text += "<ul class='list-inline'>";
+                    c.Text += "<li class='list-inline-item'>";
+                    c.Text += "<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>";
+                    c.Text += "<i class='fas fa-external-link-alt'></i>";
+                    c.Text += "</a>";
+                    c.Text += "</li>";
+                    c.Text += "</ul>";
+                    c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";

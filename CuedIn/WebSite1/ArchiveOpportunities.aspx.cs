@@ -13,8 +13,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        gridviewRejJobs.Columns[2].Visible = false;
-        gridviewAccJobs.Columns[2].Visible = false;
+
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs Listings";
        
 
@@ -88,7 +87,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.CommandText = "update SchoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"] ;
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -270,7 +269,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update joblisting set approved = 'N', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        rejectJob.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
@@ -279,4 +278,193 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
 
 
+
+
+    protected void btnCheckGridView_Click(object sender, EventArgs e)
+    {
+        {
+
+
+            if (chkJobDescription.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Description")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Description")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+
+            if (chkJobType.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Type")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Job Type")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+
+            if (chkJobLocation.Checked != true)
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Location")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = false;
+
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < gridviewRejJobs.Columns.Count; i++)
+                {
+                    if (gridviewRejJobs.Columns[i].HeaderText == "Location")
+                    {
+                        gridviewRejJobs.Columns[i].Visible = true;
+
+                    }
+                }
+            }
+
+        }
+
+
+
+ 
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkJobDescription1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Description")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Description")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Type")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Job Type")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobLocation1.Checked != true)
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Location")
+                {
+                    gridviewAccJobs.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < gridviewAccJobs.Columns.Count; i++)
+            {
+                if (gridviewAccJobs.Columns[i].HeaderText == "Location")
+                {
+                    gridviewAccJobs.Columns[i].Visible = true;
+
+                }
+            }
+        }
+    }
+
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        SqlDataSource1.SelectParameters.Add("term", term);
+
+        SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SqlDataSource1.DataBind();
+        gridviewRejJobs.DataBind();
+
+        SqlDataSource1.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and (JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        JobOpportunity.DataBind();
+        gridviewAccJobs.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+
+
+    }
 }

@@ -13,7 +13,6 @@ public partial class ArchiveScholarships : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
         
     }
@@ -26,7 +25,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update scholarship set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
@@ -219,7 +218,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update scholarship set approved = 'N', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 
@@ -265,4 +264,145 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
     }
+
+
+ protected void btnCheckGridView1_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+        ScholarshipOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        ScholarshipOpportunity.DataBind();
+        rejScholarshipGridview.DataBind();
+
+        ScholarshipOpportunity.SelectParameters.Clear();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        SqlDataSource1.SelectParameters.Add("term", term);
+
+        SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and (JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SqlDataSource1.DataBind();
+        acceptScholarshipGridview.DataBind();
+
+        SqlDataSource1.SelectParameters.Clear();
+
+
+    }
+
 }

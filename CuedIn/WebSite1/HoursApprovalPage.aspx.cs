@@ -13,8 +13,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+      
 
-        GridView1.Columns[0].Visible = false;
+
         ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";  
     }
 
@@ -254,5 +255,147 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
+    }
+
+
+    protected void btnCheckGridView_Click(object sender, EventArgs e)
+    {
+
+        if (chkImage.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkGradeLevel.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkGPA.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkHoursWBL.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+    protected void SearchButton_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox.Text;
+
+        JobOpportunity.SelectParameters.Add("term", term);
+
+        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or(JobListing.JobTitle like '%" + @term + "%'))";
+        JobOpportunity.DataBind();
+        GridView1.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+
     }
 }
