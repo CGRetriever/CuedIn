@@ -45,6 +45,7 @@
                         <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours of WBL" SortExpression="HoursOfWorkPlaceExp" Visible="false"/>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" />
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" SortExpression="JobTitle" />
                         <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" />
 
                         <asp:TemplateField ShowHeader="False">
