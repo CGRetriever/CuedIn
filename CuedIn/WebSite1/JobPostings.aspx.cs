@@ -194,49 +194,43 @@ public partial class JobPostings : System.Web.UI.Page
                     
                     referralLink.CssClass = "far fa-paper-plane";
                     
-                    referralLink.CommandArgument += jobListingID;
+                    referralLink.CommandArgument += jobListingID[count];
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
-                    
+                    c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
+                    c.Controls.Add(new LiteralControl("<div class='mainflip'>"));
+                    c.Controls.Add(new LiteralControl("<div class='frontside'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
+                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + orgNameArray[count] + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobTitleArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
 
-                    c.Text += "<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>";
-                    c.Text += "<div class='mainflip'>";
-                    c.Text += "<div class='frontside'>";
-                    c.Text += "<div class='card'>";
-                    c.Text += "<div class='card-body text-center'>";                   
-                    c.Text += "<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>";
-                    c.Text += "<h4 class='card-title'>" + orgNameArray[count] + "</h4>";
-                    c.Text += "<p class='card-text'>" + jobTitleArray[count] + "</p>";
-                    c.Text += "<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    
-                    c.Text += "<div class='backside'>";
-                    c.Text += "<div class='card'>";
-                    c.Text += "<div class='card-body text-center'>";
-                    c.Text += "<h4 class='card-title'>" + orgNameArray[count] + "</h4>";
-                    c.Text += "<p class='card-text'>" + jobTitleArray[count] + "</p>";
-                    c.Text += "<p class='card-text'> Job Description: " + jobDescriptionArray[count] + "</p>";
-                    c.Text += "<p class='card-text'> Location: " + jobLocationArray[count] + "</p>";
-                    c.Text += "<p class='card-text'>  Deadline: " + deadlineArray[count].ToString() + "</p>";
-                    c.Text += "<p class='card-text'>  Number of Applicants: " + numOfApplicantsArray[count] + "</p>";
-                    c.Text += "<ul class='list-inline'>";
-                    c.Text += "<li class='list-inline-item'>";
-                    c.Text += "<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>";
-                    c.Text += "<i class='fas fa-external-link-alt'></i>";
-                    c.Text += "</a>";
-                    
-                    c.Text += "</li>";
-                    c.Text += "</ul>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-
+                    c.Controls.Add(new LiteralControl("<div class='backside'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + orgNameArray[count] + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobTitleArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Location: " + jobLocationArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Deadline: " + deadlineArray[count].ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + numOfApplicantsArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
+                    c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
+                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>"));
+                    c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
                     c.Controls.Add(referralLink);
-
+                    c.Controls.Add(new LiteralControl("</a>"));
+                    c.Controls.Add(new LiteralControl("</li>"));
+                    c.Controls.Add(new LiteralControl("</ul>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
 
                     c.Style.Add("width", "33%");
                     r.Cells.Add(c);
@@ -254,6 +248,7 @@ public partial class JobPostings : System.Web.UI.Page
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
         int jobListingID = Convert.ToInt32(e.CommandArgument);
+
 
     }
 
