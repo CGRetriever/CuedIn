@@ -287,6 +287,7 @@
                         </div>
                     </div>
                 </div>
+                    </div>
                 <script type='text/javascript'>
                     function openRejectJModal() {
                         $('[id*=rejectJModal]').modal('show');
@@ -456,12 +457,13 @@
                         }
                 </script>
             </div>
+            </div>
 
 
-            <div>
+       
 
 
-
+        <div>
             <%--Scholarship Reject Modal--%>
             <div class="modal fade" id="rejectSModal" role="dialog">
                 <div class="modal-dialog">

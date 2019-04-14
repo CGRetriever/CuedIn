@@ -382,7 +382,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update schoolApproval set approvedFlag = 'N' where OpportunityEntityID = "  + Session["selectedjobID"];
+        rejectScholarship.CommandText = "update schoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedScholarshipID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
         
@@ -397,7 +397,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedjobID"];
+        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedScholarshipID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
@@ -420,7 +420,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedjobID"];
+        approveScholarship.CommandText = "SELECT EmailAddress FROM  UserEntity where UserEntityID = " + Session["selectedScholarshipID"];
         System.Data.SqlClient.SqlDataReader reader = approveScholarship.ExecuteReader();
 
 
