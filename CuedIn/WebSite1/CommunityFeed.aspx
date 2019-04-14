@@ -63,7 +63,7 @@
                 </div>
                 <div class="card-body">
 
-                    <asp:Table ID="ContactsTable" runat="server" CellPadding="1" CellSpacing="1" CssClass="table-striped"></asp:Table>
+                    <asp:Table ID="ContactsTable" runat="server" CssClass="table-striped"></asp:Table>
                 </div>
               </div>
 

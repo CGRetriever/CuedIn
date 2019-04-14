@@ -17,6 +17,8 @@ public partial class CommunityFeed : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
         //set up county variables. This is for community feed, and contacts. 
         String countyFeed = "";
         String countyTwitterHandle = "";
@@ -165,7 +167,7 @@ public partial class CommunityFeed : System.Web.UI.Page
         TableCell cell = new TableCell();
         TableCell cell2 = new TableCell();
         LinkButton CountyContactLink = new LinkButton();
-        CountyContactLink.CssClass = "btn-block";
+        CountyContactLink.CssClass = "border-bottom border-dark";
         System.Web.UI.WebControls.Image twitterAvi = new System.Web.UI.WebControls.Image();
         twitterAvi.CssClass = "rounded-circle";
         CountyContactLink.Text = "County Feed";
@@ -177,8 +179,8 @@ public partial class CommunityFeed : System.Web.UI.Page
         cell.Controls.Add(CountyContactLink);
 
         cell2.Controls.Add(twitterAvi);
-        row.Cells.Add(cell);
         row.Cells.Add(cell2);
+        row.Cells.Add(cell);
         ContactsTable.Rows.Add(row);
 
 
@@ -192,7 +194,7 @@ public partial class CommunityFeed : System.Web.UI.Page
             cell2 = new TableCell();
             //make a new link button to instatntiate it later
             LinkButton twitterContactLink = new LinkButton();
-            twitterContactLink.CssClass = "btn-block";
+            twitterContactLink.CssClass = "border-bottom border-dark";
             twitterAvi = new System.Web.UI.WebControls.Image();
             twitterAvi.CssClass = "rounded-circle";
             
@@ -216,8 +218,8 @@ public partial class CommunityFeed : System.Web.UI.Page
                     cell.Controls.Add(twitterContactLink);
                     
                     cell2.Controls.Add(twitterAvi);
-                    row.Cells.Add(cell);
-                    row.Cells.Add(cell2);                  
+                    row.Cells.Add(cell2);
+                    row.Cells.Add(cell);                  
                     ContactsTable.Rows.Add(row);
 
                     twitterContactLink.Command += new CommandEventHandler(this.Button_click);
@@ -247,8 +249,8 @@ public partial class CommunityFeed : System.Web.UI.Page
                     twitterAvi.ImageUrl = userEntityList[i].getOrganization().GetImage();
                     cell.Controls.Add(twitterContactLink);
                     cell2.Controls.Add(twitterAvi);
-                    row.Cells.Add(cell);
                     row.Cells.Add(cell2);
+                    row.Cells.Add(cell);
                     
                  
                     ContactsTable.Rows.Add(row);
