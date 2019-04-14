@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class JobPostings : System.Web.UI.Page
 {
-    
+
     public String jobTitle = "";
     public String jobDescription = "";
     public String jobType = "";
@@ -47,7 +47,7 @@ public partial class JobPostings : System.Web.UI.Page
         //LinkButton referralLink = new LinkButton();
         ////link button for website
         //LinkButton websiteButton = new LinkButton();
-        
+
         //TextBox txtBox = new TextBox();
 
 
@@ -100,7 +100,7 @@ public partial class JobPostings : System.Web.UI.Page
         //}
 
 
-        
+
 
     }
 
@@ -157,7 +157,7 @@ public partial class JobPostings : System.Web.UI.Page
             int x = 0;
             while (reader.Read())
             {
-                
+
                 orgNameArray[x] = reader.GetString(0);
                 jobTitleArray[x] = reader.GetString(1);
                 jobDescriptionArray[x] = reader.GetString(2);
@@ -181,31 +181,37 @@ public partial class JobPostings : System.Web.UI.Page
                 TableRow r = new TableRow();
 
 
-                    for (int i = 0; i < numcells; i++)
-                        {
-                            if (count == countTotalJobs)
-                            {
-                                break;
-                            }
-                            TableCell c = new TableCell();
+                for (int i = 0; i < numcells; i++)
+                {
+                    if (count == countTotalJobs)
+                    {
+                        break;
+                    }
+                    TableCell c = new TableCell();
 
                     LinkButton referralLink = new LinkButton();
                     referralLink.ID = "referralLink" + count;
-                    referralLink.CssClass = "fas fa-paper-plane";
                     
-                    //c.Text += "<div class='col-xs-12 col-sm-6 col-md-4'>";
+                    referralLink.CssClass = "far fa-paper-plane";
+                    
+                    referralLink.CommandArgument += jobListingID;
+                    referralLink.Command += new CommandEventHandler(this.referralButton_Click);
+
+                    
+
                     c.Text += "<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>";
                     c.Text += "<div class='mainflip'>";
                     c.Text += "<div class='frontside'>";
                     c.Text += "<div class='card'>";
-                    c.Text += "<div class='card-body text-center'>";
-                    c.Text += "<p><img class='img-fluid' src='"+imageArray[count]+"' alt='card image'></p>";
-                    c.Text += "<h4 class='card-title'>"+orgNameArray[count]+"</h4>";
-                    c.Text += "<p class='card-text'>"+jobTitleArray[count]+"</p>";
+                    c.Text += "<div class='card-body text-center'>";                   
+                    c.Text += "<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>";
+                    c.Text += "<h4 class='card-title'>" + orgNameArray[count] + "</h4>";
+                    c.Text += "<p class='card-text'>" + jobTitleArray[count] + "</p>";
                     c.Text += "<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>";
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
+                    
                     c.Text += "<div class='backside'>";
                     c.Text += "<div class='card'>";
                     c.Text += "<div class='card-body text-center'>";
@@ -217,9 +223,10 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Text += "<p class='card-text'>  Number of Applicants: " + numOfApplicantsArray[count] + "</p>";
                     c.Text += "<ul class='list-inline'>";
                     c.Text += "<li class='list-inline-item'>";
-                    c.Text += "<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count]+"'>";
+                    c.Text += "<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>";
                     c.Text += "<i class='fas fa-external-link-alt'></i>";
                     c.Text += "</a>";
+                    
                     c.Text += "</li>";
                     c.Text += "</ul>";
                     c.Text += "</div>";
@@ -227,45 +234,30 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
+
                     c.Controls.Add(referralLink);
-                    referralLink.CommandArgument += jobListingID;
-                    referralLink.Command += referralButton_Click;
-                    
-                    
 
 
+                    c.Style.Add("width", "33%");
+                    r.Cells.Add(c);
+                    count++;
 
-                    //c.Text += "<div class = 'card card-cascade>";
-                    //        c.Text += "<div class = 'view view-cascade overlay'>";
-                    //        c.Text += "<img class = 'card-img-top' src='" + imageArray[count] + "'>";
-                    //        c.Text += "<div class = 'card-body card-body-cascade text-center'>";
-                    //        c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
-                    //        c.Text += "<div class='font-weight-bold indigo-text py-2'>" + jobTitleArray[count] + "</div>";
-                    //        c.Text += "<div class = 'card-text'>" + jobDescriptionArray[count] + "</div>";
-                    //        c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
-                    //        c.Text += "</div>";
-                    //        c.Text += "</div>";
-                    //        c.Text += "</div>";
-                    //        c.Text += "</div>";
-                            c.Style.Add("width", "33%");
-                            r.Cells.Add(c);
-                            count++;
-
-                        }
+                }
                 jobPostingTable.Rows.Add(r);
             }
-                
-                
-            }
+
 
         }
 
-    public void referralButton_Click (object sender, CommandEventArgs e)
-    {
-        int jobListingID = (Int32) e.CommandArgument;
     }
 
+    public void referralButton_Click(object sender, CommandEventArgs e)
+    {
+        int jobListingID = Convert.ToInt32(e.CommandArgument);
+
     }
+
+}
 
 
 
