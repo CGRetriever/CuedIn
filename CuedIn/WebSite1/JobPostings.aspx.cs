@@ -22,33 +22,33 @@ public partial class JobPostings : System.Web.UI.Page
     {
 
         //initialize array of Jobs
-        List<JobListing> jobListingList = new List<JobListing>();
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
+        //List<JobListing> jobListingList = new List<JobListing>();
+        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        //sc.Open();
 
-        System.Data.SqlClient.SqlCommand sqlJobInfo = new System.Data.SqlClient.SqlCommand();
-        sqlJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
-        sqlJobInfo.Connection = sc;
-        System.Data.SqlClient.SqlDataReader reader = sqlJobInfo.ExecuteReader();
-        while (reader.Read())
-        {
-            JobListing jobListingObj = new JobListing(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetString(9));
-            jobListingList.Add(jobListingObj);
-        }
+        //System.Data.SqlClient.SqlCommand sqlJobInfo = new System.Data.SqlClient.SqlCommand();
+        //sqlJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
+        //sqlJobInfo.Connection = sc;
+        //System.Data.SqlClient.SqlDataReader reader = sqlJobInfo.ExecuteReader();
+        //while (reader.Read())
+        //{
+        //    JobListing jobListingObj = new JobListing(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetString(9));
+        //    jobListingList.Add(jobListingObj);
+        //}
 
-        sc.Close();
+        //sc.Close();
 
-        TableRow row = new TableRow();
-        TableCell cell = new TableCell();
-        TableCell cell2 = new TableCell();
-        TableCell cell3 = new TableCell();
-        //link Button for referrals
-        LinkButton referralLink = new LinkButton();
-        //link button for website
-        LinkButton websiteButton = new LinkButton();
+        //TableRow row = new TableRow();
+        //TableCell cell = new TableCell();
+        //TableCell cell2 = new TableCell();
+        //TableCell cell3 = new TableCell();
+        ////link Button for referrals
+        //LinkButton referralLink = new LinkButton();
+        ////link button for website
+        //LinkButton websiteButton = new LinkButton();
         
-        TextBox txtBox = new TextBox();
+        //TextBox txtBox = new TextBox();
 
 
 
@@ -191,10 +191,8 @@ public partial class JobPostings : System.Web.UI.Page
 
                     LinkButton referralLink = new LinkButton();
                     referralLink.ID = "referralLink" + count;
-                    referralLink.Click += referralButton_Click;
-                    referralLink.CommandArgument = jobListingID[count];
-
-
+                    referralLink.CssClass = "fas fa-paper-plane";
+                    
                     //c.Text += "<div class='col-xs-12 col-sm-6 col-md-4'>";
                     c.Text += "<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>";
                     c.Text += "<div class='mainflip'>";
@@ -229,6 +227,10 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Text += "</div>";
                     c.Text += "</div>";
                     c.Text += "</div>";
+                    c.Controls.Add(referralLink);
+                    referralLink.CommandArgument += jobListingID;
+                    referralLink.Command += referralButton_Click;
+                    
                     
 
 
@@ -260,7 +262,7 @@ public partial class JobPostings : System.Web.UI.Page
 
     public void referralButton_Click (object sender, CommandEventArgs e)
     {
-
+        int jobListingID = (Int32) e.CommandArgument;
     }
 
     }
