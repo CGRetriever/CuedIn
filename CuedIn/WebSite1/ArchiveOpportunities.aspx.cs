@@ -87,7 +87,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update joblisting set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        approveJob.CommandText = "update SchoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedjobID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -269,7 +269,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update joblisting set approved = 'N', lastUpdated ='" + DateTime.Today + "' where joblistingID = " + Session["selectedjobID"];
+        rejectJob.CommandText = "update SchoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedjobID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
