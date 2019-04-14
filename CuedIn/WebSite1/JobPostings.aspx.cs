@@ -248,8 +248,38 @@ public partial class JobPostings : System.Web.UI.Page
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
         int jobListingID = Convert.ToInt32(e.CommandArgument);
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
+        pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
+        pullJobInfo.Connection = sc;
+
+        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            String jobTitle = reader.GetString(0);
+            String orgName = reader.GetString(5);
+        }
+
+        lblJobTitle.Text = jobTitle;
+        lblOrgName.Text = orgName;
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+
+    }
+
+    public void sendToButton_Click(object sender, EventArgs e)
+    {
+        foreach(GridViewRow row in gridviewRefer.Rows)
+        {
+            CheckBox check = (CheckBox)row.FindControl("studentCheck");
 
 
+
+        }
     }
 
 }
