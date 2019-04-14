@@ -13,9 +13,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-      
 
 
+        GridView1.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";  
     }
 
@@ -391,7 +391,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         JobOpportunity.SelectParameters.Add("term", term);
 
-        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or(JobListing.JobTitle like '%" + @term + "%'))";
+        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or(JobListing.JobTitle like '%" + @term + "%'))";
         JobOpportunity.DataBind();
         GridView1.DataBind();
 

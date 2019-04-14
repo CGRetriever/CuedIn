@@ -12,7 +12,7 @@
                 <div class="col-auto text-center" style="background-color: #102B3F;">
                     <asp:Label ID="Label6" runat="server" Text="Search" Style="color: #fff; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-                    <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" CssClass="btn" />
+                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
                     <br />
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" />
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />

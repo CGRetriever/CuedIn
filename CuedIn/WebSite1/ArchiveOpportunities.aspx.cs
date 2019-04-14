@@ -13,7 +13,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-
+        gridviewAccJobs.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs Listings";
        
 

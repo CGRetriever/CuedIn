@@ -41,7 +41,7 @@
             <div class="col-auto text-center" style="background-color:#102B3F;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
-           <asp:Button ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" CssClass="btn" />
+           <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
            </div>
 
                 <div class="text-center" style="background-color: #102B3F;width:auto;">
@@ -96,7 +96,7 @@
                <div class="col-auto text-center" style="background-color:#102B3F;">
                <asp:Label ID="Label18" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
-               <asp:Button ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" CssClass="btn" />
+               <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
                </div>
           
 
