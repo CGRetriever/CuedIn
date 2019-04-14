@@ -118,7 +118,7 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
-        countJobPostings.CommandText = "select count(JobListingID) from JobListing where approved = 'Y'";
+        countJobPostings.CommandText = "SELECT count(OpportunityEntityID) FROM SchoolApproval where approvedFlag = 'Y' and SchoolEntityID = " + Session["schoolID"];
         countJobPostings.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();
@@ -134,7 +134,11 @@ public partial class JobPostings : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
+        pullJobInfo.CommandText = "SELECT  Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription," +
+            " Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription," +
+            " JobListing.JobListingID FROM SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing" +
+            " ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+            "where SchoolApproval.ApprovedFlag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
         pullJobInfo.Connection = sc;
 
 
