@@ -68,7 +68,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countScholarships = new System.Data.SqlClient.SqlCommand();
-        countScholarships.CommandText = "select count(ScholarshipID) from Scholarship where approved = 'Y' and scholarshipID <> " + recentPostID;
+        countScholarships.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolEntityID = " + Session["schoolID"];
         countScholarships.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countScholarships.ExecuteReader();
