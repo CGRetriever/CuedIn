@@ -138,6 +138,7 @@
 
 
 
+
             <div>
                 <%--Student Reject Modal--%>
                 <div class="modal fade" id="rejectJModal" role="dialog">
@@ -156,6 +157,7 @@
                                         <asp:Label ID="Label2" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline?"></asp:Label>
 
                                     </div>
+
                                 </div>
 
                             </div>

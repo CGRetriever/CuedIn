@@ -8,11 +8,14 @@ using System.Web;
 /// </summary>
 public class UserEntity
 {
-    int userEntityID;
-    String userName;
-    String emailAddress;
-    String entityType;
-
+    private int userEntityID;
+    private String userName;
+    private String emailAddress;
+    private String entityType;
+    private String twitterHandle;
+    private String twitterLink;
+    private Organization organization;
+    private School school;
     
     public UserEntity(String userName, String emailAddress, String entityType)
     {
@@ -20,6 +23,18 @@ public class UserEntity
         setUserName(userName);
         setEmailAddress(emailAddress);
         setEntityType(entityType);
+
+    }
+
+    //community Feed Class
+    public UserEntity(int userEntityID, String userName, String emailAddress, String twitterHandle, String twitterLink, String entityType)
+    {
+        setUserEntityID(userEntityID);
+        setUserName(userName);
+        setEmailAddress(emailAddress);
+        setEntityType(entityType);
+        setTwitterHandle(twitterHandle);
+        setTwitterLink(twitterLink);
     }
 
 
@@ -43,6 +58,27 @@ public class UserEntity
         this.entityType = entityType;
     }
 
+    public void setTwitterHandle(String twitterHandle)
+    {
+        this.twitterHandle = twitterHandle;
+    }
+
+    public void setTwitterLink(String twitterLink)
+    {
+        this.twitterLink = twitterLink;
+    }
+
+    public void setSchool (School school)
+    {
+        this.school = school;
+    }
+
+    public void setOrganization(Organization organization)
+    {
+        this.organization = organization;
+    }
+
+
     public int getUserEntityID()
     {
         return this.userEntityID;
@@ -61,6 +97,26 @@ public class UserEntity
     public String getEntityType()
     {
         return this.entityType;
+    }
+
+    public String getTwitterHandle()
+    {
+        return this.twitterHandle;
+    }
+
+    public String getTwitterLink()
+    {
+        return this.twitterLink;
+    }
+
+    public School getSchool()
+    {
+        return this.school;
+    }
+
+    public Organization getOrganization()
+    {
+        return this.organization;
     }
 
 }

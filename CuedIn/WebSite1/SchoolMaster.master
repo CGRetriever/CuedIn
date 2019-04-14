@@ -120,6 +120,15 @@
 
 
                 </li>
+                 <li>
+                    <a href="CommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
+                </li>
+
+
+
                 <li>
                     <a href="CreateUser.aspx">
                         <i class="fas fa-user-circle"></i>
