@@ -273,13 +273,44 @@ public partial class JobPostings : System.Web.UI.Page
 
     public void sendToButton_Click(object sender, EventArgs e)
     {
+
         foreach(GridViewRow row in gridviewRefer.Rows)
         {
             CheckBox check = (CheckBox)row.FindControl("studentCheck");
+            List<int> studentIDList = new List<int>;
 
-
+            if (check.Checked)
+            {
+                int studentID = Convert.ToInt32(row.Cells[1].Text);
+                studentIDList.Add(studentID);
+            }
 
         }
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+       
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Student INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+        RejectSMailButton.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Scholarship%20Rejection";
+
     }
 
 }

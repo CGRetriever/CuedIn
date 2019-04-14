@@ -61,12 +61,13 @@
                                     <div style="overflow-y: scroll; overflow-x: hidden; height: 500px; width: 450px;">
                                     <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="ReferStudents" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
                                         <Columns>
-                                            <asp:BoundField DataField="StudentEntityID" HeaderText="ID" Visible="false" />
+                                            
                                             <asp:TemplateField HeaderText="Select">
                                                 <ItemTemplate>
                                                     <asp:CheckBox ID="studentCheck" runat="server" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+                                            <asp:BoundField DataField="StudentEntityID" HeaderText="ID" />
                                             <asp:TemplateField HeaderText="Image" Visible="false">
                                                 <ItemTemplate>
                                                 <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
