@@ -18,25 +18,27 @@ public partial class CommunityFeed : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         String countyFeed = "";
+        String countyTwitterHandle = "";
         if(Session["userCounty"].ToString() == ("Rockingham County"))
         {
             TweeterFeedLink.HRef = "https://twitter.com/RockinghamTODAY?ref_src=twsrc%5Etfw";
             countyFeed = TweeterFeedLink.HRef;
-            //countyTwitter = "RockinghamToday";
+            countyTwitterHandle = "RockinghamToday";
         }
 
         else if(Session["userCounty"].ToString() == ("Louisa County"))
         {
             TweeterFeedLink.HRef = "https://twitter.com/LCPSchools?ref_src=twsrc%5Etfw";
             countyFeed = TweeterFeedLink.HRef;
-            //countyTwitter= "LCPSchools"
+            countyTwitterHandle = "LCPSchools";
 
         }
 
         else if (Session["userCounty"].ToString() == ("Harrisonburg City Public Schools"))
         {
-            TweeterFeedLink.HRef = "https://twitter.com/LCPSchools?ref_src=twsrc%5Etfw";
+            TweeterFeedLink.HRef = "https://twitter.com/HCPSNews?ref_src=twsrc%5Etfw";
             countyFeed = TweeterFeedLink.HRef;
+            countyTwitterHandle = "HCPSNews";
 
         }
 
@@ -165,6 +167,17 @@ public partial class CommunityFeed : System.Web.UI.Page
         System.Web.UI.WebControls.Image twitterAvi = new System.Web.UI.WebControls.Image();
         twitterAvi.CssClass = "rounded-circle";
         CountyContactLink.Text = "County Feed";
+        twitterAvi.CssClass = "rounded-circle";
+        CountyContactLink.Text = "Our County Feed";
+        CountyContactLink.ID = "CountyLink";
+        var countyUser = Tweetinvi.User.GetUserFromScreenName(countyTwitterHandle);
+        twitterAvi.ImageUrl = countyUser.ProfileImageUrl;
+        cell.Controls.Add(CountyContactLink);
+
+        cell2.Controls.Add(twitterAvi);
+        row.Cells.Add(cell);
+        row.Cells.Add(cell2);
+        ContactsTable.Rows.Add(row);
 
 
 

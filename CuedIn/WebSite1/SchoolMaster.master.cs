@@ -20,6 +20,7 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
         //}
 
         Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
 
     }
 

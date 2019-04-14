@@ -47,7 +47,7 @@
                 </div>
                 <div class="card-body border-light">
                     <a class="twitter-timeline"  id="TweeterFeedLink" runat="server"
-                        href="https://twitter.com/RockinghamTODAY?ref_src=twsrc%5Etfw" data-width="400" data-height="800" >Tweets by KyleKim09</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        href="https://twitter.com/ValleyConsulti1?ref_src=twsrc%5Etfw" data-width="400" data-height="800" >CommunityFeed</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     
                 </div>
               </div>
