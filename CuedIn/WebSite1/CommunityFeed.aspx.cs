@@ -17,6 +17,7 @@ public partial class CommunityFeed : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //set up county variables. This is for community feed, and contacts. 
         String countyFeed = "";
         String countyTwitterHandle = "";
         if(Session["userCounty"].ToString() == ("Rockingham County"))
@@ -159,6 +160,7 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         }
 
+        //Make initial county feed. Depends on user session vars
         TableRow row = new TableRow();
         TableCell cell = new TableCell();
         TableCell cell2 = new TableCell();
@@ -180,7 +182,7 @@ public partial class CommunityFeed : System.Web.UI.Page
         ContactsTable.Rows.Add(row);
 
 
-
+       
         // associate jobnames,schoolnames, with twitter (associating userEntities, with schools and organizations)
         for (int i = 0; i <= userEntityList.Count - 1; i++)
         {
