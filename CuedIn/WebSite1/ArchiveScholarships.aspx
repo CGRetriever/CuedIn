@@ -31,11 +31,27 @@
                     <asp:Button ID="btnCheckGridView1" runat="server" Text="Apply" OnClick="btnCheckGridView1_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
                
-                <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'N'"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
+                         Organization.ExternalLink
+                         FROM OpportunityEntity INNER JOIN
+                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
+                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
+                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
+                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
+						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'N'">
+
+                        <SelectParameters>
+                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
+                           DefaultValue="12" />
+
+                        </SelectParameters>
+
+
+                </asp:SqlDataSource>
                 <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
 
                     <Columns>
-                        <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" />
+                        <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" />
                         <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
 
@@ -77,7 +93,20 @@
                     </div>
                     
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where approved = 'Y'"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
+                         Organization.ExternalLink
+FROM OpportunityEntity INNER JOIN
+                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
+                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
+                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
+                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
+						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'Y'">
+                         <SelectParameters>
+                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
+                           DefaultValue="12" />
+
+                            </SelectParameters>
+                    </asp:SqlDataSource>
 
                     <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
 

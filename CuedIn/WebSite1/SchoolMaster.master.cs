@@ -19,6 +19,8 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
         //    Response.Redirect("Login.aspx");
         //}
 
+        Session["schoolID"] = 12;
+
     }
 
     protected void btn(object sender, EventArgs e)

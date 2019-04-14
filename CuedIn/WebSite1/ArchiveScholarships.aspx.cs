@@ -25,7 +25,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update scholarship set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
@@ -218,7 +218,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update scholarship set approved = 'N', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 
