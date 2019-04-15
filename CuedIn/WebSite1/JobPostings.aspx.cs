@@ -48,18 +48,6 @@ public partial class JobPostings : System.Web.UI.Page
         ////link button for website
         //LinkButton websiteButton = new LinkButton();
 
-        //TextBox txtBox = new TextBox();
-
-
-
-
-
-
-
-
-
-
-
 
         //sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
         //sqlrecentJobPostID.Connection = sc;
@@ -195,9 +183,9 @@ public partial class JobPostings : System.Web.UI.Page
 
                     LinkButton referralLink = new LinkButton();
                     referralLink.ID = "referralLink" + count;
-                    
+
                     referralLink.CssClass = "far fa-paper-plane";
-                    
+
                     referralLink.CommandArgument += jobListingID[count];
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
@@ -252,7 +240,71 @@ public partial class JobPostings : System.Web.UI.Page
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
         int jobListingID = Convert.ToInt32(e.CommandArgument);
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
 
+        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
+        pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
+        pullJobInfo.Connection = sc;
+
+        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            String jobTitle = reader.GetString(0);
+            String orgName = reader.GetString(5);
+        }
+
+        lblJobTitle.Text = jobTitle;
+        lblOrgName.Text = orgName;
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+
+    }
+
+    public void sendToButton_Click(object sender, EventArgs e)
+    {
+        List<int> studentIDList = new List<int>();
+        for (int i = 0; i < gridviewRefer.Rows.Count; i++)
+        {
+            CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
+
+
+            if (check.Checked)
+            {
+                int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
+                studentIDList.Add(studentID);
+            }
+
+        }
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+        List<String> emailList = new List<String>();
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+
+        foreach (var studentID in studentIDList)
+        {
+            query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
+            System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+            while (Result.Read())
+            {
+                String email = Result.GetString(0);
+                emailList.Add(email);
+
+            }
+            
+        }
+        EmailQuery.Close();
+
+        
 
     }
 
