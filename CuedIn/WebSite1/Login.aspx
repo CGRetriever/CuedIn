@@ -80,6 +80,9 @@
 							Forgot Password?
 						</a>
                         <br />
+                        <a class="txt1" href="Homepage.aspx">
+							Return to Homepage
+						</a>
                         
                        
 					</div>
