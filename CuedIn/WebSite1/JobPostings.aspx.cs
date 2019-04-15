@@ -191,9 +191,9 @@ public partial class JobPostings : System.Web.UI.Page
 
                     LinkButton referralLink = new LinkButton();
                     referralLink.ID = "referralLink" + count;
-                    
+
                     referralLink.CssClass = "far fa-paper-plane";
-                    
+
                     referralLink.CommandArgument += jobListingID[count];
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
@@ -273,11 +273,11 @@ public partial class JobPostings : System.Web.UI.Page
 
     public void sendToButton_Click(object sender, EventArgs e)
     {
-
-        foreach(GridViewRow row in gridviewRefer.Rows)
+        List<int> studentIDList = new List<int>();
+        foreach (GridViewRow row in gridviewRefer.Rows)
         {
             CheckBox check = (CheckBox)row.FindControl("studentCheck");
-            List<int> studentIDList = new List<int>;
+
 
             if (check.Checked)
             {
@@ -291,25 +291,28 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
-       
+        List<String> emailList = new List<String>();
         // Mail Button Query
         EmailQuery.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = EmailQuery;
-        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Student INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
-        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
 
-
-
-        while (Result.Read())
+        foreach (var studentID in studentIDList)
         {
-            email = Result.GetString(0);
-        }
+            query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
+            System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
 
+            while (Result.Read())
+            {
+                String email = Result.GetString(0);
+                emailList.Add(email);
+
+            }
+            
+        }
         EmailQuery.Close();
 
-
-        RejectSMailButton.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Scholarship%20Rejection";
+        
 
     }
 
