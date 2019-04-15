@@ -4,9 +4,16 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <head>
+        <link rel='stylesheet' href='css/style.css'>
+    </head>
+
 
 
     <form id="form1" runat="server">
+
+        <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+
 
         <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
 
@@ -75,6 +82,23 @@
             $(document).ready(function () {
                 $('.popovers').popover();
             });
+
+            window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
         </script>
 
         <div>
@@ -252,6 +276,7 @@
 
 
 
+
             <%--Student View Modal--%>
             <div class="modal fade" id="viewStudentModal" role="dialog">
                 <div class="modal-dialog">
@@ -301,6 +326,9 @@
                     }
                 </script>
             </div>
+
+
+
     </form>
 
     </div>
