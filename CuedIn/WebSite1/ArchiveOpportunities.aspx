@@ -84,7 +84,7 @@
                     <div class="col-auto text-center" style="background-color: #102B3F;padding:10px;">
                         <asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
-                        <asp:Button ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" CssClass="btn" />
+                        <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
                         <br />
                         <asp:CheckBox ID="chkJobDescription1" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                         <asp:CheckBox ID="chkJobType1" Style="color: white;" runat="server" Text="Job Type" Checked="false" />

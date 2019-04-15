@@ -12,7 +12,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        rejScholarshipGridview.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
         
     }
@@ -383,7 +383,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
         ScholarshipOpportunity.SelectParameters.Add("term", term);
 
-        ScholarshipOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and(JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'N') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
         ScholarshipOpportunity.DataBind();
         rejScholarshipGridview.DataBind();
 
@@ -396,7 +396,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
         SqlDataSource1.SelectParameters.Add("term", term);
 
-        SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and (JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%')";
+        SqlDataSource1.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'Y') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
         SqlDataSource1.DataBind();
         acceptScholarshipGridview.DataBind();
 
