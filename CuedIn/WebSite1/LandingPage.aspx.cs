@@ -47,7 +47,9 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentJobs = new System.Data.SqlClient.SqlCommand();
         RecentJobs.Connection = sql;
-        RecentJobs.CommandText = "SELECT TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, JobListing.Approved, Organization.OrganizationName, JobListing.JobType, JobListing.JobDescription, JobListing.Location,  JobListing.NumOfApplicants, JobListing.Deadline, Organization.OrganizationDescription, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE (JobListing.Approved = 'P') ORDER BY JobListing.JobListingID DESC";
+        RecentJobs.CommandText = "SELECT TOP (5) JobListing.JobListingID, JobListing.JobTitle, Organization.Image, Organization.OrganizationName, JobListing.JobType, JobListing.JobDescription, JobListing.Location,  JobListing.NumOfApplicants, JobListing.Deadline, Organization.OrganizationDescription, Organization.ExternalLink FROM SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing" +
+            " ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+            "where SchoolApproval.ApprovedFlag = 'P' and SchoolApproval.SchoolEntityID = " + Session["schoolID"] + "ORDER BY JobListing.JobListingID DESC";
         System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
 
@@ -59,14 +61,14 @@ public partial class LandingPage : System.Web.UI.Page
             imageArray[x] = reader.GetString(2);
             jobTitleArray[x] = reader.GetString(1);
             jobListingIDArray[x] = reader.GetInt32(0);
-            orgNameArray[x] = reader.GetString(4);
-            jobTypeArray[x] = reader.GetString(5);
-            jobLocationArray[x] = reader.GetString(7);
-            jobDescArray[x] = reader.GetString(6);
-            numOfapplicantsArray[x] = reader.GetInt32(8);
-            jobDeadLineArray[x] = reader.GetDateTime(9).ToString();
-            OrgDescArray[x] = reader.GetString(10);
-            OrgWebURLArray[x] = reader.GetString(11);
+            orgNameArray[x] = reader.GetString(3);
+            jobTypeArray[x] = reader.GetString(4);
+            jobLocationArray[x] = reader.GetString(6);
+            jobDescArray[x] = reader.GetString(5);
+            numOfapplicantsArray[x] = reader.GetInt32(7);
+            jobDeadLineArray[x] = reader.GetDateTime(8).ToString();
+            OrgDescArray[x] = reader.GetString(9);
+            OrgWebURLArray[x] = reader.GetString(10);
             x++;
 
         }
@@ -130,7 +132,7 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentRequests = new System.Data.SqlClient.SqlCommand();
         RecentRequests.Connection = sql;
-        RecentRequests.CommandText = "SELECT TOP (5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage,  Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P') ORDER BY ApplicationRequest.ApplicationID DESC";
+        RecentRequests.CommandText = "SELECT TOP (5) ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage,  Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P') AND Student.SchoolEntityID = " + Session["schoolID"] + " ORDER BY ApplicationRequest.ApplicationID DESC";
         System.Data.SqlClient.SqlDataReader result = RecentRequests.ExecuteReader();
 
 
