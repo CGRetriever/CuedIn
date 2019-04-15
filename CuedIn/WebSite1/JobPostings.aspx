@@ -67,7 +67,7 @@
                                                     <asp:CheckBox ID="studentCheck" runat="server" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="StudentEntityID" HeaderText="ID" />
+                                            <asp:BoundField DataField="StudentEntityID" HeaderText="ID" Visible="false" />
                                             <asp:TemplateField HeaderText="Image" Visible="false">
                                                 <ItemTemplate>
                                                 <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
