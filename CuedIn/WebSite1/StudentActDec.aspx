@@ -14,6 +14,11 @@
             <div class="col-md-12 container-fluid text-center">
 
                 <div class="col-auto text-center rounded" style="background-color: #102B3F; width: auto;">
+                    <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" Style="color: white;"><i class="fas fa-search"></i></asp:LinkButton>
+                   
+                    <br />
 
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" />
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />
@@ -23,12 +28,10 @@
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
-             
-                <br />
 
-                <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-                <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-                <asp:LinkButton ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                    
+
+
                 </div>
                 <div style="height: 5px; font-size: 10px;">&nbsp;</div>
                 <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,
@@ -36,15 +39,15 @@
                 JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID
                 INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID
                    WHERE (ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID = @schoolID">
-                            <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
+                    <SelectParameters>
+                        <asp:SessionParameter Name="schoolID" SessionField="schoolID"
+                            DefaultValue="12" />
 
-                        </SelectParameters>
+                    </SelectParameters>
 
                 </asp:SqlDataSource>
-                
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center"  HorizontalAlign="Center" Style="border-collapse: collapse;width:auto;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
+
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
                     <Columns>
 
                         <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />
@@ -72,8 +75,8 @@
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
-                    </div>
-            
+            </div>
+
         </div>
 
 

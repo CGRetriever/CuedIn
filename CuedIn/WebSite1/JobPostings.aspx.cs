@@ -106,7 +106,8 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
-        countJobPostings.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolEntityID = " + Session["schoolID"];
+        countJobPostings.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
+            //"and SchoolEntityID = " + Session["schoolID"];
         countJobPostings.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();

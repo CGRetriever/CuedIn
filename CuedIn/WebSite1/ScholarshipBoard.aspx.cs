@@ -68,7 +68,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countScholarships = new System.Data.SqlClient.SqlCommand();
-        countScholarships.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolEntityID = " + Session["schoolID"];
+        countScholarships.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"]; ;
         countScholarships.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countScholarships.ExecuteReader();
@@ -84,7 +84,9 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullScholarshipInfo = new System.Data.SqlClient.SqlCommand();
-        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate, Scholarship.ScholarshipID FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'Y'";
+        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate, Scholarship.ScholarshipID FROM SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN Scholarship" +
+            " ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+            "where SchoolApproval.ApprovedFlag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
         pullScholarshipInfo.Connection = sc;
 
 
