@@ -7,6 +7,7 @@
 
 <div class="form-row">
      <div class ="form-group col-lg-4">
+         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
        
         <div class ="card text-center" style="width:30rem;">
             <div class="card-header">
@@ -118,6 +119,21 @@
                 function openTweetVerification() {
                     $('[id*=TweetVerification]').modal('show');
                 } 
+
+                            function scrollFunction() {
+              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+              } else {
+                document.getElementById("myBtn").style.display = "none";
+              }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+              document.body.scrollTop = 0; // For Safari
+              document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+
             </script>
 
 

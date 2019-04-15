@@ -6,6 +6,8 @@
     <form id="form1" runat="server">
         <%--Rejected Jobs Gridview--%>
         <div class="row">
+
+            <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
         </div>
         <div class="form-row">

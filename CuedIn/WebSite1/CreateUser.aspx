@@ -39,6 +39,9 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" runat="server">
+
+                    <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+
 					<span>
 						<img src="images/CommUpMainLogo.png" alt="logo" class="RoundedElement">
 					</span>

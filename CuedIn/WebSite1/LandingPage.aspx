@@ -3,6 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="form1" runat="server">
+
+
         <head>
         <title>Dashboard - CommUp</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -27,6 +29,7 @@
         <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
             </h3>
         <div class="row">
+            <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
@@ -358,6 +361,24 @@
 
         </div>
     </div>
+
+        <script>
+
+                function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+          } else {
+            document.getElementById("myBtn").style.display = "none";
+          }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0; // For Safari
+          document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+
+        </script>
 
 
 <div class="container">
