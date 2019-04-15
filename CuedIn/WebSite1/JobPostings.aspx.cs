@@ -48,18 +48,6 @@ public partial class JobPostings : System.Web.UI.Page
         ////link button for website
         //LinkButton websiteButton = new LinkButton();
 
-        //TextBox txtBox = new TextBox();
-
-
-
-
-
-
-
-
-
-
-
 
         //sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
         //sqlrecentJobPostID.Connection = sc;
@@ -274,14 +262,14 @@ public partial class JobPostings : System.Web.UI.Page
     public void sendToButton_Click(object sender, EventArgs e)
     {
         List<int> studentIDList = new List<int>();
-        foreach (GridViewRow row in gridviewRefer.Rows)
+        for (int i = 0; i < gridviewRefer.Rows.Count; i++)
         {
-            CheckBox check = (CheckBox)row.FindControl("studentCheck");
+            CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
 
 
             if (check.Checked)
             {
-                int studentID = Convert.ToInt32(row.Cells[1].Text);
+                int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
                 studentIDList.Add(studentID);
             }
 
