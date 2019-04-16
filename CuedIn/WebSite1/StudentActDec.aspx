@@ -85,7 +85,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Full Name" SortExpression="FullName" >
                             <ItemTemplate>
-                                <asp:
+                                <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
