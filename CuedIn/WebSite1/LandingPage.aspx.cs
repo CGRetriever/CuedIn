@@ -38,7 +38,7 @@ public partial class LandingPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        EmptyPostinglbl.Visible = false;
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -119,6 +119,32 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         sql.Close();
+
+        //LandingPage.jobTitleArray = null;
+        //jobTitleArray[1] = null;
+        jobTitleArray[2] = null;
+        jobTitleArray[3] = null;
+
+        if (LandingPage.jobTitleArray == null)
+        {
+            card1.Visible = false;
+            card2.Visible = false;
+            card3.Visible = false;
+            card4.Visible = false;
+            EmptyPostinglbl.Visible = true;
+        }
+        else if (jobTitleArray[3] == null && jobTitleArray[2] == null && jobTitleArray[1] == null)
+        {
+            card4.Visible = false;
+            card3.Visible = false;
+            card2.Visible = false;
+        }
+        else if (jobTitleArray[3] == null && jobTitleArray[2] == null)
+        {
+            card4.Visible = false;
+            card3.Visible = false;
+        }
+        
 
 
 

@@ -30,8 +30,15 @@
             </h3>
         <div class="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+            
+            <%--<! -- Label for No Job Postings -->--%>
+            <p class="col-6" id="EmptyPostinglbl" runat="server">No More Recent Job Postings</p>
+            
+            
+            
+            
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="card1" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -72,7 +79,7 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="card2" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -113,7 +120,7 @@
             </div>
             <!-- ./Team member -->
              <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="card3" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -154,7 +161,7 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="card4" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -163,7 +170,7 @@
                                     <p><asp:Image ID="Image4" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
                                     <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
-                                    <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                    <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text=""></asp:Label>
                                         </div>
                                 </div>
                             </div>
