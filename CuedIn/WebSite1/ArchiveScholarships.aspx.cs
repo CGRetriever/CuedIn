@@ -21,6 +21,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         {
             chkScholarshipMin.Checked = true;
             chkScholarshipMax.Checked = true;
+            cbSelectAll.Text = "Unselect All";
          
         }
 
@@ -28,6 +29,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         {
             chkScholarshipMin.Checked = false;
             chkScholarshipMax.Checked = false;
+            cbSelectAll.Text = "Select all";
         }
 
 
@@ -37,12 +39,14 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         {
             chkScholarshipMin1.Checked = true;
             chkScholarshipMax1.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
         }
 
         if (cbSelectAll2.Checked == false)
         {
             chkScholarshipMin1.Checked = false;
             chkScholarshipMax1.Checked = false;
+            cbSelectAll2.Text = "Select all";
         }
 
     }

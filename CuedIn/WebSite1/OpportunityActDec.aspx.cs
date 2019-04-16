@@ -23,6 +23,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             chkScholarshipMin.Checked = true;
             chkScholarshipMax.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
 
         }
 
@@ -30,6 +31,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             chkScholarshipMin.Checked = false;
             chkScholarshipMax.Checked = false;
+            cbSelectAll2.Text = "Select All";
         }
 
 
@@ -40,6 +42,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             chkJobDescription.Checked = true;
             chkJobLocation.Checked = true;
             chkJobType.Checked = true;
+            cbSelectAll.Text = "Unselect All";
 
         }
 
@@ -48,6 +51,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             chkJobDescription.Checked = false;
             chkJobLocation.Checked = false;
             chkJobType.Checked = false;
+            cbSelectAll.Text = "Select All";
         }
 
 
