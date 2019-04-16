@@ -13,20 +13,26 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
         {
             if (Session["schoolid"].Equals(12))
             {
-                lousia.Visible = true;
+                lousiapc.Visible = true;
+                lousiaphone.Visible = true;
+                lousiatablet.Visible = true;
             }
             else if (Session["schoolid"].Equals(13))
             {
-                rockingham.Visible = true;
+                rockpc.Visible = true;
+                rockphone.Visible = true;
+                rocktablet.Visible = true;
             }
 
             else if (Session["schoolid"].Equals(15))
             {
-                turner.Visible = true;
+                turnerpc.Visible = true;
+                turnerphone.Visible = true;
+                turnertablet.Visible = true;
             }
         } else
         {
-            lousia.Visible = true;
+            lousiapc.Visible = true;
         }
         
         ((Label)Master.FindControl("lblMaster")).Text = "Administrative Dashboard";
