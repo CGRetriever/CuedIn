@@ -100,6 +100,135 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void jobPostingTable_Load(object sender, EventArgs e)
     {
+       
+
+    }
+
+    public void referralButton_Click(object sender, CommandEventArgs e)
+    {
+        int jobListingID = Convert.ToInt32(e.CommandArgument);
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
+        pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
+        pullJobInfo.Connection = sc;
+
+        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            String jobTitle = reader.GetString(0);
+            String orgName = reader.GetString(5);
+        }
+
+        lblJobTitle.Text = jobTitle;
+        lblOrgName.Text = orgName;
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+
+    }
+
+    public void sendToButton_Click(object sender, EventArgs e)
+    {
+        List<int> studentIDList = new List<int>();
+        for (int i = 0; i < gridviewRefer.Rows.Count; i++)
+        {
+            CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
+
+
+            if (check.Checked)
+            {
+                int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
+                studentIDList.Add(studentID);
+            }
+
+        }
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+        List<String> emailList = new List<String>();
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+
+        foreach (var studentID in studentIDList)
+        {
+            query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
+            System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+            while (Result.Read())
+            {
+                String email = Result.GetString(0);
+                emailList.Add(email);
+
+            }
+            
+        }
+        EmailQuery.Close();
+
+        
+
+    }
+
+    public void applyChanges_click(object sender, EventArgs e)
+    {
+        //Declare a list of interest group IDS going to be string for easy use
+        List<String> interestGroupList = new List<String>();
+
+        //Loop through the list box and if it selected then add it to a list
+        foreach (ListItem i in InterestGroupDrop.Items)
+        {
+            if (i.Selected == true)
+            {
+                //add to the list
+                interestGroupList.Add(i.Value.ToString());
+            }
+        }
+
+        //if something was selected then lets loop through the array and make the conditional string
+        String condititionalIf = "where InterestGroupID = ";
+
+        //if all are selected, there is no need to loop. we want to see everything. 
+        if (interestGroupList.Count == InterestGroupDrop.Items.Count) {
+            condititionalIf = "";
+        }
+
+        //there is something in the list, and it isn't all selected
+        else if (interestGroupList.Count != 0) {
+
+        //loop through the list
+        for (int interestID = 0; interestID <= interestGroupList.Count - 1; interestID++)
+        {
+            //if the list is not the last index of the list we can add an or clause
+            if(interestID != interestGroupList.Count - 1)
+            {
+                condititionalIf += interestGroupList[interestID] + " or InterestGroupID = ";
+            }
+            else
+            {
+                //if it is the last element in the list we have to cut off the sql statement
+                condititionalIf += interestGroupList[interestID];
+
+            }
+                
+        }
+
+        }
+        //this is our condition....
+        label2.Text = condititionalIf;
+
+        displayTable(sender, e, condititionalIf);
+
+    }
+
+
+    private void displayTable (object sender, EventArgs e, String s)
+    {
         int countTotalJobs = 0;
         String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
@@ -107,7 +236,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
         countJobPostings.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
-            //"and SchoolEntityID = " + Session["schoolID"];
+        //"and SchoolEntityID = " + Session["schoolID"];
         countJobPostings.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();
@@ -235,85 +364,9 @@ public partial class JobPostings : System.Web.UI.Page
 
 
         }
-
-    }
-
-    public void referralButton_Click(object sender, CommandEventArgs e)
-    {
-        int jobListingID = Convert.ToInt32(e.CommandArgument);
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
-
-        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
-        pullJobInfo.Connection = sc;
-
-        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
-
-        while (reader.Read())
-        {
-            String jobTitle = reader.GetString(0);
-            String orgName = reader.GetString(5);
-        }
-
-        lblJobTitle.Text = jobTitle;
-        lblOrgName.Text = orgName;
-
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
-
-    }
-
-    public void sendToButton_Click(object sender, EventArgs e)
-    {
-        List<int> studentIDList = new List<int>();
-        for (int i = 0; i < gridviewRefer.Rows.Count; i++)
-        {
-            CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
+    } 
 
 
-            if (check.Checked)
-            {
-                int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
-                studentIDList.Add(studentID);
-            }
-
-        }
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
-
-        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
-        List<String> emailList = new List<String>();
-        // Mail Button Query
-        EmailQuery.Open();
-        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
-        query.Connection = EmailQuery;
-
-        foreach (var studentID in studentIDList)
-        {
-            query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
-            System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
-
-            while (Result.Read())
-            {
-                String email = Result.GetString(0);
-                emailList.Add(email);
-
-            }
-            
-        }
-        EmailQuery.Close();
-
-        
-
-    }
-
-
-    protected void dropdownInterestGroup_SelectedIndexChanged(object sender, EventArgs e)
-    {
-
-    }
 }
 
 
