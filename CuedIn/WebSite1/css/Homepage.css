@@ -26,8 +26,8 @@ body {
     margin: 0;
     padding: 0;
     height: 2000px;
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 23px;
+    line-height: 2.5;
 }
 
 ul, li, h1, h2, h3, h4, h5, h6, p, a, .logo {
@@ -48,7 +48,7 @@ ul, li, h1, h2, h3, h4, h5, h6, p, a, .logo {
 header {
     position: fixed;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 00px;
     background: #000;
     transition: 0.7s all;
     z-index: 100;
@@ -85,11 +85,11 @@ nav {
 
     nav li {
         display: inline;
-        float: left;
+        float: right;
     }
 
     nav a {
-        display: inline-block;
+     
         color: #fff;
         text-decoration: none;
         padding: 25px;
@@ -97,14 +97,14 @@ nav {
     }
 
         nav a:hover {
-            background: red;
+            background: blue;
         }
 
 .logo {
     float: left;
     color: #fff;
     font-size: 50px;
-    line-height: 50px;
+    line-height: 100px;
     transition: 0.7s all;
    
 }

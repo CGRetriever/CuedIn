@@ -1,10 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Homepage.aspx.cs" Inherits="css_Homepage" %>
 
 <!DOCTYPE html>
+
 <header id="topnav">
   <div class="inner">
     <div class="logo">Commup</div>
-    <nav role='navigation'>
+    <nav role='navigation' style="padding-left:100px;">
       <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">About</a></li>
@@ -23,7 +24,7 @@
 </div>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <script type="text/javascript" src="ScrollHome.js"></script>
+    <script type="text/javascript" src="Scripts/ScrollHome.js"></script>
     <title></title>
 </head>
     
