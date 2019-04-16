@@ -159,7 +159,6 @@ public partial class LandingPage : System.Web.UI.Page
 
         }
 
-        //LandingPage.jobTitleArray = null;
         jobTitleArray[0] = null;
         jobTitleArray[1] = null;
         jobTitleArray[2] = null;
@@ -241,7 +240,7 @@ public partial class LandingPage : System.Web.UI.Page
         //StudentNamearray[2] = null;
         //StudentNamearray[3] = null;
 
-        if (LandingPage.StudentNamearray == null)
+        if (StudentNamearray[0] == null)
         {
             StudentCard1.Visible = false;
             StudentCard2.Visible = false;
@@ -265,6 +264,16 @@ public partial class LandingPage : System.Web.UI.Page
         {
             StudentCard4.Visible = false;
         }
+        else
+        {
+
+        }
+
+        StudentNamearray[0] = null;
+        StudentNamearray[1] = null;
+        StudentNamearray[2] = null;
+        StudentNamearray[3] = null;
+        StudentNamearray[4] = null;
 
 
 
