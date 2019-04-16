@@ -277,6 +277,14 @@ public partial class LandingPage : System.Web.UI.Page
 
 
 
+
+
+
+
+
+        // Start of Tableu Charts
+        Chart1.Visible = true;
+
     }
 
 
@@ -287,10 +295,7 @@ public partial class LandingPage : System.Web.UI.Page
 
 
 
-    //protected void JobLink1_Click(object sender, EventArgs e)
-    //{
-    //    JobLink1.PostBackUrl = "https://www.walmart.com/";
-    //}
+    
 
 
 }
