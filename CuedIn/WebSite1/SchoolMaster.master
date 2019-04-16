@@ -85,10 +85,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="JobPostings.aspx">Jobs</a>
+                        <a href="JobPostings.aspx">Approved Jobs</a>
                     </li>
                     <li>
-                        <a href="ScholarshipBoard.aspx">Scholarships</a>
+                        <a href="ScholarshipBoard.aspx">Approved Scholarships</a>
                     </li>
                 </ul>
 
@@ -120,6 +120,15 @@
 
 
                 </li>
+                 <li>
+                    <a href="CommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
+                </li>
+
+
+
                 <li>
                     <a href="CreateUser.aspx">
                         <i class="fas fa-user-circle"></i>
