@@ -21,6 +21,14 @@ public partial class Login : System.Web.UI.Page
         Session.Remove("permission");
         Session["user"] = "";
         Session["permission"] = "";
+        
+        //initialize session variables for school views. 
+        Session["userschoolID"] = "";
+        Session["userCounty"] = "";
+        Session["schoolName"] = "";
+        Session["schoolEntityID"] = "";
+
+
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -131,7 +139,36 @@ public partial class Login : System.Web.UI.Page
                 {
                     permissions = reader2.GetString(0);
                 }
+
             }
+
+
+
+            int schoolEntityId = 0;
+            String schoolName ="";
+            String schoolCounty ="";
+            int userEntityID= 0;
+
+            query1.CommandText = "SELECT School.SchoolEntityID, School.SchoolName, School.SchoolCounty, SchoolEmployee.SchoolEmployeeEntityID FROM School INNER JOIN SchoolEmployee ON School.SchoolEntityID = SchoolEmployee.SchoolEntityID" +
+                " where SchoolEmployeeEntityID = @userEntityID";
+            query1.Parameters.AddWithValue("@userEntityID", id);
+            reader2.Close();
+            System.Data.SqlClient.SqlDataReader reader3 = query1.ExecuteReader();
+            while (reader3.Read())
+          
+            {
+                schoolEntityId = reader3.GetInt32(0);
+                schoolName = reader3.GetString(1);
+                schoolCounty = reader3.GetString(2);
+                userEntityID = reader3.GetInt32(3);
+
+            }
+
+
+            Session["schoolID"] = schoolEntityId;
+            Session["userCounty"] = schoolCounty;
+            Session["schoolName"] = schoolName;
+            Session["EntityID"] = userEntityID;
 
 
             //Test the permsissions
@@ -139,7 +176,7 @@ public partial class Login : System.Web.UI.Page
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
-                Response.Redirect("JobPostings.aspx");
+                Response.Redirect("CommunityFeed.aspx");
             }
             else if (permissions.Equals("Counselor"))
             {

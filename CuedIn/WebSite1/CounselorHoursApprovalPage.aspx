@@ -4,10 +4,11 @@
 
     <form id="form1" runat="server">
         <div class="form-row">
-       <div class="col-md-12 text-center">
-      
-           </div>
        <div class="col-auto container-fluid text-center">
+           <br />
+   
+           <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers" data-content="&lt;img src='images/CommUpLogo.JPG' width='250' height='150' /&gt;" style="margin-left:1155px; color:white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+           
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
             <Columns>
 
@@ -38,7 +39,45 @@
 
 </div>
 
+        <head>
+   
 
+    <script type="text/javascript">
+        //Initialize popover with jQuery
+        $(document).ready(function () {
+            $('.popovers').popover();
+        });
+    </script>
+</head>
+
+<body>
+            
+</body>
+
+        <style type="text/css">
+.modalBackground {
+background-color:Gray;
+filter:alpha(opacity=70);
+opacity:0.7;
+}
+.modalPopup{
+background-color:#ffffdd;
+border-width:3px;
+border-style:solid;
+border-color:Gray;
+padding:3px;
+}
+</style>
+
+
+
+
+
+
+<asp:Panel ID="PanelGuest" runat="server" CssClass="modalPopup" style="display:none; width:75%"><center><font>foo</font></center>
+          
+
+    </asp:Panel>
 
         <br />
         <br />
@@ -91,7 +130,7 @@
                </script>
             </div>
         </div>
-
+       
 
 
         <div>
