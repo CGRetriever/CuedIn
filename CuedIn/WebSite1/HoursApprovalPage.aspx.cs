@@ -29,6 +29,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             chkGPA.Checked = true;
             cbSelectAll.Text = "Unselect All";
 
+
         }
 
         if (cbSelectAll.Checked == false)
@@ -38,7 +39,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
             chkHoursWBL.Checked = false;
             chkGradeLevel.Checked = false;
             chkGPA.Checked = false;
+
             cbSelectAll.Text = "Select All";
+
         }
 
     }
@@ -50,7 +53,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         /* Verifies that the control is rendered */
     }
 
-    
+
     //click approve in gridview- trigger modal to open - fill modal
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
@@ -73,13 +76,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
         while (reader.Read())
         {
             sublabelapprovemodal1.Text = reader.GetString(2);
-            sublabelapprovemodal2.Text =  reader.GetString(0);
-            sublabelapprovemodal3.Text =  "Hours: " + reader.GetInt32(1).ToString();
+            sublabelapprovemodal2.Text = reader.GetString(0);
+            sublabelapprovemodal3.Text = "Hours: " + reader.GetInt32(1).ToString();
         }
 
         sql.Close();
 
-      
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
@@ -178,7 +181,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Close();
 
 
-     
+
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
@@ -188,7 +191,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     }
 
 
-  
+
 
 
 
@@ -228,15 +231,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    protected void btnStudentView_Click (object sender, CommandEventArgs e)
+    protected void btnStudentView_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        
 
-        int logID= Convert.ToInt32(e.CommandArgument);
+
+        int logID = Convert.ToInt32(e.CommandArgument);
 
         Session["logID"] = logID.ToString();
 
@@ -267,8 +270,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
         while (studentReader.Read())
         {
             //fill labels in modal
-            
-            
+
+
             lblStudentName.Text = studentReader.GetString(0);
             lblGradeLevel.Text = "Grade Level: " + studentReader.GetString(1);
             lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
