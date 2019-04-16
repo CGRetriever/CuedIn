@@ -14,6 +14,7 @@ public partial class StudentActDec : System.Web.UI.Page
     {
 
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 

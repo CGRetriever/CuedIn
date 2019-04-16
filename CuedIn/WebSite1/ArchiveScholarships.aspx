@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <form id="form1" runat="server">
+    
 
 
                  <!--- Breadcrumb --->
@@ -357,7 +357,7 @@ FROM OpportunityEntity INNER JOIN
             }
         </script>
         
-    </form>
+  
 
 </asp:Content>
 

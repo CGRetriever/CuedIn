@@ -4,7 +4,7 @@
 
 
 
-    <form id="form1" runat="server">
+   
 
            <!--- Breadcrumb --->
 
@@ -112,8 +112,8 @@
                         
                         &nbsp;&nbsp;&nbsp;
                         
-                        <asp:CheckBox ID="chkJobDescription1" Style="color: white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid1" />
-                        <asp:CheckBox ID="chkJobType1" Style="color: white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid1" />
+                        <asp:CheckBox ID="chkJobDescription1" Style="color:white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid1" />
+                        <asp:CheckBox ID="chkJobType1" Style="color:white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid1" />
                         <asp:CheckBox ID="chkJobLocation1" Style="color: white;" runat="server" Text="Location" Checked="false" CssClass=".JchkGrid1" />
 
 
@@ -442,7 +442,7 @@
                             </script>
                         </div>
                     </div>
-    </form>
+
 
 
 </asp:Content>

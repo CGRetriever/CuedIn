@@ -25,7 +25,7 @@
          <link rel='stylesheet' href='css/style.css'>
 
     </head>
-    <form id="form1" runat="server">
+    
 
 
          <!--- Breadcrumb --->
