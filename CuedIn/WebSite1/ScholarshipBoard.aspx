@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="ScholarshipBoard.aspx.cs" Inherits="ScholarshipBoard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+
     
+
     <head>
         <title>Scholarship Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -152,7 +155,6 @@
             </script>
    
    
-    </form>
    
 </asp:Content>
 

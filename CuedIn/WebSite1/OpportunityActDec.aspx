@@ -26,7 +26,9 @@
 
 
 
-    <form id="form1" runat="server">
+
+        <div class="form-row">
+
 
 
          <!--- Breadcrumb --->
@@ -55,6 +57,7 @@
 
             <div class="form-row">
              
+
             <div class="form-group col-md-6">
                    <div class="container-fluid text-center">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
@@ -578,7 +581,9 @@
                     </script>
                 </div>
             </div>
-    </form>
+
+        </div>
+
 
 </asp:Content>
 

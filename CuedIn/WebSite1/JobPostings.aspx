@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="JobPostings.aspx.cs" Inherits="JobPostings" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <head>
         <title>Job Postings</title>
@@ -25,7 +25,6 @@
     <form id="form1" runat="server">
 
  <!--- Breadcrumb --->
-
  
     <ol class="breadcrumb arr-bread">
  

@@ -6,6 +6,7 @@
             <p>Archived Scholarships</p>
         </div>
     </div>
+
     <form id="form1" runat="server">
 
 
@@ -348,6 +349,7 @@ FROM OpportunityEntity INNER JOIN
                     </div>
                 </div>
             </div>
+
         </div>
         <script type='text/javascript'>
             function openRejectSModal() {
@@ -356,5 +358,6 @@ FROM OpportunityEntity INNER JOIN
         </script>
         
     </form>
+
 </asp:Content>
 

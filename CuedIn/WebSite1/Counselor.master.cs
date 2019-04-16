@@ -20,4 +20,9 @@ public partial class Counselor : System.Web.UI.MasterPage
         }
 
     }
+
+    protected void HomeButton_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("CounselorJobPosting.aspx");
+    }
 }
