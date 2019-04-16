@@ -9,7 +9,32 @@ public partial class CounselorStudentMetricsDashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["schoolid"] != null)
+        {
+            if (Session["schoolid"].Equals(12))
+            {
+                lousiapc.Visible = true;
+                lousiaphone.Visible = true;
+                lousiatablet.Visible = true;
+            }
+            else if (Session["schoolid"].Equals(13))
+            {
+                rockpc.Visible = true;
+                rockphone.Visible = true;
+                rocktablet.Visible = true;
+            }
 
+            else if (Session["schoolid"].Equals(15))
+            {
+                turnerpc.Visible = true;
+                turnerphone.Visible = true;
+                turnertablet.Visible = true;
+            }
+        }
+        else
+        {
+            lousiapc.Visible = true;
+        }
         ((Label)Master.FindControl("lblMaster2")).Text = "Administrative Dashboard";
         
     }
