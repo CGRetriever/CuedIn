@@ -27,6 +27,27 @@
 
 
     <form id="form1" runat="server">
+
+
+         <!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="ArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
+    <li><a href="ArchiveScholarships.aspx">Archived Scholarships</a></li>
+                               
+ 
+    <li class="active"><span>Manage Opportunities</span></li>       
+ 
+                </ol>
+ 
+
+
+<!--- END Breadcrumb --->
+
+
         <div class ="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
         		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
@@ -47,6 +68,7 @@
 
                 <div class="text-center" style="background-color: #102B3F;width:auto;">
                     
+                    <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select/Deselect All" CssClass=".JchkAll"/>
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
                     <asp:CheckBox ID="chkJobLocation" Style="color: white;" runat="server" Text="Location" Checked="false" />
@@ -103,6 +125,7 @@
 
                     <div class="col-auto text-center" style="background-color: #102B3F;width:auto;">
                     
+                    <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select/Deselect All" CssClass=".JchkAll1"/>
                     <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" />
                     <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" />
 
@@ -198,6 +221,26 @@
             function topFunction() {
               document.body.scrollTop = 0; // For Safari
               document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+
+              function Selectall() {
+              if ($('.JchkAll').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid').removeAttr('checked', 'false');
+              }
+                }
+
+                                       function Selectall() {
+              if ($('.JchkAll1').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid1').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid1').removeAttr('checked', 'false');
+              }
             }
 
 

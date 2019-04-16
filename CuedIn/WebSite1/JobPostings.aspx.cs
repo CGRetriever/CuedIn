@@ -69,7 +69,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         //reader = recentJobPost.ExecuteReader();
 
-        ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
+        ((Label)Master.FindControl("lblMaster")).Text = "Approved Jobs";
 
 
 

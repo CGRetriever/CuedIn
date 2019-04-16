@@ -9,9 +9,32 @@
     </head>
 
     <form id="form1" runat="server">
+
+        <!--- Breadcrumb --->
+
+
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="HoursApprovalPage.aspx">Student Log Hours</a></li>
+ 
+                               
+ 
+    <li class="active"><span>Student Application Request</span></li>       
+ 
+                </ol>
+ 
+
+
+
+
+<!--- END Breadcrumb --->
+
         <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
          
-        <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+        <button onclick="topFunction()" style="margin-right:60px;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
         <div class="form-group">
             <div class="col-md-12 container-fluid text-center">
@@ -23,12 +46,15 @@
                    
                     <br />
 
-                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" />
-                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />
-                    <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" />
-                    <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" />
-                    <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
-                    <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
+                    <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
+                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid" />
+                
+                    
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
 
@@ -60,7 +86,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
-                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
+                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True"  HeaderStyle-Wrap="true" Visible="false" />
                         <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
                         <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" />
@@ -109,6 +135,16 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
             }
+
+            function Selectall() {
+              if ($('.JchkAll').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid').removeAttr('checked', 'false');
+              }
+                }
 
 
         </script>

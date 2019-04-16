@@ -14,7 +14,37 @@ public partial class ArchiveScholarships : System.Web.UI.Page
     {
         rejScholarshipGridview.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
-        
+
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll.Checked == true)
+        {
+            chkScholarshipMin.Checked = true;
+            chkScholarshipMax.Checked = true;
+         
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkScholarshipMin.Checked = false;
+            chkScholarshipMax.Checked = false;
+        }
+
+
+        cbSelectAll2.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll2.Checked == true)
+        {
+            chkScholarshipMin1.Checked = true;
+            chkScholarshipMax1.Checked = true;
+        }
+
+        if (cbSelectAll2.Checked == false)
+        {
+            chkScholarshipMin1.Checked = false;
+            chkScholarshipMax1.Checked = false;
+        }
+
     }
 
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)

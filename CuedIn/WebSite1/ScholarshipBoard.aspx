@@ -23,6 +23,24 @@
 
     </head>
     <form id="form1" runat="server">
+
+         <!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="JobPostings.aspx">Approved Jobs</a></li>
+ 
+                               
+ 
+    <li class="active"><span>Approved Scholarships</span></li>       
+ 
+                </ol>
+
+<!--- END Breadcrumb --->
+
+
                     <div class="container">
                         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
                     <asp:Table ID="scholarshipTable" runat="server" OnLoad="scholarshipTable_Load" Width="100%" > </asp:Table>

@@ -16,7 +16,29 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         GridView1.Columns[0].Visible = false;
-        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";  
+        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
+
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll.Checked == true)
+        {
+            chkImage.Checked = true;
+            chkJobType.Checked = true;
+            chkHoursWBL.Checked = true;
+            chkGradeLevel.Checked = true;
+            chkGPA.Checked = true;
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkImage.Checked = false;
+            chkJobType.Checked = false;
+            chkHoursWBL.Checked = false;
+            chkGradeLevel.Checked = false;
+            chkGPA.Checked = false;
+        }
+
     }
 
 

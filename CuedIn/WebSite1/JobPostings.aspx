@@ -23,6 +23,23 @@
         <link rel='stylesheet' href='css/style.css'>
     </head>
     <form id="form1" runat="server">
+
+ <!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="ScholarshipBoard.aspx">Approved Scholarships</a></li>
+ 
+                               
+ 
+    <li class="active"><span>Approved Jobs</span></li>       
+ 
+                </ol>
+
+<!--- END Breadcrumb --->
+
         <div class="container">
              <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 

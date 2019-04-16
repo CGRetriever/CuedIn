@@ -20,7 +20,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Cards";
+        ((Label)Master.FindControl("lblMaster")).Text = "Approved Scholarships";
         //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         //sc.Open();

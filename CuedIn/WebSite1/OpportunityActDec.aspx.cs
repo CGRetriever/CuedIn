@@ -16,7 +16,40 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
-        
+
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll2.Checked == true)
+        {
+            chkScholarshipMin.Checked = true;
+            chkScholarshipMax.Checked = true;
+
+        }
+
+        if (cbSelectAll2.Checked == false)
+        {
+            chkScholarshipMin.Checked = false;
+            chkScholarshipMax.Checked = false;
+        }
+
+
+        cbSelectAll2.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll.Checked == true)
+        {
+            chkJobDescription.Checked = true;
+            chkJobLocation.Checked = true;
+            chkJobType.Checked = true;
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkJobDescription.Checked = false;
+            chkJobLocation.Checked = false;
+            chkJobType.Checked = false;
+        }
+
 
     }
 
