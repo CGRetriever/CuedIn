@@ -19,8 +19,17 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         GridView1.Columns[0].Visible = false;
        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
+        if (Session["schoolid"] == null)
+        {
+            Session["schoolid"] = 12; 
+        }
 
-        string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where CounselorApproval = 'P' order by lastName";
+        string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + "  order by student.lastname" ;
         DataTable dt = new DataTable();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
@@ -261,7 +270,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
             lblSATScore.Text = "SAT Score: " + studentReader.GetInt32(3);
             lblHoursWorked.Text = "WBL Hours Earned: " + studentReader.GetInt32(4);
-            imgStudent.ImageUrl = studentReader.GetString(6);
+            //imgStudent.ImageUrl = studentReader.GetString(6);
         }
 
 
@@ -275,10 +284,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         if(DropDownList3.SelectedIndex == 1)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = " +
-                "LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON " +
-                "JobListing.OrganizationID = Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa > 0 AND student.studentgpa < 1)  order by studentGPA desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " and (student.studentgpa > 0 AND student.studentgpa < 1)  order by studentGPA desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -289,10 +300,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
         }
         else if (DropDownList3.SelectedIndex == 2)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID" +
-                " INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa >= 1 AND student.studentgpa < 2)  order by studentGPA desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"]  + " and (student.studentgpa >= 1 AND student.studentgpa < 2)  order by studentGPA desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -304,10 +317,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         else if (DropDownList3.SelectedIndex == 3)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa >= 2 AND student.studentgpa < 3)  order by studentGPA desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " and (student.studentgpa >= 2 AND student.studentgpa < 3)  order by studentGPA desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -319,10 +334,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         else if (DropDownList3.SelectedIndex == 4)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa >= 3)  order by studentGPA desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + "and (student.studentgpa >= 3)  order by studentGPA desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -340,10 +357,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
     {
         if (DropDownList2.SelectedIndex == 1)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Freshmen')  order by lastname desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " and(StudentGradeLevel = 'Freshmen')  order by lastname desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -354,10 +373,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
         }
         else if (DropDownList2.SelectedIndex == 2)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Sophomore')  order by lastname desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " and(StudentGradeLevel = 'Sophomore')  order by lastname desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -369,10 +390,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         else if (DropDownList2.SelectedIndex == 3)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                  "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                  "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                  "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Junior')  order by lastname desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " and(StudentGradeLevel = 'Junior')  order by lastname desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -384,10 +407,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         else if (DropDownList2.SelectedIndex == 4)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-              "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-              "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-              "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Senior')  order by lastname desc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " and(StudentGradeLevel = 'Senior')  order by lastname desc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -402,10 +427,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
     {
         if (dropDownSort.SelectedIndex == 1)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' order by fullname asc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " order by student.lastname asc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -416,10 +443,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
         }
         else if (dropDownSort.SelectedIndex == 2)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' order by organization.organizationName asc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + "order by organization.organizationName asc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -431,10 +460,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         else if (dropDownSort.SelectedIndex == 3)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' order by jobtitle asc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + "order by jobtitle asc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -446,10 +477,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         else if (dropDownSort.SelectedIndex == 4)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' order by hoursrequested asc";
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
+            " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
+            " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " order by hoursrequested asc";
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -592,15 +625,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void SearchButton_Click(object sender, EventArgs e)
     {
-        String term = SearchBox.Text;
+        //String term = SearchBox.Text;
 
-        JobOpportunity.SelectParameters.Add("term", term);
+    //    JobOpportunity.SelectParameters.Add("term", term);
 
-        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
-        JobOpportunity.DataBind();
-        GridView1.DataBind();
+    //    JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
+    //    JobOpportunity.DataBind();
+    //    GridView1.DataBind();
 
-        JobOpportunity.SelectParameters.Clear();
+    //    JobOpportunity.SelectParameters.Clear();
 
     }
 

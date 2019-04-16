@@ -62,25 +62,16 @@
 
                 <div style="height:5px;font-size:10px;">&nbsp;</div>
                 
-                <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore,
- Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, 
- Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, 
- JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization
- ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = @schoolID">
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                        </SelectParameters>
-
-                </asp:SqlDataSource>
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; width:auto;" AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+               
+                
+              
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; width:auto;" AutoGenerateColumns="False" DataKeyNames="LogID"  CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
 
                        
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
+<%--                                <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Student Name">
@@ -115,7 +106,7 @@
             </div>
         </div>
 
-
+<asp:Label ID="Label7" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server"></asp:Label>
 
 
         <br />
