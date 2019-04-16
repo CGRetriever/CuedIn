@@ -83,6 +83,11 @@
                                 <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
                             </ItemTemplate>
                         </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Full Name" SortExpression="FullName" >
+                            <ItemTemplate>
+                                <asp:
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
                         <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True"  HeaderStyle-Wrap="true" Visible="false" />
                         <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
