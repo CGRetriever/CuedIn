@@ -71,7 +71,7 @@
                   <br />
                     
                     <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                    <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
+                    <asp:Label ID="Label10" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
 
 					<div class="text-center p-t-90">

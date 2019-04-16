@@ -97,7 +97,7 @@ public partial class Login : System.Web.UI.Page
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
 
-            Label1.Text = "Success!";
+            Label10.Text = "Success!";
             String permissions = " ";
             int school = 0;
 
@@ -181,7 +181,7 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            Label1.Text = "Your username or password is incorrect, please try again.";
+            Label10.Text = "Your username or password is incorrect, please try again.";
 
             username.Value = "";
             password.Value = "";
