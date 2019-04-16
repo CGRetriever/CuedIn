@@ -213,7 +213,7 @@
            
             
             <%--No more Students Pending Label--%>
-            <p class="col-6" id="EmptyStudentslbl" runat="server">No More Pending Students</p>
+            <p class="col-6" id="EmptyStudentslbl" runat="server">No More Pending Student Applications</p>
             
             
             <!-- Team member -->
@@ -392,12 +392,11 @@
 
         </script>
 
-
+<br />
 <div class="container">
         <h3 class="">Metrics</h3>
         <div class="row">
-            
-
+<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 277px;'><object class='tableauViz' width='100%' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;cis484commup' /><param name='name' value='LandingPageDashTablet&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
         </div>
     </div>
 

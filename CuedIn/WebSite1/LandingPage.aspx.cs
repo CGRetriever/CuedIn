@@ -223,7 +223,35 @@ public partial class LandingPage : System.Web.UI.Page
 
         sql.Close();
 
+        //LandingPage.StudentNamearray = null;
+        //StudentNamearray[1] = null;
+        //StudentNamearray[2] = null;
+        //StudentNamearray[3] = null;
 
+        if (LandingPage.StudentNamearray == null)
+        {
+            StudentCard1.Visible = false;
+            StudentCard2.Visible = false;
+            StudentCard3.Visible = false;
+            StudentCard4.Visible = false;
+            EmptyStudentslbl.Visible = true;
+
+        }
+        else if (StudentNamearray[3] == null && StudentNamearray[2] == null && StudentNamearray[1] == null)
+        {
+            StudentCard4.Visible = false;
+            StudentCard3.Visible = false;
+            StudentCard2.Visible = false;
+        }
+        else if (StudentNamearray[3] == null && StudentNamearray[2] == null)
+        {
+            StudentCard4.Visible = false;
+            StudentCard3.Visible = false;
+        }
+        else if (StudentNamearray[3] == null)
+        {
+            StudentCard4.Visible = false;
+        }
 
 
 
