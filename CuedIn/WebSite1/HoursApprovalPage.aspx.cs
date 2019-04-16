@@ -524,19 +524,14 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         if (chkGradeLevel.Checked != true)
         {
-            string query = "SELECT LogHours.LogID, student.grade CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
-           "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack," +
-           " Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
-           " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization" +
-           " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval =" +
-           " 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + Session["schoolid"] + " order by hoursrequested asc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
         }
         else
         {
