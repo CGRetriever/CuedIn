@@ -3,8 +3,44 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-
+    <link rel="stylesheet" type="text/css" href="css/dropdown.css">
     <form id="form1" runat="server">
+
+        <div class="form-row">
+
+       <div class=" text-center custom-dropdown big" style ="padding-left:425px;">
+           <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" class="custom-dropdown big" >
+               <asp:ListItem>Choose Year</asp:ListItem>
+               <asp:ListItem>Freshman</asp:ListItem>
+               <asp:ListItem>Sophomore</asp:ListItem>
+               <asp:ListItem>Junior</asp:ListItem>
+               <asp:ListItem>Senior</asp:ListItem>
+           </asp:DropDownList>
+         <br />
+           <br />
+           <br />
+         
+           <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" class="custom-dropdown big">
+               <asp:ListItem>Choose GPA</asp:ListItem>
+               <asp:ListItem Value="0 - 0.9">0 - 0.9</asp:ListItem>
+               <asp:ListItem>1.0 - 1.9</asp:ListItem>
+               <asp:ListItem>2.0 - 2.9</asp:ListItem>
+               <asp:ListItem>3.0 - 4.0</asp:ListItem>
+           </asp:DropDownList>
+           <br />
+           <br />
+           <br />
+            
+             <asp:DropDownList ID="dropDownSort" runat="server" OnSelectedIndexChanged="sortGridview" AutoPostBack="true" class="custom-dropdown big">
+                  <asp:ListItem Text="Sort By" Value="StudentName"></asp:ListItem>
+               <asp:ListItem Text="Student Name" Value="StudentName"></asp:ListItem>
+               <asp:ListItem Text="Organization Name" Value="OrganizationName"></asp:ListItem>
+               <asp:ListItem Text="Job Title" Value="JobTitle"></asp:ListItem>
+               <asp:ListItem Text="Hours Requested" Value="HoursRequested"></asp:ListItem>
+           </asp:DropDownList>
+      <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
+           </div>
+       
         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
         <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
         
@@ -81,6 +117,7 @@
 
 
 
+
         <br />
         <br />
 
@@ -97,7 +134,10 @@
                                     <br>
                                     <br>
                                     <%--<h5>Student Information</h5>--%>
+
+
                                     <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Student Information"></asp:Label>
+
                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
 
                                 </div>
@@ -292,6 +332,23 @@
                     $('[id*=jobMoreInfoModal]').modal('show');
                 }
             </script>
+            <script>
+                var dropdown = $('DropdownList2');
+var item = $('.item');
+
+item.on('click', function() {
+  item.toggleClass('collapse');
+  
+  if (dropdown.hasClass('dropped')) {
+    dropdown.toggleClass('dropped');
+  } else {
+    setTimeout(function() {
+      dropdown.toggleClass('dropped');
+    }, 150);
+  }
+})
+            </script>
+          
         </div>
 
 
