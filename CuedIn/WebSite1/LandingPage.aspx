@@ -5,6 +5,36 @@
     <form id="form1" runat="server">
 
 
+<%--<!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+
+    <li><a href="OpportunityActDec.aspx">Manage Opportunities</a></li>
+    <li><a href="ArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
+    <li><a href="ArchiveScholarships.aspx">Archived Scholarships</a></li>
+    <li><a href="HoursApprovalPage.aspx">Student Log Hours</a></li>
+    <li><a href="StudentActDec.aspx">Student Application Request</a></li>
+    <li><a href="JobPostings.aspx">Approved Jobs</a></li>
+    <li><a href="ScholarshipBoard.aspx">Approved Scholarships</a></li>
+    <li><a href="StudentMetricsDashboard.aspx">Student Metrics Dashboard</a></li>
+    <li><a href="ScholarshipDashboard.aspx">Scholarship Dashboard</a></li>
+    <li><a href="JobListingDashboard.aspx">Job Listing Dashboard</a></li>
+    <li><a href="JobListingMap.aspx">Work Based Learning Map</a></li>
+    <li><a href="ScholarshipMap.aspx">Scholarship Map</a></li>
+    <li><a href="CommunityFeed.aspx">Community Feed</a></li>
+    <li><a href="CreateUser.aspx">Create User</a></li>
+
+    
+                               
+ 
+    <li class="active"><span>Home</span></li>       
+ 
+                </ol>
+
+<!--- END Breadcrumb --->--%>
+
+
         <head>
         <title>Dashboard - CommUp</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">

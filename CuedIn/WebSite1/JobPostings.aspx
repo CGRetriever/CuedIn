@@ -23,6 +23,23 @@
         <link rel='stylesheet' href='css/style.css'>
     </head>
     <form id="form1" runat="server">
+
+ <!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="ScholarshipBoard.aspx">Approved Scholarships</a></li>
+ 
+                               
+ 
+    <li class="active"><span>Approved Jobs</span></li>       
+ 
+                </ol>
+
+<!--- END Breadcrumb --->
+
         <div class="container">
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
              <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>

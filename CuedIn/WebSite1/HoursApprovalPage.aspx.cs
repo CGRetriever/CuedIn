@@ -27,6 +27,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
             chkHoursWBL.Checked = true;
             chkGradeLevel.Checked = true;
             chkGPA.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+
 
         }
 
@@ -37,6 +39,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
             chkHoursWBL.Checked = false;
             chkGradeLevel.Checked = false;
             chkGPA.Checked = false;
+
+            cbSelectAll.Text = "Select All";
+
         }
 
     }

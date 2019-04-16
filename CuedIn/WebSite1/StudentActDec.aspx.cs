@@ -14,7 +14,32 @@ public partial class StudentActDec : System.Web.UI.Page
     {
 
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
-        
+
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll.Checked == true)
+        {
+            chkGPA.Checked = true;
+            chkGradeLevel.Checked = true;
+            chkHoursWBL.Checked = true;
+            chkImage.Checked = true;
+            chkJobDescription.Checked = true;
+            chkJobType.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkGPA.Checked = false;
+            chkGradeLevel.Checked = false;
+            chkHoursWBL.Checked = false;
+            chkImage.Checked = false;
+            chkJobDescription.Checked = false;
+            chkJobType.Checked = false;
+            cbSelectAll.Text = "Select All";
+        }
+
     }
 
 

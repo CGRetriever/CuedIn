@@ -7,6 +7,25 @@
         </div>
     </div>
     <form id="form1" runat="server">
+
+
+                 <!--- Breadcrumb --->
+
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="OpportunityActDec.aspx">Manage Opportunities</a></li>
+    <li><a href="ArchiveOpportunities.aspx">Archived Jobs</a></li>
+                               
+ 
+    <li class="active"><span>Archived Scholarships</span></li>       
+ 
+                </ol>
+
+
+<!--- END Breadcrumb --->
+
+
         <%--Rejected Scholarships Gridview--%>
         <div class="form-row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
@@ -24,8 +43,9 @@
 
                     <br />
 
-                    <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" />
-                    <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" />
+                    <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
+                    <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid" />
                     
 
 
@@ -85,8 +105,9 @@
                         <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
                         <br />
-                        <asp:CheckBox ID="chkScholarshipMin1" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" />
-                        <asp:CheckBox ID="chkScholarshipMax1" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" />
+                        <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
+                        <asp:CheckBox ID="chkScholarshipMin1" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
+                        <asp:CheckBox ID="chkScholarshipMax1" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
                         
 
 
@@ -153,6 +174,26 @@ FROM OpportunityEntity INNER JOIN
             function topFunction() {
               document.body.scrollTop = 0; // For Safari
               document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+
+                                            function Selectall() {
+              if ($('.JchkAll').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid').removeAttr('checked', 'false');
+              }
+                }
+
+                                       function Selectall() {
+              if ($('.JchkAll1').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid1').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid1').removeAttr('checked', 'false');
+              }
             }
 
 
