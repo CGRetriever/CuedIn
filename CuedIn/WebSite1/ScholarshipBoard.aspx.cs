@@ -19,6 +19,10 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["schoolID"] == null)
+        {
+            Session["schoolID"] = 12;
+        }
 
         ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Cards";
         //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;

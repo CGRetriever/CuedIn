@@ -20,6 +20,10 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["schoolID"] == null)
+        {
+            Session["schoolID"] = 12;
+        }
 
         //initialize array of Jobs
         //List<JobListing> jobListingList = new List<JobListing>();
