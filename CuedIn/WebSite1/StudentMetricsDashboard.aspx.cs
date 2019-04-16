@@ -9,7 +9,7 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if ()
         ((Label)Master.FindControl("lblMaster")).Text = "Administrative Dashboard";
         
     }

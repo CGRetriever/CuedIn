@@ -19,8 +19,11 @@ public partial class Login : System.Web.UI.Page
 
         Session.Remove("user");
         Session.Remove("permission");
+        Session.Remove("schoolid");
         Session["user"] = "";
         Session["permission"] = "";
+        Session["schoolid"] = "";
+
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -96,6 +99,8 @@ public partial class Login : System.Web.UI.Page
 
             Label1.Text = "Success!";
             String permissions = " ";
+            int school = 0;
+
             sql.Open();
             System.Data.SqlClient.SqlCommand query1 = new System.Data.SqlClient.SqlCommand();
 
@@ -133,24 +138,43 @@ public partial class Login : System.Web.UI.Page
                 }
             }
 
+            query1.CommandText = "SELECT dbo.SchoolEmployee.SchoolentityID from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID1";
+            query1.Parameters.AddWithValue("@SchoolEmployeeEntityID1", id);
+            reader2.Close();
+            System.Data.SqlClient.SqlDataReader reader3 = query1.ExecuteReader();
+            while (reader3.Read())
+            {
+                if (reader3.IsDBNull(0))
+                    school = 0;
+
+
+                else
+                {
+                    school = reader3.GetInt32(0);
+                }
+            }
+
 
             //Test the permsissions
             if (permissions.Equals("Admin"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
+                Session["schoolid"] = school;
                 Response.Redirect("JobPostings.aspx");
             }
             else if (permissions.Equals("Counselor"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
+                Session["schoolid"] = school;
                 Response.Redirect("CounselorJobPosting.aspx");
             }
             else if (permissions.Equals("Teacher"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
+                Session["schoolid"] = school;
                 Response.Redirect("TeacherJobPosting.aspx");
             }
 

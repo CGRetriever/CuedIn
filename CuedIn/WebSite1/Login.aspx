@@ -36,8 +36,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+			<div class="wrap-login100">			
 					<span>
 						<img src="images/CommUpMainLogo.png" alt="logo" class="RoundedElement">
 					</span>
@@ -86,7 +85,7 @@
                         
                        
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -110,8 +109,5 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
-</body>
-</html>
 </asp:Content>
 
