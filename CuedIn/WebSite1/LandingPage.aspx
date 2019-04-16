@@ -35,8 +35,6 @@
             <p class="col-6" id="EmptyPostinglbl" runat="server">No More Recent Job Postings</p>
             
             
-            
-            
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-3" id="card1" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
@@ -212,8 +210,14 @@
             <asp:LinkButton ID="StudentPageLink" runat="server" CssClass="btn" PostBackUrl="~/StudentActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
         </h3>
         <div class="row">
+           
+            
+            <%--No more Students Pending Label--%>
+            <p class="col-6" id="EmptyStudentslbl" runat="server">No More Pending Students</p>
+            
+            
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard1" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -251,7 +255,7 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard2" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -289,7 +293,7 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard3" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -327,7 +331,7 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard4" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
