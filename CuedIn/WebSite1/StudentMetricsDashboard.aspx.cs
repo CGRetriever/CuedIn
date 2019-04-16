@@ -9,19 +9,26 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["schoolid"].Equals(12))
+        if (Session["schoolid"] != null)
+        {
+            if (Session["schoolid"].Equals(12))
+            {
+                lousia.Visible = true;
+            }
+            else if (Session["schoolid"].Equals(13))
+            {
+                rockingham.Visible = true;
+            }
+
+            else if (Session["schoolid"].Equals(15))
+            {
+                turner.Visible = true;
+            }
+        } else
         {
             lousia.Visible = true;
         }
-        else if (Session["schoolid"].Equals(13))
-        {
-            rockingham.Visible = true;
-        }
-
-        else if (Session["schoolid"].Equals(15))
-        {
-            turner.Visible = true;
-        }
+        
         ((Label)Master.FindControl("lblMaster")).Text = "Administrative Dashboard";
         
     }
