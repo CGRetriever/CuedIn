@@ -58,6 +58,7 @@
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
+                    <asp:Button ID="btnPopulateGridView" runat="server" Text="Populate" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
 
                 <div style="height:5px;font-size:10px;">&nbsp;</div>
