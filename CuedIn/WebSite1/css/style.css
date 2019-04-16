@@ -384,3 +384,25 @@ h1 {
         background-color: #555; /* Add a dark-grey background on hover */
     }
 
+/* ---------------------------------------------------
+   Filter Button
+----------------------------------------------------- */
+#filter {
+    background-color: #102B3F;
+    color: #fff;
+    border-radius: 100px !important;
+    padding-top: 10px;
+    height: 50px;
+    width: 100px;
+}
+
+#filterlist {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+input[type=checkbox]:checked:after {
+    background-color: red !important;
+    color: #ffffff !important;
+}
+

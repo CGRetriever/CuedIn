@@ -309,6 +309,11 @@ public partial class JobPostings : System.Web.UI.Page
 
     }
 
+
+    protected void dropdownInterestGroup_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }
 
 
