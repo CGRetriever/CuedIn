@@ -191,7 +191,7 @@ public partial class JobPostings : System.Web.UI.Page
         }
 
         //if something was selected then lets loop through the array and make the conditional string
-        String condititionalIf = "where InterestGroupID = ";
+        String condititionalIf = "or InterestGroupID = ";
 
         //if all are selected, there is no need to loop. we want to see everything. 
         if (interestGroupList.Count == InterestGroupDrop.Items.Count) {
@@ -235,7 +235,10 @@ public partial class JobPostings : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
-        countJobPostings.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
+        countJobPostings.CommandText = "SELECT        COUNT(SchoolApproval.OpportunityEntityID) AS Expr1 FROM OpportunityEntity INNER JOIN
+                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
+                         OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID
+WHERE(OpportunityEntity.OpportunityType = 'JOB') AND(SchoolApproval.ApprovedFlag = 'Y') AND(SchoolApproval.SchoolEntityID = 12)  and InterestGroupID = s s;
         //"and SchoolEntityID = " + Session["schoolID"];
         countJobPostings.Connection = sc;
 
@@ -252,11 +255,8 @@ public partial class JobPostings : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT  Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription," +
-            " Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription," +
-            " JobListing.JobListingID FROM SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing" +
-            " ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-            "where SchoolApproval.ApprovedFlag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
+        pullJobInfo.CommandText = "SELECT        Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription, JobListing.JobListingID, OpportunityInterestGroups.InterestGroupID FROM            SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN       OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID WHERE(SchoolApproval.ApprovedFlag = 'Y') AND(SchoolApproval.SchoolEntityID = 12) " + s;
+
         pullJobInfo.Connection = sc;
 
 
