@@ -169,7 +169,7 @@
                          School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
                          JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN
                          Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID
-                        WHERE   school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
+                        WHERE   schoolapproval.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
                         <SelectParameters>
                           <asp:SessionParameter Name="schoolID" SessionField="schoolID"
                            DefaultValue="12" />

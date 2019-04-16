@@ -74,6 +74,8 @@ public partial class LandingPage : System.Web.UI.Page
 
         }
 
+        
+
 
         // First Card
         Image1.ImageUrl = imageArray[0];
@@ -119,6 +121,9 @@ public partial class LandingPage : System.Web.UI.Page
         JobLink4.NavigateUrl = OrgWebURLArray[3];
 
 
+
+
+
         sql.Close();
 
         //LandingPage.jobTitleArray = null;
@@ -126,7 +131,7 @@ public partial class LandingPage : System.Web.UI.Page
         //jobTitleArray[2] = null;
         //jobTitleArray[3] = null;
 
-        if (LandingPage.jobTitleArray == null)
+        if (jobTitleArray[0] == null)
         {
             card1.Visible = false;
             card2.Visible = false;
@@ -149,9 +154,17 @@ public partial class LandingPage : System.Web.UI.Page
         {
             card4.Visible = false;
         }
+        else
+        {
 
+        }
 
-
+        //LandingPage.jobTitleArray = null;
+        jobTitleArray[0] = null;
+        jobTitleArray[1] = null;
+        jobTitleArray[2] = null;
+        jobTitleArray[3] = null;
+        jobTitleArray[4] = null;
 
 
 
