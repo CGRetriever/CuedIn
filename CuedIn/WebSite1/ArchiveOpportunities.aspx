@@ -25,6 +25,7 @@
 
 
         <%--Rejected Jobs Gridview--%>
+    
         <div class="row">
 
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
