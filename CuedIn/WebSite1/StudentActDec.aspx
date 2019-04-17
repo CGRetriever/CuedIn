@@ -39,12 +39,12 @@
         <div class="form-group">
             <div class="col-md-12 container-fluid text-center">
 
-                <div class="col-auto text-center rounded" style="background-color: #102B3F; width: auto;">
-                    <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                <div class="col-auto text-center rounded" style="background-color: #102B3F; width: auto; padding: 10px;">
+                    <%--<asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
                     <asp:LinkButton ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" Style="color: white;"><i class="fas fa-search"></i></asp:LinkButton>
                    
-                    <br />
+                    <br />--%>
 
                     <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Disabled" OnCheckedChanged="cbSelectAll_Checked"/>
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server"  Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True" />

@@ -64,13 +64,13 @@
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
 
 
-            <div class="col-auto text-center" style="background-color:#102B3F;">
+            <%--<div class="col-auto text-center" style="background-color:#102B3F;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
            <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-           </div>
+           </div>--%>
 
-                <div class="text-center" style="background-color: #102B3F;width:auto;">
+                <div class="text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
                     
                     <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" EnableViewState="true"/>
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
@@ -82,6 +82,7 @@
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 
              </div>
+                       <div style="height:5px;font-size:10px;">&nbsp;</div>
                       
      <div class="contianer-fluid">
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
@@ -120,14 +121,14 @@
                 <div class="container-fluid text-center">
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
 
-               <div class="col-auto text-center" style="background-color:#102B3F;">
+               <%--<div class="col-auto text-center" style="background-color:#102B3F;">
                <asp:Label ID="Label18" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-               </div>
+               </div>--%>
           
 
-                    <div class="col-auto text-center" style="background-color: #102B3F;width:auto;">
+                    <div class="col-auto text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
                     
                     <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
                     <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" />
@@ -139,7 +140,7 @@
                     <asp:Button ID="btnCheckGridView2" runat="server" Text="Apply" OnClick="btnCheckGridView2_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
                 
-              
+              <div style="height:5px;font-size:10px;">&nbsp;</div>
                
                 
       

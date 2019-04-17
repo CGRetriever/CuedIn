@@ -37,12 +37,12 @@
                 </div>
 
 
-                <div class="col-auto text-center" style="background-color: #102B3F;">
-                    <asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
+                    <%--<asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
                     <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                    <br />
+                    <br />--%>
 
                     <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
                     <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
@@ -52,6 +52,8 @@
 
                     <asp:Button ID="btnCheckGridView1" runat="server" Text="Apply" OnClick="btnCheckGridView1_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
+
+                <div style="height:5px;font-size:10px;">&nbsp;</div>
                
                 <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
                          Organization.ExternalLink
@@ -100,12 +102,12 @@
                 <div class="container-fluid text-center">
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
 
-                    <div class="col-auto text-center" style="background-color: #102B3F; width: auto;">
-                        <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <div class="col-auto text-center" style="background-color: #102B3F; width: auto; padding: 10px;">
+                        <%--<asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                        <br />
+                        <br />--%>
                         <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
                         <asp:CheckBox ID="chkScholarshipMin1" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
                         <asp:CheckBox ID="chkScholarshipMax1" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
@@ -114,6 +116,8 @@
 
                         <asp:Button ID="btnCheckGridView2" runat="server" Text="Apply" OnClick="btnCheckGridView2_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                     </div>
+
+                    <div style="height:5px;font-size:10px;">&nbsp;</div>
                     
 
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 

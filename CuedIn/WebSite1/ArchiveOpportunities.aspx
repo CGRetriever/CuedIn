@@ -37,12 +37,12 @@
                     <label class="form-control-lg font-weight-bold" for="inputJobs">Rejected Jobs </label>
 
 
-                    <div class="col-auto text-center" style="background-color: #102B3F;">
-                        <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
+                        <%--<asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                        <br />
+                        <br />--%>
 
 
                         <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll" />
@@ -104,10 +104,10 @@
 
 
                     <div class="col-auto text-center" style="background-color: #102B3F;padding:10px;">
-                        <asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                        <%--<asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-                        <br />
+                        <br />--%>
                         <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll1" />
                         
                         
