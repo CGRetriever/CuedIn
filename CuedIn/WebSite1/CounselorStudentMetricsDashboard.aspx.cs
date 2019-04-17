@@ -19,9 +19,7 @@ public partial class CounselorStudentMetricsDashboard : System.Web.UI.Page
             }
             else if (Session["schoolid"].Equals(13))
             {
-                rockpc.Visible = true;
-                rockphone.Visible = true;
-                rocktablet.Visible = true;
+                
             }
 
             else if (Session["schoolid"].Equals(15))
