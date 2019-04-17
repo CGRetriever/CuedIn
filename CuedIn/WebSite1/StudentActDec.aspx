@@ -46,9 +46,9 @@
                    
                     <br />
 
-                    <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
-                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Disabled" OnCheckedChanged="cbSelectAll_Checked"/>
+                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server"  Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True" />
+                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" AutoPostBack="True" />
                     <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" CssClass=".JchkGrid" />
                     <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" CssClass=".JchkGrid" />
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid" />

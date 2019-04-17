@@ -17,37 +17,12 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll.Checked == true)
-        {
-            chkScholarshipMin.Checked = true;
-            chkScholarshipMax.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-         
-        }
 
-        if (cbSelectAll.Checked == false)
-        {
-            chkScholarshipMin.Checked = false;
-            chkScholarshipMax.Checked = false;
-            cbSelectAll.Text = "Select all";
-        }
 
 
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll2.Checked == true)
-        {
-            chkScholarshipMin1.Checked = true;
-            chkScholarshipMax1.Checked = true;
-            cbSelectAll2.Text = "Unselect All";
-        }
 
-        if (cbSelectAll2.Checked == false)
-        {
-            chkScholarshipMin1.Checked = false;
-            chkScholarshipMax1.Checked = false;
-            cbSelectAll2.Text = "Select all";
-        }
 
     }
 
@@ -439,4 +414,39 @@ public partial class ArchiveScholarships : System.Web.UI.Page
 
     }
 
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll.Checked == true)
+        {
+            chkScholarshipMin.Checked = true;
+            chkScholarshipMax.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkScholarshipMin.Checked = false;
+            chkScholarshipMax.Checked = false;
+            cbSelectAll.Text = "Select all";
+        }
+    }
+
+    protected void cbSelectAll2_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll2.Checked == true)
+        {
+            chkScholarshipMin1.Checked = true;
+            chkScholarshipMax1.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
+        }
+
+        if (cbSelectAll2.Checked == false)
+        {
+            chkScholarshipMin1.Checked = false;
+            chkScholarshipMax1.Checked = false;
+            cbSelectAll2.Text = "Select all";
+        }
+    }
 }

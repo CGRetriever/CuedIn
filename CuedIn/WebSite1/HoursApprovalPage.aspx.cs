@@ -20,29 +20,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll.Checked == true)
-        {
-            chkImage.Checked = true;
-            chkJobType.Checked = true;
-            chkHoursWBL.Checked = true;
-            chkGradeLevel.Checked = true;
-            chkGPA.Checked = true;
-            cbSelectAll.Text = "Unselect All";
 
-
-        }
-
-        if (cbSelectAll.Checked == false)
-        {
-            chkImage.Checked = false;
-            chkJobType.Checked = false;
-            chkHoursWBL.Checked = false;
-            chkGradeLevel.Checked = false;
-            chkGPA.Checked = false;
-
-            cbSelectAll.Text = "Select All";
-
-        }
 
     }
 
@@ -425,5 +403,32 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         JobOpportunity.SelectParameters.Clear();
 
+    }
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll.Checked == true)
+        {
+            chkImage.Checked = true;
+            chkJobType.Checked = true;
+            chkHoursWBL.Checked = true;
+            chkGradeLevel.Checked = true;
+            chkGPA.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkImage.Checked = false;
+            chkJobType.Checked = false;
+            chkHoursWBL.Checked = false;
+            chkGradeLevel.Checked = false;
+            chkGPA.Checked = false;
+
+            cbSelectAll.Text = "Select All";
+
+        }
     }
 }

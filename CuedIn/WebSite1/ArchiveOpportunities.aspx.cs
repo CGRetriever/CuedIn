@@ -18,40 +18,12 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
         
-        if(cbSelectAll.Checked == true)
-        {
-            chkJobDescription1.Checked = true;
-            chkJobLocation1.Checked = true;
-            chkJobType1.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-        }
 
-        if(cbSelectAll.Checked == false)
-        {
-            chkJobDescription1.Checked = false;
-            chkJobLocation1.Checked = false;
-            chkJobType1.Checked = false;
-            cbSelectAll.Text = "Select All";
-        }
 
 
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll2.Checked == true)
-        {
-            chkJobDescription.Checked = true;
-            chkJobLocation.Checked = true;
-            chkJobType.Checked = true;
-            cbSelectAll2.Text = "Unselect All";
-        }
 
-        if (cbSelectAll2.Checked == false)
-        {
-            chkJobDescription.Checked = false;
-            chkJobLocation.Checked = false;
-            chkJobType.Checked = false;
-            cbSelectAll2.Text = "Select All";
-        }
 
 
     }
@@ -507,6 +479,39 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
     protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
-        
+        if (cbSelectAll.Checked == true)
+        {
+            chkJobDescription1.Checked = true;
+            chkJobLocation1.Checked = true;
+            chkJobType1.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkJobDescription1.Checked = false;
+            chkJobLocation1.Checked = false;
+            chkJobType1.Checked = false;
+            cbSelectAll.Text = "Select All";
+        }
+    }
+
+    protected void cbSelectAll2_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll2.Checked == true)
+        {
+            chkJobDescription.Checked = true;
+            chkJobLocation.Checked = true;
+            chkJobType.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
+        }
+
+        if (cbSelectAll2.Checked == false)
+        {
+            chkJobDescription.Checked = false;
+            chkJobLocation.Checked = false;
+            chkJobType.Checked = false;
+            cbSelectAll2.Text = "Select All";
+        }
     }
 }

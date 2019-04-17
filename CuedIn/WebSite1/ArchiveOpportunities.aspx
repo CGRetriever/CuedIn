@@ -45,8 +45,8 @@
                         <br />
 
 
-                        <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll"/>
-                        &nbsp;&nbsp;&nbsp;
+                        <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll" />
+                        
                         <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid"/>
                         <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid"/>
                         <asp:CheckBox ID="chkJobLocation" Style="color: white;" runat="server" Text="Location" Checked="false" CssClass=".JchkGrid"/>
@@ -108,9 +108,9 @@
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
                         <br />
-                        <asp:CheckBox runat="server" Style="color: white;" CheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select/Deselect All" CssClass=".JchkAll1" />
+                        <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll1" />
                         
-                        &nbsp;&nbsp;&nbsp;
+                        
                         
                         <asp:CheckBox ID="chkJobDescription1" Style="color:white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid1" />
                         <asp:CheckBox ID="chkJobType1" Style="color:white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid1" />

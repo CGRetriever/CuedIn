@@ -18,29 +18,6 @@ public partial class StudentActDec : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll.Checked == true)
-        {
-            chkGPA.Checked = true;
-            chkGradeLevel.Checked = true;
-            chkHoursWBL.Checked = true;
-            chkImage.Checked = true;
-            chkJobDescription.Checked = true;
-            chkJobType.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-
-        }
-
-        if (cbSelectAll.Checked == false)
-        {
-            chkGPA.Checked = false;
-            chkGradeLevel.Checked = false;
-            chkHoursWBL.Checked = false;
-            chkImage.Checked = false;
-            chkJobDescription.Checked = false;
-            chkJobType.Checked = false;
-            cbSelectAll.Text = "Select All";
-        }
-
     }
 
 
@@ -446,5 +423,33 @@ public partial class StudentActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
 
+    protected void cbSelectAll_Checked (object sender, EventArgs e)
+    {
+        
+            {
+            if (cbSelectAll.Checked == true)
+            {
+                chkGPA.Checked = true;
+                chkGradeLevel.Checked = true;
+                chkHoursWBL.Checked = true;
+                chkImage.Checked = true;
+                chkJobDescription.Checked = true;
+                chkJobType.Checked = true;
+                cbSelectAll.Text = "Unselect All";
+
+            }
+
+            if (cbSelectAll.Checked == false)
+            {
+                chkGPA.Checked = false;
+                chkGradeLevel.Checked = false;
+                chkHoursWBL.Checked = false;
+                chkImage.Checked = false;
+                chkJobDescription.Checked = false;
+                chkJobType.Checked = false;
+                cbSelectAll.Text = "Select All";
+            }
+        }
+    }
 
 }
