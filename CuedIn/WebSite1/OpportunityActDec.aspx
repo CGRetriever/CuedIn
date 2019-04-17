@@ -84,7 +84,7 @@
              </div>
                       
      <div class="contianer-fluid">
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnRowUpdating="SearchButton1_Click" OnDataBinding="SearchButton1_Click">
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="SearchButton1_Click">
 
 
                     <Columns>

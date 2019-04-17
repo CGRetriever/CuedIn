@@ -649,6 +649,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
              
        GridView1.DataBind();
 
+        conn.Close();
+
      
     }
 
@@ -674,7 +676,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         GridView2.DataSource = dt;
         GridView2.DataBind();
 
-        
+        conn.Close();
 
     }
 
