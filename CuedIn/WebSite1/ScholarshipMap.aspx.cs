@@ -11,6 +11,7 @@ public partial class ScholarshipMap : System.Web.UI.Page
     {
 
         ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Map";
-        
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
+
     }
 }

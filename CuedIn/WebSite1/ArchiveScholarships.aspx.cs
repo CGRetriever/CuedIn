@@ -14,6 +14,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
     {
         rejScholarshipGridview.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
