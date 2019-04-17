@@ -19,7 +19,7 @@
                 <div class="col-auto text-center rounded" style="background-color: #102B3F; width: 100;">
                     <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <br />
-                       <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Disabled" OnCheckedChanged="cbSelectAll_Checked"/>
+                       <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Enabled" OnCheckedChanged="cbSelectAll_Checked"/>
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True"/>
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />
                     <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" />

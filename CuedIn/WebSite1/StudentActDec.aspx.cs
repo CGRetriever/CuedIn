@@ -415,9 +415,8 @@ public partial class StudentActDec : System.Web.UI.Page
             {
                 chkGPA.Checked = true;
                 chkGradeLevel.Checked = true;
-                chkHoursWBL.Checked = true;
+             
                 chkImage.Checked = true;
-                chkJobDescription.Checked = true;
                 chkJobType.Checked = true;
                 cbSelectAll.Text = "Unselect All";
 
@@ -427,9 +426,9 @@ public partial class StudentActDec : System.Web.UI.Page
             {
                 chkGPA.Checked = false;
                 chkGradeLevel.Checked = false;
-                chkHoursWBL.Checked = false;
+       
                 chkImage.Checked = false;
-                chkJobDescription.Checked = false;
+           
                 chkJobType.Checked = false;
                 cbSelectAll.Text = "Select All";
             }
