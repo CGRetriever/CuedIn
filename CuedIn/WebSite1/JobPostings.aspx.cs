@@ -20,74 +20,9 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+  
 
-        //initialize array of Jobs
-        //List<JobListing> jobListingList = new List<JobListing>();
-        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        //sc.Open();
-
-        //System.Data.SqlClient.SqlCommand sqlJobInfo = new System.Data.SqlClient.SqlCommand();
-        //sqlJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image, Organization.ExternalLink FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where approved = 'Y' ";
-        //sqlJobInfo.Connection = sc;
-        //System.Data.SqlClient.SqlDataReader reader = sqlJobInfo.ExecuteReader();
-        //while (reader.Read())
-        //{
-        //    JobListing jobListingObj = new JobListing(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetDateTime(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7), reader.GetString(8), reader.GetString(9));
-        //    jobListingList.Add(jobListingObj);
-        //}
-
-        //sc.Close();
-
-        //TableRow row = new TableRow();
-        //TableCell cell = new TableCell();
-        //TableCell cell2 = new TableCell();
-        //TableCell cell3 = new TableCell();
-        ////link Button for referrals
-        //LinkButton referralLink = new LinkButton();
-        ////link button for website
-        //LinkButton websiteButton = new LinkButton();
-
-
-        //sqlrecentJobPostID.CommandText = "select max(joblistingID) from jobListing;";
-        //sqlrecentJobPostID.Connection = sc;
-        //System.Data.SqlClient.SqlDataReader reader = sqlrecentJobPostID.ExecuteReader();
-
-        //while (reader.Read())
-        //{
-        //    recentPostID = reader.GetInt32(0);
-        //}
-
-        //sc.Close();
-
-        //sc.Open();
-
-
-        //System.Data.SqlClient.SqlCommand recentJobPost = new System.Data.SqlClient.SqlCommand();
-        //recentJobPost.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where JobListingID =" + recentPostID;
-        //recentJobPost.Connection = sc;
-
-        //reader = recentJobPost.ExecuteReader();
-
-        ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
-
-
-
-        //while (reader.Read())
-        //{
-        //    jobTitle = reader.GetString(0);
-        //    jobDescription = reader.GetString(1);
-        //    jobType = reader.GetString(2);
-        //    jobLocation = reader.GetString(3);
-        //    jobDeadline = reader.GetDateTime(4);
-        //    numOfApplicants = reader.GetInt32(5);
-        //    orgName = reader.GetString(6);
-        //    orgDescription = reader.GetString(7);
-        //    orgImage = reader.GetString(8);
-
-        //}
-
-
+            ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
 
 
     }
@@ -100,7 +35,16 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void jobPostingTable_Load(object sender, EventArgs e)
     {
-       
+        Session["schoolID"] = 12;
+
+        if (!IsPostBack)
+        {
+            String s = " ";
+            displayTable(sender, e, s);
+        }
+
+        
+
 
     }
 
@@ -126,7 +70,7 @@ public partial class JobPostings : System.Web.UI.Page
         lblJobTitle.Text = jobTitle;
         lblOrgName.Text = orgName;
 
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+        //ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
 
     }
 
@@ -191,11 +135,16 @@ public partial class JobPostings : System.Web.UI.Page
         }
 
         //if something was selected then lets loop through the array and make the conditional string
-        String condititionalIf = "or InterestGroupID = ";
+        String condititionalIf = "OpportunityInterestGroups.InterestGroupID = ";
 
         //if all are selected, there is no need to loop. we want to see everything. 
         if (interestGroupList.Count == InterestGroupDrop.Items.Count) {
-            condititionalIf = "";
+            condititionalIf = " ";
+        }
+
+        else if (interestGroupList.Count == 0)
+        {
+            condititionalIf = " ";
         }
 
         //there is something in the list, and it isn't all selected
@@ -207,7 +156,7 @@ public partial class JobPostings : System.Web.UI.Page
             //if the list is not the last index of the list we can add an or clause
             if(interestID != interestGroupList.Count - 1)
             {
-                condititionalIf += interestGroupList[interestID] + " or InterestGroupID = ";
+                condititionalIf += interestGroupList[interestID] + " or OpportunityInterestGroups.InterestGroupID = ";
             }
             else
             {
@@ -220,7 +169,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         }
         //this is our condition....
-        label2.Text = condititionalIf;
+
 
         displayTable(sender, e, condititionalIf);
 
@@ -229,20 +178,45 @@ public partial class JobPostings : System.Web.UI.Page
 
     private void displayTable (object sender, EventArgs e, String s)
     {
+        //initial set up...Counter for the number of rows, and 
         int countTotalJobs = 0;
         String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countJobPostings = new System.Data.SqlClient.SqlCommand();
-        countJobPostings.CommandText = "SELECT        COUNT(SchoolApproval.OpportunityEntityID) AS Expr1 FROM OpportunityEntity INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID
-WHERE(OpportunityEntity.OpportunityType = 'JOB') AND(SchoolApproval.ApprovedFlag = 'Y') AND(SchoolApproval.SchoolEntityID = 12)  and InterestGroupID = s s;
-        //"and SchoolEntityID = " + Session["schoolID"];
-        countJobPostings.Connection = sc;
+       
+        
 
+        //This indicates that all interest groups were selected/default!
+        if (s.Equals(" "))
+        {
+            //default
+            countJobPostings.CommandText = "SELECT count( SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON " +
+                "OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'JOB' and schoolApproval.approvedflag = 'Y'" +
+                " and SchoolApproval.SchoolEntityID = " + Session["schoolID"]; 
+            
+
+        }
+        //This indicates that there were some interest groups that were selected in the drop down menu
+        else
+        {
+            //have to utilize distinct due to the nature of data duplication with interest groups. Cannot have two cards that are exactly the same
+            countJobPostings.CommandText = "SELECT COUNT(DISTINCT OpportunityEntity.OpportunityEntityID) AS Expr1 FROM OpportunityEntity INNER JOIN " +
+                "OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID INNER JOIN  " +
+                "InterestGroups ON OpportunityInterestGroups.InterestGroupID = InterestGroups.InterestGroupID INNER JOIN " +
+                "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID WHERE(OpportunityEntity.OpportunityType = 'JOB') " +
+                "AND(SchoolApproval.SchoolEntityID = 12) AND(SchoolApproval.ApprovedFlag = 'Y') and ("+ s +")" ;
+
+        }
+
+        String test = s;
+
+        countJobPostings.Connection = sc;
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();
+
+   
+
 
         while (reader.Read())
         {
@@ -253,9 +227,34 @@ WHERE(OpportunityEntity.OpportunityType = 'JOB') AND(SchoolApproval.ApprovedFlag
 
 
 
+
         sc.Open();
+
+
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT        Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription, JobListing.JobListingID, OpportunityInterestGroups.InterestGroupID FROM            SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN       OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID WHERE(SchoolApproval.ApprovedFlag = 'Y') AND(SchoolApproval.SchoolEntityID = 12) " + s;
+        
+        if(s.Equals(" "))
+        {
+            pullJobInfo.CommandText = "SELECT  Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription," +
+            " Organization.Image, Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription," +
+            " JobListing.JobListingID FROM SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing" +
+            " ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+            "where SchoolApproval.ApprovedFlag = 'Y' and OpportunityEntity.OpportunityType = 'JOB' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
+
+        }
+        else
+        {
+            pullJobInfo.CommandText = "SELECT distinct Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, " +
+                "Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription, " +
+                "JobListing.JobListingID FROM " +
+                "SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
+                "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN " +
+                " OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID WHERE(SchoolApproval.ApprovedFlag = 'Y') AND OpportunityEntity.OpportunityType = 'JOB' and " +
+                "(SchoolApproval.SchoolEntityID = 12) and (" + s +")";
+
+        }
+
+
 
         pullJobInfo.Connection = sc;
 
@@ -344,7 +343,7 @@ WHERE(OpportunityEntity.OpportunityType = 'JOB') AND(SchoolApproval.ApprovedFlag
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
                     c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>"));
                     c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
-                    c.Controls.Add(referralLink);
+                    //c.Controls.Add(referralLink);
                     c.Controls.Add(new LiteralControl("</a>"));
                     c.Controls.Add(new LiteralControl("</li>"));
                     c.Controls.Add(new LiteralControl("</ul>"));

@@ -4,6 +4,7 @@
 
 
     <head>
+
         <title>Job Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,9 +35,8 @@
                         <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
                             SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
                         </asp:SqlDataSource>
-                        <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
+                        <asp:Button ID="ApplyChanges" AutoPostBack="true" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
 
-                        <asp:Label ID="label2" runat="server"></asp:Label>
                     </div>
                 </div>
             </div>
