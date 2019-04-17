@@ -102,6 +102,7 @@ public partial class StudentActDec : System.Web.UI.Page
         approveStudent.ExecuteNonQuery();
         sql.Close();
 
+
         Response.Redirect("~/StudentActDec.aspx");
     }
 
