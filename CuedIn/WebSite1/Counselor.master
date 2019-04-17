@@ -99,13 +99,6 @@
                         <a href="CounselorStudentMetricsDashboard.aspx">Student Metrics Dashboard</a>
                     </li>
                     <li>
-                        <a href="CounselorScholarshipDashboard.aspx">Scholarship Dashboard</a>
-                    </li>
-                    <li>
-
-                        <a href="CounselorJobListingDashboard.aspx">Job Listing Dashboard</a>
-                    </li>
-                    <li>
                         <a href="CounselorJobListingMap.aspx">Work Based Learning Map</a>
                     </li>
                      <li>

@@ -19,14 +19,11 @@ public partial class Login : System.Web.UI.Page
 
         Session.Remove("user");
         Session.Remove("permission");
+        Session.Remove("schoolid");
         Session["user"] = "";
         Session["permission"] = "";
-        
-        //initialize session variables for school views. 
-        Session["userschoolID"] = "";
-        Session["userCounty"] = "";
-        Session["schoolName"] = "";
-        Session["schoolEntityID"] = "";
+
+        Session["schoolid"] = "";
 
 
 
@@ -102,8 +99,10 @@ public partial class Login : System.Web.UI.Page
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
 
-            Label1.Text = "Success!";
+            Label10.Text = "Success!";
             String permissions = " ";
+            int school = 0;
+
             sql.Open();
             System.Data.SqlClient.SqlCommand query1 = new System.Data.SqlClient.SqlCommand();
 
@@ -164,6 +163,22 @@ public partial class Login : System.Web.UI.Page
 
             }
 
+            query1.CommandText = "SELECT dbo.SchoolEmployee.SchoolentityID from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID1";
+            query1.Parameters.AddWithValue("@SchoolEmployeeEntityID1", id);
+            reader2.Close();
+            System.Data.SqlClient.SqlDataReader reader4 = query1.ExecuteReader();
+            while (reader4.Read())
+            {
+                if (reader3.IsDBNull(0))
+                    school = 0;
+
+
+                else
+                {
+                    school = reader4.GetInt32(0);
+                }
+            }
+
 
             Session["schoolID"] = schoolEntityId;
             Session["userCounty"] = schoolCounty;
@@ -176,25 +191,30 @@ public partial class Login : System.Web.UI.Page
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
-                Response.Redirect("CommunityFeed.aspx");
+
+                Session["schoolid"] = school;
+                Response.Redirect("JobPostings.aspx");
+
             }
             else if (permissions.Equals("Counselor"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
+                Session["schoolid"] = school;
                 Response.Redirect("CounselorJobPosting.aspx");
             }
             else if (permissions.Equals("Teacher"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
+                Session["schoolid"] = school;
                 Response.Redirect("TeacherJobPosting.aspx");
             }
 
         }
         else
         {
-            Label1.Text = "Your username or password is incorrect, please try again.";
+            Label10.Text = "Your username or password is incorrect, please try again.";
 
             username.Value = "";
             password.Value = "";
