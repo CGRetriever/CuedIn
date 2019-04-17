@@ -165,11 +165,11 @@ public partial class Login : System.Web.UI.Page
 
             query1.CommandText = "SELECT dbo.SchoolEmployee.SchoolentityID from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID1";
             query1.Parameters.AddWithValue("@SchoolEmployeeEntityID1", id);
-            reader2.Close();
+            reader3.Close();
             System.Data.SqlClient.SqlDataReader reader4 = query1.ExecuteReader();
             while (reader4.Read())
             {
-                if (reader3.IsDBNull(0))
+                if (reader4.IsDBNull(0))
                     school = 0;
 
 
@@ -193,7 +193,7 @@ public partial class Login : System.Web.UI.Page
                 Session["permission"] = permissions;
 
                 Session["schoolid"] = school;
-                Response.Redirect("JobPostings.aspx");
+                Response.Redirect("LandingPage.aspx");
 
             }
             else if (permissions.Equals("Counselor"))
