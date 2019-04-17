@@ -38,6 +38,10 @@ public partial class LandingPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
+        ((Label)Master.FindControl("lblMaster")).Text = "Landing Page";
+
+
         EmptyPostinglbl.Visible = false;
         EmptyStudentslbl.Visible = false;
 
@@ -283,7 +287,15 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         // Start of Tableu Charts
-        Chart1.Visible = true;
+
+        if (Session["schoolID"].Equals(12))
+        {
+            Chart1.Visible = true;
+            Div1.Visible = true;
+            Chart2.Visible = true;
+        }
+        
+
 
     }
 
