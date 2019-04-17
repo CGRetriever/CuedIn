@@ -14,7 +14,7 @@
         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
         <div class="form-group">
-            <div class="col-md-12 container text-center">
+            <div class="col-md-10 container text-center">
 
                 <div class="col-auto text-center rounded" style="background-color: #102B3F; width: 100;">
                     <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
@@ -37,7 +37,7 @@
                
                 <div class="table-responsive">
 
-              <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="ApplicationID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
+              <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark rounded" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="ApplicationID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
                       <Columns>
 
                         <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />

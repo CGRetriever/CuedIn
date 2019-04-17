@@ -35,6 +35,11 @@ public partial class StudentActDec : System.Web.UI.Page
         GridView1.DataBind();
         conn.Close();
 
+
+        //Object sen = new Object();
+        //EventArgs e1 = new EventArgs();
+     //   btnCheckGridView_Click(sen, e1);
+
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
         
@@ -101,6 +106,7 @@ public partial class StudentActDec : System.Web.UI.Page
         approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y' where applicationID = " + Session["selectedapplicationID"];
         approveStudent.ExecuteNonQuery();
         sql.Close();
+
 
         Response.Redirect("~/StudentActDec.aspx");
     }
