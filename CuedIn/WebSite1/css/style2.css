@@ -1,0 +1,82 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+button{
+    border-radius:3em;
+    color:#102B3F!important;
+}
+#about{
+    color:#fff!important;
+}
+.bg-light {
+    background-color: #102B3F!important;
+}
+.nav-link{
+    color:#102B3F!important;
+    font-size:1.5em;
+}
+#logo{
+    color:#fff!important;
+    font-size:2em;
+    margin-right: 5em !important;
+}
+.navbar-light .navbar-toggler {
+    color: #FFF!important;
+    border-color: #FFF;
+    margin-top:.5em;
+}
+nav{
+    opacity:0.7;
+}
+
+body, html {
+  height: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url("https://i.imgur.com/SBqbU38.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+#imagetext{
+    position: relative;
+    top: 20em;
+    width: 100em;
+    color:#fff
+}
+
+@media only screen and (min-width :320px) and (max-width : 767px) {
+    .bigDesktop, .smallDesktop, .tablet {
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width :768px) and (max-width : 1199px) {
+    .bigDesktop, .smallDesktop, .tablet {
+        display: none;
+    }
+}
+
+
+
+
+@media only screen and (min-width :1200px) and (max-width : 1599px) {
+    .bigDesktop, .phone, .tablet {
+        display: none;
+    }
+}
+
+@media only screen and (min-width :1600px) {
+    .smallDesktop, .phone, .tablet {
+        display: none;
+    }
+}
