@@ -41,7 +41,6 @@ public partial class LandingPage : System.Web.UI.Page
 
         ((Label)Master.FindControl("lblMaster")).Text = "Landing Page";
 
-        
         EmptyPostinglbl.Visible = false;
         EmptyStudentslbl.Visible = false;
 

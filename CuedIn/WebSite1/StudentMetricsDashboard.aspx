@@ -28,7 +28,7 @@
   
 
 
-       <ol class="breadcrumb arr-bread">
+<%--       <ol class="breadcrumb arr-bread">
     <li><a href="LandingPage.aspx">Home</a></li>
     <li><a href="ScholarshipDashboard.aspx">Scholarship Dashboard</a></li>
     <li><a href="JobListingDashboard.aspx">Job Listing Dashboard</a></li>
@@ -38,7 +38,7 @@
  
     <li class="active"><span>Student Metrics Dashboard</span></li>       
  
-                </ol>
+                </ol>--%>
 
 
 </asp:Content>
