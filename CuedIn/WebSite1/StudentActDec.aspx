@@ -16,9 +16,9 @@
         <div class="form-group">
             <div class="col-md-10 container text-center">
 
-                <div class="col-auto text-center rounded" style="background-color: #102B3F; width: 100;">
-                    <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-                    <br />
+                <div class="col-auto text-center rounded" style="background-color: #102B3F; padding: 10px;">
+                    <%--<asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <br />--%>
                        <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Enabled" OnCheckedChanged="cbSelectAll_Checked"/>
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True"/>
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />
@@ -46,15 +46,29 @@
                                      <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
-                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
-                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
-                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" SortExpression="HoursOfWorkPlaceExp" ReadOnly="True" HeaderStyle-Wrap="true" />
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" />
-                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" SortExpression="JobDescription" ReadOnly="True" ItemStyle-Wrap="true" />
+                        <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" SortExpression="HoursOfWorkPlaceExp" ReadOnly="True" HeaderStyle-Wrap="true" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" >
+<ItemStyle Wrap="True"></ItemStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" SortExpression="JobDescription" ReadOnly="True" ItemStyle-Wrap="true" >
+<ItemStyle Wrap="True"></ItemStyle>
+                          </asp:BoundField>
                         <asp:BoundField DataField="JobType" HeaderText="Job Type" ReadOnly="True" Visible="false" />
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true" />
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true" >
+<ItemStyle Wrap="True"></ItemStyle>
+                          </asp:BoundField>
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="approveStudentLinkBtn" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="approveStudentLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
