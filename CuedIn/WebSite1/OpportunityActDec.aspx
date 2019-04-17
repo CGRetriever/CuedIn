@@ -27,7 +27,7 @@
 
 
 
-        <div class="form-row">
+       
 
 
 
@@ -41,7 +41,7 @@
     <li><a href="ArchiveScholarships.aspx">Archived Scholarships</a></li>
                                
  
-    <li class="active"><span>Manage Opportunities</span></li>       
+    <li class="active"><span>Manage Jobs and Scholarships</span></li>       
  
                 </ol>
  
@@ -583,7 +583,7 @@
                 </div>
             </div>
 
-        </div>
+        
 
 
 </asp:Content>
