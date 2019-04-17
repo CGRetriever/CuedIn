@@ -4,6 +4,7 @@
 
 
     <head>
+
         <title>Job Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,117 +15,33 @@
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
 
         <link rel='stylesheet' href='css/card.css'>
         <link rel='stylesheet' href='css/style.css'>
     </head>
     <form id="form1" runat="server">
+
+
         <div class="container">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
             <div class="container">
-                <div class="row">
+                <div class="form-row">
                     <div class="col-md-12">
-                        <div class="button-group">
-                            <button type="button" id="filter" class="btn btn-default btn-sm rounded dropdown-toggle" data-toggle="dropdown">
-                                <h6>Filters <i class="fas fa-caret-down fa-lg"></i></h6>
-                            </button>
-                            <ul class="dropdown-menu" id="filterlist">
-                                <li><a href="#" class="small" data-value="AGR" tabindex="-1">
-                                    <input type="checkbox" id="chkAGR" />&nbsp;Agriculture, Food, and
-                                    <br>
-                                    Natural Resources  </a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="BUS" tabindex="-1">
-                                    <input type="checkbox" id="chkBUS" />&nbsp;Business and Marketing</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="HOS" tabindex="-1">
-                                    <input type="checkbox" id="chkHOS"/>&nbsp;Hospitality and
-                                    <br>
-                                    Human Services</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="PUB" tabindex="-1">
-                                    <input type="checkbox" id=""/>&nbsp;Public Safety</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="ARCH" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Architecture and
-                                    <br />
-                                    Construction</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="EDUC" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Education and Training</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="IT" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Information Technology</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="STEM" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;STEM</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="ART" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Arts, A/V
-                                    <br />
-                                    Technology, and<br />
-                                    Communications</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="HS" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Health Science</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="MAN" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Manufacturing</a></li>
-                                <br />
-                                <li><a href="#" class="small" data-value="TRANS" tabindex="-1">
-                                    <input type="checkbox" />&nbsp;Transportation</a></li>
-                            </ul>
-                        </div>
+
+                            <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
+                        <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
+                            SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
+                        </asp:SqlDataSource>
+                        <asp:Button ID="ApplyChanges" AutoPostBack="true" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
+
                     </div>
                 </div>
             </div>
-            <script>
-                var options = [];
 
-                $('.dropdown-menu a').on('click', function (event) {
-
-                    var $target = $(event.currentTarget),
-                        val = $target.attr('data-value'),
-                        $inp = $target.find('input'),
-                        idx;
-
-                    if ((idx = options.indexOf(val)) > -1) {
-                        options.splice(idx, 1);
-                        setTimeout(function () { $inp.prop('checked', false) }, 0);
-                    } else {
-                        options.push(val);
-                        setTimeout(function () { $inp.prop('checked', true) }, 0);
-                    }
-
-                    $(event.target).blur();
-
-                    console.log(options);
-                    return false;
-                });
-</script>
-            <%--            <asp:DropDownList ID="dropdownInterestGroup" runat="server" OnSelectedIndexChanged="dropdownInterestGroup_SelectedIndexChanged" CssClass="btn btn-default btn-sm rounded filterlist" SelectionMode="Multiple">
-                
-                <asp:ListItem Value="">Choose Interest Groups</asp:ListItem>
-                <asp:ListItem Value="AGR">Agriculture, Food, and Natural Resources</asp:ListItem>
-                <asp:ListItem Value="BUS">Business and Marketing</asp:ListItem>
-                <asp:ListItem Value="HOS">Hospitality and Human Services</asp:ListItem>
-                <asp:ListItem Value="PUB">Public Safety</asp:ListItem>
-                <asp:ListItem Value="ARC">Architecture and Construction</asp:ListItem>
-                <asp:ListItem Value="EDU">Education and Training</asp:ListItem>
-                <asp:ListItem Value="IT">Information Technology</asp:ListItem>
-                <asp:ListItem Value="STEM">STEM</asp:ListItem>
-                <asp:ListItem Value="ART">Arts, A/V Technology, and Communications</asp:ListItem>
-                <asp:ListItem Value="HS">Health Services</asp:ListItem>
-                <asp:ListItem Value="MAN">Manufacturing</asp:ListItem>
-                <asp:ListItem Value="TRAN">Transportation</asp:ListItem>
-
-            </asp:DropDownList>--%>
+            <div>
             <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%"></asp:Table>
         </div>
 
@@ -216,8 +133,11 @@
                 }
 
                 $(function () {
-                    $('[id*=dropdownInterestGroup]').multiselect({
-                        includeSelectAllOption: true
+                    $('[id*=InterestGroupDrop]').multiselect({
+                        includeSelectAllOption: true,
+                        buttonWidth: '200px'
+
+
                     });
                 });
 

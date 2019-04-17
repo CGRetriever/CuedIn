@@ -19,6 +19,7 @@
 
                 <asp:Label ID="UserNameLabel" CssClass="card-text" runat="server"  Font-Bold="True"></asp:Label>
                 <asp:TextBox id="TweetBox" rows="5" CssClass="form-control" TextMode="multiline" runat="server" BorderColor="Silver" ValidationGroup="Group1" Font-Size="Smaller" />
+                <asp:Label ID="ValidatorLabel" runat="server" ForeColor="Red"></asp:Label>
                 </div>
          
 
