@@ -11,6 +11,7 @@ public partial class LandingPage : System.Web.UI.Page
 
     // OOP Stuff
     public static JobListing[] JobCardsArray = new JobListing[4];
+    public static Student[] StudentCardsArray = new Student[4];
 
 
     // Student request arrays
@@ -214,6 +215,27 @@ public partial class LandingPage : System.Web.UI.Page
 
         while (result.Read())
         {
+
+
+            // Stopped here, query in google drive, need to change query so results are stored in a student and joblisting object and add them to arrays, then set lbls based on arrays, need to make first and last name separate labels on cards
+
+            //int applicationID = result.GetInt32(0);
+            //String firstName = result.GetString(6);
+            //String lastName = result.GetString(7);
+            //String studentGPA = result.GetDouble(3).ToString();
+            //String studentImage = result.GetString(4);
+            //String jobTitle = result.GetString(1);
+            //String orgName = result.GetString(2);
+            //String orgWebsite = result.GetString(5);
+
+
+
+
+
+
+
+
+
             applicationIDArray[y] = result.GetInt32(0).ToString();
             StudentNamearray[y] = result.GetString(1);
             AppJobTitleArray[y] = result.GetString(2);
