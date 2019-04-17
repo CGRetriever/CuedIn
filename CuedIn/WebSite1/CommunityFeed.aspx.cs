@@ -275,9 +275,17 @@ public partial class CommunityFeed : System.Web.UI.Page
     {
         //Transfer the text in the textbox to the Modal Text box
         Tweet.Text = TweetBox.Text;
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openTweetVerification();", true);
 
-        //TweeterFeedLink.HRef = "https://twitter.com/TA_FCA?ref_src=twsrc%5Etfw";
+        if (Tweet.Text == "")
+        {
+            ValidatorLabel.Text = "Unable to Tweet! Tweet is empty.";
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openTweetVerification();", true);
+            ValidatorLabel.Text = "";
+        }
+
 
     }
 

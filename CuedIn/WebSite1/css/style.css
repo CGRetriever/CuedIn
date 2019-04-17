@@ -388,6 +388,7 @@ h1 {
 
 
 
+
 /* ---------------------------------------------------
   Breadcrumb
 ----------------------------------------------------- */
@@ -482,3 +483,4 @@ h1 {
             .arr-bread li a:active:after, .arr-bread li a:active:before {
                 border-left-color: #4F79A3
             }
+
