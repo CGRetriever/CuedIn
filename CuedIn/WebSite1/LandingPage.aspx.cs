@@ -13,25 +13,6 @@ public partial class LandingPage : System.Web.UI.Page
     public static JobListing[] JobCardsArray = new JobListing[4];
 
 
-
-
-
-    // Job posting arrays
-    public static String[] imageArray = new string[5];
-    public static String[] jobTitleArray = new string[5];
-    public static int[] jobListingIDArray = new int[5];
-    public static String[] orgNameArray = new string[5];
-    public static String[] jobTypeArray = new string[5];
-    public static String[] jobLocationArray = new string[5];
-    public static int[] numOfapplicantsArray = new int[5];
-    public static String[] jobDeadLineArray = new string[5];
-    public static String[] jobDescArray = new string[5];
-    public static String[] OrgDescArray = new string[5];
-    public static String[] OrgWebURLArray = new string[5];
-
-
-
-
     // Student request arrays
     public static String[] StudentImageArray = new string[5];
     public static String[] applicationIDArray = new string[5];
@@ -90,21 +71,6 @@ public partial class LandingPage : System.Web.UI.Page
             JobListing tempObject = new JobListing(JobTitle, JobDescription, JobType, JobLocation, JobDeadline, numOfApplicants, OrgName, OrgDescription, OrgImage, OrgWebsite);
 
             JobCardsArray[x] = tempObject;
-
-
-
-
-            imageArray[x] = reader.GetString(2);
-            jobTitleArray[x] = reader.GetString(1);
-            jobListingIDArray[x] = reader.GetInt32(0);
-            orgNameArray[x] = reader.GetString(3);
-            jobTypeArray[x] = reader.GetString(4);
-            jobLocationArray[x] = reader.GetString(6);
-            jobDescArray[x] = reader.GetString(5);
-            numOfapplicantsArray[x] = reader.GetInt32(7);
-            jobDeadLineArray[x] = reader.GetDateTime(8).ToString();
-            OrgDescArray[x] = reader.GetString(9);
-            OrgWebURLArray[x] = reader.GetString(10);
             x++;
 
         }
