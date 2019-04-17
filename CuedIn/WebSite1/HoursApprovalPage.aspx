@@ -67,7 +67,7 @@
                        
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
+                                <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" BackColor="White" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Student Name">
