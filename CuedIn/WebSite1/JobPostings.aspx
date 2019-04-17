@@ -55,8 +55,8 @@
 <!--- END Breadcrumb --->
 
         <div class="container">
-            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
+             <button onclick="return false;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
                     </div>
                 </div>
@@ -156,8 +156,8 @@
 
                 // When the user clicks on the button, scroll to the top of the document
                 function topFunction() {
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                    //document.body.scrollTop = 0; // For Safari
+                    //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
 
                 $(function () {

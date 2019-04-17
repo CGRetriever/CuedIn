@@ -88,16 +88,27 @@
              </div>
                        <div style="height:5px;font-size:10px;">&nbsp;</div>
                       
+
                  <div class ="table-responsive">   
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" BackColor="#102B40" ForeColor="White">
 
-
                     <Columns>
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false"/>
-                        <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
-                        <asp:BoundField DataField="Location" HeaderText="Location" Visible="false"/>
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True"  >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" Visible="false" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="Location" HeaderText="Location" Visible="false">
+
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
 
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
@@ -105,6 +116,8 @@
                                 <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                 <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
                             </ItemTemplate>
+
+                            <ItemStyle Width="100%" />
 
                         </asp:TemplateField>
                     </Columns>
@@ -141,16 +154,31 @@
                
                 
       
+
             <div class ="table-responsive">   
              <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
 
-                    <Columns>
-                        <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" Visible="false" />
-                        <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false"/>
-                        <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false"/>
 
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
+                    <Columns>
+                        <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" Visible="false" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false">
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false">
+
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" >
+
+
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
 
 
                         <asp:TemplateField ShowHeader="False">
@@ -159,6 +187,7 @@
                                 <asp:LinkButton ID="LinkButton3" CssClass="btn btn-danger btn-circle btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton1" CssClass="btn btn-warning btn-circle btn-block"  Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton1_Click"><i class="fas fa-info"></i></asp:LinkButton>
                             </ItemTemplate>
+                            <ItemStyle Width="100%" />
                         </asp:TemplateField>
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />

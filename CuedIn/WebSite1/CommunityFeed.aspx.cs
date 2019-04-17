@@ -50,6 +50,7 @@ public partial class CommunityFeed : System.Web.UI.Page
         sc.ConnectionString = connectionString;
 
         ((Label)Master.FindControl("lblMaster")).Text = "Community Feed";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         //API Keys Consumers
         String ConsumerAPIKey = "m1OiqyDwhR4N6qhUZKPs5Ol8v";
