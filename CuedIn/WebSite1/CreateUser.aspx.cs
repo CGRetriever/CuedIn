@@ -35,12 +35,13 @@ public partial class CreateUser : System.Web.UI.Page
         Label2.Text = "";
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
-       
+
         sql.Open();
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = sql;
 
-        if (password.Value.Equals(password2.Value)) {
+        if (password.Value.Equals(password2.Value))
+        {
 
 
             //get our ID for future use (inserting into tables that use this key but not have it auto increment 1 person, password)
@@ -62,9 +63,9 @@ public partial class CreateUser : System.Web.UI.Page
 
             sql.Open();
             System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
-           
+
             insert.Connection = sql;
-          
+
             //inserting into the BE table 
 
 
@@ -77,7 +78,7 @@ public partial class CreateUser : System.Web.UI.Page
             middleName.Value.Trim();
             lastName.Value.Trim();
 
-            
+
 
             insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(username.Value));
             insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(email.Value));
@@ -86,7 +87,7 @@ public partial class CreateUser : System.Web.UI.Page
 
 
             insert.ExecuteNonQuery();
-             
+
 
             //inserting into the password 
             insert.CommandText = "insert into dbo.Password (PasswordID, PasswordHash, passwordSalt, UserEntityID, lastupdated)  " +
@@ -101,7 +102,7 @@ public partial class CreateUser : System.Web.UI.Page
             string test = PasswordHash.returnSalt(hashedPass);
 
             //had to use only the substring and not the full salt value because there is a max length of 10 in the DB.
-            insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0,24));
+            insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0, 24));
             insert.Parameters.AddWithValue("@userentityID", userID);
             insert.ExecuteNonQuery();
 
@@ -117,19 +118,19 @@ public partial class CreateUser : System.Web.UI.Page
             insert.Parameters.AddWithValue("@Country", HttpUtility.HtmlEncode("USA"));
             insert.Parameters.AddWithValue("@City", HttpUtility.HtmlEncode(city.Value));
             insert.Parameters.AddWithValue("@State", HttpUtility.HtmlEncode("VA"));
-            int zip;
-            if (int.TryParse(zipcode.Value, out zip))
-            {
-                insert.Parameters.AddWithValue("@Zipcode", HttpUtility.HtmlEncode(zip));
-            }
-            else
-            {
-                insert.Parameters.AddWithValue("@Zipcode", 00000);
-                Label1.Text = "Enter a number for the zipcode";
-            }
+            //int zip;
+            //if (int.TryParse(zipcode.Value, out zip))
+            //{
+            //    insert.Parameters.AddWithValue("@Zipcode", HttpUtility.HtmlEncode(zip));
+            //}
+            //else
+            //{
+            //    insert.Parameters.AddWithValue("@Zipcode", 00000);
+            //    Label1.Text = "Enter a number for the zipcode";
+            //}
 
-            
-            
+
+
             insert.Parameters.AddWithValue("@SchoolEmployeeEntityType", role.SelectedItem.Value);
             insert.Parameters.AddWithValue("@SchoolEntityID", DropDownList2.SelectedItem.Value);
             insert.ExecuteNonQuery();
@@ -140,9 +141,9 @@ public partial class CreateUser : System.Web.UI.Page
             lastName.Value = "";
             middleName.Value = "";
             city.Value = "";
-            zipcode.Value = "";
+         //   zipcode.Value = "";
 
-     
+
             address.Value = "";
             username.Value = "";
             password.Value = "";
@@ -157,5 +158,12 @@ public partial class CreateUser : System.Web.UI.Page
         }
     }
 
-   
+    public void textBox1_TextChanged(object sender, EventArgs e)
+    {
+       if (!System.Text.RegularExpressions.Regex.IsMatch(zipcode.Text, "^[a-zA-Z ]"))
+        {
+          
+           zipcode.Text.Remove(zipcode.Text.Length - 1);
+        }
+    }
 }
