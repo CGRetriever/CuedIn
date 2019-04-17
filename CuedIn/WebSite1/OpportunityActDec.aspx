@@ -113,16 +113,7 @@
          </div>
                     </div>
         
-      
-   
-
-
-                     
-                 
-              
-
-         
-
+     
                 <div class="form-group col-md-6">
             
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
