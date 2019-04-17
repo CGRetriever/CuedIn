@@ -166,8 +166,8 @@ public partial class Login : System.Web.UI.Page
             query1.CommandText = "SELECT dbo.SchoolEmployee.SchoolentityID from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID1";
             query1.Parameters.AddWithValue("@SchoolEmployeeEntityID1", id);
             reader2.Close();
-            System.Data.SqlClient.SqlDataReader reader3 = query1.ExecuteReader();
-            while (reader3.Read())
+            System.Data.SqlClient.SqlDataReader reader4 = query1.ExecuteReader();
+            while (reader4.Read())
             {
                 if (reader3.IsDBNull(0))
                     school = 0;
@@ -175,7 +175,7 @@ public partial class Login : System.Web.UI.Page
 
                 else
                 {
-                    school = reader3.GetInt32(0);
+                    school = reader4.GetInt32(0);
                 }
             }
 
