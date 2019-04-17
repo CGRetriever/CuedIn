@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,17 +14,36 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        GridView1.Columns[0].Visible = false;
-       ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
 
-        string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where CounselorApproval = 'P'";
-        DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        da.Fill(dt);
-        GridView1.DataSource = dt;
-        GridView1.DataBind();
+        GridView1.Columns[0].Visible = false;
+        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
+
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+        if (cbSelectAll.Checked == true)
+        {
+            chkImage.Checked = true;
+            chkJobType.Checked = true;
+            chkHoursWBL.Checked = true;
+            chkGradeLevel.Checked = true;
+            chkGPA.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkImage.Checked = false;
+            chkJobType.Checked = false;
+            chkHoursWBL.Checked = false;
+            chkGradeLevel.Checked = false;
+            chkGPA.Checked = false;
+
+            cbSelectAll.Text = "Select All";
+
+        }
+
     }
 
 
@@ -36,7 +53,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         /* Verifies that the control is rendered */
     }
 
-    
+
     //click approve in gridview- trigger modal to open - fill modal
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
@@ -59,13 +76,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
         while (reader.Read())
         {
             sublabelapprovemodal1.Text = reader.GetString(2);
-            sublabelapprovemodal2.Text =  reader.GetString(0);
-            sublabelapprovemodal3.Text =  "Hours: " + reader.GetInt32(1).ToString();
+            sublabelapprovemodal2.Text = reader.GetString(0);
+            sublabelapprovemodal3.Text = "Hours: " + reader.GetInt32(1).ToString();
         }
 
         sql.Close();
 
-      
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
@@ -164,7 +181,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Close();
 
 
-     
+
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
@@ -174,7 +191,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     }
 
 
-  
+
 
 
 
@@ -214,15 +231,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    protected void btnStudentView_Click (object sender, CommandEventArgs e)
+    protected void btnStudentView_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        
 
-        int logID= Convert.ToInt32(e.CommandArgument);
+
+        int logID = Convert.ToInt32(e.CommandArgument);
 
         Session["logID"] = logID.ToString();
 
@@ -253,8 +270,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
         while (studentReader.Read())
         {
             //fill labels in modal
-            
-            
+
+
             lblStudentName.Text = studentReader.GetString(0);
             lblGradeLevel.Text = "Grade Level: " + studentReader.GetString(1);
             lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
@@ -268,131 +285,145 @@ public partial class OpportunityActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
 
-    protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+
+    protected void btnCheckGridView_Click(object sender, EventArgs e)
     {
 
-        if(DropDownList3.SelectedIndex == 1)
+        if (chkImage.Checked != true)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = " +
-                "LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON " +
-                "JobListing.OrganizationID = Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa > 0 AND student.studentgpa < 1)  order by studentGPA desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
         }
-        else if (DropDownList3.SelectedIndex == 2)
+        else
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID" +
-                " INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa >= 1 AND student.studentgpa < 2)  order by studentGPA desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
         }
 
-        else if (DropDownList3.SelectedIndex == 3)
+        if (chkGradeLevel.Checked != true)
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa >= 2 AND student.studentgpa < 3)  order by studentGPA desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-        }
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = false;
 
-        else if (DropDownList3.SelectedIndex == 4)
+                }
+            }
+        }
+        else
         {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and (student.studentgpa >= 3)  order by studentGPA desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
         }
 
 
+        if (chkGPA.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkHoursWBL.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
 
     }
 
-    protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+
+
+
+
+    protected void SearchButton_Click(object sender, EventArgs e)
     {
-        if (DropDownList2.SelectedIndex == 1)
-        {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Freshmen')  order by lastname desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-        }
-        else if (DropDownList2.SelectedIndex == 2)
-        {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Sophomore')  order by lastname desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-        }
+        String term = SearchBox.Text;
 
-        else if (DropDownList2.SelectedIndex == 3)
-        {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-                  "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-                  "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-                  "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Junior')  order by lastname desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-        }
+        JobOpportunity.SelectParameters.Add("term", term);
 
-        else if (DropDownList2.SelectedIndex == 4)
-        {
-            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Organization.OrganizationName, " +
-              "JobListing.JobTitle, LogHours.HoursRequested FROM  JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID " +
-              "INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = " +
-              "Organization.OrganizationEntityID where CounselorApproval = 'P' and(StudentGradeLevel = 'Senior')  order by lastname desc";
-            DataTable dt = new DataTable();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-            conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
-        }
+        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
+        JobOpportunity.DataBind();
+        GridView1.DataBind();
+
+        JobOpportunity.SelectParameters.Clear();
+
     }
 }

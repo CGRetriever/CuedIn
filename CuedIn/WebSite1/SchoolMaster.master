@@ -21,7 +21,7 @@
 
 
     </head>
-
+    <form id="form1" runat="server">
     <body>
         <!--Interactive Sidebar Star -->
 
@@ -29,7 +29,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>CommUp</h3>
+                <a href="LandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
                 <strong>CU</strong>
             </div>
 
@@ -85,10 +85,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="JobPostings.aspx">Jobs</a>
+                        <a href="JobPostings.aspx">Approved Jobs</a>
                     </li>
                     <li>
-                        <a href="ScholarshipBoard.aspx">Scholarships</a>
+                        <a href="ScholarshipBoard.aspx">Approved Scholarships</a>
                     </li>
                 </ul>
 
@@ -120,6 +120,15 @@
 
 
                 </li>
+                 <li>
+                    <a href="CommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
+                </li>
+
+
+
                 <li>
                     <a href="CreateUser.aspx">
                         <i class="fas fa-user-circle"></i>
@@ -134,51 +143,42 @@
                 </li>
 
             </ul>
+          <div class="container-fluid">
 
-
+                   <button type="button" id="sidebarCollapse" class="btn btn-info">
+                       <i class="fas fa-chevron-circle-left fa-2x"></i>
+                       <span></span>
+                   </button>
+                      <script>
+ document.addEventListener('DOMContentLoaded', function () {
+   $('button').on('click', function () {
+     $(this)
+       .find('[data-fa-i2svg]')
+       .toggleClass('fas fa-chevron-circle-right')
+       .toggleClass('fas fa-chevron-circle-left fa-2x');
+   });
+ });
+</script>
         </nav>
 
         <!-- Page Content  -->
         <div id="content">
             <div class="containter-fluid" id="maincont" style="background-color:#4F79A3;">
-               <div class="row">
+               <div class="row" style="height:120px;">
                    <div class="col-md-3">
-                       <img class="img" src="images/comlogo.png" alt="company logo" style="height:200px; width:400px;">
                    </div>
                    <div class="col-md-6 text-center">
-                       <br>
-                       <br>
-                       <br>
+                       
                        <%--<h1 style=" color:#fff;  letter-spacing: 6px;"> STUDENT OUTCOMES</h1>--%>
                        <asp:Label ID="lblMaster" runat="server" Text="" Style="color: #fff; text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
-
+                       <br>
 
                </div>
 
            </div>
        </div>
             <br>
-            <nav class="navbar navbar-expand-lg <%--navbar-light--%> <%--bg-light--%>">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <%--<div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">APPROVED JOBS</a>
-                            </li>
-                        </ul>
-                    </div>--%>
-                </div>
-            </nav>
-            <!---End Sidebar Nav--->
+        
 
 
                     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -199,5 +199,6 @@
     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
 </body>
+</form>
 </html>
 

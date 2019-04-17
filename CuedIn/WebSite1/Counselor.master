@@ -22,7 +22,7 @@
 
 
     </head>
-
+    <form id="form1" runat="server">
     <body>
         <!--Interactive Sidebar Star -->
 
@@ -30,7 +30,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>CommUp</h3>
+                <h3><asp:ImageButton ID="HomeButton" runat="server" ImageUrl="~/images/CommUpMainLogo.png" OnClick="HomeButton_Click" style="height:100px; width:200px;" /></h3>
                 <strong>CU</strong>
             </div>
 
@@ -199,4 +199,5 @@
 
     
 </body>
+</form>
 </html>

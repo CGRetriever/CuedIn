@@ -8,7 +8,6 @@
             <p>Archived Scholarships</p>
         </div>
     </div>
-    <form id="form1" runat="server">
                 <%--Rejected Scholarships Gridview--%>
         <div class="form-row">
         <div class="form-group col-md-6">
@@ -202,5 +201,4 @@
                     }
                 </script>
             </div>
-            </form>
 </asp:Content>
