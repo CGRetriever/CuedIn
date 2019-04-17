@@ -44,7 +44,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="OppPages">
                         <li>
-                            <a href="OpportunityActDec.aspx">Manage Opportunities</a>
+                            <a href="OpportunityActDec.aspx">Manage Jobs and <br /> Scholarships</a>
                         </li>
                         <li>
                             <a href="ArchiveOpportunities.aspx">Archived Job Listings</a>
