@@ -6,9 +6,8 @@
     <link rel="stylesheet" type="text/css" href="css/dropdown.css">
     <form id="form1" runat="server">
 
-        <div class="form-row">
-
-       <div class=" text-center custom-dropdown big" style ="padding-left:425px;">
+     
+      <%-- <div class=" text-center custom-dropdown big" style ="padding-left:425px;">
            <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="true" class="custom-dropdown big" >
                <asp:ListItem>Choose Year</asp:ListItem>
                <asp:ListItem>Freshman</asp:ListItem>
@@ -39,7 +38,7 @@
                <asp:ListItem Text="Hours Requested" Value="HoursRequested"></asp:ListItem>
            </asp:DropDownList>
       <label Class="form-control-lg font-weight-bold" for="inputJobs"></label>
-           </div>
+           </div>--%>
        
         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
         <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
@@ -66,7 +65,7 @@
                
                 
               
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; width:auto;" AutoGenerateColumns="False" DataKeyNames="LogID"  CellPadding="1" BackColor="#102B40" ForeColor="White">
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="LogID"  CellPadding="1" BackColor="#102B40" ForeColor="White">
                     <Columns>
 
                        
