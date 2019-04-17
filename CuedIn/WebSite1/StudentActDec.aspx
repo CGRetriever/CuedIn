@@ -37,7 +37,7 @@
                
                 <div class="table-responsive">
 
-              <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="ApplicationID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
+              <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark rounded" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="ApplicationID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
                       <Columns>
 
                         <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />
