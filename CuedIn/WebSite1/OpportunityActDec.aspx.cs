@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,10 +11,50 @@ using System.Web.UI.WebControls;
 public partial class OpportunityActDec : System.Web.UI.Page
 {
     public static String email;
-
+    private int schoolid;
     protected void Page_Load(object sender, EventArgs e)
     {
+        schoolid = Convert.ToInt32(Session["schoolid"]);
+        String query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+            "Organization.ExternalLink" +
+            " FROM OpportunityEntity INNER JOIN " +
+            " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN " +
+            "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+            "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+            " Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where school.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'";
+
+
+       
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView2.DataSource = dt;
+        GridView2.DataBind();
+
+        String query1 = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+            " Organization.ExternalLink" +
+            "  FROM  OpportunityEntity INNER JOIN" +
+            " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN" +
+            " School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+            " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN" +
+            "  Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID" +
+            " WHERE school.SchoolEntityID =  " + schoolid  + " and SchoolApproval.ApprovedFlag = 'P'";
+
+
+
+
+
+        DataTable dt1 = new DataTable();
         
+        SqlDataAdapter de = new SqlDataAdapter(query1, conn);
+        de.Fill(dt1);
+        GridView1.DataSource = dt1;
+        GridView1.DataBind();
+
 
 
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Jobs and <br> Scholarships";
@@ -587,27 +629,52 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void SearchButton1_Click(object sender, EventArgs e)
     {
         String term = SearchBox1.Text;
+        String query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType," +
+            " JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID inner join opportunityentity on " +
+            " opportunityentity.opportunityentityid = joblisting.joblistingid inner join schoolapproval on schoolapproval.opportunityentityid = opportunityentity.opportunityentityid where(schoolapproval.approvedflag = 'P') " +
+            " and((JobListing.JobTitle like '%" + term + "%' or Organization.OrganizationName like '%" + term + "%') or (JobListing.JobDescription like '%" + term + "%') or" +
+            " (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
 
-        JobOpportunity.SelectParameters.Add("term", term);
 
-        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or (JobListing.Location like '%" + @term + "%'))";
-        JobOpportunity.DataBind();
-        GridView1.DataBind();
 
-        JobOpportunity.SelectParameters.Clear();
+
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+             
+       GridView1.DataBind();
+
+     
     }
 
     protected void SearchButton2_Click(object sender, EventArgs e)
     {
         String term = SearchBox2.Text;
 
-        ScholarshipOpportunity.SelectParameters.Add("term", term);
 
-        ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'P') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + @term + "%') or (Scholarship.ScholarshipMax like '%" + @term + "%'))";
-        ScholarshipOpportunity.DataBind();
+        String query = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin," +
+            " Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID  inner join" +
+            "  opportunityentity on opportunityentity.opportunityentityid = scholarship.scholarshipID " +
+            " inner join schoolapproval on schoolapproval.opportunityentityid = opportunityentity.opportunityentityid " +
+            "where(schoolapproval.approvedflag = 'P')" +
+            " and((Scholarship.ScholarshipName like '%" + term + "%' or Organization.OrganizationName like '%" + term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%')" +
+            " or (Scholarship.ScholarshipMax like '%" + term + "%'))";
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView2.DataSource = dt;
         GridView2.DataBind();
 
-        ScholarshipOpportunity.SelectParameters.Clear();
+        
 
     }
 
