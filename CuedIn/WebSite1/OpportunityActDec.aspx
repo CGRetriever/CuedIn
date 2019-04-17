@@ -49,18 +49,22 @@
 
 <!--- END Breadcrumb --->
 
-
+        <div class="container-fluid">     
 
             <div class="form-group col-md-12">
                     <div class ="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
         		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
      </div>
-                <div class="form-row">
-             
+                </div>
+        
 
-            <div class="form-group col-md-6">
-                   <div class="container-fluid text-center">
+  
+
+            <div class="row">
+             
+                <div class="form-group col-md-6">
+            
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
 
 
@@ -84,8 +88,8 @@
              </div>
                        <div style="height:5px;font-size:10px;">&nbsp;</div>
                       
-     <div class="contianer-fluid">
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+                 <div class ="table-responsive">   
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" BackColor="#102B40" ForeColor="White">
 
 
                     <Columns>
@@ -107,18 +111,20 @@
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
          </div>
+                    </div>
+        
       
    
-                       </div>
-             </div>
+
+
                      
                  
-                
+              
 
          
 
                 <div class="form-group col-md-6">
-                <div class="container-fluid text-center">
+            
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
 
                <%--<div class="col-auto text-center" style="background-color:#102B3F;">
@@ -144,8 +150,8 @@
                
                 
       
-
-             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+            <div class ="table-responsive">   
+             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
 
                     <Columns>
                         <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
@@ -166,12 +172,12 @@
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
-            </div>
-                   
-
-
+                   </div>
+                </div>
+     </div>    
       </div>
-          </div>
+       
+    
 
          <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
                          Organization.ExternalLink
@@ -204,7 +210,7 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
 
-        </div>
+
  
 
         <script>

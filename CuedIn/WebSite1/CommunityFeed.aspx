@@ -80,7 +80,7 @@
                 </div>
                 <div class="card-body">
 
-                    <asp:Table ID="ContactsTable" runat="server" CssClass="table-striped" ></asp:Table>
+                    <asp:Table ID="ContactsTable" runat="server" CssClass="table table-striped" ></asp:Table>
                 </div>
               </div>
 
