@@ -40,6 +40,7 @@ public partial class LandingPage : System.Web.UI.Page
     {
 
         ((Label)Master.FindControl("lblMaster")).Text = "Home Page";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         EmptyPostinglbl.Visible = false;
         EmptyStudentslbl.Visible = false;

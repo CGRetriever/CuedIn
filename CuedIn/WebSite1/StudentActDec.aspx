@@ -43,7 +43,7 @@
                         <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
-                                     <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" BackColor="White" />
+                                     <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
