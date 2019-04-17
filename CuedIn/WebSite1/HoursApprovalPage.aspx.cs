@@ -16,7 +16,12 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         GridView1.Columns[0].Visible = false;
-        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";  
+        ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
+
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+
+
     }
 
 
@@ -26,7 +31,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         /* Verifies that the control is rendered */
     }
 
-    
+
     //click approve in gridview- trigger modal to open - fill modal
     protected void approveJobLinkBtn_Click(object sender, CommandEventArgs e)
     {
@@ -49,13 +54,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
         while (reader.Read())
         {
             sublabelapprovemodal1.Text = reader.GetString(2);
-            sublabelapprovemodal2.Text =  reader.GetString(0);
-            sublabelapprovemodal3.Text =  "Hours: " + reader.GetInt32(1).ToString();
+            sublabelapprovemodal2.Text = reader.GetString(0);
+            sublabelapprovemodal3.Text = "Hours: " + reader.GetInt32(1).ToString();
         }
 
         sql.Close();
 
-      
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
     }
@@ -154,7 +159,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Close();
 
 
-     
+
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
@@ -164,7 +169,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     }
 
 
-  
+
 
 
 
@@ -204,15 +209,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    protected void btnStudentView_Click (object sender, CommandEventArgs e)
+    protected void btnStudentView_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-        
 
-        int logID= Convert.ToInt32(e.CommandArgument);
+
+        int logID = Convert.ToInt32(e.CommandArgument);
 
         Session["logID"] = logID.ToString();
 
@@ -237,19 +242,20 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand getStudentInfo = new System.Data.SqlClient.SqlCommand();
         getStudentInfo.Connection = sql;
-        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID FROM Student WHERE StudentEntityID = " + Session["studentID"];
+        getStudentInfo.CommandText = "SELECT CONCAT(FirstName,' ',LastName), StudentGradeLevel, StudentGPA, StudentSATScore, HoursOfWorkPlaceExp, StudentEntityID, StudentImage FROM Student WHERE StudentEntityID = " + Session["studentID"];
         System.Data.SqlClient.SqlDataReader studentReader = getStudentInfo.ExecuteReader();
 
         while (studentReader.Read())
         {
             //fill labels in modal
-            
-            
+
+
             lblStudentName.Text = studentReader.GetString(0);
             lblGradeLevel.Text = "Grade Level: " + studentReader.GetString(1);
             lblGPA.Text = "GPA: " + studentReader.GetDouble(2);
             lblSATScore.Text = "SAT Score: " + studentReader.GetInt32(3);
             lblHoursWorked.Text = "WBL Hours Earned: " + studentReader.GetInt32(4);
+            imgStudent.ImageUrl = studentReader.GetString(6);
         }
 
 
@@ -385,17 +391,44 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    protected void SearchButton_Click(object sender, EventArgs e)
+    //protected void SearchButton_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox.Text;
+
+    //    JobOpportunity.SelectParameters.Add("term", term);
+
+    //    JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
+    //    JobOpportunity.DataBind();
+    //    GridView1.DataBind();
+
+    //    JobOpportunity.SelectParameters.Clear();
+
+    //}
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
-        String term = SearchBox.Text;
+        if (cbSelectAll.Checked == true)
+        {
+            chkImage.Checked = true;
+            chkJobType.Checked = true;
+            chkHoursWBL.Checked = true;
+            chkGradeLevel.Checked = true;
+            chkGPA.Checked = true;
+            cbSelectAll.Text = "Unselect All";
 
-        JobOpportunity.SelectParameters.Add("term", term);
 
-        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
-        JobOpportunity.DataBind();
-        GridView1.DataBind();
+        }
 
-        JobOpportunity.SelectParameters.Clear();
+        if (cbSelectAll.Checked == false)
+        {
+            chkImage.Checked = false;
+            chkJobType.Checked = false;
+            chkHoursWBL.Checked = false;
+            chkGradeLevel.Checked = false;
+            chkGPA.Checked = false;
 
+            cbSelectAll.Text = "Select All";
+
+        }
     }
 }

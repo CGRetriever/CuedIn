@@ -7,7 +7,6 @@
             <p>Archived Opportunities</p>
         </div>
     </div>
-    <form id="form1" runat="server">
         <%--Rejected Jobs Gridview--%>
             <div class="form-row">
             <div class="form-group col-md-6">
@@ -270,7 +269,6 @@
         </div>
 
      
-    </form>
 
 </asp:Content>
 

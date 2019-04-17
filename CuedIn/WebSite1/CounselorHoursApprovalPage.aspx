@@ -2,7 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <form id="form1" runat="server">
         <div class="form-row">
        <div class="col-auto container-fluid text-center">
            <br />
@@ -273,7 +272,6 @@ padding:3px;
         </div>
 
             
-    </form>
 
 
 

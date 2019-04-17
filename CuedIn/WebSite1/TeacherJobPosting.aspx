@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     
-    <form id="form1" runat="server">
+
     <head>
         <title>Job Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -65,6 +65,6 @@
                     <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%" > </asp:Table>
 
    
-    </form>
+
    
 </asp:Content>

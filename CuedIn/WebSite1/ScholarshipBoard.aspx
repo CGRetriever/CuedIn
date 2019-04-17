@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="ScholarshipBoard.aspx.cs" Inherits="ScholarshipBoard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+
     
+
     <head>
         <title>Scholarship Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,11 +25,41 @@
          <link rel='stylesheet' href='css/style.css'>
 
     </head>
-    <form id="form1" runat="server">
+    
+
+
+         <!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="JobPostings.aspx">Approved Jobs</a></li>
+ 
+                               
+ 
+    <li class="active"><span>Approved Scholarships</span></li>       
+ 
+                </ol>
+
+<!--- END Breadcrumb --->
+
+
+
+        <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+
                     <div class="container">
+
                         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
                     <asp:Table ID="scholarshipTable" runat="server" OnLoad="scholarshipTable_Load" Width="100%" > </asp:Table>
                     </div>
+
+        <script>
+            //Initialize popover with jQuery
+                    $(document).ready(function () {
+                        $('.popovers').popover();
+                    });
+        </script>
 
             
             <%--Refer Scholarship Modal--%>
@@ -122,7 +155,6 @@
             </script>
    
    
-    </form>
    
 </asp:Content>
 

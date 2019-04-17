@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="JobPostings.aspx.cs" Inherits="JobPostings" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <head>
 
@@ -37,6 +37,27 @@
                         </asp:SqlDataSource>
                         <asp:Button ID="ApplyChanges" AutoPostBack="true" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
 
+    
+
+ <!--- Breadcrumb --->
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="ScholarshipBoard.aspx">Approved Scholarships</a></li>
+ 
+                               
+ 
+    <li class="active"><span>Approved Jobs</span></li>       
+ 
+                </ol>
+
+<!--- END Breadcrumb --->
+
+        <div class="container">
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+
                     </div>
                 </div>
             </div>
@@ -44,6 +65,13 @@
             <div>
             <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%"></asp:Table>
         </div>
+
+        <script>
+            //Initialize popover with jQuery
+                    $(document).ready(function () {
+                        $('.popovers').popover();
+                    });
+        </script>
 
         <div>
             <%--Refer Job Modal--%>
@@ -145,7 +173,7 @@
 
 
             </script>
-    </form>
+    
 
 </asp:Content>
 

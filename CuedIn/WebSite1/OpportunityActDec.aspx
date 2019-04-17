@@ -26,27 +26,53 @@
 
 
 
-    <form id="form1" runat="server">
-        <div class ="row">
+
+       
+
+
+
+         <!--- Breadcrumb --->
+
+ 
+    <ol class="breadcrumb arr-bread">
+ 
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="ArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
+    <li><a href="ArchiveScholarships.aspx">Archived Scholarships</a></li>
+                               
+ 
+    <li class="active"><span>Manage Jobs and Scholarships</span></li>       
+ 
+                </ol>
+ 
+
+
+<!--- END Breadcrumb --->
+
+
+
+            <div class="form-group col-md-12">
+                    <div class ="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
         		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
      </div>
-
-            <div class="form-row">
+                <div class="form-row">
              
+
             <div class="form-group col-md-6">
                    <div class="container-fluid text-center">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
 
 
-            <div class="col-auto text-center" style="background-color:#102B3F;">
+            <%--<div class="col-auto text-center" style="background-color:#102B3F;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
            <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-           </div>
+           </div>--%>
 
-                <div class="text-center" style="background-color: #102B3F;width:auto;">
+                <div class="text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
                     
+                    <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" EnableViewState="true"/>
                     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" />
                     <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
                     <asp:CheckBox ID="chkJobLocation" Style="color: white;" runat="server" Text="Location" Checked="false" />
@@ -56,6 +82,7 @@
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 
              </div>
+                       <div style="height:5px;font-size:10px;">&nbsp;</div>
                       
      <div class="contianer-fluid">
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
@@ -94,15 +121,16 @@
                 <div class="container-fluid text-center">
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
 
-               <div class="col-auto text-center" style="background-color:#102B3F;">
+               <%--<div class="col-auto text-center" style="background-color:#102B3F;">
                <asp:Label ID="Label18" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-               </div>
+               </div>--%>
           
 
-                    <div class="col-auto text-center" style="background-color: #102B3F;width:auto;">
+                    <div class="col-auto text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
                     
+                    <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
                     <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" />
                     <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" />
 
@@ -112,7 +140,7 @@
                     <asp:Button ID="btnCheckGridView2" runat="server" Text="Apply" OnClick="btnCheckGridView2_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
                 
-              
+              <div style="height:5px;font-size:10px;">&nbsp;</div>
                
                 
       
@@ -169,14 +197,14 @@
                          School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
                          JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN
                          Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID
-                        WHERE   school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
+                        WHERE   schoolapproval.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
                         <SelectParameters>
                           <asp:SessionParameter Name="schoolID" SessionField="schoolID"
                            DefaultValue="12" />
                         </SelectParameters>
                     </asp:SqlDataSource>
 
-   
+        </div>
  
 
         <script>
@@ -198,6 +226,26 @@
             function topFunction() {
               document.body.scrollTop = 0; // For Safari
               document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            }
+
+              function Selectall() {
+              if ($('.JchkAll').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid').removeAttr('checked', 'false');
+              }
+                }
+
+                                       function Selectall() {
+              if ($('.JchkAll1').is(':checked')) {
+               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
+                $('.JchkGrid1').attr('checked', 'true');
+              }
+              else {
+                $('.JchkGrid1').removeAttr('checked', 'false');
+              }
             }
 
 
@@ -535,7 +583,9 @@
                     </script>
                 </div>
             </div>
-    </form>
+
+        
+
 
 </asp:Content>
 

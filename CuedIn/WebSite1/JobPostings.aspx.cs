@@ -20,7 +20,7 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-  
+
 
             ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
 
@@ -80,6 +80,9 @@ public partial class JobPostings : System.Web.UI.Page
         for (int i = 0; i < gridviewRefer.Rows.Count; i++)
         {
             CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
+
+
+        ((Label)Master.FindControl("lblMaster")).Text = "Approved Jobs";
 
 
             if (check.Checked)
