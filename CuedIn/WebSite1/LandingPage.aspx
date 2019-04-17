@@ -72,8 +72,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="Image1" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="Image1" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
                                         </div>
@@ -113,8 +113,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="Image2" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="Image2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl2" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
                                         </div>
@@ -153,9 +153,9 @@
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
-                                <div class="card-body text-center">
-                                    <p><asp:Image ID="Image3" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                <div class="card-body text-center container-fluid">
+                                    <p><asp:Image ID="Image3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl3" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
                                         </div>
@@ -195,8 +195,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="Image4" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="Image4" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text=""></asp:Label>
                                         </div>
@@ -253,8 +253,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -291,8 +291,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -329,8 +329,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
@@ -367,8 +367,8 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage4" runat="server" ImageUrl="~/img/arconic.jpg" /></p>
-                                    <asp:Label ID="FrontStudentName4" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <p><asp:Image ID="StudentImage4" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <asp:Label ID="FrontStudentName4" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                 </div>
                             </div>
                         </div>
