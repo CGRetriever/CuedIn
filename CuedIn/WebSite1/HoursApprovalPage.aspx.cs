@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,19 +13,34 @@ public partial class OpportunityActDec : System.Web.UI.Page
     public static String email;
     public static String fullName;
 
-
+    int schoolID = 0;
     protected void Page_Load(object sender, EventArgs e)
     {
+        schoolID = Convert.ToInt32(Session["schoolid"]);
+        String query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore," +
+            "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, " +
+            "Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription," +
+            " JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization " +
+            "ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = " +
+            "'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + schoolID;
 
+        
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
 
         GridView1.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if(Session["schoolID"] == null)
+        if(Session["schoolid"] == null)
         {
-            Session["schoolID"] = 12;
+            Session["schoolid"] = 12;
         }
 
     }
@@ -398,19 +415,30 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void SearchButton_Click(object sender, EventArgs e)
     {
         String term = SearchBox.Text;
-        JobOpportunity.SelectParameters.Clear();
-        JobOpportunity.SelectParameters.Add("term", term);
-        JobOpportunity.SelectParameters.Add("schoolID", Session["schoolID"].ToString());
+        //JobOpportunity.SelectParameters.Clear();
+        //JobOpportunity.SelectParameters.Add("term", term);
+       
 
-        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore," +
+
+        String query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore," +
             "Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, " +
             "Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
             "JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization " +
-            "ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = @schoolID and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
-        JobOpportunity.DataBind();
+            "ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = "+ schoolID + " and((Student.FirstName like '%" + term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" + term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (Organization.OrganizationName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or(LogHours.HoursRequested like + '%" + term + "%'))";
+    
+
+       
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
         GridView1.DataBind();
 
-        
+
+
 
     }
 

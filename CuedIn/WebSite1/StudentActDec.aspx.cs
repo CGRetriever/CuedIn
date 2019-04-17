@@ -18,6 +18,11 @@ public partial class StudentActDec : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
+        if (Session["schoolID"] == null)
+        {
+            Session["schoolID"] = 12;
+        }
+
     }
 
 
@@ -357,14 +362,20 @@ public partial class StudentActDec : System.Web.UI.Page
     protected void SearchButton_Click(object sender, EventArgs e)
     {
         String term = SearchBox.Text;
-
+        StudentOpportunity.SelectParameters.Clear();
         StudentOpportunity.SelectParameters.Add("term", term);
+        StudentOpportunity.SelectParameters.Add("schoolID", Session["schoolID"].ToString());
+        int schoolID = Convert.ToInt32(Session["schoolID"]);
 
-        StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%'))";
+        StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName, " +
+            "Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType, " +
+            "JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID " +
+            "INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID " +
+            "WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID = " + schoolID + " AND ((Student.FirstName like '%" + @term + "%') or (Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.DaysAbsent like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or (JobListing.Location like '%" + @term + "%'))";
         StudentOpportunity.DataBind();
         GridView1.DataBind();
 
-        StudentOpportunity.SelectParameters.Clear();
+        
     }
 
 
