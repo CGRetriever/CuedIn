@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="CommunityFeed.aspx.cs" Inherits="CommunityFeed" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" width="80%">
 
     
 
@@ -19,11 +19,12 @@
 <!--- END Breadcrumb --->
 
 
-<div class="form-row">
-     <div class ="form-group col-lg-4">
+<div="container-fluid">
+<div class="row">
+     <div class ="col-sm-4">
          <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
        
-        <div class ="card text-center" style="width:30rem;">
+        <div class ="card text-center">
             <div class="card-header">
                     <asp:Label ID="NewsFeedLabel" runat="server" Text="Our Profile" Font-Bold="True"></asp:Label>
 
@@ -44,20 +45,20 @@
             </div>
          
         </div>
-          <div class ="card text-center" style="width:30rem;">
+          <div class ="card text-center" >
                 <div class="card-header">
                     <asp:Label ID="TweetStream" runat="server" Text="Our Tweets" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
-                    <a class="twitter-timeline" href="https://twitter.com/ValleyConsulti1?ref_src=twsrc%5Etfw" data-width="400" data-height="400">Tweets by ValleyConsulti1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <a class="twitter-timeline" href="https://twitter.com/ValleyConsulti1?ref_src=twsrc%5Etfw" data-width="80%" data-height="400">Tweets by ValleyConsulti1</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
               </div>
              </div>
 
 
-         <div class ="form-group col-sm-4">
+         <div class ="col-sm-4">
 
-        <div class ="card text-center" style="width:30rem;">
+        <div class ="card text-center">
                 <div class="card-header">
                     <asp:Label ID="CommunityFeedLabel" runat="server" Text="Community Feed" Font-Bold="True"></asp:Label>
                 </div>
@@ -71,21 +72,23 @@
 
     </div>
 
-             <div>
-
-        <div class ="card text-center" style="width:25rem;">
+      
+<div class ="col-sm-4">
+        <div class ="card text-center">
                 <div class="card-header">
                     <asp:Label ID="ContactLabel" runat="server" Text="Contacts" Font-Bold="True"></asp:Label>
                 </div>
                 <div class="card-body">
 
-                    <asp:Table ID="ContactsTable" runat="server" CssClass="table-striped"></asp:Table>
+                    <asp:Table ID="ContactsTable" runat="server" CssClass="table table-striped" ></asp:Table>
                 </div>
               </div>
 
-
     </div>
+    </>
 </div>
+    </div>
+
 
 
 
