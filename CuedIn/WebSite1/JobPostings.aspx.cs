@@ -367,9 +367,7 @@ public partial class JobPostings : System.Web.UI.Page
 
 
         }
-    } 
-
-
+    }
 }
 
 

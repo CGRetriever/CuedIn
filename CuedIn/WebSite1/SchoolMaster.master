@@ -120,6 +120,14 @@
                         </ul>
 
 
+
+                  <i class="fas fa-chart-line"></i>
+                     Metrics
+                </a>
+                <ul class="collapse list-unstyled" id="Dashboard">
+                     <li>
+                        <a href="StudentMetricsDashboard.aspx">Administrative Dashboard</a>
+
                     </li>
                     <li>
                         <a href="CommunityFeed.aspx">

@@ -67,22 +67,41 @@
                        
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" BackColor="White" />
+                                <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
+                            <ItemStyle Width="100%" />
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Student Name">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("LogID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                             </ItemTemplate>
+                            <ItemStyle Width="100%" />
                         </asp:TemplateField>
-                         <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" Visible="false" />
-                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" SortExpression="GradeLevel" visible="false"/>
-                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" SortExpression="GPA" Visible="false"/>
-                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours of WBL" SortExpression="HoursOfWorkPlaceExp" Visible="false"/>
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" />
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" />
-                        <asp:BoundField DataField="JobType" HeaderText="Job Type" SortExpression="JobTitle" />
-                        <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" />
+                         <asp:BoundField DataField="LogID" HeaderText="LogID" InsertVisible="False" ReadOnly="True" SortExpression="LogID" Visible="false" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" SortExpression="GradeLevel" visible="false">
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" SortExpression="GPA" Visible="false">
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours of WBL" SortExpression="HoursOfWorkPlaceExp" Visible="false">
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" SortExpression="JobTitle" >
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="HoursRequested" HeaderText="Hours Requested" SortExpression="HoursRequested" >
+
+                        <ItemStyle Width="100%" />
+                        </asp:BoundField>
 
                         <asp:TemplateField ShowHeader="False">
                             <ItemTemplate>
@@ -90,6 +109,9 @@
                                 <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                 <asp:LinkButton ID="moreInfoJobLinkBtn" CssClass="btn btn-warning btn-circle btn-block" Text="View Comments" runat="server" CommandArgument='<%#Eval ("LogID") %>' OnCommand="moreInfoJobLinkBtn_Click"><i class="fas fa-comments"></i></asp:LinkButton>
                             </ItemTemplate>
+
+
+                            <ItemStyle Width="100%" />
 
 
                         </asp:TemplateField>
