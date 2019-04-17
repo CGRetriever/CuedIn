@@ -35,9 +35,7 @@ public class Student
 
     public Student()
     {
-        //
-        // TODO: Add constructor logic here
-        //
+
     }
 
     public void setStudentEntityID(int studentEntityID)
