@@ -39,7 +39,7 @@ public partial class LandingPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        ((Label)Master.FindControl("lblMaster")).Text = "Landing Page";
+        ((Label)Master.FindControl("lblMaster")).Text = "Home Page";
 
         EmptyPostinglbl.Visible = false;
         EmptyStudentslbl.Visible = false;
