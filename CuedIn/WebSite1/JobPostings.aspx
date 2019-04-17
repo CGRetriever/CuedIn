@@ -22,7 +22,7 @@
         <link rel='stylesheet' href='css/card.css'>
         <link rel='stylesheet' href='css/style.css'>
     </head>
-    <form id="form1" runat="server">
+
 
 
         <div class="container">
@@ -173,7 +173,7 @@
 
 
             </script>
-    
+
 
 </asp:Content>
 
