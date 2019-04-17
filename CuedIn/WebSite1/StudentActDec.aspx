@@ -88,7 +88,7 @@
                                 <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
+                        <%--<asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />--%>
                         <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True"  HeaderStyle-Wrap="true" Visible="false" />
                         <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
                         <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
