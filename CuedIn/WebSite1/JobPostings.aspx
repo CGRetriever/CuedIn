@@ -18,10 +18,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
         <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
         <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
         <link rel='stylesheet' href='css/card.css'>
         <link rel='stylesheet' href='css/style.css'>
     </head>
+
 
 
 
@@ -31,7 +33,9 @@
                 <div class="form-row">
                     <div class="col-md-12">
 
-                            <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
+
+
+                            <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" CssClass="form-control" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
                         <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
                             SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
                         </asp:SqlDataSource>
@@ -58,8 +62,6 @@
 <!--- END Breadcrumb --->
 
         <div class="container">
-            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
-             <button onclick="return false;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
                 
 
