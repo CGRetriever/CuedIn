@@ -103,7 +103,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
             String  scholarshipDescription;
             String  image;
             String  link;
-            decimal  scholarshipMinArray = new decimal[countTotalScholarships];
+            decimal  scholarshipMin;
             decimal  scholarshipMaxArray = new decimal[countTotalScholarships];
             DateTime  deadlineArray = new DateTime[countTotalScholarships];
             int scholarshipIDArray = new int[countTotalScholarships];
