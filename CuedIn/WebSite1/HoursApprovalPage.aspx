@@ -6,6 +6,8 @@
         <head>
          <link rel='stylesheet' href='css/style.css'>
     </head>
+
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
    
     
 
@@ -166,12 +168,13 @@
                         $('[id*=viewStudentModal]').modal('show');
                     }
                     //Initialize popover with jQuery
-                    $(document).ready(function () {
+                    $(document).ready(function() {
                         $('.popovers').popover();
                     });
-                                     window.onscroll = function() {scrollFunction()};
 
-                                    function scrollFunction() {
+                    window.onscroll = function () { scrollFunction() };
+
+                  function scrollFunction() {
                   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                     document.getElementById("myBtn").style.display = "block";
                   } else {
