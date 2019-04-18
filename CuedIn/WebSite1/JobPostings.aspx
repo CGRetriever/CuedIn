@@ -58,8 +58,8 @@
 <!--- END Breadcrumb --->
 
         <div class="container">
-            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
+             <button onclick="return false;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
                 
 
@@ -149,20 +149,20 @@
                     $('[id*=sendToModal]').modal('show');
                 }
 
-                window.onscroll = function () { scrollFunction() };
+                //window.onscroll = function () { scrollFunction() };
 
-                function scrollFunction() {
-                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                        document.getElementById("myBtn").style.display = "block";
-                    } else {
-                        document.getElementById("myBtn").style.display = "none";
-                    }
-                }
+                //function scrollFunction() {
+                //    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                //        document.getElementById("myBtn").style.display = "block";
+                //    } else {
+                //        document.getElementById("myBtn").style.display = "none";
+                //    }
+                //}
 
                 // When the user clicks on the button, scroll to the top of the document
                 function topFunction() {
-                    document.body.scrollTop = 0; // For Safari
-                    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                    //document.body.scrollTop = 0; // For Safari
+                    //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
                 }
 
                 $(function () {

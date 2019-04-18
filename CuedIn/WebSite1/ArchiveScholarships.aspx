@@ -26,13 +26,18 @@
 
 <!--- END Breadcrumb --->
 
-
+    <div class=container-fluid>
         <%--Rejected Scholarships Gridview--%>
-        <div class="form-row">
+        <div class="row">
+
+
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+            </div>
+
+<div class="row">
             <div class="form-group col-md-6">
-                <div class="container text-center">
+                <div class="text-center">
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Rejected Scholarships</label>
                 </div>
 
@@ -48,8 +53,6 @@
                     <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
                     <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid" />
                     
-
-
                     <asp:Button ID="btnCheckGridView1" runat="server" Text="Apply" OnClick="btnCheckGridView1_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
 
@@ -72,7 +75,8 @@
 
 
                 </asp:SqlDataSource>
-                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+                <div class="table-responsive">
+                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
 
                     <Columns>
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" />
@@ -86,7 +90,7 @@
 
 
 
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnScholarshipApprove" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnScholarshipApprove_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnRejScholarshipViewMore_Click"><i class="fas fa-info"></i></asp:LinkButton>
@@ -96,10 +100,11 @@
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
+                    </div>
             </div>
             <%--Accepted Scholarships--%>
             <div class="form-group col-md-6">
-                <div class="container-fluid text-center">
+             
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
 
                     <div class="col-auto text-center" style="background-color: #102B3F; width: auto; padding: 10px;">
@@ -135,7 +140,8 @@ FROM OpportunityEntity INNER JOIN
                             </SelectParameters>
                     </asp:SqlDataSource>
 
-                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
+                <div class="table-responsive">
+                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
 
                         <Columns>
                             <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false"/>
@@ -148,7 +154,7 @@ FROM OpportunityEntity INNER JOIN
 
 
 
-                            <asp:TemplateField ShowHeader="False">
+                            <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnScholarshipReject" CssClass="btn btn-circle btn-danger btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnScholarshipReject_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                     <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnAccScholarshipViewMore_Click"><i class="fas fa-info"></i></asp:LinkButton>
@@ -158,8 +164,10 @@ FROM OpportunityEntity INNER JOIN
                         </Columns>
                         <RowStyle CssClass="cursor-pointer" />
                     </asp:GridView>
-                </div>
+                    </div>
+               
             </div>
+            </div> 
             <script>
                 //Initialize popover with jQuery
                 $(document).ready(function () {

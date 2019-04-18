@@ -8,11 +8,8 @@
          <link rel='stylesheet' href='css/style.css'>
     </head>
 
-    
 
-        <!--- Breadcrumb --->
-
-
+    <!--- Breadcrumb --->
 
  
     <ol class="breadcrumb arr-bread">
@@ -25,34 +22,27 @@
     <li class="active"><span>Student Application Request</span></li>       
  
                 </ol>
- 
-
-
-
 
 <!--- END Breadcrumb --->
 
+   
         <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
          
-        <button onclick="topFunction()" style="margin-right:60px;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+        <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
         <div class="form-group">
-            <div class="col-md-12 container-fluid text-center">
+            <div class="col-md-10 container text-center">
 
-                <div class="col-auto text-center rounded" style="background-color: #102B3F; width: auto; padding: 10px;">
+                <div class="col-auto text-center rounded" style="background-color: #102B3F; padding: 10px;">
                     <%--<asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-                    <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton" runat="server" OnClick="SearchButton_Click" Text="Search" Style="color: white;"><i class="fas fa-search"></i></asp:LinkButton>
-                   
                     <br />--%>
-
-                    <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Disabled" OnCheckedChanged="cbSelectAll_Checked"/>
-                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server"  Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True" />
-                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" AutoPostBack="True" />
-                    <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid" />
+                       <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Enabled" OnCheckedChanged="cbSelectAll_Checked"/>
+                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True"/>
+                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />
+                    <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" />
+                 <!--   <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" /> -->
+               <!--     <asp:CheckBox ID="chkJobDescription" Style="color: white;" runat="server" Text="Job Description" Checked="false" /> -->
+                    <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" />
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
 
@@ -61,42 +51,41 @@
 
                 </div>
                 <div style="height: 5px; font-size: 10px;">&nbsp;</div>
-                <asp:SqlDataSource ID="StudentOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT ApplicationRequest.ApplicationID, Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,
-                Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType,
-                JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID
-                INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID
-                   WHERE (ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID = @schoolID">
-                    <SelectParameters>
-                        <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                            DefaultValue="12" />
+               
+                <div class="table-responsive">
 
-                    </SelectParameters>
-
-                </asp:SqlDataSource>
-
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="StudentOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" DataKeyNames="ApplicationID">
-                    <Columns>
+              <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark rounded" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="ApplicationID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
+                      <Columns>
 
                         <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" BackColor="White" />
+                                     <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Full Name" SortExpression="FullName" >
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnStudentView" CssClass="border-bottom" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' Text='<%#Eval("FullName")%>' OnCommand="btnStudentView_Click"></asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <%--<asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />--%>
-                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True"  HeaderStyle-Wrap="true" Visible="false" />
-                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
-                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" />
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" />
-                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ReadOnly="True" ItemStyle-Wrap="true" Visible="false" />
+                        <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" SortExpression="HoursOfWorkPlaceExp" ReadOnly="True" HeaderStyle-Wrap="true" >
+<HeaderStyle Wrap="True"></HeaderStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" >
+<ItemStyle Wrap="True"></ItemStyle>
+                          </asp:BoundField>
+                        <asp:BoundField DataField="JobDescription" HeaderText="Job Description" SortExpression="JobDescription" ReadOnly="True" ItemStyle-Wrap="true" >
+<ItemStyle Wrap="True"></ItemStyle>
+                          </asp:BoundField>
                         <asp:BoundField DataField="JobType" HeaderText="Job Type" ReadOnly="True" Visible="false" />
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true" />
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true" >
+<ItemStyle Wrap="True"></ItemStyle>
+                          </asp:BoundField>
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="approveStudentLinkBtn" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="approveStudentLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
@@ -107,9 +96,11 @@
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
                 </asp:GridView>
+
             </div>
 
         </div>
+    </div>
 
 
 
@@ -138,16 +129,6 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
             }
-
-            function Selectall() {
-              if ($('.JchkAll').is(':checked')) {
-               // .JchkGrid cssClass will be assigned to all other checkboxes in your control
-                $('.JchkGrid').attr('checked', 'true');
-              }
-              else {
-                $('.JchkGrid').removeAttr('checked', 'false');
-              }
-                }
 
 
         </script>
@@ -378,7 +359,7 @@ function topFunction() {
                     }
                 </script>
             </div>
-    
+   
 
 
 

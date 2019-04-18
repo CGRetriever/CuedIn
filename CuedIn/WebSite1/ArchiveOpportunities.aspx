@@ -24,16 +24,21 @@
 
 
 
-        <%--Rejected Jobs Gridview--%>
+       
+    
+<div class="row">
+
+    <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+    <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+</div>
+
+
+ <%--Rejected Jobs Gridview--%>
+    <div class="container-fluid ">
         <div class="row">
 
-            <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-        </div>
-        <div class="form-row">
-
-            <div class="form-group col-md-6">
-                <div class="container-fluid text-center">
+            <div class="form-group col-lg-6">
+                <div class="text-center">
                     <label class="form-control-lg font-weight-bold" for="inputJobs">Rejected Jobs </label>
 
 
@@ -72,17 +77,19 @@
 
                         </SelectParameters>
                         </asp:SqlDataSource>
-
-                    <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
+                    <div class="table-responsive">
+                    <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
                         <Columns>
                             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
 
-                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" />
+                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" >
+<ItemStyle Wrap="True"></ItemStyle>
+                            </asp:BoundField>
                             <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
                             <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" />
 
-                            <asp:TemplateField ShowHeader="False">
+                            <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnJobApprove" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                     <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
@@ -93,13 +100,14 @@
                         </Columns>
                         <RowStyle CssClass="cursor-pointer" />
                     </asp:GridView>
+                        </div>
 
                 </div>
             </div>
             <%--Accepted Jobs Gridview--%>
 
-            <div class="form-group col-md-6">
-                <div class=" container-fluid text-center">
+            <div class="form-group col-lg-6">
+                <div class="text-center">
                     <label class="form-control-lg font-weight-bold" for="inputJobs">Accepted Jobs </label>
 
 
@@ -135,20 +143,22 @@
                            DefaultValue="12" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-
-                    <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark" Style="border-collapse: collapse;" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
+                    <div class="table-responsive">
+                    <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
                         <Columns>
 
                             <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" Visible="false" />
                             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
 
-                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" />
+                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" >
+<ItemStyle Wrap="True"></ItemStyle>
+                            </asp:BoundField>
                             <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
                             <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" />
 
 
-                            <asp:TemplateField ShowHeader="False">
+                            <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnJobReject" CssClass="btn btn-circle btn-danger btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                     <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
@@ -163,10 +173,10 @@
             </div>
 
 
+            </div>
 
 
-
-
+        </div>
 
 
             <script>

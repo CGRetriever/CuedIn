@@ -18,9 +18,9 @@ public partial class CommunityFeed : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //this is for testing purposes
-        //Session["schoolID"] = 12;
-        //Session["userCounty"] = "Harrisonburg City Public Schools";
-        //set up county variables. This is for community feed, and contacts. 
+        Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
+        //set up county variables. This is for community feed, and contacts.
         String countyFeed = "";
         String countyTwitterHandle = "";
         if(Session["userCounty"].ToString() == ("Rockingham County"))
@@ -50,6 +50,7 @@ public partial class CommunityFeed : System.Web.UI.Page
         sc.ConnectionString = connectionString;
 
         ((Label)Master.FindControl("lblMaster")).Text = "Community Feed";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         //API Keys Consumers
         String ConsumerAPIKey = "m1OiqyDwhR4N6qhUZKPs5Ol8v";
