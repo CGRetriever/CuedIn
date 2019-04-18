@@ -24,9 +24,9 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="ArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
-    <li><a href="ArchiveScholarships.aspx">Archived Scholarships</a></li>
+    <li><a href="CounselorLandingPage.aspx">Home</a></li>
+    <li><a href="CounselorArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
+    <li><a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a></li>
                                
  
     <li class="active"><span>Manage Jobs and Scholarships</span></li>       
