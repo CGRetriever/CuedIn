@@ -72,7 +72,6 @@ public partial class LandingPage : System.Web.UI.Page
         }
 
         // OOP First Card
-
         if (JobCardsArray[0] != null)
         {
             Image1.ImageUrl = JobCardsArray[0].getOrgImage();
@@ -191,117 +190,71 @@ public partial class LandingPage : System.Web.UI.Page
             StudentCardsArray[y] = tempStudent;
             StudentCardJobInfoArray[y] = tempJob;
             y++;
-
-            int ee = 2;
-
-
-
-
-
-
-
-
-
-            //applicationIDArray[y] = result.GetInt32(0).ToString();
-            //StudentNamearray[y] = result.GetString(1);
-            //AppJobTitleArray[y] = result.GetString(2);
-            //AppOrgTitleArray[y] = result.GetString(3);
-            //AppStudentGPAArray[y] = result.GetDouble(4).ToString();
-            //StudentImageArray[y] = result.GetString(5);
-            //StudentOrgWebURLArray[y] = result.GetString(6);
-            //y++;
         }
 
 
 
         // OOP First Student Request Card
-        StudentImage.ImageUrl = StudentCardsArray[0].getStudentImage();
-        FrontStudentName.Text = StudentCardsArray[0].getFirstName() + " " + StudentCardsArray[0].getLastName();
-        BackStudentName.Text = StudentCardsArray[0].getFirstName() + " " + StudentCardsArray[0].getLastName();
-        StudentJobTitlelbl.Text = StudentCardJobInfoArray[0].getJobTitle();
-        OrgTitlelbl.Text = StudentCardJobInfoArray[0].getOrgName();
-        StudentGPAlbl.Text = StudentCardsArray[0].getStudentGPA().ToString();
-        StudentLink1.NavigateUrl = StudentCardJobInfoArray[0].getOrgWebsite();
+        if (StudentCardsArray[0] != null)
+        {
+            StudentImage.ImageUrl = StudentCardsArray[0].getStudentImage();
+            FrontStudentName.Text = StudentCardsArray[0].getFirstName() + " " + StudentCardsArray[0].getLastName();
+            BackStudentName.Text = StudentCardsArray[0].getFirstName() + " " + StudentCardsArray[0].getLastName();
+            StudentJobTitlelbl.Text = StudentCardJobInfoArray[0].getJobTitle();
+            OrgTitlelbl.Text = StudentCardJobInfoArray[0].getOrgName();
+            StudentGPAlbl.Text = StudentCardsArray[0].getStudentGPA().ToString();
+            StudentLink1.NavigateUrl = StudentCardJobInfoArray[0].getOrgWebsite();
+        }
 
-
-
-        //// First Student Request Card
-        //StudentImage.ImageUrl = StudentImageArray[0];
-        //FrontStudentName.Text = StudentNamearray[0];
-        //BackStudentName.Text = StudentNamearray[0];
-        //StudentJobTitlelbl.Text = AppJobTitleArray[0];
-        //OrgTitlelbl.Text = AppOrgTitleArray[0];
-        //StudentGPAlbl.Text = AppStudentGPAArray[0];
-        //StudentLink1.NavigateUrl = StudentOrgWebURLArray[0];
 
 
 
         // OOP Second Student Request Card
-        StudentImage2.ImageUrl = StudentCardsArray[1].getStudentImage();
-        FrontStudentName2.Text = StudentCardsArray[1].getFirstName() + " " + StudentCardsArray[1].getLastName();
-        BackStudentName2.Text = StudentCardsArray[1].getFirstName() + " " + StudentCardsArray[1].getLastName();
-        StudentJobTitlelbl2.Text = StudentCardJobInfoArray[1].getJobTitle();
-        OrgTitlelbl2.Text = StudentCardJobInfoArray[1].getOrgName();
-        StudentGPAlbl2.Text = StudentCardsArray[1].getStudentGPA().ToString();
-        StudentLink2.NavigateUrl = StudentCardJobInfoArray[1].getOrgWebsite();
+        if (StudentCardsArray[1] != null)
+        {
+            StudentImage2.ImageUrl = StudentCardsArray[1].getStudentImage();
+            FrontStudentName2.Text = StudentCardsArray[1].getFirstName() + " " + StudentCardsArray[1].getLastName();
+            BackStudentName2.Text = StudentCardsArray[1].getFirstName() + " " + StudentCardsArray[1].getLastName();
+            StudentJobTitlelbl2.Text = StudentCardJobInfoArray[1].getJobTitle();
+            OrgTitlelbl2.Text = StudentCardJobInfoArray[1].getOrgName();
+            StudentGPAlbl2.Text = StudentCardsArray[1].getStudentGPA().ToString();
+            StudentLink2.NavigateUrl = StudentCardJobInfoArray[1].getOrgWebsite();
+        }
+        
 
-
-        // Second Student Request Card
-        //StudentImage2.ImageUrl = StudentImageArray[1];
-        //FrontStudentName2.Text = StudentNamearray[1];
-        //BackStudentName2.Text = StudentNamearray[1];
-        //StudentJobTitlelbl2.Text = AppJobTitleArray[1];
-        //OrgTitlelbl2.Text = AppOrgTitleArray[1];
-        //StudentGPAlbl2.Text = AppStudentGPAArray[1];
-        //StudentLink2.NavigateUrl = StudentOrgWebURLArray[1];
 
 
         // OOP Third Student Request Card
-        StudentImage3.ImageUrl = StudentCardsArray[2].getStudentImage();
-        FrontStudentName3.Text = StudentCardsArray[2].getFirstName() + " " + StudentCardsArray[2].getLastName();
-        BackStudentName3.Text = StudentCardsArray[2].getFirstName() + " " + StudentCardsArray[2].getLastName();
-        StudentJobTitlelbl3.Text = StudentCardJobInfoArray[2].getJobTitle();
-        OrgTitlelbl3.Text = StudentCardJobInfoArray[2].getOrgName();
-        StudentGPAlbl3.Text = StudentCardsArray[2].getStudentGPA().ToString();
-        StudentLink3.NavigateUrl = StudentCardJobInfoArray[2].getOrgWebsite();
+        if (StudentCardsArray[2] != null)
+        {
+            StudentImage3.ImageUrl = StudentCardsArray[2].getStudentImage();
+            FrontStudentName3.Text = StudentCardsArray[2].getFirstName() + " " + StudentCardsArray[2].getLastName();
+            BackStudentName3.Text = StudentCardsArray[2].getFirstName() + " " + StudentCardsArray[2].getLastName();
+            StudentJobTitlelbl3.Text = StudentCardJobInfoArray[2].getJobTitle();
+            OrgTitlelbl3.Text = StudentCardJobInfoArray[2].getOrgName();
+            StudentGPAlbl3.Text = StudentCardsArray[2].getStudentGPA().ToString();
+            StudentLink3.NavigateUrl = StudentCardJobInfoArray[2].getOrgWebsite();
+        }
+        
 
-        // Third Student Request Card
-        //StudentImage3.ImageUrl = StudentImageArray[2];
-        //FrontStudentName3.Text = StudentNamearray[2];
-        //BackStudentName3.Text = StudentNamearray[2];
-        //StudentJobTitlelbl3.Text = AppJobTitleArray[2];
-        //OrgTitlelbl3.Text = AppOrgTitleArray[2];
-        //StudentGPAlbl3.Text = AppStudentGPAArray[2];
-        //StudentLink3.NavigateUrl = StudentOrgWebURLArray[2];
 
 
         // OOP Fourth Student Request Card
-        StudentImage4.ImageUrl = StudentCardsArray[3].getStudentImage();
-        FrontStudentName4.Text = StudentCardsArray[3].getFirstName() + " " + StudentCardsArray[3].getLastName();
-        BackStudentName4.Text = StudentCardsArray[3].getFirstName() + " " + StudentCardsArray[3].getLastName();
-        StudentJobTitlelbl4.Text = StudentCardJobInfoArray[3].getJobTitle();
-        OrgTitle4.Text = StudentCardJobInfoArray[3].getOrgName();
-        StudentGPAlbl4.Text = StudentCardsArray[3].getStudentGPA().ToString();
-        StudentLink4.NavigateUrl = StudentCardJobInfoArray[3].getOrgWebsite();
-
-
-        // Fourth Student Request Card
-        //StudentImage4.ImageUrl = StudentImageArray[3];
-        //FrontStudentName4.Text = StudentNamearray[3];
-        //BackStudentName4.Text = StudentNamearray[3];
-        //StudentJobTitlelbl4.Text = AppJobTitleArray[3];
-        //OrgTitlelbl4.Text = AppOrgTitleArray[3];
-        //StudentGPAlbl4.Text = AppStudentGPAArray[3];
-        //StudentLink4.NavigateUrl = StudentOrgWebURLArray[3];
-
+        if (StudentCardsArray[3] != null)
+        {
+            StudentImage4.ImageUrl = StudentCardsArray[3].getStudentImage();
+            FrontStudentName4.Text = StudentCardsArray[3].getFirstName() + " " + StudentCardsArray[3].getLastName();
+            BackStudentName4.Text = StudentCardsArray[3].getFirstName() + " " + StudentCardsArray[3].getLastName();
+            StudentJobTitlelbl4.Text = StudentCardJobInfoArray[3].getJobTitle();
+            OrgTitle4.Text = StudentCardJobInfoArray[3].getOrgName();
+            StudentGPAlbl4.Text = StudentCardsArray[3].getStudentGPA().ToString();
+            StudentLink4.NavigateUrl = StudentCardJobInfoArray[3].getOrgWebsite();
+        }
+        
 
 
         sql.Close();
 
-        //LandingPage.StudentNamearray = null;
-        //StudentNamearray[1] = null;
-        //StudentNamearray[2] = null;
-        //StudentNamearray[3] = null;
 
         if (StudentCardsArray[0] == null)
         {
@@ -331,8 +284,6 @@ public partial class LandingPage : System.Web.UI.Page
         {
 
         }
-
-
 
 
         // Start of Tableau Charts
