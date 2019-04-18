@@ -11,6 +11,7 @@ public class Student
     private int studentEntityID;
     private String firstName;
     private String lastName;
+    private String fullName;
     private String middleInitial;
     private String streetAddress;
     private String country;
@@ -34,6 +35,7 @@ public class Student
     private int schoolEntityID;
     private int applicationID;
 
+
     public Student(int applicationID, String firstName, String lastName, double studentGPA, String studentImage)
     {
         setFirstName(firstName);
@@ -48,10 +50,13 @@ public class Student
         this.applicationID = applicationID;
     }
 
+
     public void setStudentEntityID(int studentEntityID)
     {
         this.studentEntityID = studentEntityID;
     }
+
+    
 
     public void setFirstName(String firstName)
     {
@@ -64,6 +69,10 @@ public class Student
         this.lastName = lastName;
     }
 
+    public void setFullName(String fullName)
+    {
+        this.fullName = fullName;
+    }
 
     public void setMiddleInitial(String middleInitial)
     {

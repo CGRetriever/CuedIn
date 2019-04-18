@@ -46,125 +46,135 @@ public partial class CreateUser : System.Web.UI.Page
         System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
         query.Connection = sql;
         if (int.TryParse(zipcode.Value, out zip))
-            {
+        {
             if (email.Value.Contains("@"))
             {
                 if (password.Value.Equals(password2.Value))
                 {
-
-
-                    //get our ID for future use (inserting into tables that use this key but not have it auto increment 1 person, password)
-                    query.CommandText = "SELECT max(UserEntityID) FROM dbo.UserEntity";
-
-                    System.Data.SqlClient.SqlDataReader reader = query.ExecuteReader();
-
-                    int userID = 0;
-
-                    while (reader.Read())
+                    if (password.Value.Length >= 8)
                     {
 
-                        userID = reader.GetInt32(0);
-                        //increment by one because this is our new BEID after we insert
-                        userID++;
-
-                    }
-                    sql.Close();
-
-                    sql.Open();
-                    System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
-
-                    insert.Connection = sql;
-
-                    //inserting into the BE table 
 
 
-                    //insert into the person table 
-                    insert.CommandText = "insert into dbo.userentity (UserName, EmailAddress, EntityType) " +
-                        "values (@username, @emailaddress, @entitytype)";
-                    username.Value.Trim();
-                    email.Value.Trim();
-                    firstName.Value.Trim();
-                    middleName.Value.Trim();
-                    lastName.Value.Trim();
+                        //get our ID for future use (inserting into tables that use this key but not have it auto increment 1 person, password)
+                        query.CommandText = "SELECT max(UserEntityID) FROM dbo.UserEntity";
 
-                    //Create user entity
-                    UserEntity user = new UserEntity(username.Value.Trim(), email.Value.Trim(), role.SelectedItem.Value);
-                    SchoolEmployee employee = new SchoolEmployee(firstName.Value.Trim(), lastName.Value.Trim(), middleName.Value.Trim(),
-                        address.Value.Trim(), "USA", city.Value.Trim(), "VA", zipcode.Value, user.getEntityType(),
-                        Convert.ToInt32(DropDownList2.SelectedItem.Value));
+                        System.Data.SqlClient.SqlDataReader reader = query.ExecuteReader();
 
+                        int userID = 0;
 
-                    insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(user.getUserName()));
-                    insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(user.getEmailAddress()));
-                    insert.Parameters.AddWithValue("@entitytype", HttpUtility.HtmlEncode("SCHL"));
+                        while (reader.Read())
+                        {
 
+                            userID = reader.GetInt32(0);
+                            //increment by one because this is our new BEID after we insert
+                            userID++;
 
+                        }
+                        sql.Close();
 
-                    insert.ExecuteNonQuery();
+                        sql.Open();
+                        System.Data.SqlClient.SqlCommand insert = new System.Data.SqlClient.SqlCommand();
 
+                        insert.Connection = sql;
 
-                    //inserting into the password 
-                    insert.CommandText = "insert into dbo.Password (PasswordID, PasswordHash, passwordSalt, UserEntityID, lastupdated)  " +
-                        "values (@passwordID, @passwordHash, @passwordSalt, @userentityID, getDate())";
+                        //inserting into the BE table 
 
 
+                        //insert into the person table 
+                        insert.CommandText = "insert into dbo.userentity (UserName, EmailAddress, EntityType) " +
+                            "values (@username, @emailaddress, @entitytype)";
+                        username.Value.Trim();
+                        email.Value.Trim();
+                        firstName.Value.Trim();
+                        middleName.Value.Trim();
+                        lastName.Value.Trim();
 
-                    String hashedPass = PasswordHash.HashPassword(password.Value);
-                    insert.Parameters.AddWithValue("@passwordID", userID);
-                    insert.Parameters.AddWithValue("@passwordHash", hashedPass);
-
-                    string test = PasswordHash.returnSalt(hashedPass);
-
-                    //had to use only the substring and not the full salt value because there is a max length of 10 in the DB.
-                    insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0, 24));
-                    insert.Parameters.AddWithValue("@userentityID", userID);
-                    insert.ExecuteNonQuery();
-
-                    insert.CommandText = "insert into dbo.schoolemployee (SchoolEmployeeEntityID, FirstName, LastName, MiddleName, StreetAddress, Country, City, State, Zipcode, SchoolEmployeeEntityType, SchoolEntityID) " +
-              "values (@SchoolEmployeeEntityID, @FirstName, @LastName, @MiddleName, @StreetAddress, @Country, @City, @State, @Zipcode, @SchoolEmployeeEntityType, @SchoolEntityID)";
+                        //Create user entity
+                        UserEntity user = new UserEntity(username.Value.Trim(), email.Value.Trim(), role.SelectedItem.Value);
+                        SchoolEmployee employee = new SchoolEmployee(firstName.Value.Trim(), lastName.Value.Trim(), middleName.Value.Trim(),
+                            address.Value.Trim(), "USA", city.Value.Trim(), "VA", zipcode.Value, user.getEntityType(),
+                            Convert.ToInt32(DropDownList2.SelectedItem.Value));
 
 
-                    insert.Parameters.AddWithValue("@SchoolEmployeeEntityID", HttpUtility.HtmlEncode(userID));
-                    insert.Parameters.AddWithValue("@FirstName", HttpUtility.HtmlEncode(employee.getFirstName()));
-                    insert.Parameters.AddWithValue("@LastName", HttpUtility.HtmlEncode(employee.getLastName()));
-                    insert.Parameters.AddWithValue("@MiddleName", HttpUtility.HtmlEncode(employee.getMiddleName()));
-                    insert.Parameters.AddWithValue("@StreetAddress", HttpUtility.HtmlEncode(employee.getStreetAddress()));
-                    insert.Parameters.AddWithValue("@Country", HttpUtility.HtmlEncode(employee.getCountry()));
-                    insert.Parameters.AddWithValue("@City", HttpUtility.HtmlEncode(employee.getCity()));
-                    insert.Parameters.AddWithValue("@State", HttpUtility.HtmlEncode("VA"));
-                    
-                    if (int.TryParse(zipcode.Value, out zip))
-                    {
-                        insert.Parameters.AddWithValue("@Zipcode", HttpUtility.HtmlEncode(employee.getZipCode()));
+                        insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(user.getUserName()));
+                        insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(user.getEmailAddress()));
+                        insert.Parameters.AddWithValue("@entitytype", HttpUtility.HtmlEncode("SCHL"));
+
+
+
+                        insert.ExecuteNonQuery();
+
+
+                        //inserting into the password 
+                        insert.CommandText = "insert into dbo.Password (PasswordID, PasswordHash, passwordSalt, UserEntityID, lastupdated)  " +
+                            "values (@passwordID, @passwordHash, @passwordSalt, @userentityID, getDate())";
+
+
+
+                        String hashedPass = PasswordHash.HashPassword(password.Value);
+                        insert.Parameters.AddWithValue("@passwordID", userID);
+                        insert.Parameters.AddWithValue("@passwordHash", hashedPass);
+
+                        string test = PasswordHash.returnSalt(hashedPass);
+
+                        //had to use only the substring and not the full salt value because there is a max length of 10 in the DB.
+                        insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0, 24));
+                        insert.Parameters.AddWithValue("@userentityID", userID);
+                        insert.ExecuteNonQuery();
+
+                        insert.CommandText = "insert into dbo.schoolemployee (SchoolEmployeeEntityID, FirstName, LastName, MiddleName, StreetAddress, Country, City, State, Zipcode, SchoolEmployeeEntityType, SchoolEntityID) " +
+                  "values (@SchoolEmployeeEntityID, @FirstName, @LastName, @MiddleName, @StreetAddress, @Country, @City, @State, @Zipcode, @SchoolEmployeeEntityType, @SchoolEntityID)";
+
+
+                        insert.Parameters.AddWithValue("@SchoolEmployeeEntityID", HttpUtility.HtmlEncode(userID));
+                        insert.Parameters.AddWithValue("@FirstName", HttpUtility.HtmlEncode(employee.getFirstName()));
+                        insert.Parameters.AddWithValue("@LastName", HttpUtility.HtmlEncode(employee.getLastName()));
+                        insert.Parameters.AddWithValue("@MiddleName", HttpUtility.HtmlEncode(employee.getMiddleName()));
+                        insert.Parameters.AddWithValue("@StreetAddress", HttpUtility.HtmlEncode(employee.getStreetAddress()));
+                        insert.Parameters.AddWithValue("@Country", HttpUtility.HtmlEncode(employee.getCountry()));
+                        insert.Parameters.AddWithValue("@City", HttpUtility.HtmlEncode(employee.getCity()));
+                        insert.Parameters.AddWithValue("@State", HttpUtility.HtmlEncode("VA"));
+
+                        if (int.TryParse(zipcode.Value, out zip))
+                        {
+                            insert.Parameters.AddWithValue("@Zipcode", HttpUtility.HtmlEncode(employee.getZipCode()));
+                        }
+                        else
+                        {
+                            insert.Parameters.AddWithValue("@Zipcode", 00000);
+                            Label1.Text = "Enter a number for the zipcode";
+                        }
+
+
+
+                        insert.Parameters.AddWithValue("@SchoolEmployeeEntityType", employee.getSchoolEmployeeEntityType());
+                        insert.Parameters.AddWithValue("@SchoolEntityID", employee.getSchoolEntityID());
+                        insert.ExecuteNonQuery();
+
+
+                        //empmty these fields out.
+                        firstName.Value = "";
+                        lastName.Value = "";
+                        middleName.Value = "";
+                        city.Value = "";
+                        zipcode.Value = "";
+
+
+                        address.Value = "";
+                        username.Value = "";
+                        password.Value = "";
+                        email.Value = "";
+                        role.SelectedIndex = 0;
+                        DropDownList2.SelectedIndex = 0;
+                        Label1.Text = "Account Created!";
                     }
                     else
                     {
-                        insert.Parameters.AddWithValue("@Zipcode", 00000);
-                        Label1.Text = "Enter a number for the zipcode";
+                        Label2.Text = "The Password Must Be More Than 8 Characters";
+                        password.Attributes.CssStyle.Add("background-color", "crimson");
+                        password2.Attributes.CssStyle.Add("background-color", "crimson");
                     }
-
-
-
-                    insert.Parameters.AddWithValue("@SchoolEmployeeEntityType", employee.getSchoolEmployeeEntityType());
-                    insert.Parameters.AddWithValue("@SchoolEntityID", employee.getSchoolEntityID());
-                    insert.ExecuteNonQuery();
-
-
-                    //empmty these fields out.
-                    firstName.Value = "";
-                    lastName.Value = "";
-                    middleName.Value = "";
-                    city.Value = "";
-                    zipcode.Value = "";
-
-
-                    address.Value = "";
-                    username.Value = "";
-                    password.Value = "";
-                    email.Value = "";
-                    role.SelectedIndex = 0;
-                    DropDownList2.SelectedIndex = 0;
-                    Label1.Text = "Account Created!";
                 }
                 else
                 {
@@ -173,24 +183,25 @@ public partial class CreateUser : System.Web.UI.Page
                     password2.Attributes.CssStyle.Add("background-color", "crimson");
 
                 }
-            }
+                }
 
+                else
+                {
+                    Label2.Text = "Please Enter a Valid Email";
+                    email.Value = "";
+                    email.Attributes.CssStyle.Add("background-color", "crimson");
+                }
+            }
             else
             {
-                Label2.Text = "Please Enter a Valid Email";
-                email.Value = "";
-                email.Attributes.CssStyle.Add("background-color", "crimson");
+                Label2.Text = "Please Enter a Valid Zipcode";
+                zipcode.Value = "";
+                zipcode.Attributes.CssStyle.Add("background-color", "crimson");
+
             }
         }
-        else
-        {
-            Label2.Text = "Please Enter a Valid Zipcode";
-            zipcode.Value = "";
-            zipcode.Attributes.CssStyle.Add("background-color", "crimson");
-           
-        }
-    }
-}
+      
+ }
 
 
 

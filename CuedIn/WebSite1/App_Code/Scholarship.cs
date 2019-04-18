@@ -11,19 +11,22 @@ public class Scholarship
     private int scholarshipID;
     private String scholarshipName;
     private String scholarshipDescription;
-    private int scholarshipMin;
-    private int scholarshipMax;
+    private decimal scholarshipMin;
+    private decimal scholarshipMax;
     private int scholarshipQuantity;
     private String postingDate;
-    private String scholarshipDueDate;
+    private DateTime scholarshipDueDate;
     private int organizationID;
     private String lastUpdated;
+    private String image;
+    private String link;
+    private String orgName;
 
 
     //fully loaded consturctor
     public Scholarship(int scholarshipID, String scholarshipName, String scholarshipDescription, 
-        int scholarshipMin, int scholarshipMax, int scholarshipQuantity,
-        String postingDate, String scholarshipDueDate, int organizationID, String lastUpdated)
+        decimal scholarshipMin, decimal scholarshipMax, int scholarshipQuantity,
+        String postingDate, DateTime scholarshipDueDate, int organizationID, String lastUpdated)
     {
         setScholarshipID(scholarshipID);
         setScholarshipName(scholarshipName);
@@ -36,6 +39,23 @@ public class Scholarship
         setOrganizationID(organizationID);
         setLastUpdated(lastUpdated);
  
+    }
+
+
+    public Scholarship(int scholarshipID, String scholarshipName, String scholarshipDescription,
+       decimal scholarshipMin, decimal scholarshipMax, String image, String link, DateTime scholarshipDueDate,
+       String orgName)
+    {
+        setScholarshipID(scholarshipID);
+        setScholarshipName(scholarshipName);
+        setScholarshipDescription(scholarshipDescription);
+        setScholarshipMin(scholarshipMin);
+        setScholarshipMax(scholarshipMax);
+        setScholarshipDueDate(scholarshipDueDate);
+        setOrgName(orgName);
+        setLink(link);
+        setImage(image);
+
     }
 
     public void setScholarshipID(int scholarshipID)
@@ -53,12 +73,12 @@ public class Scholarship
         this.scholarshipDescription = scholarshipDescription;
     }
 
-    public void setScholarshipMin(int scholarshipMin)
+    public void setScholarshipMin(decimal scholarshipMin)
     {
         this.scholarshipMin = scholarshipMin;
     }
 
-    public void setScholarshipMax(int scholarshipMax)
+    public void setScholarshipMax(decimal scholarshipMax)
     {
         this.scholarshipMax = scholarshipMax;
     }
@@ -73,7 +93,7 @@ public class Scholarship
         this.postingDate = postingDate;
     }
 
-    public void setScholarshipDueDate(String scholarshipDueDate)
+    public void setScholarshipDueDate(DateTime scholarshipDueDate)
     {
         this.scholarshipDueDate = scholarshipDueDate;
     }
@@ -86,6 +106,21 @@ public class Scholarship
     public void setLastUpdated(String lastUpdated)
     {
         this.lastUpdated = lastUpdated;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
+    public void setOrgName(String orgName)
+    {
+        this.orgName = orgName;
+    }
+
+    public void setLink(String link)
+    {
+        this.link = link;
     }
 
     public int getScholarshipID()
@@ -104,12 +139,12 @@ public class Scholarship
 
     }
 
-    public int getScholarshipMin()
+    public decimal getScholarshipMin()
     {
         return this.scholarshipMin;
     }
 
-    public int getScholarshipMax()
+    public decimal getScholarshipMax()
     {
         return this.scholarshipMax;
     }
@@ -124,7 +159,7 @@ public class Scholarship
         return this.postingDate;
     }
 
-    public String getScholarshipDueDate()
+    public DateTime getScholarshipDueDate()
     {
         return this.scholarshipDueDate;
     }
@@ -138,6 +173,22 @@ public class Scholarship
     {
         return this.lastUpdated;
     }
+
+    public String getImage()
+    {
+        return this.image;
+    }
+
+    public String getOrgName()
+    {
+        return this.orgName;
+    }
+
+    public String getLink()
+    {
+        return this.link;
+    }
+
 
 
 

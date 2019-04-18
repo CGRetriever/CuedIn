@@ -19,12 +19,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
         
-
-
-
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
-
-
 
 
     }

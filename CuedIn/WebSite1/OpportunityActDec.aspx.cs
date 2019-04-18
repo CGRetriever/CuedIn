@@ -469,12 +469,6 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Close();
 
 
-
-        //string url = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) + "%26argument=Number1";
-        //string command = "mailto:" + email + "?subject=CommUp: Job Approval";
-        //System.Diagnostics.Process.Start(command);
-        //ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + OpportunityActDec.email + "'", true);
-        //Response.Redirect("~/OpportunityActDec.aspx");
     }
 
 

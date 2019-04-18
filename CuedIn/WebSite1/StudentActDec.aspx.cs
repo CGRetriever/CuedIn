@@ -36,10 +36,6 @@ public partial class StudentActDec : System.Web.UI.Page
         conn.Close();
 
 
-        //Object sen = new Object();
-        //EventArgs e1 = new EventArgs();
-     //   btnCheckGridView_Click(sen, e1);
-
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
         
@@ -47,14 +43,12 @@ public partial class StudentActDec : System.Web.UI.Page
     }
 
 
-
     public override void VerifyRenderingInServerForm(Control control)
     {
         /* Verifies that the control is rendered */
     }
 
-    
-
+   
     protected void approveStudentLinkBtn_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -144,9 +138,6 @@ public partial class StudentActDec : System.Web.UI.Page
         }
 
         sql.Close();
-
-
-
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
@@ -331,7 +322,6 @@ public partial class StudentActDec : System.Web.UI.Page
    
 
     }
-
     protected void chkOrgWebsite_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -350,8 +340,6 @@ public partial class StudentActDec : System.Web.UI.Page
 
     //    StudentOpportunity.SelectParameters.Clear();
     //}
-
-
 
     protected void btnStudentView_Click(object sender, CommandEventArgs e)
     {
