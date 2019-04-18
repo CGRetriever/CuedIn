@@ -110,7 +110,7 @@
                         <ItemStyle Width="100%" />
                         </asp:BoundField>
 
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="approveJobLinkBtn" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="rejectJobLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
@@ -181,7 +181,7 @@
                         </asp:BoundField>
 
 
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="LinkButton2" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton2_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="LinkButton3" CssClass="btn btn-danger btn-circle btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="LinkButton3_Click"><i class="fas fa-times"></i></asp:LinkButton>
@@ -571,7 +571,7 @@
                                      <asp:Label ID="Label8" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Are you sure you want to decline?"></asp:Label>
 
                                 </div>
-
+                                </div>
                             </div>
                             <div class="modal-body" style="background-color: #4F79A3;">
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
@@ -599,7 +599,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <script type='text/javascript'>
