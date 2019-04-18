@@ -19,46 +19,48 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-     
-        ((Label)Master.FindControl("lblMaster2")).Text = "Scholarship Cards";
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
-
-        System.Data.SqlClient.SqlCommand sqlrecentScholarshipID = new System.Data.SqlClient.SqlCommand();
-        sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where ScholarshipID = (select max(scholarshipID) from scholarship)";
-        sqlrecentScholarshipID.Connection = sc;
-        System.Data.SqlClient.SqlDataReader reader = sqlrecentScholarshipID.ExecuteReader();
-
-        while (reader.Read())
-        {
-            recentPostID = reader.GetInt32(0);
-        }
-
-        sc.Close();
-
-        sc.Open();
-
-        System.Data.SqlClient.SqlCommand recentScholarshipPost = new System.Data.SqlClient.SqlCommand();
-        recentScholarshipPost.CommandText = "SELECT Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where ScholarshipID =" + recentPostID;
-        recentScholarshipPost.Connection = sc;
-
-        reader = recentScholarshipPost.ExecuteReader();
 
 
+        ((Label)Master.FindControl("lblMaster")).Text = "Approved Scholarships";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
+        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        //sc.Open();
 
-        while (reader.Read())
-        {
-            scholarshipName = reader.GetString(0);
-            scholarshipDescription = reader.GetString(1);
-            scholarshipMin = (double)reader.GetDecimal(2);
-            scholarshipMax = (double)reader.GetDecimal(3);
-            scholarshipDueDate = reader.GetDateTime(4);
-            orgName = reader.GetString(5);
-            orgDescription = reader.GetString(6);
-            orgImage = reader.GetString(7);
-        }
-        
+        //System.Data.SqlClient.SqlCommand sqlrecentScholarshipID = new System.Data.SqlClient.SqlCommand();
+        //sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where ScholarshipID = (select max(scholarshipID) from scholarship)";
+        //sqlrecentScholarshipID.Connection = sc;
+        //System.Data.SqlClient.SqlDataReader reader = sqlrecentScholarshipID.ExecuteReader();
+
+        //while (reader.Read())
+        //{
+        //    recentPostID = reader.GetInt32(0);
+        //}
+
+        //sc.Close();
+
+        //sc.Open();
+
+        //System.Data.SqlClient.SqlCommand recentScholarshipPost = new System.Data.SqlClient.SqlCommand();
+        //recentScholarshipPost.CommandText = "SELECT Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where ScholarshipID =" + recentPostID;
+        //recentScholarshipPost.Connection = sc;
+
+        //reader = recentScholarshipPost.ExecuteReader();
+
+
+
+        //    while (reader.Read())
+        //    {
+        //        scholarshipName = reader.GetString(0);
+        //        scholarshipDescription = reader.GetString(1);
+        //        scholarshipMin = (double)reader.GetDecimal(2);
+        //        scholarshipMax = (double)reader.GetDecimal(3);
+        //        scholarshipDueDate = reader.GetDateTime(4);
+        //        orgName = reader.GetString(5);
+        //        orgDescription = reader.GetString(6);
+        //        orgImage = reader.GetString(7);
+        //    }
+
     }
     protected void scholarshipTable_Load(object sender, EventArgs e)
     {
@@ -68,7 +70,7 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
         sc.Open();
 
         System.Data.SqlClient.SqlCommand countScholarships = new System.Data.SqlClient.SqlCommand();
-        countScholarships.CommandText = "select count(ScholarshipID) from Scholarship where approved = 'Y' and scholarshipID <> " + recentPostID;
+        countScholarships.CommandText = "SELECT count(SchoolApproval.OpportunityEntityID) FROM OpportunityEntity INNER JOIN SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID where OpportunityEntity.OpportunityType = 'SCHOL' and schoolApproval.approvedflag = 'Y' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
         countScholarships.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = countScholarships.ExecuteReader();
@@ -84,7 +86,9 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
 
         sc.Open();
         System.Data.SqlClient.SqlCommand pullScholarshipInfo = new System.Data.SqlClient.SqlCommand();
-        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where Scholarship.Approved = 'Y' AND scholarshipID <>" + recentPostID;
+        pullScholarshipInfo.CommandText = "SELECT Organization.OrganizationName, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Organization.Image, Organization.ExternalLink, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate, Scholarship.ScholarshipID FROM SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN Scholarship" +
+           " ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+           "where SchoolApproval.ApprovedFlag = 'Y' and OpportunityEntity.OpportunityType = 'SCHOL' and SchoolApproval.SchoolEntityID = " + Session["schoolID"];
         pullScholarshipInfo.Connection = sc;
 
 
@@ -97,6 +101,11 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
             String[] scholarshipDescriptionArray = new String[countTotalScholarships];
             String[] imageArray = new string[countTotalScholarships];
             String[] linkArray = new string[countTotalScholarships];
+            decimal[] scholarshipMinArray = new decimal[countTotalScholarships];
+            decimal[] scholarshipMaxArray = new decimal[countTotalScholarships];
+            DateTime[] deadlineArray = new DateTime[countTotalScholarships];
+            int[] scholarshipIDArray = new int[countTotalScholarships];
+
             int x = 0;
             while (reader.Read())
             {
@@ -105,6 +114,11 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
                 scholarshipDescriptionArray[x] = reader.GetString(2);
                 imageArray[x] = reader.GetString(3);
                 linkArray[x] = reader.GetString(4);
+                scholarshipMinArray[x] = reader.GetDecimal(5);
+                scholarshipMaxArray[x] = reader.GetDecimal(6);
+                deadlineArray[x] = reader.GetDateTime(7);
+                scholarshipIDArray[x] = reader.GetInt32(8);
+
                 x++;
 
             }
@@ -125,18 +139,49 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
                         break;
                     }
                     TableCell c = new TableCell();
-                    c.Text += "<div class = 'card card-cascade>";
-                    c.Text += "<div class = 'view view-cascade overlay'>";
-                    c.Text += "<img class = 'card-img-top' src='" + imageArray[count] + "'>";
-                    c.Text += "<div class = 'card-body card-body-cascade text-center'>";
-                    c.Text += "<h4 class='card-title'> <strong>" + orgNameArray[count] + "</strong> </h4>";
-                    c.Text += "<div class='font-weight-bold indigo-text py-2'>" + scholarshipNameArray[count] + "</div>";
-                    c.Text += "<div class = 'card-text'>" + scholarshipDescriptionArray[count] + "</div>";
-                    c.Text += "<a type ='button' class = 'border border-white btn-medium btn-round' style = 'background-color:#ffffff;' href='" + linkArray[count] + "' target = '_blank'><i class='fas fa-link' > </i></a>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
-                    c.Text += "</div>";
+                    LinkButton referralLink = new LinkButton();
+                    referralLink.ID = "referralLink" + count;
+
+                    referralLink.CssClass = "far fa-paper-plane";
+
+                    referralLink.CommandArgument += scholarshipIDArray[count];
+                    referralLink.Command += new CommandEventHandler(this.referralButton_Click);
+
+                    c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
+                    c.Controls.Add(new LiteralControl("<div class='mainflip'>"));
+                    c.Controls.Add(new LiteralControl("<div class='frontside'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
+                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarshipNameArray[count] + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + orgNameArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+
+                    c.Controls.Add(new LiteralControl("<div class='backside'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarshipNameArray[count] + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + orgNameArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarshipDescriptionArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum:" + scholarshipMinArray[count].ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Maximum: " + scholarshipMaxArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Deadline:" + deadlineArray[count].ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
+                    c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
+                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>"));
+                    c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
+                    c.Controls.Add(referralLink);
+                    c.Controls.Add(new LiteralControl("</a>"));
+                    c.Controls.Add(new LiteralControl("</li>"));
+                    c.Controls.Add(new LiteralControl("</ul>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
+                    c.Controls.Add(new LiteralControl("</div>"));
                     c.Style.Add("width", "33%");
                     r.Cells.Add(c);
                     count++;
@@ -147,6 +192,78 @@ public partial class CounselorScholarshipBoard : System.Web.UI.Page
 
 
         }
+
+    }
+
+    public void referralButton_Click(object sender, CommandEventArgs e)
+    {
+        int scholarshipID = Convert.ToInt32(e.CommandArgument);
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
+        pullJobInfo.CommandText = "SELECT Scholarship.ScholarshipName, Organization.OrganizationName FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID WHERE Scholarship.ScholarshipID = " + scholarshipID;
+        pullJobInfo.Connection = sc;
+
+        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+            String scholarshipName = reader.GetString(0);
+            String orgName = reader.GetString(1);
+        }
+
+        lblScholarshipName.Text = scholarshipName;
+        lblOrgName.Text = orgName;
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+
+    }
+
+    public void sendToButton_Click(object sender, EventArgs e)
+    {
+        List<int> studentIDList = new List<int>();
+        for (int i = 0; i < gridviewRefer.Rows.Count; i++)
+        {
+            CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
+
+
+            if (check.Checked)
+            {
+                //find student ID for student who is checked
+                int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
+                studentIDList.Add(studentID);
+            }
+
+        }
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+        List<String> emailList = new List<String>();
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+
+        foreach (var studentID in studentIDList)
+        {
+            query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
+            System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+            while (Result.Read())
+            {
+                String email = Result.GetString(0);
+                emailList.Add(email);
+
+            }
+
+        }
+        EmailQuery.Close();
+
+
 
     }
 
