@@ -32,7 +32,14 @@ public class JobListing
         setOrgDescription(orgDescription);
         setOrgImage(orgImage);
         setOrgWebsite(orgWebsite);
-    } 
+    }
+
+    public JobListing(String JobTitle, String OrgName, String OrgWebSite)
+    {
+        setJobTitle(JobTitle);
+        setOrgName(OrgName);
+        setOrgWebsite(OrgWebSite);
+    }
 
     public void setJobTitle(String jobTitle)
     {
