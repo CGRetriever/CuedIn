@@ -96,15 +96,17 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         reader = pullScholarshipInfo.ExecuteReader();
 
         {
-            String[] orgNameArray = new String[countTotalScholarships];
-            String[] scholarshipNameArray = new String[countTotalScholarships];
-            String[] scholarshipDescriptionArray = new String[countTotalScholarships];
-            String[] imageArray = new string[countTotalScholarships];
-            String[] linkArray = new string[countTotalScholarships];
-            decimal[] scholarshipMinArray = new decimal[countTotalScholarships];
-            decimal[] scholarshipMaxArray = new decimal[countTotalScholarships];
-            DateTime[] deadlineArray = new DateTime[countTotalScholarships];
-            int[] scholarshipIDArray = new int[countTotalScholarships];
+            List<Scholarship> scholarships = new List<Scholarship>();
+            
+            String orgName;
+            String  scholarshipName;
+            String  scholarshipDescription;
+            String  image;
+            String  linkArray = new string[countTotalScholarships];
+            decimal  scholarshipMinArray = new decimal[countTotalScholarships];
+            decimal  scholarshipMaxArray = new decimal[countTotalScholarships];
+            DateTime  deadlineArray = new DateTime[countTotalScholarships];
+            int scholarshipIDArray = new int[countTotalScholarships];
 
             int x = 0;
             while (reader.Read())
