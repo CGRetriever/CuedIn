@@ -9,17 +9,7 @@ using System.Web.UI.WebControls;
 public partial class LandingPage : System.Web.UI.Page
 {
 
-    // Student request arrays
-    public static String[] StudentImageArray = new string[5];
-    public static String[] applicationIDArray = new string[5];
-    public static String[] StudentNamearray = new string[5];
-    public static String[] AppJobTitleArray = new string[5];
-    public static String[] AppOrgTitleArray = new string[5];
-    public static String[] AppStudentGPAArray = new string[5];
-    public static String[] StudentOrgWebURLArray = new string[5];
-
-
-
+   
     protected void Page_Load(object sender, EventArgs e)
     {
 
