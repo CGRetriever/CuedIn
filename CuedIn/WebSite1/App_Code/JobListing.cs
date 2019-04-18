@@ -129,6 +129,11 @@ public class JobListing
         return orgWebsite;
     }
 
+    public String getOrgDescription()
+    {
+        return orgDescription;
+    }
+
 
 
 }

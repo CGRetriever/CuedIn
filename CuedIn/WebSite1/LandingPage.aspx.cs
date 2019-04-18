@@ -9,20 +9,10 @@ using System.Web.UI.WebControls;
 public partial class LandingPage : System.Web.UI.Page
 {
 
-    // Job posting arrays
-    public static String[] imageArray = new string[5];
-    public static String[] jobTitleArray = new string[5];
-    public static int[] jobListingIDArray = new int[5];
-    public static String[] orgNameArray = new string[5];
-    public static String[] jobTypeArray = new string[5];
-    public static String[] jobLocationArray = new string[5];
-    public static int[] numOfapplicantsArray = new int[5];
-    public static String[] jobDeadLineArray = new string[5];
-    public static String[] jobDescArray = new string[5];
-    public static String[] OrgDescArray = new string[5];
-    public static String[] OrgWebURLArray = new string[5];
+    // OOP Stuff
 
-
+    //public static JobListing[] JobCardsArray = new JobListing[5];
+    //public static Student[] StudentCardsArray = new Student[5];
 
 
     // Student request arrays
@@ -38,9 +28,10 @@ public partial class LandingPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+     JobListing[] JobCardsArray = new JobListing[5];
+     Student[] StudentCardsArray = new Student[5];
 
-        ((Label)Master.FindControl("lblMaster")).Text = "Home Page";
-        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
+    ((Label)Master.FindControl("lblMaster")).Text = "Landing Page";
 
         EmptyPostinglbl.Visible = false;
         EmptyStudentslbl.Visible = false;
@@ -58,84 +49,90 @@ public partial class LandingPage : System.Web.UI.Page
         System.Data.SqlClient.SqlDataReader reader = RecentJobs.ExecuteReader();
 
 
+
+        // Attempting OOP Stuff
         int x = 0;
 
         while (reader.Read())
         {
 
-            imageArray[x] = reader.GetString(2);
-            jobTitleArray[x] = reader.GetString(1);
-            jobListingIDArray[x] = reader.GetInt32(0);
-            orgNameArray[x] = reader.GetString(3);
-            jobTypeArray[x] = reader.GetString(4);
-            jobLocationArray[x] = reader.GetString(6);
-            jobDescArray[x] = reader.GetString(5);
-            numOfapplicantsArray[x] = reader.GetInt32(7);
-            jobDeadLineArray[x] = reader.GetDateTime(8).ToString();
-            OrgDescArray[x] = reader.GetString(9);
-            OrgWebURLArray[x] = reader.GetString(10);
+            String JobTitle = reader.GetString(1);
+            String JobDescription = reader.GetString(5);
+            String JobType = reader.GetString(4);
+            String JobLocation = reader.GetString(6);
+            DateTime JobDeadline = reader.GetDateTime(8);
+            int numOfApplicants = reader.GetInt32(7);
+            String OrgName = reader.GetString(3);
+            String OrgDescription = reader.GetString(9);
+            String OrgImage = reader.GetString(2);
+            String OrgWebsite = reader.GetString(10);
+
+            JobListing tempObject = new JobListing(JobTitle, JobDescription, JobType, JobLocation, JobDeadline, numOfApplicants, OrgName, OrgDescription, OrgImage, OrgWebsite);
+
+            JobCardsArray[x] = tempObject;
             x++;
 
         }
 
-        
+        // OOP First Card
+
+        if (JobCardsArray[0] != null)
+        {
+            Image1.ImageUrl = JobCardsArray[0].getOrgImage();
+            CompanyNamelbl.Text = JobCardsArray[0].getOrgName();
+            JobTitlelbl.Text = JobCardsArray[0].getJobTitle();
+            CompanyNamelbl2.Text = JobCardsArray[0].getOrgName();
+            lblJOrganizationDescription.Text = JobCardsArray[0].getJobDescription();
+            lblJobType.Text = JobCardsArray[0].getJobType();
+            lblOrgDescription.Text = JobCardsArray[0].getOrgDescription();
+            JobLink1.NavigateUrl = JobCardsArray[0].getOrgWebsite();
+        }
 
 
-        // First Card
-        Image1.ImageUrl = imageArray[0];
-        CompanyNamelbl.Text = orgNameArray[0];
-        JobTitlelbl.Text = jobTitleArray[0];
-        CompanyNamelbl2.Text = orgNameArray[0];
-        lblJOrganizationDescription.Text = jobDescArray[0];
-        lblJobType.Text = jobTypeArray[0];
-        lblOrgDescription.Text = OrgDescArray[0];
-        JobLink1.NavigateUrl = OrgWebURLArray[0];
+        // OOP Second Card
+        if (JobCardsArray[1] != null)
+        {
+            Image2.ImageUrl = JobCardsArray[1].getOrgImage();
+            CompanyNamelbl3.Text = JobCardsArray[1].getOrgName();
+            JobTitlelbl2.Text = JobCardsArray[1].getJobTitle();
+            CompanyNamelbl4.Text = JobCardsArray[1].getOrgName();
+            lblJOrganizationDescription2.Text = JobCardsArray[1].getJobDescription();
+            lblJobType2.Text = JobCardsArray[1].getJobType();
+            lblOrgDescription2.Text = JobCardsArray[1].getOrgDescription();
+            JobLink2.NavigateUrl = JobCardsArray[1].getOrgWebsite();
+        }
 
 
-        // Second card
-        Image2.ImageUrl = imageArray[1];
-        CompanyNamelbl3.Text = orgNameArray[1];
-        JobTitlelbl2.Text = jobTitleArray[1];
-        CompanyNamelbl4.Text = orgNameArray[1];
-        lblJOrganizationDescription2.Text = jobDescArray[1];
-        lblJobType2.Text = jobTypeArray[1];
-        lblOrgDescription2.Text = OrgDescArray[1];
-        JobLink2.NavigateUrl = OrgWebURLArray[1];
+        // OOP Third Card
+        if (JobCardsArray[2] != null)
+        {
+            Image3.ImageUrl = JobCardsArray[2].getOrgImage();
+            CompanyNamelbl5.Text = JobCardsArray[2].getOrgName();
+            JobTitlelbl3.Text = JobCardsArray[2].getJobTitle();
+            CompanyNamelbl6.Text = JobCardsArray[2].getOrgName();
+            lblJOrganizationDescription3.Text = JobCardsArray[2].getJobDescription();
+            lblJobType3.Text = JobCardsArray[2].getJobType();
+            lblOrgDescription3.Text = JobCardsArray[2].getOrgDescription();
+            JobLink3.NavigateUrl = JobCardsArray[2].getOrgWebsite();
+        }
 
 
-        // Third card
-        Image3.ImageUrl = imageArray[2];
-        CompanyNamelbl5.Text = orgNameArray[2];
-        JobTitlelbl3.Text = jobTitleArray[2];
-        CompanyNamelbl6.Text = orgNameArray[2];
-        lblJOrganizationDescription3.Text = jobDescArray[2];
-        lblJobType3.Text = jobTypeArray[2];
-        lblOrgDescription3.Text = OrgDescArray[2];
-        JobLink3.NavigateUrl = OrgWebURLArray[2];
-
-
-        // Fourth card
-        Image4.ImageUrl = imageArray[3];
-        CompanyNamelbl7.Text = orgNameArray[3];
-        JobTitlelbl4.Text = jobTitleArray[3];
-        CompanyNamelbl8.Text = orgNameArray[3];
-        lblJOrganizationDescription4.Text = jobDescArray[3];
-        lblJobType4.Text = jobTypeArray[3];
-        lblOrgDescription4.Text = OrgDescArray[3];
-        JobLink4.NavigateUrl = OrgWebURLArray[3];
-
-
-
-
+        // OOP Fourth Card
+        if (JobCardsArray[3] != null)
+        {
+            Image4.ImageUrl = JobCardsArray[3].getOrgImage();
+            CompanyNamelbl7.Text = JobCardsArray[3].getOrgName();
+            JobTitlelbl4.Text = JobCardsArray[3].getJobTitle();
+            CompanyNamelbl8.Text = JobCardsArray[3].getOrgName();
+            lblJOrganizationDescription4.Text = JobCardsArray[3].getJobDescription();
+            lblJobType4.Text = JobCardsArray[3].getJobType();
+            lblOrgDescription4.Text = JobCardsArray[3].getOrgDescription();
+            JobLink4.NavigateUrl = JobCardsArray[3].getOrgWebsite();
+        }
 
         sql.Close();
 
-        //LandingPage.jobTitleArray = null;
-        //jobTitleArray[1] = null;
-        //jobTitleArray[2] = null;
-        //jobTitleArray[3] = null;
-
-        if (jobTitleArray[0] == null)
+        if (JobCardsArray[0] == null)
         {
             card1.Visible = false;
             card2.Visible = false;
@@ -143,18 +140,18 @@ public partial class LandingPage : System.Web.UI.Page
             card4.Visible = false;
             EmptyPostinglbl.Visible = true;
         }
-        else if (jobTitleArray[3] == null && jobTitleArray[2] == null && jobTitleArray[1] == null)
+        else if (JobCardsArray[3] == null && JobCardsArray[2] == null && JobCardsArray[1] == null)
         {
             card4.Visible = false;
             card3.Visible = false;
             card2.Visible = false;
         }
-        else if (jobTitleArray[3] == null && jobTitleArray[2] == null)
+        else if (JobCardsArray[3] == null && JobCardsArray[2] == null)
         {
             card4.Visible = false;
             card3.Visible = false;
         }
-        else if (jobTitleArray[3] == null)
+        else if (JobCardsArray[3] == null)
         {
             card4.Visible = false;
         }
@@ -163,11 +160,9 @@ public partial class LandingPage : System.Web.UI.Page
 
         }
 
-        jobTitleArray[0] = null;
-        jobTitleArray[1] = null;
-        jobTitleArray[2] = null;
-        jobTitleArray[3] = null;
-        jobTitleArray[4] = null;
+
+
+
 
 
 
@@ -187,6 +182,27 @@ public partial class LandingPage : System.Web.UI.Page
 
         while (result.Read())
         {
+
+
+            // Stopped here, query in google drive, need to change query so results are stored in a student and joblisting object and add them to arrays, then set lbls based on arrays, need to make first and last name separate labels on cards
+
+            //int applicationID = result.GetInt32(0);
+            //String firstName = result.GetString(6);
+            //String lastName = result.GetString(7);
+            //String studentGPA = result.GetDouble(3).ToString();
+            //String studentImage = result.GetString(4);
+            //String jobTitle = result.GetString(1);
+            //String orgName = result.GetString(2);
+            //String orgWebsite = result.GetString(5);
+
+
+
+
+
+
+
+
+
             applicationIDArray[y] = result.GetInt32(0).ToString();
             StudentNamearray[y] = result.GetString(1);
             AppJobTitleArray[y] = result.GetString(2);
@@ -295,7 +311,7 @@ public partial class LandingPage : System.Web.UI.Page
             TurnerTablet.Visible = true;
             TurnerPhone.Visible = true;
         }
-        
+
 
 
     }
@@ -308,7 +324,7 @@ public partial class LandingPage : System.Web.UI.Page
 
 
 
-    
+
 
 
 }
