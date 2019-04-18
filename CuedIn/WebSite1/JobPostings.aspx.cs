@@ -9,7 +9,7 @@ public partial class JobPostings : System.Web.UI.Page
 {
 
     private String jobTitle = "";
-    public String jobDescription = "";
+    private String jobDescription = "";
     public String jobType = "";
     public String jobLocation = "";
     public DateTime jobDeadline = DateTime.Today;
