@@ -4,9 +4,7 @@
 
                <ol class="breadcrumb arr-bread">
     <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="StudentMetricsDashboard.aspx">Student Metrics Dashboard</a></li>
-    <li><a href="ScholarshipDashboard.aspx">Scholarship Dashboard</a></li>
-    <li><a href="JobListingDashboard.aspx">Job Listing Dashboard</a></li>
+    <li><a href="StudentMetricsDashboard.aspx">Administrative Dashboard</a></li>
     <li><a href="JobListingMap.aspx">Work Based Learning Map</a></li>
     
                                

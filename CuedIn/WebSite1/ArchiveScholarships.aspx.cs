@@ -14,40 +14,16 @@ public partial class ArchiveScholarships : System.Web.UI.Page
     {
         rejScholarshipGridview.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll.Checked == true)
-        {
-            chkScholarshipMin.Checked = true;
-            chkScholarshipMax.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-         
-        }
 
-        if (cbSelectAll.Checked == false)
-        {
-            chkScholarshipMin.Checked = false;
-            chkScholarshipMax.Checked = false;
-            cbSelectAll.Text = "Select all";
-        }
 
 
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll2.Checked == true)
-        {
-            chkScholarshipMin1.Checked = true;
-            chkScholarshipMax1.Checked = true;
-            cbSelectAll2.Text = "Unselect All";
-        }
 
-        if (cbSelectAll2.Checked == false)
-        {
-            chkScholarshipMin1.Checked = false;
-            chkScholarshipMax1.Checked = false;
-            cbSelectAll2.Text = "Select all";
-        }
 
     }
 
@@ -411,32 +387,67 @@ public partial class ArchiveScholarships : System.Web.UI.Page
     }
 
 
-    protected void SearchButton1_Click(object sender, EventArgs e)
+    //protected void SearchButton1_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox1.Text;
+
+    //    ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+    //    ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'N') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
+    //    ScholarshipOpportunity.DataBind();
+    //    rejScholarshipGridview.DataBind();
+
+    //    ScholarshipOpportunity.SelectParameters.Clear();
+    //}
+
+    //protected void SearchButton2_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox2.Text;
+
+    //    SqlDataSource1.SelectParameters.Add("term", term);
+
+    //    SqlDataSource1.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'Y') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
+    //    SqlDataSource1.DataBind();
+    //    acceptScholarshipGridview.DataBind();
+
+    //    SqlDataSource1.SelectParameters.Clear();
+
+
+    //}
+
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
-        String term = SearchBox1.Text;
+        if (cbSelectAll.Checked == true)
+        {
+            chkScholarshipMin.Checked = true;
+            chkScholarshipMax.Checked = true;
+            cbSelectAll.Text = "Unselect All";
 
-        ScholarshipOpportunity.SelectParameters.Add("term", term);
+        }
 
-        ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'N') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
-        ScholarshipOpportunity.DataBind();
-        rejScholarshipGridview.DataBind();
-
-        ScholarshipOpportunity.SelectParameters.Clear();
+        if (cbSelectAll.Checked == false)
+        {
+            chkScholarshipMin.Checked = false;
+            chkScholarshipMax.Checked = false;
+            cbSelectAll.Text = "Select all";
+        }
     }
 
-    protected void SearchButton2_Click(object sender, EventArgs e)
+    protected void cbSelectAll2_Checked(object sender, EventArgs e)
     {
-        String term = SearchBox2.Text;
+        if (cbSelectAll2.Checked == true)
+        {
+            chkScholarshipMin1.Checked = true;
+            chkScholarshipMax1.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
+        }
 
-        SqlDataSource1.SelectParameters.Add("term", term);
-
-        SqlDataSource1.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'Y') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
-        SqlDataSource1.DataBind();
-        acceptScholarshipGridview.DataBind();
-
-        SqlDataSource1.SelectParameters.Clear();
-
-
+        if (cbSelectAll2.Checked == false)
+        {
+            chkScholarshipMin1.Checked = false;
+            chkScholarshipMax1.Checked = false;
+            cbSelectAll2.Text = "Select all";
+        }
     }
-
 }

@@ -39,6 +39,11 @@ public partial class LandingPage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        ((Label)Master.FindControl("lblMaster")).Text = "Home Page";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
+
+        EmptyPostinglbl.Visible = false;
+        EmptyStudentslbl.Visible = false;
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -72,6 +77,8 @@ public partial class LandingPage : System.Web.UI.Page
             x++;
 
         }
+
+        
 
 
         // First Card
@@ -118,9 +125,49 @@ public partial class LandingPage : System.Web.UI.Page
         JobLink4.NavigateUrl = OrgWebURLArray[3];
 
 
+
+
+
         sql.Close();
 
+        //LandingPage.jobTitleArray = null;
+        //jobTitleArray[1] = null;
+        //jobTitleArray[2] = null;
+        //jobTitleArray[3] = null;
 
+        if (jobTitleArray[0] == null)
+        {
+            card1.Visible = false;
+            card2.Visible = false;
+            card3.Visible = false;
+            card4.Visible = false;
+            EmptyPostinglbl.Visible = true;
+        }
+        else if (jobTitleArray[3] == null && jobTitleArray[2] == null && jobTitleArray[1] == null)
+        {
+            card4.Visible = false;
+            card3.Visible = false;
+            card2.Visible = false;
+        }
+        else if (jobTitleArray[3] == null && jobTitleArray[2] == null)
+        {
+            card4.Visible = false;
+            card3.Visible = false;
+        }
+        else if (jobTitleArray[3] == null)
+        {
+            card4.Visible = false;
+        }
+        else
+        {
+
+        }
+
+        jobTitleArray[0] = null;
+        jobTitleArray[1] = null;
+        jobTitleArray[2] = null;
+        jobTitleArray[3] = null;
+        jobTitleArray[4] = null;
 
 
 
@@ -191,6 +238,66 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         sql.Close();
+
+        //LandingPage.StudentNamearray = null;
+        //StudentNamearray[1] = null;
+        //StudentNamearray[2] = null;
+        //StudentNamearray[3] = null;
+
+        if (StudentNamearray[0] == null)
+        {
+            StudentCard1.Visible = false;
+            StudentCard2.Visible = false;
+            StudentCard3.Visible = false;
+            StudentCard4.Visible = false;
+            EmptyStudentslbl.Visible = true;
+
+        }
+        else if (StudentNamearray[3] == null && StudentNamearray[2] == null && StudentNamearray[1] == null)
+        {
+            StudentCard4.Visible = false;
+            StudentCard3.Visible = false;
+            StudentCard2.Visible = false;
+        }
+        else if (StudentNamearray[3] == null && StudentNamearray[2] == null)
+        {
+            StudentCard4.Visible = false;
+            StudentCard3.Visible = false;
+        }
+        else if (StudentNamearray[3] == null)
+        {
+            StudentCard4.Visible = false;
+        }
+        else
+        {
+
+        }
+
+        StudentNamearray[0] = null;
+        StudentNamearray[1] = null;
+        StudentNamearray[2] = null;
+        StudentNamearray[3] = null;
+        StudentNamearray[4] = null;
+
+
+
+
+        // Start of Tableu Charts
+        if (Session["schoolID"].Equals(12))
+        {
+            LouisaDesktop.Visible = true;
+            LouisaTablet.Visible = true;
+            LousiaPhone.Visible = true;
+        }
+        else if (Session["schoolID"].Equals(15))
+        {
+            TurnerDesktop.Visible = true;
+            TurnerTablet.Visible = true;
+            TurnerPhone.Visible = true;
+        }
+        
+
+
     }
 
 
@@ -201,10 +308,7 @@ public partial class LandingPage : System.Web.UI.Page
 
 
 
-    //protected void JobLink1_Click(object sender, EventArgs e)
-    //{
-    //    JobLink1.PostBackUrl = "https://www.walmart.com/";
-    //}
+    
 
 
 }

@@ -236,6 +236,10 @@ h1 {
     .phone, .tablet {
         display: none;
     }
+    #cont1 {
+        margin-left: 15em !important;
+
+    }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -257,7 +261,14 @@ h1 {
         text-align: center;
         margin-left: -80px !important;
     }
+    #cont1 {
+        margin-left: 0em !important;
+    }
 
+    #maincont {
+        padding-bottom: 3em;
+        text-align: center;
+    }
     .dropdown-toggle::after {
         top: auto;
         bottom: 10px;
@@ -388,6 +399,7 @@ h1 {
 
 
 
+
 /* ---------------------------------------------------
   Breadcrumb
 ----------------------------------------------------- */
@@ -482,3 +494,16 @@ h1 {
             .arr-bread li a:active:after, .arr-bread li a:active:before {
                 border-left-color: #4F79A3
             }
+
+        .fixed-top {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                z-index: 1030;
+            }
+
+        #cont1 {
+            margin-left: 16em;
+           width:1000em;
+        }

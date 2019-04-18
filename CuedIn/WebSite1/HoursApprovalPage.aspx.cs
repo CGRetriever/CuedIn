@@ -17,32 +17,11 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         GridView1.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll.Checked == true)
-        {
-            chkImage.Checked = true;
-            chkJobType.Checked = true;
-            chkHoursWBL.Checked = true;
-            chkGradeLevel.Checked = true;
-            chkGPA.Checked = true;
-            cbSelectAll.Text = "Unselect All";
 
-
-        }
-
-        if (cbSelectAll.Checked == false)
-        {
-            chkImage.Checked = false;
-            chkJobType.Checked = false;
-            chkHoursWBL.Checked = false;
-            chkGradeLevel.Checked = false;
-            chkGPA.Checked = false;
-
-            cbSelectAll.Text = "Select All";
-
-        }
 
     }
 
@@ -85,6 +64,126 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveXModal();", true);
+
+
+
+        if (chkImage.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkGradeLevel.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkGPA.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkHoursWBL.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
     }
     //click approve in modal-- send data to DB
     protected void acceptJobButton_Click(object sender, EventArgs e)
@@ -133,6 +232,126 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Close();
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
+
+
+
+        if (chkImage.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkGradeLevel.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkGPA.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkHoursWBL.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
     }
     //click reject in modal-- send to DB
     protected void rejectJobButton_Click(object sender, EventArgs e)
@@ -185,6 +404,125 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
+
+
+        if (chkImage.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Image")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkGradeLevel.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkGPA.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkHoursWBL.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
 
 
 
@@ -413,17 +751,44 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    protected void SearchButton_Click(object sender, EventArgs e)
+    //protected void SearchButton_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox.Text;
+
+    //    JobOpportunity.SelectParameters.Add("term", term);
+
+    //    JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
+    //    JobOpportunity.DataBind();
+    //    GridView1.DataBind();
+
+    //    JobOpportunity.SelectParameters.Clear();
+
+    //}
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
-        String term = SearchBox.Text;
+        if (cbSelectAll.Checked == true)
+        {
+            chkImage.Checked = true;
+            chkJobType.Checked = true;
+            chkHoursWBL.Checked = true;
+            chkGradeLevel.Checked = true;
+            chkGPA.Checked = true;
+            cbSelectAll.Text = "Unselect All";
 
-        JobOpportunity.SelectParameters.Add("term", term);
 
-        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
-        JobOpportunity.DataBind();
-        GridView1.DataBind();
+        }
 
-        JobOpportunity.SelectParameters.Clear();
+        if (cbSelectAll.Checked == false)
+        {
+            chkImage.Checked = false;
+            chkJobType.Checked = false;
+            chkHoursWBL.Checked = false;
+            chkGradeLevel.Checked = false;
+            chkGPA.Checked = false;
 
+            cbSelectAll.Text = "Select All";
+
+        }
     }
 }

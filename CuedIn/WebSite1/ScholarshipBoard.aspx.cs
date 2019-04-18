@@ -25,6 +25,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         }
 
         ((Label)Master.FindControl("lblMaster")).Text = "Approved Scholarships";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
         //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
         //sc.Open();
@@ -62,7 +63,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         //        orgDescription = reader.GetString(6);
         //        orgImage = reader.GetString(7);
         //    }
-        
+
     }
     protected void scholarshipTable_Load(object sender, EventArgs e)
     {

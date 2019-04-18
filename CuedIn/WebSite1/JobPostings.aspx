@@ -4,6 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <head>
+
         <title>Job Postings</title>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,16 +15,35 @@
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
-        <link rel="stylesheet" href="css/style.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
         <link rel='stylesheet' href='css/card.css'>
         <link rel='stylesheet' href='css/style.css'>
     </head>
-    
 
+
+
+
+        <div class="container">
+            <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+            <div class="container">
+                <div class="form-row">
+                    <div class="col-md-12">
+
+                            <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" CssClass="form-control" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
+                        <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
+                            SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
+                        </asp:SqlDataSource>
+                        <asp:Button ID="ApplyChanges" AutoPostBack="true" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
+
+                        </div>
+                    </div>
+                </div>
+<br>
+                   
  <!--- Breadcrumb --->
  
     <ol class="breadcrumb arr-bread">
@@ -40,12 +60,15 @@
 <!--- END Breadcrumb --->
 
         <div class="container">
-            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
+             
 
+                
+
+            <div>
             <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%"></asp:Table>
         </div>
-
+            </div>
         <script>
             //Initialize popover with jQuery
                     $(document).ready(function () {
@@ -53,7 +76,8 @@
                     });
         </script>
 
-        <div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-12">
             <%--Refer Job Modal--%>
             <div class="modal fade" id="sendToModal" role="dialog">
                 <div class="modal-dialog">
@@ -85,27 +109,27 @@
 
                                     </asp:SqlDataSource>
                                     <div style="overflow-y: scroll; overflow-x: hidden; height: 500px; width: 450px;">
-                                    <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="ReferStudents" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
-                                        <Columns>
-                                            
-                                            <asp:TemplateField HeaderText="Select">
-                                                <ItemTemplate>
-                                                    <asp:CheckBox ID="studentCheck" runat="server" />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:BoundField DataField="StudentEntityID" HeaderText="ID" Visible="false" />
-                                            <asp:TemplateField HeaderText="Image" Visible="false">
-                                                <ItemTemplate>
-                                                <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
-                                            <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" />
-                                            <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" />
-                                        </Columns>
-                                    </asp:GridView>
-                                        </div>
-                                    
+                                        <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="ReferStudents" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
+                                            <Columns>
+
+                                                <asp:TemplateField HeaderText="Select">
+                                                    <ItemTemplate>
+                                                        <asp:CheckBox ID="studentCheck" runat="server" />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="StudentEntityID" HeaderText="ID" Visible="false" />
+                                                <asp:TemplateField HeaderText="Image" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Image ID="studentImage" runat="server" CssClass="rounded-circle col-sm-1" ImageUrl='<%#Eval("StudentImage")%>' />
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" />
+                                                <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" />
+                                                <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" />
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -119,30 +143,44 @@
                     </div>
                 </div>
             </div>
+                </div>
+            </div>
+            </div>
             <script type='text/javascript'>
                 function openSendToModal() {
                     $('[id*=sendToModal]').modal('show');
                 }
 
-                 window.onscroll = function() {scrollFunction()};
+                //window.onscroll = function () { scrollFunction() };
 
-                            function scrollFunction() {
-              if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-              } else {
-                document.getElementById("myBtn").style.display = "none";
-              }
-            }
+                //function scrollFunction() {
+                //    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                //        document.getElementById("myBtn").style.display = "block";
+                //    } else {
+                //        document.getElementById("myBtn").style.display = "none";
+                //    }
+                //}
 
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-              document.body.scrollTop = 0; // For Safari
-              document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-            }
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    //document.body.scrollTop = 0; // For Safari
+                    //document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                }
+
+                $(function () {
+                    $('[id*=InterestGroupDrop]').multiselect({
+                        includeSelectAllOption: true,
+                        buttonWidth: '200px'
+
+
+                    });
+                });
+
+
 
 
             </script>
-    
+
 
 </asp:Content>
 

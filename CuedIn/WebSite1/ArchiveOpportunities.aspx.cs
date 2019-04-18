@@ -15,43 +15,16 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         gridviewAccJobs.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs Listings";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
         
-        if(cbSelectAll.Checked == true)
-        {
-            chkJobDescription1.Checked = true;
-            chkJobLocation1.Checked = true;
-            chkJobType1.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-        }
 
-        if(cbSelectAll.Checked == false)
-        {
-            chkJobDescription1.Checked = false;
-            chkJobLocation1.Checked = false;
-            chkJobType1.Checked = false;
-            cbSelectAll.Text = "Select All";
-        }
 
 
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll2.Checked == true)
-        {
-            chkJobDescription.Checked = true;
-            chkJobLocation.Checked = true;
-            chkJobType.Checked = true;
-            cbSelectAll2.Text = "Unselect All";
-        }
 
-        if (cbSelectAll2.Checked == false)
-        {
-            chkJobDescription.Checked = false;
-            chkJobLocation.Checked = false;
-            chkJobType.Checked = false;
-            cbSelectAll2.Text = "Select All";
-        }
 
 
     }
@@ -477,36 +450,69 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     }
 
 
-    protected void SearchButton1_Click(object sender, EventArgs e)
-    {
-        String term = SearchBox1.Text;
+    //protected void SearchButton1_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox1.Text;
 
-        SqlDataSource1.SelectParameters.Add("term", term);
+    //    SqlDataSource1.SelectParameters.Add("term", term);
 
-        SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
-        SqlDataSource1.DataBind();
-        gridviewRejJobs.DataBind();
+    //    SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
+    //    SqlDataSource1.DataBind();
+    //    gridviewRejJobs.DataBind();
 
-        SqlDataSource1.SelectParameters.Clear();
-    }
+    //    SqlDataSource1.SelectParameters.Clear();
+    //}
 
-    protected void SearchButton2_Click(object sender, EventArgs e)
-    {
-        String term = SearchBox2.Text;
+    //protected void SearchButton2_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox2.Text;
 
-        JobOpportunity.SelectParameters.Add("term", term);
+    //    JobOpportunity.SelectParameters.Add("term", term);
 
-        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
-        JobOpportunity.DataBind();
-        gridviewAccJobs.DataBind();
+    //    JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
+    //    JobOpportunity.DataBind();
+    //    gridviewAccJobs.DataBind();
 
-        JobOpportunity.SelectParameters.Clear();
+    //    JobOpportunity.SelectParameters.Clear();
 
 
-    }
+    //}
 
     protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
-        
+        if (cbSelectAll.Checked == true)
+        {
+            chkJobDescription1.Checked = true;
+            chkJobLocation1.Checked = true;
+            chkJobType1.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkJobDescription1.Checked = false;
+            chkJobLocation1.Checked = false;
+            chkJobType1.Checked = false;
+            cbSelectAll.Text = "Select All";
+        }
+    }
+
+    protected void cbSelectAll2_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll2.Checked == true)
+        {
+            chkJobDescription.Checked = true;
+            chkJobLocation.Checked = true;
+            chkJobType.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
+        }
+
+        if (cbSelectAll2.Checked == false)
+        {
+            chkJobDescription.Checked = false;
+            chkJobLocation.Checked = false;
+            chkJobType.Checked = false;
+            cbSelectAll2.Text = "Select All";
+        }
     }
 }

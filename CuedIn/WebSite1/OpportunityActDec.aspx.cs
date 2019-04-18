@@ -37,45 +37,19 @@ public partial class OpportunityActDec : System.Web.UI.Page
         {
             lousiapc.Visible = true;
 
-            ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
+
+
         }
+
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll2.Checked == true)
-        {
-            chkScholarshipMin.Checked = true;
-            chkScholarshipMax.Checked = true;
-            cbSelectAll2.Text = "Unselect All";
 
-        }
-
-        if (cbSelectAll2.Checked == false)
-        {
-            chkScholarshipMin.Checked = false;
-            chkScholarshipMax.Checked = false;
-            cbSelectAll2.Text = "Select All";
-        }
 
 
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
 
-        if (cbSelectAll.Checked == true)
-        {
-            chkJobDescription.Checked = true;
-            chkJobLocation.Checked = true;
-            chkJobType.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-
-        }
-
-        if (cbSelectAll.Checked == false)
-        {
-            chkJobDescription.Checked = false;
-            chkJobLocation.Checked = false;
-            chkJobType.Checked = false;
-            cbSelectAll.Text = "Select All";
-        }
+        
 
 
     }
@@ -634,30 +608,68 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    protected void SearchButton1_Click(object sender, EventArgs e)
+    //protected void SearchButton1_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox1.Text;
+
+    //    JobOpportunity.SelectParameters.Add("term", term);
+
+    //    JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or (JobListing.Location like '%" + @term + "%'))";
+    //    JobOpportunity.DataBind();
+    //    GridView1.DataBind();
+
+    //    JobOpportunity.SelectParameters.Clear();
+    //}
+
+    //protected void SearchButton2_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox2.Text;
+
+    //    ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+    //    ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'P') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + @term + "%') or (Scholarship.ScholarshipMax like '%" + @term + "%'))";
+    //    ScholarshipOpportunity.DataBind();
+    //    GridView2.DataBind();
+
+    //    ScholarshipOpportunity.SelectParameters.Clear();
+
+    //}
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
-        String term = SearchBox1.Text;
+        if (cbSelectAll.Checked == true)
+        {
+            chkJobDescription.Checked = true;
+            chkJobLocation.Checked = true;
+            chkJobType.Checked = true;
+            cbSelectAll.Text = "Unselect All";
 
-        JobOpportunity.SelectParameters.Add("term", term);
+        }
 
-        JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or (JobListing.Location like '%" + @term + "%'))";
-        JobOpportunity.DataBind();
-        GridView1.DataBind();
-
-        JobOpportunity.SelectParameters.Clear();
+        if (cbSelectAll.Checked == false)
+        {
+            chkJobDescription.Checked = false;
+            chkJobLocation.Checked = false;
+            chkJobType.Checked = false;
+            cbSelectAll.Text = "Select All";
+        }
     }
 
-    protected void SearchButton2_Click(object sender, EventArgs e)
+    protected void cbSelectAll2_Checked(object sender, EventArgs e)
     {
-        String term = SearchBox2.Text;
+        if (cbSelectAll2.Checked == true)
+        {
+            chkScholarshipMin.Checked = true;
+            chkScholarshipMax.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
 
-        ScholarshipOpportunity.SelectParameters.Add("term", term);
+        }
 
-        ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'P') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + @term + "%') or (Scholarship.ScholarshipMax like '%" + @term + "%'))";
-        ScholarshipOpportunity.DataBind();
-        GridView2.DataBind();
-
-        ScholarshipOpportunity.SelectParameters.Clear();
-
+        if (cbSelectAll2.Checked == false)
+        {
+            chkScholarshipMin.Checked = false;
+            chkScholarshipMax.Checked = false;
+            cbSelectAll2.Text = "Select All";
+        }
     }
 }

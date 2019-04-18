@@ -193,7 +193,7 @@ public partial class Login : System.Web.UI.Page
                 Session["permission"] = permissions;
 
                 Session["schoolid"] = school;
-                Response.Redirect("JobPostings.aspx");
+                Response.Redirect("LandingPage.aspx");
 
             }
             else if (permissions.Equals("Counselor"))

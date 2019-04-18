@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,37 +11,38 @@ using System.Web.UI.WebControls;
 public partial class StudentActDec : System.Web.UI.Page
 {
     public static String email;
+    private int schoolid = 12;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["schoolid"] == null)
+        {
+            Session["schoolid"] = 12;
+            schoolid = Convert.ToInt32(Session["scholid"]);
+        }
+        string query = "SELECT ApplicationRequest.ApplicationID, " +
+            " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
+            " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
+            "  INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER " +
+            " JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID" +
+            " WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID =  " + Session["schoolid"];
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+        conn.Close();
+
+
+        //Object sen = new Object();
+        //EventArgs e1 = new EventArgs();
+     //   btnCheckGridView_Click(sen, e1);
 
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
-
-        cbSelectAll.Attributes.Add("onclick", "Selectall");
-
-        if (cbSelectAll.Checked == true)
-        {
-            chkGPA.Checked = true;
-            chkGradeLevel.Checked = true;
-            chkHoursWBL.Checked = true;
-            chkImage.Checked = true;
-            chkJobDescription.Checked = true;
-            chkJobType.Checked = true;
-            cbSelectAll.Text = "Unselect All";
-
-        }
-
-        if (cbSelectAll.Checked == false)
-        {
-            chkGPA.Checked = false;
-            chkGradeLevel.Checked = false;
-            chkHoursWBL.Checked = false;
-            chkImage.Checked = false;
-            chkJobDescription.Checked = false;
-            chkJobType.Checked = false;
-            cbSelectAll.Text = "Select All";
-        }
+        
 
     }
 
@@ -103,6 +106,7 @@ public partial class StudentActDec : System.Web.UI.Page
         approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y' where applicationID = " + Session["selectedapplicationID"];
         approveStudent.ExecuteNonQuery();
         sql.Close();
+
 
         Response.Redirect("~/StudentActDec.aspx");
     }
@@ -299,28 +303,6 @@ public partial class StudentActDec : System.Web.UI.Page
         }
 
 
-        if (chkHoursWBL.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Hours Of WBL")
-                {
-                    GridView1.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Hours Of WBL")
-                {
-                    GridView1.Columns[i].Visible = true;
-
-                }
-            }
-        }
 
 
         if (chkJobType.Checked != true)
@@ -346,28 +328,7 @@ public partial class StudentActDec : System.Web.UI.Page
             }
         }
 
-        if (chkJobDescription.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Job Description")
-                {
-                    GridView1.Columns[i].Visible = false;
-
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Job Description")
-                {
-                    GridView1.Columns[i].Visible = true;
-
-                }
-            }
-        }
+   
 
     }
 
@@ -377,18 +338,18 @@ public partial class StudentActDec : System.Web.UI.Page
     }
 
 
-    protected void SearchButton_Click(object sender, EventArgs e)
-    {
-        String term = SearchBox.Text;
+    //protected void SearchButton_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox.Text;
 
-        StudentOpportunity.SelectParameters.Add("term", term);
+    //    StudentOpportunity.SelectParameters.Add("term", term);
 
-        StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%'))";
-        StudentOpportunity.DataBind();
-        GridView1.DataBind();
+    //    StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%'))";
+    //    StudentOpportunity.DataBind();
+    //    GridView1.DataBind();
 
-        StudentOpportunity.SelectParameters.Clear();
-    }
+    //    StudentOpportunity.SelectParameters.Clear();
+    //}
 
 
 
@@ -446,5 +407,32 @@ public partial class StudentActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
     }
 
+    protected void cbSelectAll_Checked (object sender, EventArgs e)
+    {
+        
+            {
+            if (cbSelectAll.Checked == true)
+            {
+                chkGPA.Checked = true;
+                chkGradeLevel.Checked = true;
+             
+                chkImage.Checked = true;
+                chkJobType.Checked = true;
+                cbSelectAll.Text = "Unselect All";
+
+            }
+
+            if (cbSelectAll.Checked == false)
+            {
+                chkGPA.Checked = false;
+                chkGradeLevel.Checked = false;
+       
+                chkImage.Checked = false;
+           
+                chkJobType.Checked = false;
+                cbSelectAll.Text = "Select All";
+            }
+        }
+    }
 
 }

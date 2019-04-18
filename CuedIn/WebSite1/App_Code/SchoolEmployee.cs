@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,30 +10,32 @@ using System.Web;
 public class SchoolEmployee
 {
     int schoolEmployeeEntityID;
-    String firstName;
-    String lastName;
-    String middleName;
-    String streetAddress;
-    String country;
-    String state;
-    int zipcode;
-    String schoolEmployeeEntityType;
-    int schoolEntityID;
-    int userEntityID;
+    private String firstName;
+    private String lastName;
+    private String middleName;
+    private String streetAddress;
+    private String country;
+    private String city;
+    private String state;
+    private String zipcode;
+    private String schoolEmployeeEntityType;
+    private int schoolEntityID;
+    private int userEntityID;
 
-    public SchoolEmployee(String firstName, String lastName, String middleName, 
-        String streetAddress, String country, String state, int zipcode, String schoolEmployeeEntityType, 
-        int schoolEntityID )
+    public SchoolEmployee(String firstName, String lastName, String middleName,
+        String streetAddress, String country, String city, String state, String zipcode, String schoolEmployeeEntityType,
+        int schoolEntityID)
     {
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
         setStreetAddress(streetAddress);
         setCountry(country);
+        setCity(city);
         setZipCode(zipcode);
         setSchoolEmployeeEntityType(schoolEmployeeEntityType);
         setSchoolEntityID(schoolEntityID);
-        
+
     }
 
 
@@ -62,7 +65,12 @@ public class SchoolEmployee
         this.country = country;
     }
 
-    public void setZipCode(int zipcode)
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
+
+    public void setZipCode(String zipcode)
     {
         this.zipcode = zipcode;
     }
@@ -108,12 +116,17 @@ public class SchoolEmployee
         return this.country;
     }
 
+    public String getCity()
+    {
+        return this.city;
+    }
+
     public String getState()
     {
         return this.state;
     }
 
-    public int getZipCode()
+    public String getZipCode()
     {
         return this.zipcode;
     }
