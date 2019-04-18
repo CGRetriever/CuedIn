@@ -52,11 +52,12 @@ public partial class JobPostings : System.Web.UI.Page
         pullJobInfo.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
-
+        String jobTitle = "";
+        String orgName = "";
         while (reader.Read())
         {
-            String jobTitle = reader.GetString(0);
-            String orgName = reader.GetString(5);
+            jobTitle = reader.GetString(0);
+            orgName = reader.GetString(5);
         }
 
         lblJobTitle.Text = jobTitle;
