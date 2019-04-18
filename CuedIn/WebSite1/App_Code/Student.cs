@@ -19,7 +19,7 @@ public class Student
     private String state;
     private int zipCode;
     private String studentGradeLevel;
-    private int studentGPA;
+    private double studentGPA;
     private int studentACTScore;
     private int studentSATScore;
     private String studentEthnicity;
@@ -33,6 +33,22 @@ public class Student
     private int parentEntityID;
     private String studentImage;
     private int schoolEntityID;
+    private int applicationID;
+
+
+    public Student(int applicationID, String firstName, String lastName, double studentGPA, String studentImage)
+    {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setStudentGPA(studentGPA);
+        setStudentImage(studentImage);
+        setStudentApplicationID(applicationID);
+    }
+
+    public void setStudentApplicationID(int applicationID)
+    {
+        this.applicationID = applicationID;
+    }
 
 
     public void setStudentEntityID(int studentEntityID)
@@ -91,11 +107,11 @@ public class Student
     public void setStudentGradeLevel(String studentGradeLevel)
     {
         this.studentGradeLevel = studentGradeLevel;
-   
+
     }
 
 
-    public void setStudentGPA(int studentGPA)
+    public void setStudentGPA(double studentGPA)
     {
         this.studentGPA = studentGPA;
     }
@@ -115,7 +131,7 @@ public class Student
 
     public void setStudentGender(String studentGender)
     {
-        this.studentGender = studentGender; 
+        this.studentGender = studentGender;
     }
 
 
@@ -142,7 +158,7 @@ public class Student
         this.studentEmploymentFlag = studentEmploymentFlag;
     }
 
-    public void setStudentAthleteFlag (String studentAthleteFlag)
+    public void setStudentAthleteFlag(String studentAthleteFlag)
     {
         this.studentAthleteFlag = studentAthleteFlag;
     }
@@ -152,12 +168,12 @@ public class Student
         this.studentGraduationTrack = studentGraduationTrack;
     }
 
-    public void setParentEntityID (int parentEntityID)
+    public void setParentEntityID(int parentEntityID)
     {
         this.parentEntityID = parentEntityID;
     }
 
-    public void setStudentImage (String studentImage)
+    public void setStudentImage(String studentImage)
     {
         this.studentImage = studentImage;
     }
@@ -214,7 +230,7 @@ public class Student
         return this.studentGradeLevel;
     }
 
-    public int getStudentGPA()
+    public double getStudentGPA()
     {
         return this.studentGPA;
     }
@@ -272,9 +288,14 @@ public class Student
     public int getSchoolEntityId()
     {
         return this.schoolEntityID;
-    } 
+    }
 
-    
+    public int getStudentApplicationID()
+    {
+        return this.applicationID;
+    }
+
+
 
 
 

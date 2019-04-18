@@ -33,6 +33,15 @@ public class JobListing
         setOrgImage(orgImage);
         setOrgWebsite(orgWebsite);
     }
+
+
+    public JobListing(String JobTitle, String OrgName, String OrgWebSite)
+    {
+        setJobTitle(JobTitle);
+        setOrgName(OrgName);
+        setOrgWebsite(OrgWebSite);
+    }
+
     public JobListing(String jobTitle, String jobDescription, String jobLocation, DateTime jobDeadline, int numOfApplicants, String orgName, String orgDescription, String orgImage, String orgWebsite)
     {
         setJobTitle(jobTitle);
@@ -45,6 +54,7 @@ public class JobListing
         setOrgImage(orgImage);
         setOrgWebsite(orgWebsite);
     }
+
 
 
     public void setJobTitle(String jobTitle)
@@ -147,10 +157,18 @@ public class JobListing
         return orgWebsite;
     }
 
+
+    public String getOrgDescription()
+    {
+        return orgDescription;
+    }
+
+
     public int getID()
     {
         return this.jobID;
     }
+
 
 
 }
