@@ -26,7 +26,7 @@
 
         <div class="wrapper">
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav class="fixed-top" id="sidebar">
             <div class="sidebar-header">
                 <a href="LandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
                 <strong>CU</strong>
@@ -136,27 +136,14 @@
                 </li>
 
             </ul>
-          <div class="container-fluid">
+          
 
-                   <button type="button" id="sidebarCollapse" class="btn btn-info">
-                       <i class="fas fa-chevron-circle-left fa-2x"></i>
-                       <span></span>
-                   </button>
-                      <script>
- document.addEventListener('DOMContentLoaded', function () {
-   $('button').on('click', function () {
-     $(this)
-       .find('[data-fa-i2svg]')
-       .toggleClass('fas fa-chevron-circle-right')
-       .toggleClass('fas fa-chevron-circle-left fa-2x');
-   });
- });
-</script>
+       
         </nav>
-
+            
         <!-- Page Content  -->
-        <div id="content">
-            <div class="containter-fluid" id="maincont" style="background-color:#4F79A3;">
+            <div class="container-fluid" id="cont1">
+            <div class="container-fluid" id="maincont" style="background-color:#4F79A3;">
                <div class="row" style="height:120px;">
                    <div class="col-md-3">
                    </div>
@@ -167,10 +154,33 @@
                        <br>
 
                </div>
-
+                   
            </div>
+                
        </div>
+                <br >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle</span>
+                    </button>
+                    
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <br>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+                </div>
         
 
 
@@ -189,8 +199,20 @@
         });
     </script>
 
-    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
+                        <script type="text/javascript">
+function resize() {
+    if ($(window).width() > 577) {
+     $('#sidebar').addClass('fixed-top');
+    }
+    else {$('#sidebar').removeClass('fixed-top');}
+}
+
+$(document).ready( function() {
+    $(window).resize(resize);
+    resize();
+});
+</script>
+    
 </body>
 </form>
 </html>
