@@ -8,16 +8,7 @@ using System.Web.UI.WebControls;
 public partial class JobPostings : System.Web.UI.Page
 {
 
-    private String jobTitle = "";
-    private String jobDescription = "";
-    private String jobType = "";
-    private String jobLocation = "";
-    public DateTime jobDeadline = DateTime.Today;
-    public int numOfApplicants = 0;
-    public String orgName = "";
-    public String orgDescription = "";
-    public String orgImage = "";
-
+  
     protected void Page_Load(object sender, EventArgs e)
     {
 
