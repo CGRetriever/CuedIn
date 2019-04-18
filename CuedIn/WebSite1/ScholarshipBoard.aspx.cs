@@ -170,11 +170,11 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='backside'>"));
                     c.Controls.Add(new LiteralControl("<div class='card'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarshipNameArray[count] + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + orgNameArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarshipDescriptionArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum:" + scholarshipMinArray[count].ToString() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Maximum: " + scholarshipMaxArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarships[count].getScholarshipName() + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getScholarshipName() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getScholarshipDescription() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum:" + scholarships[count].getScholarshipMin().ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Maximum: " + scholarships[count].getScholarshipMax().ToString() + "</p>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'> Deadline:" + deadlineArray[count].ToString() + "</p>"));
                     c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
