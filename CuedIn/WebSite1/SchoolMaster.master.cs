@@ -19,10 +19,18 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
             Response.Redirect("Login.aspx");
         }
 
+        //Session["schoolID"] = 12;
+        //Session["userCounty"] = "Harrisonburg City Public Schools";
+
     }
 
     protected void btn(object sender, EventArgs e)
     {
-        //Response.Redirect("Login.aspx");
+        Response.Redirect("Login.aspx");
+    }
+
+    protected void HomeButton_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("JobPostings.aspx");
     }
 }

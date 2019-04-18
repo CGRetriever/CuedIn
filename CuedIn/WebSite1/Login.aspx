@@ -36,8 +36,7 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
-			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+			<div class="wrap-login100">			
 					<span>
 						<img src="images/CommUpMainLogo.png" alt="logo" class="RoundedElement">
 					</span>
@@ -72,7 +71,7 @@
                   <br />
                     
                     <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                    <asp:Label ID="Label1" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
+                    <asp:Label ID="Label10" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
 
 
 					<div class="text-center p-t-90">
@@ -80,10 +79,13 @@
 							Forgot Password?
 						</a>
                         <br />
+                        <a class="txt1" href="PreLoginHomePage.aspx">
+							Return to Homepage
+						</a>
                         
                        
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -107,8 +109,5 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
-</body>
-</html>
 </asp:Content>
 

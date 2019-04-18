@@ -2,108 +2,102 @@
 
 <!DOCTYPE html>
 
-
 <head>
-        <title>CommUp</title>
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <meta name="keywords" content="">
-        <!-- Font Awesome for icons - see https://fontawesome.com/v4.7.0/cheatsheet/ -->
-        <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
-        <link rel="stylesheet" href="css/style.css">
-         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-         <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
-    </head>
+    <title>CommUp</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <!-- Font Awesome for icons - see https://fontawesome.com/v4.7.0/cheatsheet/ -->
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+</head>
+<form id="form1" runat="server">
 
     <body>
         <!--Interactive Sidebar Star -->
 
         <div class="wrapper">
+
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav class="fixed-top" id="sidebar">
             <div class="sidebar-header">
-                <h3>CommUp</h3>
+                <a href="CounselorLandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
                 <strong>CU</strong>
             </div>
 
+                <ul class="list-unstyled components">
+                    <li>
+                    
+                        <a href="CounselorLandingPage.aspx">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                    
 
-            <ul class="list-unstyled components">
-                <li>
-                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+<li>
+                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                         <i class="fas fa-tasks"></i>
                         Manage Postings
                     </a>
                     <ul class="collapse list-unstyled" id="OppPages">
                         <li>
-                            <a href="CounselorOpportunityActDec.aspx">Manage Opportunities</a>
+                            <a href="CounselorOpportunityActDec.aspx">Manage Jobs and <br /> Scholarships</a>
                         </li>
                         <li>
                             <a href="CounselorArchiveOpportunities.aspx">Archived Job Listings</a>
                         </li>
-
-
-                         <li>
-
+                        <li>
                             <a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a>
                         </li>
                     </ul>
                 </li>
-            
+                <li>
                     <li>
-                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                     <i class="fas fa-portrait"></i>
                     Students
                 </a>
                 <ul class="collapse list-unstyled" id="StudentPages">
                     <li>
-                        <a href="CounselorHoursApprovalPage.aspx">Student Log Hours</a>
+                        <a href="CounselorStudentActDec.aspx">Student Application Request</a>
                     </li>
                     <li>
-                        <a href="CounselorStudentActDec.aspx">Student Application Request</a>
+                        <a href="CounselorHoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                 </ul>
                 </li>
-
                     <li>
-
-                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                    <i class="fas fa-check-square"></i>
                      Approved Postings
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="CounselorJobPosting.aspx">Jobs</a>
+                        <a href="CounselorJobPosting.aspx">Approved Jobs</a>
                     </li>
                     <li>
-                        <a href="CounselorScholarshipBoard.aspx">Scholarship</a>
+                        <a href="CounselorScholarshipBoard.aspx">Approved Scholarships</a>
                     </li>
                 </ul>
-                </li>
-                <li>
-                      <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
-
-
+                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                   <i class="fas fa-chart-line"></i>
-                      Metrics
+                     Metrics
                 </a>
                 <ul class="collapse list-unstyled" id="Dashboard">
-                    <li>
-                        <a href="CounselorStudentMetricsDashboard.aspx">Student Metrics Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="CounselorScholarshipDashboard.aspx">Scholarship Dashboard</a>
-                    </li>
-                    <li>
-
-                        <a href="CounselorJobListingDashboard.aspx">Job Listing Dashboard</a>
+                     <li>
+                        <a href="CounselorStudentMetricsDashboard.aspx">Administrative Dashboard</a>
                     </li>
                     <li>
                         <a href="CounselorJobListingMap.aspx">Work Based Learning Map</a>
@@ -111,71 +105,69 @@
                      <li>
                         <a href="CounselorScholarshipMap.aspx">Scholarship Map</a>
                     </li>
-
                 </ul>
                 </li>
-
-              
-
-                  <li>
-                    <a href="Login.aspx">
+                 <li>
+                    <a href="CounselorCommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
+                </li>
+                    <li>
+                    <a href="Login.aspx" style="font-size: 1em">
                         <i class="fas fa-ban"></i>
                         Logout
                     </a>
                 </li>
+            </ul>
 
-              </ul>
           
 
-
+       
         </nav>
-
+            
         <!-- Page Content  -->
-        <div id="content">
-            <div class="containter-fluid" id="maincont" style="background-color:#4F79A3;">
-               <div class="row">
+            <div class="container-fluid" id="cont1">
+            <div class="container-fluid" id="maincont" style="background-color:#4F79A3;">
+               <div class="row" style="height:120px;">
                    <div class="col-md-3">
-                       <img class="img" src="images/comlogo.png" alt="company logo" style="height:200px; width:400px;">
                    </div>
                    <div class="col-md-6 text-center">
-                       <br>
-                       <br>
-                       <br>
+                       
                        <%--<h1 style=" color:#fff;  letter-spacing: 6px;"> STUDENT OUTCOMES</h1>--%>
-                       <asp:Label ID="lblMaster2" runat="server" Text="" Style="color: #fff; text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
+                       <asp:Label ID="lblMaster" runat="server" Text="" Style="color: #fff; text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
+                       <br>
 
-                       </div>
-               
-
+               </div>
+                   
            </div>
-      </div>
-            <br>
-            <nav class="navbar navbar-expand-lg <%--navbar-light--%> <%--bg-light--%>">
+                
+       </div>
+                <br >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i>
                         <span>Toggle</span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
+                    
 
-                    <%--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">APPROVED JOBS</a>
+                                <a class="nav-link" href="#"></a>
                             </li>
                         </ul>
-                    </div>--%>
+                    </div>
                 </div>
             </nav>
-            <!---End Sidebar Nav--->
-              
-            
-            
-          
-                
+            <br>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+                </div>
+        
+
 
                     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -191,12 +183,21 @@
             });
         });
     </script>
-            
 
-            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
-            </div>
+                        <script type="text/javascript">
+function resize() {
+    if ($(window).width() > 577) {
+     $('#sidebar').addClass('fixed-top');
+    }
+    else {$('#sidebar').removeClass('fixed-top');}
+}
 
+$(document).ready( function() {
+    $(window).resize(resize);
+    resize();
+});
+</script>
     
 </body>
+</form>
 </html>

@@ -19,8 +19,13 @@ public partial class Login : System.Web.UI.Page
 
         Session.Remove("user");
         Session.Remove("permission");
+        Session.Remove("schoolid");
         Session["user"] = "";
         Session["permission"] = "";
+
+        Session["schoolid"] = "";
+
+
 
 
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -94,8 +99,10 @@ public partial class Login : System.Web.UI.Page
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
 
-            Label1.Text = "Success!";
+            Label10.Text = "Success!";
             String permissions = " ";
+            int school = 0;
+
             sql.Open();
             System.Data.SqlClient.SqlCommand query1 = new System.Data.SqlClient.SqlCommand();
 
@@ -131,7 +138,52 @@ public partial class Login : System.Web.UI.Page
                 {
                     permissions = reader2.GetString(0);
                 }
+
             }
+
+
+
+            int schoolEntityId = 0;
+            String schoolName ="";
+            String schoolCounty ="";
+            int userEntityID= 0;
+
+            query1.CommandText = "SELECT School.SchoolEntityID, School.SchoolName, School.SchoolCounty, SchoolEmployee.SchoolEmployeeEntityID FROM School INNER JOIN SchoolEmployee ON School.SchoolEntityID = SchoolEmployee.SchoolEntityID" +
+                " where SchoolEmployeeEntityID = @userEntityID";
+            query1.Parameters.AddWithValue("@userEntityID", id);
+            reader2.Close();
+            System.Data.SqlClient.SqlDataReader reader3 = query1.ExecuteReader();
+            while (reader3.Read())
+          
+            {
+                schoolEntityId = reader3.GetInt32(0);
+                schoolName = reader3.GetString(1);
+                schoolCounty = reader3.GetString(2);
+                userEntityID = reader3.GetInt32(3);
+
+            }
+
+            query1.CommandText = "SELECT dbo.SchoolEmployee.SchoolentityID from dbo.schoolemployee where SchoolEmployeeEntityID = @SchoolEmployeeEntityID1";
+            query1.Parameters.AddWithValue("@SchoolEmployeeEntityID1", id);
+            reader3.Close();
+            System.Data.SqlClient.SqlDataReader reader4 = query1.ExecuteReader();
+            while (reader4.Read())
+            {
+                if (reader4.IsDBNull(0))
+                    school = 0;
+
+
+                else
+                {
+                    school = reader4.GetInt32(0);
+                }
+            }
+
+
+            Session["schoolID"] = schoolEntityId;
+            Session["userCounty"] = schoolCounty;
+            Session["schoolName"] = schoolName;
+            Session["EntityID"] = userEntityID;
 
 
             //Test the permsissions
@@ -139,25 +191,30 @@ public partial class Login : System.Web.UI.Page
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
-                Response.Redirect("JobPostings.aspx");
+
+                Session["schoolid"] = school;
+                Response.Redirect("LandingPage.aspx");
+
             }
             else if (permissions.Equals("Counselor"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
-                Response.Redirect("CounselorJobPosting.aspx");
+                Session["schoolid"] = school;
+                Response.Redirect("CounselorLandingPage.aspx");
             }
             else if (permissions.Equals("Teacher"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
-                Response.Redirect("TeacherJobPosting.aspx");
+                Session["schoolid"] = school;
+                Response.Redirect("TeacherLandingPage.aspx");
             }
 
         }
         else
         {
-            Label1.Text = "Your username or password is incorrect, please try again.";
+            Label10.Text = "Your username or password is incorrect, please try again.";
 
             username.Value = "";
             password.Value = "";

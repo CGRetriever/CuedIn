@@ -1,0 +1,30 @@
+﻿
+
+
+@media only screen and (min-width :320px) and (max-width : 717px) {
+    .bigDesktop, .smallDesktop, .tablet {
+        display: none;
+    }
+}
+
+
+@media only screen and (min-width :718px) and (max-width : 1149px) {
+    .bigDesktop, .smallDesktop, .tablet {
+        display: none;
+    }
+}
+
+
+
+
+@media only screen and (min-width :1150px) and (max-width : 1599px) {
+    .bigDesktop, .phone, .tablet {
+        display: none;
+    }
+}
+
+@media only screen and (min-width :1600px) {
+    .smallDesktop, .phone, .tablet {
+        display: none;
+    }
+}
