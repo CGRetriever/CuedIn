@@ -124,7 +124,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                 x++;
 
                 Scholarship scholarship = new Scholarship(scholarshipID, scholarshipName, scholarshipDescription,
-                    scholarshipMin, scholarshipMax, deadline, )
+                    scholarshipMin, scholarshipMax, image, link, deadline);
 
             }
             sc.Close();

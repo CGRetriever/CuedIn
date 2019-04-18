@@ -11,18 +11,20 @@ public class Scholarship
     private int scholarshipID;
     private String scholarshipName;
     private String scholarshipDescription;
-    private int scholarshipMin;
-    private int scholarshipMax;
+    private decimal scholarshipMin;
+    private decimal scholarshipMax;
     private int scholarshipQuantity;
     private String postingDate;
     private String scholarshipDueDate;
     private int organizationID;
     private String lastUpdated;
+    private String image;
+    private String link;
 
 
     //fully loaded consturctor
     public Scholarship(int scholarshipID, String scholarshipName, String scholarshipDescription, 
-        int scholarshipMin, int scholarshipMax, int scholarshipQuantity,
+        decimal scholarshipMin, decimal scholarshipMax, int scholarshipQuantity,
         String postingDate, String scholarshipDueDate, int organizationID, String lastUpdated)
     {
         setScholarshipID(scholarshipID);
@@ -36,6 +38,23 @@ public class Scholarship
         setOrganizationID(organizationID);
         setLastUpdated(lastUpdated);
  
+    }
+
+
+    public Scholarship(int scholarshipID, String scholarshipName, String scholarshipDescription,
+       decimal scholarshipMin, decimal scholarshipMax, String image, String link, String scholarshipDueDate)
+    {
+        setScholarshipID(scholarshipID);
+        setScholarshipName(scholarshipName);
+        setScholarshipDescription(scholarshipDescription);
+        setScholarshipMin(scholarshipMin);
+        setScholarshipMax(scholarshipMax);
+        setScholarshipQuantity(scholarshipQuantity);
+        setPostingDate(postingDate);
+        setScholarshipDueDate(scholarshipDueDate);
+        setOrganizationID(organizationID);
+        setLastUpdated(lastUpdated);
+
     }
 
     public void setScholarshipID(int scholarshipID)
@@ -53,12 +72,12 @@ public class Scholarship
         this.scholarshipDescription = scholarshipDescription;
     }
 
-    public void setScholarshipMin(int scholarshipMin)
+    public void setScholarshipMin(decimal scholarshipMin)
     {
         this.scholarshipMin = scholarshipMin;
     }
 
-    public void setScholarshipMax(int scholarshipMax)
+    public void setScholarshipMax(decimal scholarshipMax)
     {
         this.scholarshipMax = scholarshipMax;
     }
@@ -104,12 +123,12 @@ public class Scholarship
 
     }
 
-    public int getScholarshipMin()
+    public decimal getScholarshipMin()
     {
         return this.scholarshipMin;
     }
 
-    public int getScholarshipMax()
+    public decimal getScholarshipMax()
     {
         return this.scholarshipMax;
     }
