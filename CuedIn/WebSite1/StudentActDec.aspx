@@ -58,33 +58,42 @@
               <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-responsive table-dark rounded" Style="border-collapse: collapse; width:100%;" AutoGenerateColumns="False" DataKeyNames="ApplicationID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
                       <Columns>
 
-                        <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" />
+                        <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" >
+                          <ItemStyle Font-Size="Large" />
+                          </asp:BoundField>
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
                                      <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
+                            <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
                         <asp:BoundField DataField="FullName" HeaderText="Full Name" SortExpression="FullName" ReadOnly="True" HeaderStyle-Wrap="true" >
 <HeaderStyle Wrap="True"></HeaderStyle>
+                          <ItemStyle Font-Size="Large" />
                           </asp:BoundField>
                         <asp:BoundField DataField="StudentGradeLevel" HeaderText="Grade Level" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" >
 <HeaderStyle Wrap="True"></HeaderStyle>
+                          <ItemStyle Font-Size="Large" />
                           </asp:BoundField>
                         <asp:BoundField DataField="StudentGPA" HeaderText="GPA" ReadOnly="True" HeaderStyle-Wrap="true" Visible="false" >
 <HeaderStyle Wrap="True"></HeaderStyle>
+                          <ItemStyle Font-Size="Large" />
                           </asp:BoundField>
                         <asp:BoundField DataField="HoursOfWorkPlaceExp" HeaderText="Hours Of WBL" SortExpression="HoursOfWorkPlaceExp" ReadOnly="True" HeaderStyle-Wrap="true" >
 <HeaderStyle Wrap="True"></HeaderStyle>
+                          <ItemStyle Font-Size="Large" />
                           </asp:BoundField>
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" SortExpression="JobTitle" ItemStyle-Wrap="true" >
-<ItemStyle Wrap="True"></ItemStyle>
+<ItemStyle Wrap="True" Font-Size="Large"></ItemStyle>
                           </asp:BoundField>
                         <asp:BoundField DataField="JobDescription" HeaderText="Job Description" SortExpression="JobDescription" ReadOnly="True" ItemStyle-Wrap="true" >
-<ItemStyle Wrap="True"></ItemStyle>
+<ItemStyle Wrap="True" Font-Size="Large"></ItemStyle>
                           </asp:BoundField>
-                        <asp:BoundField DataField="JobType" HeaderText="Job Type" ReadOnly="True" Visible="false" />
+                        <asp:BoundField DataField="JobType" HeaderText="Job Type" ReadOnly="True" Visible="false" >
+                          <ItemStyle Font-Size="Large" />
+                          </asp:BoundField>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" SortExpression="OrganizationName" ItemStyle-Wrap="true" >
-<ItemStyle Wrap="True"></ItemStyle>
+<ItemStyle Wrap="True" Font-Size="Large"></ItemStyle>
                           </asp:BoundField>
                         <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
@@ -92,6 +101,7 @@
                                 <asp:LinkButton ID="rejectStudentLinkBtn" CssClass="btn btn-danger btn-circle btn-block" Text="Reject" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="rejectStudentLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                 <asp:LinkButton ID="moreInfoStudentLinkBtn" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ApplicationID") %>' OnCommand="moreInfoStudentLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
                             </ItemTemplate>
+                            <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
 
                     </Columns>
