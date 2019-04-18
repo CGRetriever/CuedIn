@@ -83,11 +83,13 @@
                             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
 
-                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" />
+                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" >
+<ItemStyle Wrap="True"></ItemStyle>
+                            </asp:BoundField>
                             <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
                             <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" />
 
-                            <asp:TemplateField ShowHeader="False">
+                            <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnJobApprove" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="approveJobLinkBtn_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                     <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
@@ -149,12 +151,14 @@
                             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
                             <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
 
-                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" />
+                            <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" >
+<ItemStyle Wrap="True"></ItemStyle>
+                            </asp:BoundField>
                             <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
                             <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" />
 
 
-                            <asp:TemplateField ShowHeader="False">
+                            <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnJobReject" CssClass="btn btn-circle btn-danger btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="rejectJobLinkBtn_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                     <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
