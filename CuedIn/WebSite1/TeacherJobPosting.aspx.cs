@@ -7,17 +7,6 @@ using System.Web.UI.WebControls;
 
 public partial class TeacherJobPostings : System.Web.UI.Page
 {
-
-    public String jobTitle = "";
-    public String jobDescription = "";
-    public String jobType = "";
-    public String jobLocation = "";
-    public DateTime jobDeadline = DateTime.Today;
-    public int numOfApplicants = 0;
-    public String orgName = "";
-    public String orgDescription = "";
-    public String orgImage = "";
-
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -36,7 +25,6 @@ public partial class TeacherJobPostings : System.Web.UI.Page
 
     protected void jobPostingTable_Load(object sender, EventArgs e)
     {
-        //Session["schoolID"] = 12;
 
         if (!IsPostBack)
         {
@@ -61,11 +49,12 @@ public partial class TeacherJobPostings : System.Web.UI.Page
         pullJobInfo.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
-
+        String jobTitle = "";
+        String orgName = "";
         while (reader.Read())
         {
-            String jobTitle = reader.GetString(0);
-            String orgName = reader.GetString(5);
+            jobTitle = reader.GetString(0);
+            orgName = reader.GetString(5);
         }
 
         lblJobTitle.Text = jobTitle;
@@ -269,33 +258,46 @@ public partial class TeacherJobPostings : System.Web.UI.Page
         reader = pullJobInfo.ExecuteReader();
 
         {
-            int[] jobListingID = new int[countTotalJobs];
-            String[] orgNameArray = new String[countTotalJobs];
-            String[] jobTitleArray = new String[countTotalJobs];
-            String[] jobDescriptionArray = new String[countTotalJobs];
-            String[] imageArray = new string[countTotalJobs];
-            String[] linkArray = new string[countTotalJobs];
-            String[] jobLocationArray = new string[countTotalJobs];
-            int[] numOfApplicantsArray = new int[countTotalJobs];
-            String[] organizationDescriptionArray = new string[countTotalJobs];
-            DateTime[] deadlineArray = new DateTime[countTotalJobs];
+
+            //Make the list
+            List<JobListing> jobs = new List<JobListing>();
+
+
+            int jobListingID;
+            String orgName;
+            String jobTitle;
+            String jobDescription;
+            String image;
+            String link;
+            String jobLocation;
+            int numOfApplicants;
+            String organizationDescription;
+            DateTime deadline;
 
 
             int x = 0;
             while (reader.Read())
             {
 
-                orgNameArray[x] = reader.GetString(0);
-                jobTitleArray[x] = reader.GetString(1);
-                jobDescriptionArray[x] = reader.GetString(2);
-                imageArray[x] = reader.GetString(3);
-                linkArray[x] = reader.GetString(4);
-                jobLocationArray[x] = reader.GetString(5);
-                deadlineArray[x] = reader.GetDateTime(6);
-                numOfApplicantsArray[x] = reader.GetInt32(7);
-                organizationDescriptionArray[x] = reader.GetString(8);
-                jobListingID[x] = reader.GetInt32(9);
+                orgName = reader.GetString(0);
+                jobTitle = reader.GetString(1);
+                jobDescription = reader.GetString(2);
+                image = reader.GetString(3);
+                link = reader.GetString(4);
+                jobLocation = reader.GetString(5);
+                deadline = reader.GetDateTime(6);
+                numOfApplicants = reader.GetInt32(7);
+                organizationDescription = reader.GetString(8);
+                jobListingID = reader.GetInt32(9);
                 x++;
+
+                JobListing job = new JobListing(jobTitle, jobDescription, jobLocation, deadline, numOfApplicants, orgName, organizationDescription,
+                    image, link);
+                //Set this to be used later
+                job.setID(jobListingID);
+                //Make the object
+                //Add to list
+                jobs.Add(job);
 
             }
             sc.Close();
@@ -321,7 +323,7 @@ public partial class TeacherJobPostings : System.Web.UI.Page
 
                     referralLink.CssClass = "far fa-paper-plane";
 
-                    referralLink.CommandArgument += jobListingID[count];
+                    referralLink.CommandArgument += jobs[count].getID();
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
                     c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
@@ -329,9 +331,9 @@ public partial class TeacherJobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='frontside'>"));
                     c.Controls.Add(new LiteralControl("<div class='card'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>"));
-                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + orgNameArray[count] + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobTitleArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + jobs[count].getOrgImage() + "' alt='card image'></p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + jobs[count].getOrgName() + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobs[count].getJobTitle() + "</p>"));
                     c.Controls.Add(new LiteralControl("<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>"));
                     c.Controls.Add(new LiteralControl("</div>"));
                     c.Controls.Add(new LiteralControl("</div>"));
@@ -340,14 +342,14 @@ public partial class TeacherJobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='backside'>"));
                     c.Controls.Add(new LiteralControl("<div class='card'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + orgNameArray[count] + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobTitleArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Location: " + jobLocationArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Deadline: " + deadlineArray[count].ToString() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + numOfApplicantsArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + jobs[count].getOrgName() + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobs[count].getJobTitle() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Location: " + jobs[count].getJobLocation() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Deadline: " + jobs[count].getJobDeadline().ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + jobs[count].getNumOfApplicants() + "</p>"));
                     c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
-                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>"));
+                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + jobs[count].getOrgWebsite() + "'>"));
                     c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
                     //c.Controls.Add(referralLink);
                     c.Controls.Add(new LiteralControl("</a>"));

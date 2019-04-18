@@ -27,7 +27,6 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void jobPostingTable_Load(object sender, EventArgs e)
     {
-        Session["schoolID"] = 12;
 
         if (!IsPostBack)
         {
