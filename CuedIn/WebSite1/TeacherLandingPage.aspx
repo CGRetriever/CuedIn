@@ -55,8 +55,8 @@
     </head>
     
     <div class="container container-fluid">
-        <h3 class="">Manage Posts
-        <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+        <h3 class="">View Job Posts
+        <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/TeacherJobPosting.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
             </h3>
         <div class="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
@@ -237,7 +237,7 @@
         <br />
         <div class="container container-fluid">
         <h3 class="">Student Applications Pending Approval
-            <asp:LinkButton ID="StudentPageLink" runat="server" CssClass="btn" PostBackUrl="~/StudentActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+            <asp:LinkButton ID="StudentPageLink" runat="server" CssClass="btn" PostBackUrl="~/TeacherStudentActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
         </h3>
         <div class="row">
            
@@ -423,7 +423,7 @@
         </script>
 
 <br />
-<div class="container">
+<%--<div class="container">
         <h3 class="">Metrics</h3>
      <link rel="stylesheet" type="text/css" href="css/TableauFormat.css" />   
     
@@ -459,7 +459,7 @@
 
 
 
-    </div>
+    </div>--%>
 
 
 

@@ -283,18 +283,18 @@ public partial class TeacherLandingPage : System.Web.UI.Page
 
 
         // Start of Tableu Charts
-        if (Session["schoolID"].Equals(12))
-        {
-            LouisaDesktop.Visible = true;
-            LouisaTablet.Visible = true;
-            LousiaPhone.Visible = true;
-        }
-        else if (Session["schoolID"].Equals(15))
-        {
-            TurnerDesktop.Visible = true;
-            TurnerTablet.Visible = true;
-            TurnerPhone.Visible = true;
-        }
+        //if (Session["schoolID"].Equals(12))
+        //{
+        //    LouisaDesktop.Visible = true;
+        //    LouisaTablet.Visible = true;
+        //    LousiaPhone.Visible = true;
+        //}
+        //else if (Session["schoolID"].Equals(15))
+        //{
+        //    TurnerDesktop.Visible = true;
+        //    TurnerTablet.Visible = true;
+        //    TurnerPhone.Visible = true;
+        //}
 
 
 

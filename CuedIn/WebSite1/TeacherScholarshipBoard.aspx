@@ -33,8 +33,8 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="JobPostings.aspx">Approved Jobs</a></li>
+    <li><a href="TeacherLandingPage.aspx">Home</a></li>
+    <li><a href="TeacherJobPostings.aspx">Approved Jobs</a></li>
  
                                
  
