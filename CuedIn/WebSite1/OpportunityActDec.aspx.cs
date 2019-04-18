@@ -12,10 +12,33 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
 
+        if (Session["schoolid"] != null)
+        {
+            if (Session["schoolid"].Equals(12))
+            {
+                lousiapc.Visible = true;
+                lousiaphone.Visible = true;
+                lousiatablet.Visible = true;
+            }
+            else if (Session["schoolid"].Equals(13))
+            {
 
-        ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
+            }
+
+            else if (Session["schoolid"].Equals(15))
+            {
+                turnerpc.Visible = true;
+                turnerphone.Visible = true;
+                turnertablet.Visible = true;
+            }
+        }
+        else
+        {
+            lousiapc.Visible = true;
+
+            ((Label)Master.FindControl("lblMaster")).Text = "Manage Opportunities";
+        }
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
