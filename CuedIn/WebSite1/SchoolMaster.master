@@ -71,10 +71,10 @@
                 </a>
                 <ul class="collapse list-unstyled" id="StudentPages">
                     <li>
-                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
+                        <a href="StudentActDec.aspx">Student Application Request</a>
                     </li>
                     <li>
-                        <a href="StudentActDec.aspx">Student Application Request</a>
+                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                 </ul>
                 </li>

@@ -7,7 +7,7 @@
     <li><a href="ScholarshipMap.aspx">Scholarship Map</a></li>
                                
  
-    <li class="active"><span>Student Metrics Dashboard</span></li>       
+    <li class="active"><span>Administrative Dashboard</span></li>       
  
                 </ol>
     <link rel="stylesheet" type="text/css" href="css/TableauFormat.css">
