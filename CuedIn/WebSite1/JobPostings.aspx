@@ -37,8 +37,11 @@
                         </asp:SqlDataSource>
                         <asp:Button ID="ApplyChanges" AutoPostBack="true" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
 
-    
-
+                        </div>
+                    </div>
+                </div>
+<br>
+                   
  <!--- Breadcrumb --->
  
     <ol class="breadcrumb arr-bread">
@@ -58,14 +61,12 @@
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
              <button onclick="return false;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
-                    </div>
-                </div>
-            </div>
+                
 
             <div>
             <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%"></asp:Table>
         </div>
-
+            </div>
         <script>
             //Initialize popover with jQuery
                     $(document).ready(function () {
@@ -73,7 +74,8 @@
                     });
         </script>
 
-        <div>
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-12">
             <%--Refer Job Modal--%>
             <div class="modal fade" id="sendToModal" role="dialog">
                 <div class="modal-dialog">
@@ -138,6 +140,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+                </div>
+            </div>
             </div>
             <script type='text/javascript'>
                 function openSendToModal() {
