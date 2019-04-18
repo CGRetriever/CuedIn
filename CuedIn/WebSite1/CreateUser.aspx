@@ -95,7 +95,7 @@
                      
                     
                      <div class="wrap-input100 validate-input" data-validate = "Enter Zipcode">
-						<input runat="server" maxlength="7" class="input100" id="zipcode" type="text" name="username" placeholder="Zipcode" required>
+						<input runat="server" maxlength="5" class="input100" id="zipcode" type="text" name="username" placeholder="Zipcode" required>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
