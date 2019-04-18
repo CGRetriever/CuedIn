@@ -80,14 +80,24 @@
                     <div class="table-responsive">
                     <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
                         <Columns>
-                            <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
-                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
+                            <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" >
+
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
 
                             <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" >
-<ItemStyle Wrap="True"></ItemStyle>
+<ItemStyle Wrap="True" Font-Size="Large"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
-                            <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" />
+                            <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" >
+
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
 
                             <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
@@ -95,6 +105,7 @@
                                     <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoRejJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
 
                                 </ItemTemplate>
+                                <ItemStyle Font-Size="Large" />
                             </asp:TemplateField>
 
                         </Columns>
@@ -147,15 +158,28 @@
                     <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
                         <Columns>
 
-                            <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" Visible="false" />
-                            <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" />
-                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" />
+                            <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" Visible="false" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" >
+
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
 
                             <asp:BoundField DataField="JobDescription" HeaderText="Job Description" ItemStyle-Wrap="true" Visible="false" >
-<ItemStyle Wrap="True"></ItemStyle>
+<ItemStyle Wrap="True" Font-Size="Large"></ItemStyle>
                             </asp:BoundField>
-                            <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" />
-                            <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" />
+                            <asp:BoundField DataField="JobType" HeaderText="Job Type" Visible="false" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Location" HeaderText="Location" Visible="false" >
+
+
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
 
 
                             <asp:TemplateField ShowHeader="False" HeaderText="Actions">
@@ -164,6 +188,7 @@
                                     <asp:LinkButton ID="btnJobViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("JobListingID") %>' OnCommand="moreInfoAccJobLinkBtn_Click"><i class="fas fa-info"></i></asp:LinkButton>
 
                                 </ItemTemplate>
+                                <ItemStyle Font-Size="Large" />
                             </asp:TemplateField>
 
                         </Columns>

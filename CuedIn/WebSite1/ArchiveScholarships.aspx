@@ -80,13 +80,30 @@
                 <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
 
                     <Columns>
-                        <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" />
-                        <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
-                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
+                        <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" >
+                        <ItemStyle Font-Size="Large" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" >
+                        <ItemStyle Font-Size="Large" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" >
 
-                        <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" Visible="false" />
-                        <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" />
-                        <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" />
+                        <ItemStyle Font-Size="Large" />
+                        </asp:BoundField>
+
+                        <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" Visible="false" >
+                        <ItemStyle Font-Size="Large" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" >
+                        <ItemStyle Font-Size="Large" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" >
+
+
+
+
+                        <ItemStyle Font-Size="Large" />
+                        </asp:BoundField>
 
 
 
@@ -97,6 +114,7 @@
                                 <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnRejScholarshipViewMore_Click"><i class="fas fa-info"></i></asp:LinkButton>
 
                             </ItemTemplate>
+                            <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
                     </Columns>
                     <RowStyle CssClass="cursor-pointer" />
@@ -145,13 +163,29 @@ FROM OpportunityEntity INNER JOIN
                     <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
 
                         <Columns>
-                            <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false"/>
-                            <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" />
-                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" />
+                            <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false">
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ScholarshipName" HeaderText="Scholarship Name" InsertVisible="False" ReadOnly="True" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" InsertVisible="False" ReadOnly="True" >
 
-                            <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" Visible="false"/>
-                            <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" />
-                            <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" />
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+
+                            <asp:BoundField DataField="ScholarshipDescription" HeaderText="Scholarship Description" InsertVisible="False" ReadOnly="True" Visible="false">
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ScholarshipMin" HeaderText="Scholarship Minimum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" >
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ScholarshipMax" HeaderText="Scholarship Maximum" InsertVisible="False" ReadOnly="True" DataFormatString="{0:C2}" Visible="false" >
+
+
+
+                            <ItemStyle Font-Size="Large" />
+                            </asp:BoundField>
 
 
 
@@ -161,6 +195,7 @@ FROM OpportunityEntity INNER JOIN
                                     <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnAccScholarshipViewMore_Click"><i class="fas fa-info"></i></asp:LinkButton>
 
                                 </ItemTemplate>
+                                <ItemStyle Font-Size="Large" />
                             </asp:TemplateField>
                         </Columns>
                         <RowStyle CssClass="cursor-pointer" />
