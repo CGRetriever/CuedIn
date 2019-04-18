@@ -26,19 +26,29 @@
 </head>
 
    <form id="form1" runat="server">
-    <body>
+       <body>
         <!--Interactive Sidebar Star -->
 
         <div class="wrapper">
+
         <!-- Sidebar  -->
-        <nav id="sidebar">
+        <nav class="fixed-top" id="sidebar">
             <div class="sidebar-header">
-                <h3><asp:ImageButton ID="HomeButton" runat="server" ImageUrl="~/images/CommUpMainLogo.png" OnClick="HomeButton_Click" style="height:100px; width:200px;" /></h3>
+                <a href="TeacherLandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
                 <strong>CU</strong>
             </div>
 
+                <ul class="list-unstyled components">
+                    <li>
+                    
+                        <a href="TeacherLandingPage.aspx">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                    
 
-            <ul class="list-unstyled components">
+
+    
               
                 <li>
                     <li>

@@ -208,7 +208,7 @@ public partial class Login : System.Web.UI.Page
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
                 Session["schoolid"] = school;
-                Response.Redirect("TeacherJobPosting.aspx");
+                Response.Redirect("TeacherLandingPage.aspx");
             }
 
         }
