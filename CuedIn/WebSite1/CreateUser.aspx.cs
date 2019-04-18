@@ -77,16 +77,21 @@ public partial class CreateUser : System.Web.UI.Page
             middleName.Value.Trim();
             lastName.Value.Trim();
 
-            
+            //Create user entity
+            UserEntity user = new UserEntity(username.Value.Trim(), email.Value.Trim(), role.SelectedItem.Value);
+            SchoolEmployee employee = new SchoolEmployee(firstName.Value.Trim(), lastName.Value.Trim(), middleName.Value.Trim(),
+                address.Value.Trim(), "USA", city.Value.Trim(), "VA", zipcode.Value, user.getEntityType(),
+                Convert.ToInt32(DropDownList2.SelectedItem.Value));
 
-            insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(username.Value));
-            insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(email.Value));
+
+            insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(user.getUserName()));
+            insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(user.getEmailAddress()));
             insert.Parameters.AddWithValue("@entitytype", HttpUtility.HtmlEncode("SCHL"));
 
 
 
             insert.ExecuteNonQuery();
-             
+
 
             //inserting into the password 
             insert.CommandText = "insert into dbo.Password (PasswordID, PasswordHash, passwordSalt, UserEntityID, lastupdated)  " +
@@ -101,7 +106,7 @@ public partial class CreateUser : System.Web.UI.Page
             string test = PasswordHash.returnSalt(hashedPass);
 
             //had to use only the substring and not the full salt value because there is a max length of 10 in the DB.
-            insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0,24));
+            insert.Parameters.AddWithValue("@passwordSalt", test.Substring(0, 24));
             insert.Parameters.AddWithValue("@userentityID", userID);
             insert.ExecuteNonQuery();
 
@@ -110,17 +115,17 @@ public partial class CreateUser : System.Web.UI.Page
 
 
             insert.Parameters.AddWithValue("@SchoolEmployeeEntityID", HttpUtility.HtmlEncode(userID));
-            insert.Parameters.AddWithValue("@FirstName", HttpUtility.HtmlEncode(firstName.Value));
-            insert.Parameters.AddWithValue("@LastName", HttpUtility.HtmlEncode(lastName.Value));
-            insert.Parameters.AddWithValue("@MiddleName", HttpUtility.HtmlEncode(middleName.Value));
-            insert.Parameters.AddWithValue("@StreetAddress", HttpUtility.HtmlEncode(address.Value));
-            insert.Parameters.AddWithValue("@Country", HttpUtility.HtmlEncode("USA"));
-            insert.Parameters.AddWithValue("@City", HttpUtility.HtmlEncode(city.Value));
+            insert.Parameters.AddWithValue("@FirstName", HttpUtility.HtmlEncode(employee.getFirstName()));
+            insert.Parameters.AddWithValue("@LastName", HttpUtility.HtmlEncode(employee.getLastName()));
+            insert.Parameters.AddWithValue("@MiddleName", HttpUtility.HtmlEncode(employee.getMiddleName()));
+            insert.Parameters.AddWithValue("@StreetAddress", HttpUtility.HtmlEncode(employee.getStreetAddress()));
+            insert.Parameters.AddWithValue("@Country", HttpUtility.HtmlEncode(employee.getCountry()));
+            insert.Parameters.AddWithValue("@City", HttpUtility.HtmlEncode(employee.getCity()));
             insert.Parameters.AddWithValue("@State", HttpUtility.HtmlEncode("VA"));
             int zip;
             if (int.TryParse(zipcode.Value, out zip))
             {
-                insert.Parameters.AddWithValue("@Zipcode", HttpUtility.HtmlEncode(zip));
+                insert.Parameters.AddWithValue("@Zipcode", HttpUtility.HtmlEncode(employee.getZipCode()));
             }
             else
             {
@@ -128,10 +133,10 @@ public partial class CreateUser : System.Web.UI.Page
                 Label1.Text = "Enter a number for the zipcode";
             }
 
-            
-            
-            insert.Parameters.AddWithValue("@SchoolEmployeeEntityType", role.SelectedItem.Value);
-            insert.Parameters.AddWithValue("@SchoolEntityID", DropDownList2.SelectedItem.Value);
+
+
+            insert.Parameters.AddWithValue("@SchoolEmployeeEntityType", employee.getSchoolEmployeeEntityType());
+            insert.Parameters.AddWithValue("@SchoolEntityID", employee.getSchoolEntityID());
             insert.ExecuteNonQuery();
 
 
@@ -142,7 +147,7 @@ public partial class CreateUser : System.Web.UI.Page
             city.Value = "";
             zipcode.Value = "";
 
-     
+
             address.Value = "";
             username.Value = "";
             password.Value = "";
@@ -157,5 +162,7 @@ public partial class CreateUser : System.Web.UI.Page
         }
     }
 
-   
+
 }
+
+   
