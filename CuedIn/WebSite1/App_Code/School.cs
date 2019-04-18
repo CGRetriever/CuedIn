@@ -8,15 +8,15 @@ using System.Web;
 /// </summary>
 public class School
 {
-    int schoolEntityID;
-    String schoolName;
-    String streetAddress;
-    String country;
-    String city;
-    String state;
-    String schoolCounty;
-    int zipCode;
-    String image;
+    private int schoolEntityID;
+    private String schoolName;
+    private String streetAddress;
+    private String country;
+    private String city;
+    private String state;
+    private String schoolCounty;
+    private int zipCode;
+    private String image;
 
     public School(int schoolEntityID, String schoolName, String streetAddress,
         String country, String city, String state, String schoolCounty, int zipCode)
