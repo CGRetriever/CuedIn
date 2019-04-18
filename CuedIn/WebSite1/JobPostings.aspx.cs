@@ -11,7 +11,7 @@ public partial class JobPostings : System.Web.UI.Page
     private String jobTitle = "";
     private String jobDescription = "";
     private String jobType = "";
-    public String jobLocation = "";
+    private String jobLocation = "";
     public DateTime jobDeadline = DateTime.Today;
     public int numOfApplicants = 0;
     public String orgName = "";
