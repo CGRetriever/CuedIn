@@ -7,15 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class ScholarshipBoard : System.Web.UI.Page
 {
-    public static int recentPostID = 0;
-    public String scholarshipName = "";
-    public String scholarshipDescription = "";
-    public double scholarshipMin = 0.0;
-    public double scholarshipMax = 0.0;
-    public DateTime scholarshipDueDate = DateTime.Today;
-    public String orgName = "";
-    public String orgDescription = "";
-    public String orgImage = "";
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -173,12 +165,12 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarships[count].getScholarshipName() + "</h4>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getScholarshipName() + "</p>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getScholarshipDescription() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum:" + scholarships[count].getScholarshipMin().ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum: " + scholarships[count].getScholarshipMin().ToString() + "</p>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'> Maximum: " + scholarships[count].getScholarshipMax().ToString() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Deadline:" + deadlineArray[count].ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Deadline: " + scholarships[count].getScholarshipDueDate().ToString() + "</p>"));
                     c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
-                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>"));
+                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + scholarships[count].getLink() + "'>"));
                     c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
                     c.Controls.Add(referralLink);
                     c.Controls.Add(new LiteralControl("</a>"));
@@ -214,11 +206,12 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         pullJobInfo.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
-
+        String scholarshipName = "";
+        String orgName = "";
         while (reader.Read())
         {
-            String scholarshipName = reader.GetString(0);
-            String orgName = reader.GetString(1);
+            scholarshipName = reader.GetString(0);
+            orgName = reader.GetString(1);
         }
 
         lblScholarshipName.Text = scholarshipName;

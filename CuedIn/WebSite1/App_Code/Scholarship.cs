@@ -51,12 +51,10 @@ public class Scholarship
         setScholarshipDescription(scholarshipDescription);
         setScholarshipMin(scholarshipMin);
         setScholarshipMax(scholarshipMax);
-        setScholarshipQuantity(scholarshipQuantity);
-        setPostingDate(postingDate);
         setScholarshipDueDate(scholarshipDueDate);
-        setOrganizationID(organizationID);
-        setLastUpdated(lastUpdated);
         setOrgName(orgName);
+        setLink(link);
+        setImage(image);
 
     }
 
@@ -120,6 +118,11 @@ public class Scholarship
         this.orgName = orgName;
     }
 
+    public void setLink(String link)
+    {
+        this.link = link;
+    }
+
     public int getScholarshipID()
     {
         return this.scholarshipID;
@@ -179,6 +182,11 @@ public class Scholarship
     public String getOrgName()
     {
         return this.orgName;
+    }
+
+    public String getLink()
+    {
+        return this.link;
     }
 
 
