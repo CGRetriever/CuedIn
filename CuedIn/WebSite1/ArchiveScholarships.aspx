@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SchoolMaster.master" AutoEventWireup="true" CodeFile="ArchiveScholarships.aspx.cs" Inherits="ArchiveScholarships" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    
     <div class="row">
         <div class="col-12 ">
             <p>Archived Scholarships</p>
@@ -22,10 +27,11 @@
     <li class="active"><span>Archived Scholarships</span></li>       
  
                 </ol>
-
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
 
 <!--- END Breadcrumb --->
+
+
 
     <div class=container-fluid>
         <%--Rejected Scholarships Gridview--%>
