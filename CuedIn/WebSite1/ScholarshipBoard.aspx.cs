@@ -124,7 +124,9 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                 x++;
 
                 Scholarship scholarship = new Scholarship(scholarshipID, scholarshipName, scholarshipDescription,
-                    scholarshipMin, scholarshipMax, image, link, deadline);
+                    scholarshipMin, scholarshipMax, image, link, deadline, orgName);
+
+                scholarships.Add(scholarship);
 
             }
             sc.Close();
@@ -149,7 +151,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
                     referralLink.CssClass = "far fa-paper-plane";
 
-                    referralLink.CommandArgument += scholarshipIDArray[count];
+                    referralLink.CommandArgument += scholarships[count].getScholarshipID();
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
                     c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
@@ -157,9 +159,9 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='frontside'>"));
                     c.Controls.Add(new LiteralControl("<div class='card'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>"));
-                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarshipNameArray[count] + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + orgNameArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + scholarships[count].getImage() + "' alt='card image'></p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarships[count].getScholarshipName() + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getOrgName() + "</p>"));
                     c.Controls.Add(new LiteralControl("<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>"));
                     c.Controls.Add(new LiteralControl("</div>"));
                     c.Controls.Add(new LiteralControl("</div>"));

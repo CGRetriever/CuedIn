@@ -15,17 +15,18 @@ public class Scholarship
     private decimal scholarshipMax;
     private int scholarshipQuantity;
     private String postingDate;
-    private String scholarshipDueDate;
+    private DateTime scholarshipDueDate;
     private int organizationID;
     private String lastUpdated;
     private String image;
     private String link;
+    private String orgName;
 
 
     //fully loaded consturctor
     public Scholarship(int scholarshipID, String scholarshipName, String scholarshipDescription, 
         decimal scholarshipMin, decimal scholarshipMax, int scholarshipQuantity,
-        String postingDate, String scholarshipDueDate, int organizationID, String lastUpdated)
+        String postingDate, DateTime scholarshipDueDate, int organizationID, String lastUpdated)
     {
         setScholarshipID(scholarshipID);
         setScholarshipName(scholarshipName);
@@ -42,7 +43,8 @@ public class Scholarship
 
 
     public Scholarship(int scholarshipID, String scholarshipName, String scholarshipDescription,
-       decimal scholarshipMin, decimal scholarshipMax, String image, String link, String scholarshipDueDate)
+       decimal scholarshipMin, decimal scholarshipMax, String image, String link, DateTime scholarshipDueDate,
+       String orgName)
     {
         setScholarshipID(scholarshipID);
         setScholarshipName(scholarshipName);
@@ -54,6 +56,7 @@ public class Scholarship
         setScholarshipDueDate(scholarshipDueDate);
         setOrganizationID(organizationID);
         setLastUpdated(lastUpdated);
+        setOrgName(orgName);
 
     }
 
@@ -92,7 +95,7 @@ public class Scholarship
         this.postingDate = postingDate;
     }
 
-    public void setScholarshipDueDate(String scholarshipDueDate)
+    public void setScholarshipDueDate(DateTime scholarshipDueDate)
     {
         this.scholarshipDueDate = scholarshipDueDate;
     }
@@ -105,6 +108,16 @@ public class Scholarship
     public void setLastUpdated(String lastUpdated)
     {
         this.lastUpdated = lastUpdated;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
+    public void setOrgName(String orgName)
+    {
+        this.orgName = orgName;
     }
 
     public int getScholarshipID()
@@ -143,7 +156,7 @@ public class Scholarship
         return this.postingDate;
     }
 
-    public String getScholarshipDueDate()
+    public DateTime getScholarshipDueDate()
     {
         return this.scholarshipDueDate;
     }
@@ -157,6 +170,17 @@ public class Scholarship
     {
         return this.lastUpdated;
     }
+
+    public String getImage()
+    {
+        return this.image;
+    }
+
+    public String getOrgName()
+    {
+        return this.orgName;
+    }
+
 
 
 
