@@ -104,24 +104,27 @@ public partial class ScholarshipBoard : System.Web.UI.Page
             String  image;
             String  link;
             decimal  scholarshipMin;
-            decimal  scholarshipMaxArray = new decimal[countTotalScholarships];
-            DateTime  deadlineArray = new DateTime[countTotalScholarships];
-            int scholarshipIDArray = new int[countTotalScholarships];
+            decimal  scholarshipMax;
+            DateTime  deadline;
+            int scholarshipID;
 
             int x = 0;
             while (reader.Read())
             {
-                orgNameArray[x] = reader.GetString(0);
-                scholarshipNameArray[x] = reader.GetString(1);
-                scholarshipDescriptionArray[x] = reader.GetString(2);
-                imageArray[x] = reader.GetString(3);
-                linkArray[x] = reader.GetString(4);
-                scholarshipMinArray[x] = reader.GetDecimal(5);
-                scholarshipMaxArray[x] = reader.GetDecimal(6);
-                deadlineArray[x] = reader.GetDateTime(7);
-                scholarshipIDArray[x] = reader.GetInt32(8);
+                orgName = reader.GetString(0);
+                scholarshipName = reader.GetString(1);
+                scholarshipDescription = reader.GetString(2);
+                image= reader.GetString(3);
+                link = reader.GetString(4);
+                scholarshipMin = reader.GetDecimal(5);
+                scholarshipMax = reader.GetDecimal(6);
+                deadline = reader.GetDateTime(7);
+                scholarshipID = reader.GetInt32(8);
 
                 x++;
+
+                Scholarship scholarship = new Scholarship(scholarshipID, scholarshipName, scholarshipDescription,
+                    scholarshipMin, scholarshipMax, deadline, )
 
             }
             sc.Close();
