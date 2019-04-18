@@ -47,8 +47,8 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="ScholarshipBoard.aspx">Approved Scholarships</a></li>
+    <li><a href="CounselorLandingPage.aspx">Home</a></li>
+    <li><a href="CounselorScholarshipBoard.aspx">Approved Scholarships</a></li>
  
                                
  

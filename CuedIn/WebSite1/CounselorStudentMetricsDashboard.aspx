@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <ol class="breadcrumb arr-bread">
-    <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="JobListingMap.aspx">Work Based Learning Map</a></li>
-    <li><a href="ScholarshipMap.aspx">Scholarship Map</a></li>
+    <li><a href="CounselorLandingPage.aspx">Home</a></li>
+    <li><a href="CounselorJobListingMap.aspx">Work Based Learning Map</a></li>
+    <li><a href="CounselorScholarshipMap.aspx">Scholarship Map</a></li>
                                
  
     <li class="active"><span>Administrative Dashboard</span></li>       
