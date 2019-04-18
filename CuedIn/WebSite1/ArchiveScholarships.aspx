@@ -90,7 +90,7 @@
 
 
 
-                        <asp:TemplateField ShowHeader="False">
+                        <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnScholarshipApprove" CssClass="btn btn-success btn-circle btn-block" Text="Approve" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnScholarshipApprove_Click"><i class="fas fa-check"></i></asp:LinkButton>
                                 <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnRejScholarshipViewMore_Click"><i class="fas fa-info"></i></asp:LinkButton>
@@ -154,7 +154,7 @@ FROM OpportunityEntity INNER JOIN
 
 
 
-                            <asp:TemplateField ShowHeader="False">
+                            <asp:TemplateField ShowHeader="False" HeaderText="Actions">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnScholarshipReject" CssClass="btn btn-circle btn-danger btn-block" Text="Decline" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnScholarshipReject_Click"><i class="fas fa-times"></i></asp:LinkButton>
                                     <asp:LinkButton ID="btnScholarshipViewMore" CssClass="btn btn-warning btn-circle btn-block" Text="View More" runat="server" CommandArgument='<%#Eval ("ScholarshipID") %>' OnCommand="btnAccScholarshipViewMore_Click"><i class="fas fa-info"></i></asp:LinkButton>
