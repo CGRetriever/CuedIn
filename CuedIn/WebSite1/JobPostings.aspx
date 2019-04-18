@@ -33,8 +33,6 @@
                 <div class="form-row">
                     <div class="col-md-12">
 
-
-
                             <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" CssClass="form-control" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
                         <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
                             SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
@@ -62,6 +60,8 @@
 <!--- END Breadcrumb --->
 
         <div class="container">
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
+             
 
                 
 
