@@ -7,15 +7,7 @@ using System.Web.UI.WebControls;
 
 public partial class ScholarshipBoard : System.Web.UI.Page
 {
-    public static int recentPostID = 0;
-    public String scholarshipName = "";
-    public String scholarshipDescription = "";
-    public double scholarshipMin = 0.0;
-    public double scholarshipMax = 0.0;
-    public DateTime scholarshipDueDate = DateTime.Today;
-    public String orgName = "";
-    public String orgDescription = "";
-    public String orgImage = "";
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -96,30 +88,37 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         reader = pullScholarshipInfo.ExecuteReader();
 
         {
-            String[] orgNameArray = new String[countTotalScholarships];
-            String[] scholarshipNameArray = new String[countTotalScholarships];
-            String[] scholarshipDescriptionArray = new String[countTotalScholarships];
-            String[] imageArray = new string[countTotalScholarships];
-            String[] linkArray = new string[countTotalScholarships];
-            decimal[] scholarshipMinArray = new decimal[countTotalScholarships];
-            decimal[] scholarshipMaxArray = new decimal[countTotalScholarships];
-            DateTime[] deadlineArray = new DateTime[countTotalScholarships];
-            int[] scholarshipIDArray = new int[countTotalScholarships];
+            List<Scholarship> scholarships = new List<Scholarship>();
+            
+            String orgName;
+            String  scholarshipName;
+            String  scholarshipDescription;
+            String  image;
+            String  link;
+            decimal  scholarshipMin;
+            decimal  scholarshipMax;
+            DateTime  deadline;
+            int scholarshipID;
 
             int x = 0;
             while (reader.Read())
             {
-                orgNameArray[x] = reader.GetString(0);
-                scholarshipNameArray[x] = reader.GetString(1);
-                scholarshipDescriptionArray[x] = reader.GetString(2);
-                imageArray[x] = reader.GetString(3);
-                linkArray[x] = reader.GetString(4);
-                scholarshipMinArray[x] = reader.GetDecimal(5);
-                scholarshipMaxArray[x] = reader.GetDecimal(6);
-                deadlineArray[x] = reader.GetDateTime(7);
-                scholarshipIDArray[x] = reader.GetInt32(8);
+                orgName = reader.GetString(0);
+                scholarshipName = reader.GetString(1);
+                scholarshipDescription = reader.GetString(2);
+                image= reader.GetString(3);
+                link = reader.GetString(4);
+                scholarshipMin = reader.GetDecimal(5);
+                scholarshipMax = reader.GetDecimal(6);
+                deadline = reader.GetDateTime(7);
+                scholarshipID = reader.GetInt32(8);
 
                 x++;
+
+                Scholarship scholarship = new Scholarship(scholarshipID, scholarshipName, scholarshipDescription,
+                    scholarshipMin, scholarshipMax, image, link, deadline, orgName);
+
+                scholarships.Add(scholarship);
 
             }
             sc.Close();
@@ -144,7 +143,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
                     referralLink.CssClass = "far fa-paper-plane";
 
-                    referralLink.CommandArgument += scholarshipIDArray[count];
+                    referralLink.CommandArgument += scholarships[count].getScholarshipID();
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
                     c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
@@ -152,9 +151,9 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='frontside'>"));
                     c.Controls.Add(new LiteralControl("<div class='card'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + imageArray[count] + "' alt='card image'></p>"));
-                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarshipNameArray[count] + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + orgNameArray[count] + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + scholarships[count].getImage() + "' alt='card image'></p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarships[count].getScholarshipName() + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getOrgName() + "</p>"));
                     c.Controls.Add(new LiteralControl("<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>"));
                     c.Controls.Add(new LiteralControl("</div>"));
                     c.Controls.Add(new LiteralControl("</div>"));
@@ -163,15 +162,15 @@ public partial class ScholarshipBoard : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='backside'>"));
                     c.Controls.Add(new LiteralControl("<div class='card'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarshipNameArray[count] + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + orgNameArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarshipDescriptionArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum:" + scholarshipMinArray[count].ToString() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Maximum: " + scholarshipMaxArray[count] + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Deadline:" + deadlineArray[count].ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + scholarships[count].getScholarshipName() + "</h4>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getScholarshipName() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + scholarships[count].getScholarshipDescription() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Minimum: " + scholarships[count].getScholarshipMin().ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Maximum: " + scholarships[count].getScholarshipMax().ToString() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<p class='card-text'> Deadline: " + scholarships[count].getScholarshipDueDate().ToString() + "</p>"));
                     c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
-                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + linkArray[count] + "'>"));
+                    c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + scholarships[count].getLink() + "'>"));
                     c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
                     c.Controls.Add(referralLink);
                     c.Controls.Add(new LiteralControl("</a>"));
@@ -207,11 +206,12 @@ public partial class ScholarshipBoard : System.Web.UI.Page
         pullJobInfo.Connection = sc;
 
         System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
-
+        String scholarshipName = "";
+        String orgName = "";
         while (reader.Read())
         {
-            String scholarshipName = reader.GetString(0);
-            String orgName = reader.GetString(1);
+            scholarshipName = reader.GetString(0);
+            orgName = reader.GetString(1);
         }
 
         lblScholarshipName.Text = scholarshipName;

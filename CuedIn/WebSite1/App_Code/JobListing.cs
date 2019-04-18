@@ -8,17 +8,17 @@ using System.Web;
 /// </summary>
 public class JobListing
 {
-    int jobID;
-    String jobTitle;
-    String jobDescription;
-    String jobType;
-    String jobLocation;
-    DateTime jobDeadline;
-    int numOfApplicants;
-    String orgName;
-    String orgDescription;
-    String orgImage;
-    String orgWebsite;
+    private int jobID;
+    private String jobTitle;
+    private String jobDescription;
+    private String jobType;
+    private String jobLocation;
+    private DateTime jobDeadline;
+    private int numOfApplicants;
+    private String orgName;
+    private String orgDescription;
+    private String orgImage;
+    private String orgWebsite;
 
     public JobListing(String jobTitle, String jobDescription, String jobType, String jobLocation, DateTime jobDeadline, int numOfApplicants, String orgName, String orgDescription, String orgImage, String orgWebsite)
     {
@@ -32,7 +32,20 @@ public class JobListing
         setOrgDescription(orgDescription);
         setOrgImage(orgImage);
         setOrgWebsite(orgWebsite);
-    } 
+    }
+    public JobListing(String jobTitle, String jobDescription, String jobLocation, DateTime jobDeadline, int numOfApplicants, String orgName, String orgDescription, String orgImage, String orgWebsite)
+    {
+        setJobTitle(jobTitle);
+        setJobDescription(jobDescription);
+        setJobLocation(jobLocation);
+        setJobDeadline(jobDeadline);
+        setNumOfApplicants(numOfApplicants);
+        setOrgName(orgName);
+        setOrgDescription(orgDescription);
+        setOrgImage(orgImage);
+        setOrgWebsite(orgWebsite);
+    }
+
 
     public void setJobTitle(String jobTitle)
     {
@@ -77,6 +90,11 @@ public class JobListing
     public void setOrgImage(String orgImage)
     {
         this.orgImage = orgImage;
+    }
+
+    public void setID(int id)
+    {
+        this.jobID = id;
     }
 
     public void setOrgWebsite(String orgWebsite)
@@ -129,6 +147,10 @@ public class JobListing
         return orgWebsite;
     }
 
+    public int getID()
+    {
+        return this.jobID;
+    }
 
 
 }
