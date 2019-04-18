@@ -15,43 +15,7 @@ public partial class ScholarshipBoard : System.Web.UI.Page
 
         ((Label)Master.FindControl("lblMaster")).Text = "Approved Scholarships";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
-        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        //sc.Open();
-
-        //System.Data.SqlClient.SqlCommand sqlrecentScholarshipID = new System.Data.SqlClient.SqlCommand();
-        //sqlrecentScholarshipID.CommandText = "select scholarshipID from scholarship where ScholarshipID = (select max(scholarshipID) from scholarship)";
-        //sqlrecentScholarshipID.Connection = sc;
-        //System.Data.SqlClient.SqlDataReader reader = sqlrecentScholarshipID.ExecuteReader();
-
-        //while (reader.Read())
-        //{
-        //    recentPostID = reader.GetInt32(0);
-        //}
-
-        //sc.Close();
-
-        //sc.Open();
-
-        //System.Data.SqlClient.SqlCommand recentScholarshipPost = new System.Data.SqlClient.SqlCommand();
-        //recentScholarshipPost.CommandText = "SELECT Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Scholarship.ScholarshipDueDate, Organization.OrganizationName, Organization.OrganizationDescription, Organization.Image FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where ScholarshipID =" + recentPostID;
-        //recentScholarshipPost.Connection = sc;
-
-        //reader = recentScholarshipPost.ExecuteReader();
-
-
-
-        //    while (reader.Read())
-        //    {
-        //        scholarshipName = reader.GetString(0);
-        //        scholarshipDescription = reader.GetString(1);
-        //        scholarshipMin = (double)reader.GetDecimal(2);
-        //        scholarshipMax = (double)reader.GetDecimal(3);
-        //        scholarshipDueDate = reader.GetDateTime(4);
-        //        orgName = reader.GetString(5);
-        //        orgDescription = reader.GetString(6);
-        //        orgImage = reader.GetString(7);
-        //    }
+  
 
     }
     protected void scholarshipTable_Load(object sender, EventArgs e)
