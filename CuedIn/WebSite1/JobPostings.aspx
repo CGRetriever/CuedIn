@@ -59,7 +59,7 @@
 
         <div class="container">
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
-             <button onclick="return false;" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
+             <button onclick="return false;" id="myBtn2"><i class="fas fa-angle-double-up"></i></button>
 
                 
 
