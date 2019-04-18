@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class JobPostings : System.Web.UI.Page
 {
 
-    public String jobTitle = "";
+    private String jobTitle = "";
     public String jobDescription = "";
     public String jobType = "";
     public String jobLocation = "";
