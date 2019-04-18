@@ -9,6 +9,6 @@ public partial class CounselorJobListingDashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-         ((Label)Master.FindControl("lblMaster2")).Text = "Job Listing Dashboard";
+        ((Label)Master.FindControl("lblMaster")).Text = "Job Listings Dashboard";
     }
 }

@@ -8,11 +8,23 @@ using System.Web.UI.WebControls;
 
 public partial class CounselorArchiveScholarships : System.Web.UI.Page
 {
+    public static String email;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        rejScholarshipGridview.Columns[0].Visible = false;
+        ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
-        ((Label)Master.FindControl("lblMaster2")).Text = "Archived Scholarships";
-        
+        cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+
+
+
+        cbSelectAll2.Attributes.Add("onclick", "Selectall");
+
+
+
     }
 
     protected void acceptScholarshipButton_Click(object sender, EventArgs e)
@@ -23,23 +35,23 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update scholarship set approved = 'Y', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
-
-        Response.Redirect("~/CounselorArchiveScholarships.aspx");
+        Response.Redirect("~/ArchiveScholarships.aspx");
     }
     //Gridview Rejected View More Button
     protected void btnRejScholarshipViewMore_Click(object sender, CommandEventArgs e)
     {
 
+
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-
         GridViewRow row = rejScholarshipGridview.Rows[rowIndex];
+
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
@@ -92,20 +104,16 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         //UPDATE WITH QUERIES
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
-
-        Response.Redirect("~/CounselorArchiveScholarships.aspx");
+        Response.Redirect("~/ArchiveScholarships.aspx");
     }
     //Gridview Approve Button in Rejected GridView
-
     protected void btnScholarshipApprove_Click(object sender, CommandEventArgs e)
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-
         GridViewRow row = rejScholarshipGridview.Rows[rowIndex];
-
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
@@ -130,20 +138,39 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         sql.Close();
 
 
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+        AcceptSMaillink.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Scholarship%20Approval!";
+
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openApproveSModal();", true);
     }
 
-
     //reject button clicked in accept scholarship gridview
     protected void btnScholarshipReject_Click(object sender, CommandEventArgs e)
-
     {
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-
         GridViewRow row = acceptScholarshipGridview.Rows[rowIndex];
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
@@ -166,6 +193,29 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
 
 
 
+        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+
+        // Mail Button Query
+        EmailQuery.Open();
+        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        query.Connection = EmailQuery;
+        query.CommandText = "SELECT  UserEntity.EmailAddress FROM  Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID INNER JOIN UserEntity ON Organization.OrganizationEntityID = UserEntity.UserEntityID WHERE Scholarship.ScholarshipID= " + Session["selectedScholarshipID"];
+        System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+
+
+
+        while (Result.Read())
+        {
+            email = Result.GetString(0);
+        }
+
+        EmailQuery.Close();
+
+
+        RejectSMaillink.NavigateUrl = "mailto:" + email + "?Subject=CommUP:%20Scholarship%20Rejection";
+
+
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectSModal();", true);
     }
@@ -178,24 +228,22 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update scholarship set approved = 'N', lastUpdated ='" + DateTime.Today + "' where scholarshipID = " + Session["selectedScholarshipID"];
+        rejectScholarship.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 
-
-        Response.Redirect("~/CounselorArchiveScholarships.aspx");
+        Response.Redirect("~/ArchiveScholarships.aspx");
     }
 
     //Gridview Accepted View More Button
     protected void btnAccScholarshipViewMore_Click(object sender, CommandEventArgs e)
     {
-
         String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
 
         int rowIndex = Convert.ToInt32(((sender as LinkButton).NamingContainer as GridViewRow).RowIndex);
-
         GridViewRow row = acceptScholarshipGridview.Rows[rowIndex];
+
 
         int scholarshipID = Convert.ToInt32(e.CommandArgument);
 
@@ -225,5 +273,181 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
+    }
+
+
+    protected void btnCheckGridView1_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax.Checked != true)
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rejScholarshipGridview.Columns.Count; i++)
+            {
+                if (rejScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    rejScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+
+    }
+
+    protected void btnCheckGridView2_Click(object sender, EventArgs e)
+    {
+
+
+        if (chkScholarshipMin1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Minimum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+        if (chkScholarshipMax1.Checked != true)
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < acceptScholarshipGridview.Columns.Count; i++)
+            {
+                if (acceptScholarshipGridview.Columns[i].HeaderText == "Scholarship Maximum")
+                {
+                    acceptScholarshipGridview.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+
+
+
+    }
+
+
+    //protected void SearchButton1_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox1.Text;
+
+    //    ScholarshipOpportunity.SelectParameters.Add("term", term);
+
+    //    ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'N') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
+    //    ScholarshipOpportunity.DataBind();
+    //    rejScholarshipGridview.DataBind();
+
+    //    ScholarshipOpportunity.SelectParameters.Clear();
+    //}
+
+    //protected void SearchButton2_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox2.Text;
+
+    //    SqlDataSource1.SelectParameters.Add("term", term);
+
+    //    SqlDataSource1.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'Y') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
+    //    SqlDataSource1.DataBind();
+    //    acceptScholarshipGridview.DataBind();
+
+    //    SqlDataSource1.SelectParameters.Clear();
+
+
+    //}
+
+
+    protected void cbSelectAll_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll.Checked == true)
+        {
+            chkScholarshipMin.Checked = true;
+            chkScholarshipMax.Checked = true;
+            cbSelectAll.Text = "Unselect All";
+
+        }
+
+        if (cbSelectAll.Checked == false)
+        {
+            chkScholarshipMin.Checked = false;
+            chkScholarshipMax.Checked = false;
+            cbSelectAll.Text = "Select all";
+        }
+    }
+
+    protected void cbSelectAll2_Checked(object sender, EventArgs e)
+    {
+        if (cbSelectAll2.Checked == true)
+        {
+            chkScholarshipMin1.Checked = true;
+            chkScholarshipMax1.Checked = true;
+            cbSelectAll2.Text = "Unselect All";
+        }
+
+        if (cbSelectAll2.Checked == false)
+        {
+            chkScholarshipMin1.Checked = false;
+            chkScholarshipMax1.Checked = false;
+            cbSelectAll2.Text = "Select all";
+        }
     }
 }

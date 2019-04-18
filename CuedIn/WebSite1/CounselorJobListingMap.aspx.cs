@@ -10,7 +10,8 @@ public partial class CounselorJobListingMap : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        ((Label)Master.FindControl("lblMaster2")).Text = "Work Based Learning Map";
+        ((Label)Master.FindControl("lblMaster")).Text = "Work Based Learning Map";
+        ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
 
     }

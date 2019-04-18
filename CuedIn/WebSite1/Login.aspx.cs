@@ -201,7 +201,7 @@ public partial class Login : System.Web.UI.Page
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
                 Session["schoolid"] = school;
-                Response.Redirect("CounselorJobPosting.aspx");
+                Response.Redirect("CounselorLandingPage.aspx");
             }
             else if (permissions.Equals("Teacher"))
             {
