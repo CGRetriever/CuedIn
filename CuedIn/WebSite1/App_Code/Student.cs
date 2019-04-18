@@ -11,6 +11,7 @@ public class Student
     private int studentEntityID;
     private String firstName;
     private String lastName;
+    private String fullName;
     private String middleInitial;
     private String streetAddress;
     private String country;
@@ -33,17 +34,13 @@ public class Student
     private String studentImage;
     private int schoolEntityID;
 
-    public Student()
-    {
-        //
-        // TODO: Add constructor logic here
-        //
-    }
 
     public void setStudentEntityID(int studentEntityID)
     {
         this.studentEntityID = studentEntityID;
     }
+
+    
 
     public void setFirstName(String firstName)
     {
@@ -56,6 +53,10 @@ public class Student
         this.lastName = lastName;
     }
 
+    public void setFullName(String fullName)
+    {
+        this.fullName = fullName;
+    }
 
     public void setMiddleInitial(String middleInitial)
     {
