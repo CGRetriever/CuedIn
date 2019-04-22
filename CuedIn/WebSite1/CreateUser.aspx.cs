@@ -82,8 +82,8 @@ public partial class CreateUser : System.Web.UI.Page
 
 
                         //insert into the person table 
-                        insert.CommandText = "insert into dbo.userentity (UserName, EmailAddress, EntityType) " +
-                            "values (@username, @emailaddress, @entitytype)";
+                        insert.CommandText = "insert into dbo.userentity (UserName, EmailAddress, EntityType, LastUpdated) " +
+                            "values (@username, @emailaddress, @entitytype, getDate())";
                         username.Value.Trim();
                         email.Value.Trim();
                         firstName.Value.Trim();
@@ -123,8 +123,8 @@ public partial class CreateUser : System.Web.UI.Page
                         insert.Parameters.AddWithValue("@userentityID", userID);
                         insert.ExecuteNonQuery();
 
-                        insert.CommandText = "insert into dbo.schoolemployee (SchoolEmployeeEntityID, FirstName, LastName, MiddleName, StreetAddress, Country, City, State, Zipcode, SchoolEmployeeEntityType, SchoolEntityID) " +
-                  "values (@SchoolEmployeeEntityID, @FirstName, @LastName, @MiddleName, @StreetAddress, @Country, @City, @State, @Zipcode, @SchoolEmployeeEntityType, @SchoolEntityID)";
+                        insert.CommandText = "insert into dbo.schoolemployee (SchoolEmployeeEntityID, FirstName, LastName, MiddleName, StreetAddress, Country, City, State, Zipcode, SchoolEmployeeEntityType, SchoolEntityID, LastUpdated) " +
+                  "values (@SchoolEmployeeEntityID, @FirstName, @LastName, @MiddleName, @StreetAddress, @Country, @City, @State, @Zipcode, @SchoolEmployeeEntityType, @SchoolEntityID, getDate())";
 
 
                         insert.Parameters.AddWithValue("@SchoolEmployeeEntityID", HttpUtility.HtmlEncode(userID));
