@@ -112,7 +112,7 @@
                       
 
                  <div class ="table-responsive">   
-                <asp:GridView ID="GridView1" runat="server"  CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
+                <asp:GridView ID="GridView1" runat="server"  CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" BackColor="#102B40" ForeColor="White" >
 
                     <Columns>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" >
@@ -178,7 +178,7 @@
       
 
             <div class ="table-responsive">   
-             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID"  BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView2_Click">
+             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID"  BackColor="#102B40" ForeColor="White">
 
 
                     <Columns>

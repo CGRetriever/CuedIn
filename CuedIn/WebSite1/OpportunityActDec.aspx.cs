@@ -57,17 +57,25 @@ public partial class OpportunityActDec : System.Web.UI.Page
             " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN" +
             " Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID" +
             " WHERE schoolapproval.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'" ;
-        
 
+        if (SearchBox1 != null)
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+            SearchButton1_Click(send1, e1);
+        }
 
-        DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        da.Fill(dt);
-        GridView1.DataSource = dt;
-        GridView1.DataBind();
-        conn.Close();
+        else
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            conn.Close();
+        }
 
         string query1 = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
             " Organization.ExternalLink" +
@@ -645,8 +653,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 }
             }
         }
-        SearchBox1.Text = "";
-        SearchBox2.Text = "";
+        //SearchBox1.Text = "";
+        //SearchBox2.Text = "";
     }
 
 
@@ -683,15 +691,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
         String term = SearchBox2.Text;
 
          //Just need to parameterize it
-        string query = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', " +
-            "Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp," +
-            " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
-            " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
-            "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
-            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%')  or (JobListing.JobDescription like '%" + term 
-            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
-        ;
+        string query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+        " Organization.ExternalLink" +
+        " FROM OpportunityEntity INNER JOIN" +
+        "   Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN " +
+        " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+        "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
+        "Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+        " where school.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P' and((scholarship.scholarshipname like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') ) and schoolapproval.SchoolEntityID =  " + schoolid;
 
         
         DataTable dt = new DataTable();
