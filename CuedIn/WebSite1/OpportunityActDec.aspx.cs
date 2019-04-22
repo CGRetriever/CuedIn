@@ -638,18 +638,17 @@ public partial class OpportunityActDec : System.Web.UI.Page
     {
         String term = SearchBox1.Text;
 
-        //Just need to parameterize it
-        string query = "SELECT applicationrequest.joblistingid, ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', " +
-            "Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp," +
-            " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
-            " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
-            "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
-            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
-            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" +
-            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term
-            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
-        ;
+        string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+            "Organization.ExternalLink FROM  OpportunityEntity INNER JOIN SchoolApproval ON " +
+            "OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+            "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+            " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN" +
+            " Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID" +
+            " WHERE schoolapproval.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'and((JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (JobListing.JobDescription like '%" + term
+            + "%') or (JobListing.JobType like '%" + term + "%')) and schoolapproval.SchoolEntityID =  " + schoolid;
+
+      
 
 
         DataTable dt = new DataTable();
@@ -672,10 +671,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
             " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
             " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
             "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
-            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
-            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" + 
-            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term 
+            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%')  or (JobListing.JobDescription like '%" + term 
             + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
         ;
 
