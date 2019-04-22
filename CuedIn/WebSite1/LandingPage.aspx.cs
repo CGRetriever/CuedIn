@@ -152,7 +152,7 @@ public partial class LandingPage : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand RecentRequests = new System.Data.SqlClient.SqlCommand();
         RecentRequests.Connection = sql;
-        RecentRequests.CommandText = "SELECT  TOP (5) ApplicationRequest.ApplicationID, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage, Organization.ExternalLink, Student.FirstName, Student.LastName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P') AND (Student.SchoolEntityID = '12') ORDER BY ApplicationRequest.ApplicationID DESC";
+        RecentRequests.CommandText = "SELECT  TOP (5) ApplicationRequest.ApplicationID, JobListing.JobTitle, Organization.OrganizationName, Student.StudentGPA, Student.StudentImage, Organization.ExternalLink, Student.FirstName, Student.LastName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE (ApplicationRequest.ApprovedFlag = 'P') AND (Student.SchoolEntityID = " + Session["schoolID"] + ") ORDER BY ApplicationRequest.ApplicationID DESC";
         System.Data.SqlClient.SqlDataReader result = RecentRequests.ExecuteReader();
 
 
