@@ -40,9 +40,13 @@
            
                     <%--<asp:Label ID="Label6" runat="server" Text="Search" Style="color: #fff; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>--%>
-                    <%--<br />--%>
+                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                    <br />--%>
                      <div class="text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
+                         <asp:Label ID="Label7" runat="server" Text="Search" Style="color: #fff; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                    <br />
                     <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" />
