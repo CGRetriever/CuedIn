@@ -97,7 +97,7 @@ public partial class StudentActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveStudent = new System.Data.SqlClient.SqlCommand();
         approveStudent.Connection = sql;
-        approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y' where applicationID = " + Session["selectedapplicationID"];
+        approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y', applicationrequest.LastUpdated = getdate() where applicationID = " + Session["selectedapplicationID"];
         approveStudent.ExecuteNonQuery();
         sql.Close();
 
@@ -151,7 +151,7 @@ public partial class StudentActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectStudent = new System.Data.SqlClient.SqlCommand();
         rejectStudent.Connection = sql;
-        rejectStudent.CommandText = "update applicationrequest set approvedflag = 'N' where applicationID = " + Session["selectedapplicationID"];
+        rejectStudent.CommandText = "update applicationrequest set approvedflag = 'N', applicationrequest.LastUpdated = getdate() where applicationID = " + Session["selectedapplicationID"];
         rejectStudent.ExecuteNonQuery();
         sql.Close();
 
