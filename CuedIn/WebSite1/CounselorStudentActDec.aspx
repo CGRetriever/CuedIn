@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
-       <head>
+      <head>
          <link rel='stylesheet' href='css/style.css'>
     </head>
      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,8 +14,8 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="CounselorLandingPage.aspx">Home</a></li>
-    <li><a href="CounselorHoursApprovalPage.aspx">Student Log Hours</a></li>
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="HoursApprovalPage.aspx">Student Log Hours</a></li>
  
                                
  
@@ -34,8 +34,10 @@
             <div class="col-md-10 container text-center">
 
                 <div class="col-auto text-center rounded" style="background-color: #102B3F; padding: 10px;">
-                    <%--<asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-                    <br />--%>
+                    <asp:Label ID="Label4" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="SearchButton" runat="server" Style="color:white" OnClick="SearchButton_Click"><i class="fas fa-search"></i></asp:LinkButton>
+                    <br />
                        <asp:CheckBox runat="server" Style="color: white;" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll" Checked="false" ViewStateMode = "Enabled" OnCheckedChanged="cbSelectAll_Checked"/>
                     <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" AutoPostBack="True"/>
                     <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" />

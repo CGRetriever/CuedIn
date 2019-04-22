@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <!--- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+   <!--- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
   
     <link rel="stylesheet" type="text/css" href="css/Tableau2Format.css" />   
 
@@ -24,9 +24,9 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="CounselorLandingPage.aspx">Home</a></li>
-    <li><a href="CounselorArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
-    <li><a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a></li>
+    <li><a href="LandingPage.aspx">Home</a></li>
+    <li><a href="ArchiveOpportunities.aspx">Archived Jobs Listings</a></li>
+    <li><a href="ArchiveScholarships.aspx">Archived Scholarships</a></li>
                                
  
     <li class="active"><span>Manage Jobs and Scholarships</span></li>       
@@ -88,11 +88,11 @@
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
 
 
-            <%--<div class="col-auto text-center" style="background-color:#102B3F;">
+            <div class="col-auto text-center" style="background-color:#102B3F;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
            <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-           </div>--%>
+           </div>
 
                 <div class="text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
                     
@@ -110,7 +110,7 @@
                       
 
                  <div class ="table-responsive">   
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" BackColor="#102B40" ForeColor="White">
+                <asp:GridView ID="GridView1" runat="server"  CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
 
                     <Columns>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" >
@@ -151,11 +151,11 @@
             
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label>
 
-               <%--<div class="col-auto text-center" style="background-color:#102B3F;">
+               <div class="col-auto text-center" style="background-color:#102B3F;">
                <asp:Label ID="Label18" runat="server" Text="Search" Style="color: #fff; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-               </div>--%>
+               </div>
           
 
                     <div class="col-auto text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
@@ -176,7 +176,7 @@
       
 
             <div class ="table-responsive">   
-             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID"  BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView2_Click">
 
 
                     <Columns>
@@ -219,36 +219,11 @@
        
     
 
-         <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                         FROM OpportunityEntity INNER JOIN
-                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
-						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
-
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-                        </SelectParameters>
-             </asp:SqlDataSource>
+       
 
 
 
-        <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                           FROM  OpportunityEntity INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN
-                         Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID
-                        WHERE   schoolapproval.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+    
 
 
  
