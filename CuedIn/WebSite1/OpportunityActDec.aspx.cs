@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,13 +10,14 @@ using System.Web.UI.WebControls;
 
 public partial class OpportunityActDec : System.Web.UI.Page
 {
-    public static String email;
-
+    private  static String email;
+    private int schoolid = 12;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
         if (Session["schoolid"] != null)
         {
+            schoolid = Convert.ToInt32(Session["schoolid"]);
             if (Session["schoolid"].Equals(12))
             {
                 lousiapc.Visible = true;
@@ -41,6 +44,31 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         }
 
+
+
+
+       
+
+               //Just need to parameterize it
+        string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+            "Organization.ExternalLink FROM  OpportunityEntity INNER JOIN SchoolApproval ON " +
+            "OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+            "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+            " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN" +
+            " Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID" +
+            " WHERE schoolapproval.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'" ;
+        
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+        conn.Close();
+        
 
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Jobs and <br> Scholarships";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
@@ -605,32 +633,62 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-    //protected void SearchButton1_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox1.Text;
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
 
-    //    JobOpportunity.SelectParameters.Add("term", term);
+        //Just need to parameterize it
+        string query = "SELECT applicationrequest.joblistingid, ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', " +
+            "Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp," +
+            " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
+            " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
+            "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
+            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
+            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" +
+            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term
+            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
+        ;
 
-    //    JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'P') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or (JobListing.Location like '%" + @term + "%'))";
-    //    JobOpportunity.DataBind();
-    //    GridView1.DataBind();
 
-    //    JobOpportunity.SelectParameters.Clear();
-    //}
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+        conn.Close();
+    }
 
-    //protected void SearchButton2_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox2.Text;
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
 
-    //    ScholarshipOpportunity.SelectParameters.Add("term", term);
+         //Just need to parameterize it
+        string query = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', " +
+            "Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp," +
+            " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
+            " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
+            "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
+            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
+            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" + 
+            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term 
+            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
+        ;
 
-    //    ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'P') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + @term + "%') or (Scholarship.ScholarshipMax like '%" + @term + "%'))";
-    //    ScholarshipOpportunity.DataBind();
-    //    GridView2.DataBind();
+        
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView2.DataSource = dt;
+        GridView2.DataBind();
+        conn.Close();
 
-    //    ScholarshipOpportunity.SelectParameters.Clear();
-
-    //}
+    }
 
     protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
