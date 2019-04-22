@@ -68,7 +68,24 @@ public partial class OpportunityActDec : System.Web.UI.Page
         GridView1.DataSource = dt;
         GridView1.DataBind();
         conn.Close();
-        
+
+        string query1 = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+            " Organization.ExternalLink" +
+            " FROM OpportunityEntity INNER JOIN" +
+            "   Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN " +
+            " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+            "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
+            "Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+            " where school.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'";
+
+        DataTable dt1 = new DataTable();
+        SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn1.Open();
+        SqlDataAdapter da1 = new SqlDataAdapter(query1, conn1);
+        da1.Fill(dt1);
+        GridView2.DataSource = dt1;
+        GridView2.DataBind();
+        conn1.Close();
 
         ((Label)Master.FindControl("lblMaster")).Text = "Manage Jobs and <br> Scholarships";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");

@@ -112,7 +112,7 @@
                       
 
                  <div class ="table-responsive">   
-                <asp:GridView ID="GridView1" runat="server"  CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" BackColor="#102B40" ForeColor="White">
+                <asp:GridView ID="GridView1" runat="server"  CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
 
                     <Columns>
                         <asp:BoundField DataField="OrganizationName" HeaderText="Organization Name" >
@@ -178,7 +178,7 @@
       
 
             <div class ="table-responsive">   
-             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+             <asp:GridView ID="GridView2" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID"  BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView2_Click">
 
 
                     <Columns>
@@ -221,20 +221,7 @@
        
     
 
-         <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                         FROM OpportunityEntity INNER JOIN
-                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
-						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'P'">
-
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-                        </SelectParameters>
-             </asp:SqlDataSource>
+       
 
 
 
