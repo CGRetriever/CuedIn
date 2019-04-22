@@ -194,7 +194,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update LogHours set CounselorApproval = 'Y' where logID = " + Session["selectedLogID"];
+        approveJob.CommandText = "update LogHours set CounselorApproval = 'Y', LogHours.LastUpdated = getdate() where logID = " + Session["selectedLogID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -362,7 +362,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update LogHours set CounselorApproval = 'N' where logID = " + Session["selectedLogID"];
+        rejectJob.CommandText = "update LogHours set CounselorApproval = 'N', LogHours.LastUpdated = getdate() where logID = " + Session["selectedLogID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
