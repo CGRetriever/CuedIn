@@ -58,7 +58,7 @@
         <h3 class="">Manage Posts
         <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
             </h3>
-        <div class="row">
+      
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
             
             <%--<! -- Label for No Job Postings -->--%>
@@ -66,14 +66,17 @@
             
             
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card1" runat="server">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+        <div class="row">
+      <div class="card-deck">
+            <div id="card1" runat="server">
+                      
+                <div class="image-flip" ontouchstart="this.classList.toggle('click');">
                     <div class="mainflip">
                         <div class="frontside">
-                            <div class="card">
+                            <div class="card ">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="Image1" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  "></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
                                         </div>
@@ -81,9 +84,11 @@
                             </div>
                         </div>
                         <div class="backside">
+                           
+ 
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl2" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl2" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; "></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label1" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -107,14 +112,14 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card2" runat="server">
+            <div id="card2" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="Image2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; "></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl2" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
                                         </div>
@@ -124,7 +129,7 @@
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl4" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl4" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  "></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label7" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -148,14 +153,14 @@
             </div>
             <!-- ./Team member -->
              <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card3" runat="server">
+            <div id="card3" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center container-fluid">
                                     <p><asp:Image ID="Image3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl3" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
                                         </div>
@@ -165,7 +170,7 @@
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl6" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl6" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label8" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -189,14 +194,14 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card4" runat="server">
+            <div id="card4" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="Image4" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text=""></asp:Label>
                                         </div>
@@ -206,7 +211,7 @@
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl8" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl8" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label10" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -228,6 +233,7 @@
                     </div>
                 </div>
             </div>
+         </div>
             <!-- ./Team member -->
             </div>
         </div>

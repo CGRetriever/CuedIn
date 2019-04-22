@@ -310,6 +310,7 @@ public partial class JobPostings : System.Web.UI.Page
             for (int j = 0; j < numrows; j++)
             {
                 TableRow r = new TableRow();
+          
 
 
                 for (int i = 0; i < numcells; i++)
@@ -331,9 +332,10 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
                     c.Controls.Add(new LiteralControl("<div class='mainflip'>"));
                     c.Controls.Add(new LiteralControl("<div class='frontside'>"));
-                    c.Controls.Add(new LiteralControl("<div class='card'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card h-100'>"));
+                   
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
-                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + jobs[count].getOrgImage() + "' alt='card image'></p>"));
+                    c.Controls.Add(new LiteralControl("<p><img class='img-fluid' src='" + jobs[count].getOrgImage() + "'alt='card image'></p>"));
                     c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + jobs[count].getOrgName() + "</h4>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobs[count].getJobTitle() + "</p>"));
                     c.Controls.Add(new LiteralControl("<a href='#' class='btn btn-primary btn-sm'><i class='fa fa-plus'></i></a>"));
@@ -342,7 +344,7 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("</div>"));
 
                     c.Controls.Add(new LiteralControl("<div class='backside'>"));
-                    c.Controls.Add(new LiteralControl("<div class='card'>"));
+                    c.Controls.Add(new LiteralControl("<div class='card h-100'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
                     c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + jobs[count].getOrgName() + "</h4>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobs[count].getJobTitle() + "</p>"));
@@ -363,11 +365,13 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("</div>"));
                     c.Controls.Add(new LiteralControl("</div>"));
 
-                    c.Style.Add("width", "33%");
+                    //c.Style.Add("width", "33%");
+                    //c.Style.Add("height", "33%");
                     r.Cells.Add(c);
                     count++;
 
                 }
+                
                 jobPostingTable.Rows.Add(r);
             }
 
