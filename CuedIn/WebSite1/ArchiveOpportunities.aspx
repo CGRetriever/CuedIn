@@ -128,7 +128,7 @@
 
                     
                     <div class="table-responsive">
-                    <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
+                    <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" OnDataBinding="btnCheckGridView2_Click" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
                         <Columns>
 
                             <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" Visible="false" >
