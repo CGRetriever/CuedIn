@@ -19,12 +19,12 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
             schoolid = Convert.ToInt32(Session["schoolid"]);
         }
 
-        if (!SearchBox2.Text.Equals(""))
+        if (SearchBox1 != null)
         {
             object send1 = new object();
             EventArgs e1 = new EventArgs();
 
-           
+            SearchButton2_Click(send1, e1);
 
         }
 
@@ -50,11 +50,11 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         }
 
-        if (!SearchBox1.Text.Equals(""))
+        if (SearchBox2 != null)
         {
             object send1 = new object();
             EventArgs e1 = new EventArgs();
-          
+            SearchButton1_Click(send1, e1);
         }
         else
         {
@@ -514,7 +514,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
     protected void SearchButton1_Click(object sender, EventArgs e)
     {
-        String term = SearchBox1.Text;
+        String term = SearchBox2.Text;
 
         string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
                   " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
@@ -531,14 +531,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
         da.Fill(dt);
-        gridviewRejJobs.DataSource = dt;
-        gridviewRejJobs.DataBind();
+        gridviewAccJobs.DataSource = dt;
+        gridviewAccJobs.DataBind();
         conn.Close();
     }
 
     protected void SearchButton2_Click(object sender, EventArgs e)
     {
-        String term = SearchBox2.Text;
+        String term = SearchBox1.Text;
 
         string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
                   " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
@@ -555,8 +555,8 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
         da.Fill(dt);
-        gridviewAccJobs.DataSource = dt;
-        gridviewAccJobs.DataBind();
+        gridviewRejJobs.DataSource = dt;
+        gridviewRejJobs.DataBind();
         conn.Close();
 
     }

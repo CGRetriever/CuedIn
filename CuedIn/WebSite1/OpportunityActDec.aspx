@@ -93,7 +93,7 @@
            <div class="col-auto text-center" style="background-color:#BDC1C7;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: black; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
            <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
-           <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
+           <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
            </div>
 
                 <div class="text-center" style="background-color: #BDC1C7;width:auto; padding: 10px;">
