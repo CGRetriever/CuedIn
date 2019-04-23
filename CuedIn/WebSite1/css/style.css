@@ -507,3 +507,7 @@ h1 {
             margin-left: 16em;
            width:1000em;
         }
+
+        body .popover {
+            max-width: 400px;
+        }
