@@ -473,6 +473,28 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         //rejScholarshipGridview.DataBind();
 
         //ScholarshipOpportunity.SelectParameters.Clear();
+
+        String term = SearchBox1.Text;
+
+        string query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+               " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
+               " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN" +
+               " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+               "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+               " Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+               "where school.SchoolEntityID = @schoolID and SchoolApproval.ApprovedFlag = 'N' and ((scholarhip.scholarshipname like '%" + @term + "%') or (organization.organizationname like" +
+               " '%" + @term + "%') or (scholarship.scholarshipdescription like '%" + @term + "%'))";
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolID", schoolid);
+        da.Fill(dt);
+        rejScholarshipGridview.DataSource = dt;
+        rejScholarshipGridview.DataBind();
+        conn.Close();
     }
 
     protected void SearchButton2_Click(object sender, EventArgs e)
