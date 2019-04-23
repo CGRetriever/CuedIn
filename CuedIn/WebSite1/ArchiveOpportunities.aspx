@@ -29,7 +29,9 @@
 <div class="row">
 
     <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-    <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+    <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" />
+    
+    <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/managejobsscholarships.png' /&gt;" Style="margin-right: 70%; color: #006699;" data-html="true" data-placement="right" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton> 
 </div>
 
 
@@ -43,6 +45,7 @@
 
 
                     <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
+                        
                         <%--<asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
