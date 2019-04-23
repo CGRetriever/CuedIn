@@ -40,15 +40,19 @@
            
                     <%--<asp:Label ID="Label6" runat="server" Text="Search" Style="color: #fff; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>--%>
-                    <%--<br />--%>
-                     <div class="text-center" style="background-color: #102B3F;width:auto; padding: 10px;">
-                    <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
-                    <asp:CheckBox ID="chkImage" Style="color: white;" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkGradeLevel" Style="color: white;" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkGPA" Style="color: white;" runat="server" Text="GPA" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkHoursWBL" Style="color: white;" runat="server" Text="Hours of WBL" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkJobType" Style="color: white;" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid" />
+                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                    <br />--%>
+                     <div class="text-center" style="background-color: #BDC1C7;width:auto; padding: 10px;">
+                         <asp:Label ID="Label7" runat="server" Text="Search" Style="color: black; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
+                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
+                    <br />
+                    <asp:CheckBox runat="server" Style="color: black; padding-right:30px" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
+                    <asp:CheckBox ID="chkImage" Style="color: black; padding-right:30px" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkGradeLevel" Style="color: black; padding-right:30px" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkGPA" Style="color: black; padding-right: 30px" runat="server" Text="GPA" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkHoursWBL" Style="color: black; padding-right:30px" runat="server" Text="Hours of WBL" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkJobType" Style="color: black; padding-right:30px" runat="server" Text="Job Type" Checked="false" CssClass=".JchkGrid" />
 
                     <asp:Button ID="btnCheckGridView" runat="server" Text="Apply" OnClick="btnCheckGridView_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                     <br />
@@ -71,6 +75,7 @@
 
          <div class="table-responsive">
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped  table-dark"  AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+                    <HeaderStyle BackColor="#4F79A3" />
                     <Columns>
 
                        

@@ -35,7 +35,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveScholarship = new System.Data.SqlClient.SqlCommand();
         approveScholarship.Connection = sql;
-        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
+        approveScholarship.CommandText = "update schoolApproval set approvedFlag = 'Y', schoolApproval.LastUpdated = getdate() where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
@@ -228,7 +228,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectScholarship = new System.Data.SqlClient.SqlCommand();
         rejectScholarship.Connection = sql;
-        rejectScholarship.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
+        rejectScholarship.CommandText = "update SchoolApproval set approvedFlag = 'N', schoolApproval.LastUpdated = getdate() where OpportunityEntityID = " + Session["selectedScholarshipID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 

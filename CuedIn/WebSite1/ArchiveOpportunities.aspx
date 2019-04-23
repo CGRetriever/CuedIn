@@ -43,11 +43,11 @@
 
 
                     <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
-                        <%--<asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                        <asp:Label ID="Label17" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                        <br />--%>
+                        <br />
 
 
                         <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll" />
@@ -61,24 +61,9 @@
 
                     <div style="height:5px;font-size:10px;">&nbsp;</div>
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                           FROM  OpportunityEntity INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN
-                         Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID
-                        WHERE   school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'N'">
-
-                        <SelectParameters>
-
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                        </SelectParameters>
-                        </asp:SqlDataSource>
+                   
                     <div class="table-responsive">
-                    <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
+                    <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White">
                         <Columns>
                             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" >
                             <ItemStyle Font-Size="Large" />
@@ -123,10 +108,10 @@
 
 
                     <div class="col-auto text-center" style="background-color: #102B3F;padding:10px;">
-                        <%--<asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-                        <br />--%>
+                        <br />
                         <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll1" />
                         
                         
@@ -141,21 +126,9 @@
 
                    <div style="height:5px;font-size:10px;">&nbsp;</div>
 
-                    <asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                           FROM  OpportunityEntity INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN
-                         Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID
-                        WHERE   school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'Y'">
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-                        </SelectParameters>
-                    </asp:SqlDataSource>
+                    
                     <div class="table-responsive">
-                    <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
+                    <asp:GridView ID="gridviewAccJobs" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White" BorderStyle="None">
                         <Columns>
 
                             <asp:BoundField DataField="JobListingID" HeaderText="JobListingID" ReadOnly="True" SortExpression="JobListingID" Visible="false" >

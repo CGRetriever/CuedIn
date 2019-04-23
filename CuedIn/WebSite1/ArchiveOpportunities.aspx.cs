@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,9 +11,74 @@ using System.Web.UI.WebControls;
 public partial class ArchiveOpportunities : System.Web.UI.Page
 {
     public static String email;
-    
+    private int schoolid = 12;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if(Session["schoolid"] != null)
+        {
+            schoolid = Convert.ToInt32(Session["schoolid"]);
+        }
+
+        if (!SearchBox2.Text.Equals(""))
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+
+           
+
+        }
+
+        else
+        {
+            string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+           " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
+           "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+           "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
+           " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
+           "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+           "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'Y'";
+
+
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.Fill(dt);
+            gridviewAccJobs.DataSource = dt;
+            gridviewAccJobs.DataBind();
+            conn.Close();
+
+        }
+
+        if (!SearchBox1.Text.Equals(""))
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+          
+        }
+        else
+        {
+
+            string query1 = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+                " Organization.ExternalLink" +
+                " FROM  OpportunityEntity INNER JOIN" +
+                " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN" +
+                " School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+                " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
+                " Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+                " WHERE school.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'N'";
+
+            DataTable dt1 = new DataTable();
+            SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn1.Open();
+            SqlDataAdapter da1 = new SqlDataAdapter(query1, conn1);
+            da1.Fill(dt1);
+            gridviewRejJobs.DataSource = dt1;
+            gridviewRejJobs.DataBind();
+            conn1.Close();
+        }
+
+
 
         gridviewAccJobs.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs Listings";
@@ -92,7 +159,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update SchoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"] ;
+        approveJob.CommandText = "update SchoolApproval set approvedFlag = 'Y', schoolApproval.LastUpdated = getdate() where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"] ;
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -274,7 +341,7 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
+        rejectJob.CommandText = "update SchoolApproval set approvedFlag = 'N', schoolApproval.LastUpdated = getdate() where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 
@@ -445,33 +512,54 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     }
 
 
-    //protected void SearchButton1_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox1.Text;
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
 
-    //    SqlDataSource1.SelectParameters.Add("term", term);
-
-    //    SqlDataSource1.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'N') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
-    //    SqlDataSource1.DataBind();
-    //    gridviewRejJobs.DataBind();
-
-    //    SqlDataSource1.SelectParameters.Clear();
-    //}
-
-    //protected void SearchButton2_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox2.Text;
-
-    //    JobOpportunity.SelectParameters.Add("term", term);
-
-    //    JobOpportunity.SelectCommand = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(joblisting.approved = 'Y') and((JobListing.JobTitle like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobDescription like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (JobListing.Location like '%" + term + "%'))";
-    //    JobOpportunity.DataBind();
-    //    gridviewAccJobs.DataBind();
-
-    //    JobOpportunity.SelectParameters.Clear();
+        string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+                  " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
+                  "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+                  "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
+                  " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
+                  "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+                  "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'Y' and ((joblisting.jobtitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (joblisting.jobdescription like '%" + term + "%'))" ;
 
 
-    //}
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        gridviewRejJobs.DataSource = dt;
+        gridviewRejJobs.DataBind();
+        conn.Close();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+                  " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
+                  "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+                  "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
+                  " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
+                  "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+                  "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'N' and ((joblisting.jobtitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (joblisting.jobdescription like '%" + term + "%'))";
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        gridviewAccJobs.DataSource = dt;
+        gridviewAccJobs.DataBind();
+        conn.Close();
+
+    }
 
     protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
