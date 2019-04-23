@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,10 +12,40 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
 {
     public static String email;
     public static String fullName;
-
+    private int schoolid = 12;
     protected void Page_Load(object sender, EventArgs e)
     {
 
+        if (Session["schoold"] != null)
+        {
+            schoolid = Convert.ToInt32(Session["schoolid"]);
+        }
+
+
+        string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            " Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, " +
+            "  Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            "   JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization " +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + schoolid;
+
+
+        if (SearchBox != null)
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+            SearchButton_Click(send1, e1);
+        }
+        else
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            conn.Close();
+        }
 
         GridView1.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Student Log Hours";
@@ -762,8 +794,9 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         GridView1.DataBind();
 
         JobOpportunity.SelectParameters.Clear();
-
     }
+
+
 
     protected void cbSelectAll_Checked(object sender, EventArgs e)
     {
