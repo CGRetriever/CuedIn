@@ -26,7 +26,7 @@ public partial class JobPostings : System.Web.UI.Page
         {
             String s = " ";
             displayTable(sender, e, s);
-            ViewState["queryOR"] = " ";
+           
         }
         else if (IsPostBack)
         {
@@ -170,7 +170,7 @@ public partial class JobPostings : System.Web.UI.Page
         }
 
         //this is our condition....
-        ViewState["queryOR"] = condititionalIf;
+        //ViewState["queryOR"] = condititionalIf;
         displayTable(sender, e, condititionalIf);
 
 
