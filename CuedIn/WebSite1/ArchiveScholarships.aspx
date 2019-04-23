@@ -50,11 +50,11 @@
 
 
                 <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
-                    <%--<asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
                     <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                    <br />--%>
+                    <br />
 
                     <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
                     <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
@@ -65,25 +65,9 @@
 
                 <div style="height:5px;font-size:10px;">&nbsp;</div>
                
-                <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                         FROM OpportunityEntity INNER JOIN
-                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
-						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'N'">
-
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                        </SelectParameters>
-
-
-                </asp:SqlDataSource>
+               
                 <div class="table-responsive">
-                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
+                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White">
 
                     <Columns>
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" >
@@ -133,11 +117,11 @@
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
 
                     <div class="col-auto text-center" style="background-color: #102B3F; width: auto; padding: 10px;">
-                        <%--<asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                        <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
                         <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                        <br />--%>
+                        <br />
                         <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
                         <asp:CheckBox ID="chkScholarshipMin1" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
                         <asp:CheckBox ID="chkScholarshipMax1" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
@@ -150,23 +134,9 @@
                     <div style="height:5px;font-size:10px;">&nbsp;</div>
                     
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-FROM OpportunityEntity INNER JOIN
-                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
-						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'Y'">
-                         <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                            </SelectParameters>
-                    </asp:SqlDataSource>
 
                 <div class="table-responsive">
-                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
+                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White">
 
                         <Columns>
                             <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false">
