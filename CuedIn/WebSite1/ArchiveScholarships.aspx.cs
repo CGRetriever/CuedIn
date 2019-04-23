@@ -21,17 +21,17 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         }
 
 
-        //if (SearchBox1 != null)
-        //{
-        //    object send1 = new object();
-        //    EventArgs e1 = new EventArgs();
+        if (SearchBox1 != null)
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
 
-        //    SearchButton2_Click(send1, e1);
+            SearchButton2_Click(send1, e1);
 
-        //}
+        }
 
-        //else
-        //{
+        else
+        {
             string query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
                 " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
                 " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN" +
@@ -51,16 +51,16 @@ public partial class ArchiveScholarships : System.Web.UI.Page
             rejScholarshipGridview.DataBind();
             conn.Close();
 
-        //}
+        }
 
-        //if (SearchBox2 != null)
-        //{
-        //    object send1 = new object();
-        //    EventArgs e1 = new EventArgs();
-        //    SearchButton1_Click(send1, e1);
-        //}
-        //else
-        //{
+        if (SearchBox2 != null)
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+            SearchButton1_Click(send1, e1);
+        }
+        else
+        {
 
             string query1 = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
                 " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
@@ -79,7 +79,7 @@ public partial class ArchiveScholarships : System.Web.UI.Page
             acceptScholarshipGridview.DataSource = dt1;
             acceptScholarshipGridview.DataBind();
             conn1.Close();
-        //}
+        }
 
 
 
