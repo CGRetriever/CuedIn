@@ -136,7 +136,7 @@
 
                         <div class="modal-footer">
                             <div class="flex-center" style="text-align: center !important; margin: auto !important;">
-                                <asp:Button ID="btnSendTo" runat="server" Text="Send" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="sendToButton_Click" />
+                                <asp:Button  ID="btnSendTo" runat="server" Text="Send" Style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" CssClass="btn btn-circle" OnClick="sendToButton_Click" />
                                 <button type="button" style="background-color: #102B3F; color: #fff; width: 100px; height: 60px;" class="btn btn-circle" data-dismiss="modal">Close</button>
                             </div>
                         </div>

@@ -24,18 +24,26 @@ public partial class JobPostings : System.Web.UI.Page
 
         if (!IsPostBack)
         {
+            ViewState["queryOR"] = " ";
             String s = " ";
-            displayTable(sender, e, s);
-           
+            displayTable(s);
+
         }
-        else if (IsPostBack)
+
+        else
         {
 
-            applyChanges_click(sender, e);
         }
 
 
 
+
+
+    }
+    // does not fire the modal pop up on this...
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+       displayTable(ViewState["queryOR"].ToString());
     }
 
 
@@ -166,19 +174,16 @@ public partial class JobPostings : System.Web.UI.Page
                 }
 
             }
-
         }
 
         //this is our condition....
-        //ViewState["queryOR"] = condititionalIf;
-        displayTable(sender, e, condititionalIf);
-
-
+        ViewState["queryOR"] = condititionalIf;
+        
 
     }
 
 
-    private void displayTable(object sender, EventArgs e, String s)
+    protected void displayTable( String s)
     {
         //initial set up...Counter for the number of rows, and 
         int countTotalJobs = 0;
@@ -258,14 +263,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         }
 
-        
-
-
-
-
         pullJobInfo.Connection = sc;
-
-
 
         reader = pullJobInfo.ExecuteReader();
 
