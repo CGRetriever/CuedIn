@@ -18,7 +18,7 @@ public partial class StudentActDec : System.Web.UI.Page
         if (Session["schoolid"] != null)
         {
            
-            schoolid = Convert.ToInt32(Session["scholid"]);
+            schoolid = Convert.ToInt32(Session["schoolid"]);
         }
 
 
