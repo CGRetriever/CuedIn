@@ -25,6 +25,12 @@
          <link rel='stylesheet' href='css/style.css'>
 
     </head>
+        <script>
+            //Initialize popover with jQuery
+            $(document).ready(function () {
+                $('.popovers').popover();
+            });
+        </script>
     
 
 
@@ -47,19 +53,14 @@
 
 
         <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-
-                    <div class="container">
+        <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/studentapphelp.png' width=100% height=100% /&gt;" Style="margin-left: 92%; color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton> 
+        <div class="container">
 
                         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
                     <asp:Table ID="scholarshipTable" runat="server" OnLoad="scholarshipTable_Load" Width="100%" > </asp:Table>
                     </div>
 
-        <script>
-            //Initialize popover with jQuery
-                    $(document).ready(function () {
-                        $('.popovers').popover();
-                    });
-        </script>
+
 
             
             <%--Refer Scholarship Modal--%>
