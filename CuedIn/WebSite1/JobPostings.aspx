@@ -37,7 +37,7 @@
                         <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
                             SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
                         </asp:SqlDataSource>
-                        <asp:Button ID="ApplyChanges" AutoPostBack="true" runat="server" Text="Apply Filters" CssClass="btn" OnClick="applyChanges_click"/>
+                        <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
 
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                 
 
             <div>
-            <asp:Table ID="jobPostingTable" runat="server" OnLoad="jobPostingTable_Load" Width="100%"></asp:Table>
+            <asp:Table ID="jobPostingTable" runat="server"></asp:Table>
         </div>
             </div>
         <script>

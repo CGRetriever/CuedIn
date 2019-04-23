@@ -11,33 +11,35 @@ public partial class JobPostings : System.Web.UI.Page
   
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
+
 
 
         ((Label)Master.FindControl("lblMaster")).Text = "Job Cards";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
 
-    }
 
-
-
-
-
-
-
-    protected void jobPostingTable_Load(object sender, EventArgs e)
-    {
 
         if (!IsPostBack)
         {
             String s = " ";
             displayTable(sender, e, s);
+            ViewState["queryOR"] = " ";
+        }
+        else if (IsPostBack)
+        {
+
+            applyChanges_click(sender, e);
         }
 
 
 
-
     }
+
+
+
 
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
@@ -62,7 +64,8 @@ public partial class JobPostings : System.Web.UI.Page
         lblJobTitle.Text = jobTitle;
         lblOrgName.Text = orgName;
 
-        //ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+
 
     }
 
@@ -165,10 +168,12 @@ public partial class JobPostings : System.Web.UI.Page
             }
 
         }
+
         //this is our condition....
-
-
+        ViewState["queryOR"] = condititionalIf;
         displayTable(sender, e, condititionalIf);
+
+
 
     }
 
@@ -207,7 +212,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         }
 
-        String test = s;
+
 
         countJobPostings.Connection = sc;
         System.Data.SqlClient.SqlDataReader reader = countJobPostings.ExecuteReader();
@@ -230,6 +235,8 @@ public partial class JobPostings : System.Web.UI.Page
 
         System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
 
+
+        
         if (s.Equals(" "))
         {
             pullJobInfo.CommandText = "SELECT  Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription," +
@@ -250,6 +257,9 @@ public partial class JobPostings : System.Web.UI.Page
                 "(SchoolApproval.SchoolEntityID = 12) and (" + s + ")";
 
         }
+
+        
+
 
 
 
@@ -326,7 +336,8 @@ public partial class JobPostings : System.Web.UI.Page
 
                     referralLink.CssClass = "far fa-paper-plane";
 
-                    referralLink.CommandArgument += jobs[count].getID(); 
+                    referralLink.CommandArgument += jobs[count].getID();
+           
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
 
                     c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
@@ -355,7 +366,7 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
                     c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + jobs[count].getOrgWebsite() + "'>"));
                     c.Controls.Add(new LiteralControl("<i class='fas fa-external-link-alt'></i>&nbsp;&nbsp;&nbsp;"));
-                    //c.Controls.Add(referralLink);
+                    c.Controls.Add(referralLink);
                     c.Controls.Add(new LiteralControl("</a>"));
                     c.Controls.Add(new LiteralControl("</li>"));
                     c.Controls.Add(new LiteralControl("</ul>"));
@@ -377,8 +388,14 @@ public partial class JobPostings : System.Web.UI.Page
 
 
         }
+
+
+
     }
-}
+   
+
+
+    }
 
 
 
