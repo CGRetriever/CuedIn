@@ -10,11 +10,12 @@ public class InterestGroup
 {
     int interestGroupID;
     String interestGroupName;
-    public InterestGroup()
+    public InterestGroup(int interestGroupID, String interestGroupName)
+
     {
-        //
-        // TODO: Add constructor logic here
-        //
+        setInterestGroupID(interestGroupID);
+        setInterestGroupName(interestGroupName);
+        
     }
 
 
