@@ -65,6 +65,8 @@ public partial class JobPostings : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
 
 
+
+
     }
 
     public void sendToButton_Click(object sender, EventArgs e)
@@ -167,6 +169,8 @@ public partial class JobPostings : System.Web.UI.Page
         }
 
         ViewState["queryOr"] = condititionalIf;
+
+
 
 
 
@@ -348,6 +352,9 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<p class='card-text'> Location: " + jobs[count].getJobLocation() + "</p>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'>  Deadline: " + jobs[count].getJobDeadline().ToString() + "</p>"));
                     c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + jobs[count].getNumOfApplicants() + "</p>"));
+                    //lets put the interest group information in here
+                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + jobs[count].getNumOfApplicants() + "</p>"));
+                    //right here boi
                     c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
                     c.Controls.Add(new LiteralControl("<a class='social-icon text-xs-center' target='_blank' href='" + jobs[count].getOrgWebsite() + "'>"));
@@ -378,7 +385,12 @@ public partial class JobPostings : System.Web.UI.Page
 
 
     }
-   
+
+
+    protected void ApplyInterestGroup_Click(object sender, EventArgs e)
+    {
+
+    }
 }
 
 

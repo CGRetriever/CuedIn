@@ -190,7 +190,7 @@
         });
     </script>
 
-                        <script type="text/javascript">
+                <script type="text/javascript">
 function resize() {
     if ($(window).width() > 577) {
      $('#sidebar').addClass('fixed-top');

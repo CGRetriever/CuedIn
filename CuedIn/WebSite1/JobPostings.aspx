@@ -25,23 +25,28 @@
     </head>
 
 
+       <script type='text/javascript'>
+           
+                $(function () {
+                    $('[id*=InterestGroupDrop]').multiselect({
+                        includeSelectAllOption: true,
+                        buttonWidth: '200px'
 
 
-        <div class="container">
+                    });
+                });
+
+
+
+
+            </script>
+
+
+
+     <div class="container">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-            <div class="container">
-                <div class="form-row">
-                    <div class="col-md-12">
+         </div>
 
-                            <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" CssClass="form-control" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
-                        <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
-                            SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
-                        </asp:SqlDataSource>
-                        <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
-
-                        </div>
-                    </div>
-                </div>
 <br>
                    
  <!--- Breadcrumb --->
@@ -61,7 +66,23 @@
 
         <div class="container">
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
-             
+                         <div class="container">
+                <div class="form-row">
+                    <div class="col-md-12">
+
+                            <asp:ListBox ID="InterestGroupDrop" SelectionMode="Multiple" CssClass="form-control" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
+
+
+                        <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
+                            SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
+                        </asp:SqlDataSource>
+
+                        <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
+                     
+
+                        </div>
+                    </div>
+                </div>
 
                 
 
@@ -69,12 +90,8 @@
             <asp:Table ID="jobPostingTable" runat="server"></asp:Table>
         </div>
             </div>
-        <script>
-            //Initialize popover with jQuery
-                    $(document).ready(function () {
-                        $('.popovers').popover();
-                    });
-        </script>
+
+
 
         <div class="row">
             <div class="col-md-4 col-xs-12 col-sm-12">
@@ -108,7 +125,19 @@
                                         </SelectParameters>
 
                                     </asp:SqlDataSource>
+
                                     <div style="overflow-y: scroll; overflow-x: hidden; height: 500px; width: 450px;">
+
+                        <asp:ListBox ID="StudentInterestGroup" SelectionMode="Multiple" CssClass="form-control" runat="server" DataSourceID="SqlDataSource1" 
+                            DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em">
+
+                        </asp:ListBox>
+
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
+                            SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
+                        </asp:SqlDataSource>
+
+                        <asp:Button ID="ApplyInterestGroup" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="ApplyInterestGroup_Click"/>
                                         <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="ReferStudents" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
                                             <Columns>
 
@@ -145,7 +174,7 @@
             </div>
                 </div>
             </div>
-            </div>
+  
             <script type='text/javascript'>
                 function openSendToModal() {
                     $('[id*=sendToModal]').modal('show');
