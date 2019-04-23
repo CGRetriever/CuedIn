@@ -15,35 +15,41 @@ public partial class StudentActDec : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["schoolid"] == null)
+        if (Session["schoolid"] != null)
         {
-            Session["schoolid"] = 12;
+           
             schoolid = Convert.ToInt32(Session["scholid"]);
         }
 
 
-        if(SearchBox != null)
+        if (SearchBox != null)
+        {
+            object o = new object();
+            EventArgs e1 = new EventArgs();
+            SearchButton_Click(0, e1);
+        }
+        else
         {
 
+
+
+            // Query for Gridview
+            string query = "SELECT ApplicationRequest.ApplicationID, " +
+                " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
+                " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
+                "  INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER " +
+                " JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID" +
+                " WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID =  " + Session["schoolid"];
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            conn.Close();
+
         }
-
-        // Query for Gridview
-        string query = "SELECT ApplicationRequest.ApplicationID, " +
-            " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
-            " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
-            "  INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER " +
-            " JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID" +
-            " WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID =  " + Session["schoolid"];
-        DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        da.Fill(dt);
-        GridView1.DataSource = dt;
-        GridView1.DataBind();
-        conn.Close();
-
-
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
         
@@ -437,7 +443,7 @@ public partial class StudentActDec : System.Web.UI.Page
             "like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + 
             @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term 
             + "%') or (JobListing.JobType like '%" + @term + "%')) and SchoolEntityID =  " + @schoolid;
-        ;
+        
 
         
         DataTable dt = new DataTable();
