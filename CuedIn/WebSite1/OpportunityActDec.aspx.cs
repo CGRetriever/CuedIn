@@ -91,7 +91,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
                 " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
                 "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
                 "Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
-                " where school.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'";
+                " where school.SchoolEntityID = " + @schoolid + " and SchoolApproval.ApprovedFlag = 'P'";
 
             DataTable dt1 = new DataTable();
             SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
