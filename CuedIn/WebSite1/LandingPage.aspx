@@ -362,10 +362,9 @@
                     </div>
                 </div>
                 </div>
-            </div>
+            
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard4" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -404,7 +403,7 @@
             </div>
             <!-- ./Team member -->
             <!-- ./Team member -->
-                </div>
+                
         </div>
    
         
