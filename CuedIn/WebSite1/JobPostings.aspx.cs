@@ -265,6 +265,7 @@ public partial class JobPostings : System.Web.UI.Page
 
             //Make the list
             List<JobListing> jobs = new List<JobListing>();
+         
 
 
             int jobListingID;
@@ -298,6 +299,7 @@ public partial class JobPostings : System.Web.UI.Page
                 JobListing job = new JobListing(jobTitle, jobDescription, jobLocation, deadline, numOfApplicants, orgName, organizationDescription,
                     image, link);
                 //Set this to be used later
+                //good looks bro -kyle to ryan
                 job.setID(jobListingID);
                 //Make the object
                 //Add to list
@@ -305,6 +307,18 @@ public partial class JobPostings : System.Web.UI.Page
 
             }
             sc.Close();
+
+
+
+
+
+
+
+
+
+
+
+
             double doubleRows = countTotalJobs / 3.0;
             int numrows = (int)(Math.Ceiling(doubleRows));
             int numcells = 3;
@@ -321,6 +335,18 @@ public partial class JobPostings : System.Web.UI.Page
                     {
                         break;
                     }
+
+                    sc.Open();
+
+
+                    pullJobInfo.CommandText = "SELECT InterestGroups.InterestGroupName, InterestGroups.InterestGroupID FROM InterestGroups " +
+                        "INNER JOIN OpportunityInterestGroups ON InterestGroups.InterestGroupID = OpportunityInterestGroups.InterestGroupID " +
+                        "INNER JOIN OpportunityEntity ON OpportunityInterestGroups.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
+                        "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID";
+
+
+
+
                     TableCell c = new TableCell();
 
                     LinkButton referralLink = new LinkButton();
