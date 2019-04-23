@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +14,20 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
+        string query = "SELECT ApplicationRequest.ApplicationID, " +
+            " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
+            " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
+            "  INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER " +
+            " JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID" +
+            " WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID =  " + Session["schoolid"];
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        gridviewAccJobs.DataSource = dt;
+        gridviewAccJobs.DataBind();
+        conn.Close();
 
         gridviewAccJobs.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Jobs Listings";
