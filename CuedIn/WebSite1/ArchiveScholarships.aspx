@@ -67,7 +67,7 @@
                
                
                 <div class="table-responsive">
-                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White">
+                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView1_Click">
 
                     <Columns>
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" >
@@ -136,7 +136,7 @@
 
 
                 <div class="table-responsive">
-                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White">
+                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView2_Click">
 
                         <Columns>
                             <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false">
