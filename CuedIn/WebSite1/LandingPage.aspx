@@ -55,6 +55,9 @@
     </head>
     
     <div class="container container-fluid">
+    
+
+
         <h3 class="">Manage Posts
         <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
             </h3>
@@ -324,7 +327,7 @@
             <!-- ./Team member -->
             <!-- Team member -->
             <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard3" runat="server">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                <div class="image-flip"ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
@@ -358,9 +361,11 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
+            <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard4" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
@@ -399,9 +404,10 @@
             </div>
             <!-- ./Team member -->
             <!-- ./Team member -->
-
+                </div>
         </div>
-    </div>
+   
+        
 
         <script>
                 window.onscroll = function() {scrollFunction()};
@@ -421,6 +427,8 @@
             }
 
         </script>
+ 
+
 
 <br />
 <div class="container">
@@ -456,9 +464,7 @@
 
 
 
-
-
-    </div>
+    
 
 
 
