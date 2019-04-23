@@ -32,21 +32,12 @@ public partial class JobPostings : System.Web.UI.Page
 
         else
         {
-        
             applyChanges_click(sender, e);
             displayTable(ViewState["queryOr"].ToString());
         }
 
 
-
-
-
     }
-
-
-
-
-
 
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
@@ -388,9 +379,7 @@ public partial class JobPostings : System.Web.UI.Page
 
     }
    
-
-
-    }
+}
 
 
 
