@@ -32,7 +32,9 @@ public partial class JobPostings : System.Web.UI.Page
 
         else
         {
-
+        
+            applyChanges_click(sender, e);
+            displayTable(ViewState["queryOr"].ToString());
         }
 
 
@@ -40,11 +42,8 @@ public partial class JobPostings : System.Web.UI.Page
 
 
     }
-    // does not fire the modal pop up on this...
-    protected void Page_PreRender(object sender, EventArgs e)
-    {
-       displayTable(ViewState["queryOR"].ToString());
-    }
+
+
 
 
 
@@ -176,14 +175,14 @@ public partial class JobPostings : System.Web.UI.Page
             }
         }
 
-        //this is our condition....
-        ViewState["queryOR"] = condititionalIf;
-        
+        ViewState["queryOr"] = condititionalIf;
+
+
 
     }
 
 
-    protected void displayTable( String s)
+    protected void displayTable(String s)
     {
         //initial set up...Counter for the number of rows, and 
         int countTotalJobs = 0;
@@ -333,11 +332,9 @@ public partial class JobPostings : System.Web.UI.Page
                     referralLink.ID = "referralLink" + count;
 
                     referralLink.CssClass = "far fa-paper-plane";
-
-                    referralLink.CommandArgument += jobs[count].getID();
-           
                     referralLink.Command += new CommandEventHandler(this.referralButton_Click);
-
+                    referralLink.CommandArgument += jobs[count].getID();
+          
                     c.Controls.Add(new LiteralControl("<div class='image-flip' ontouchstart='this.classList.toggle('hover');'>"));
                     c.Controls.Add(new LiteralControl("<div class='mainflip'>"));
                     c.Controls.Add(new LiteralControl("<div class='frontside'>"));
