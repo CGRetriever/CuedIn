@@ -36,13 +36,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
            "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
            " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
            "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-           "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'Y'";
+           "WHERE school.SchoolEntityID = " + @schoolid + "  and SchoolApproval.ApprovedFlag = 'Y'";
 
 
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
             da.Fill(dt);
             gridviewAccJobs.DataSource = dt;
             gridviewAccJobs.DataBind();
@@ -522,14 +523,16 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
                   "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
                   " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
                   "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-                  "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'Y' and ((joblisting.jobtitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (joblisting.jobdescription like '%" + term + "%'))" ;
+                  "WHERE school.SchoolEntityID = " + @schoolid + "  and SchoolApproval.ApprovedFlag = 'Y' and ((joblisting.jobtitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (joblisting.jobdescription like '%" + @term + "%'))" ;
 
 
         DataTable dt = new DataTable();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
         da.Fill(dt);
         gridviewAccJobs.DataSource = dt;
         gridviewAccJobs.DataBind();
@@ -546,14 +549,16 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
                   "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
                   " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
                   "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-                  "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'N' and ((joblisting.jobtitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (joblisting.jobdescription like '%" + term + "%'))";
+                  "WHERE school.SchoolEntityID = " + @schoolid + "  and SchoolApproval.ApprovedFlag = 'N' and ((joblisting.jobtitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (joblisting.jobdescription like '%" + @term + "%'))";
 
 
         DataTable dt = new DataTable();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
         da.Fill(dt);
         gridviewRejJobs.DataSource = dt;
         gridviewRejJobs.DataBind();
