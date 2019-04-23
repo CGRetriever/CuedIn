@@ -61,24 +61,9 @@
 
                     <div style="height:5px;font-size:10px;">&nbsp;</div>
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                           FROM  OpportunityEntity INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN
-                         Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID
-                        WHERE   school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'N'">
-
-                        <SelectParameters>
-
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                        </SelectParameters>
-                        </asp:SqlDataSource>
+                   
                     <div class="table-responsive">
-                    <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID" DataSourceID="SQLDataSource1" CellPadding="1" BackColor="#102B40" ForeColor="White">
+                    <asp:GridView ID="gridviewRejJobs" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="JobListingID"  CellPadding="1" BackColor="#102B40" ForeColor="White">
                         <Columns>
                             <asp:BoundField DataField="JobTitle" HeaderText="Job Title" InsertVisible="False" ReadOnly="True" >
                             <ItemStyle Font-Size="Large" />
