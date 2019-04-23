@@ -47,16 +47,13 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-       
-
-               //Just need to parameterize it
         string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
             "Organization.ExternalLink FROM  OpportunityEntity INNER JOIN SchoolApproval ON " +
             "OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
             "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
             " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN" +
             " Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID" +
-            " WHERE schoolapproval.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'" ;
+            " WHERE schoolapproval.SchoolEntityID = " + @schoolid + " and SchoolApproval.ApprovedFlag = 'P'" ;
 
         if (SearchBox1 != null)
         {
@@ -71,6 +68,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
             da.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
@@ -99,6 +97,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
             SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn1.Open();
             SqlDataAdapter da1 = new SqlDataAdapter(query1, conn1);
+            da1.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
             da1.Fill(dt1);
             GridView2.DataSource = dt1;
             GridView2.DataBind();
@@ -679,9 +678,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
             "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
             " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN" +
             " Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID" +
-            " WHERE schoolapproval.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P'and((JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (JobListing.JobDescription like '%" + term
-            + "%') or (JobListing.JobType like '%" + term + "%')) and schoolapproval.SchoolEntityID =  " + schoolid;
+            " WHERE schoolapproval.SchoolEntityID = " + @schoolid + " and SchoolApproval.ApprovedFlag = 'P'and((JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term
+            + "%') or (JobListing.JobType like '%" + @term + "%')) and schoolapproval.SchoolEntityID =  " + @schoolid;
 
       
 
@@ -690,6 +689,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
         da.Fill(dt);
         GridView1.DataSource = dt;
         GridView1.DataBind();
@@ -708,14 +709,16 @@ public partial class OpportunityActDec : System.Web.UI.Page
         " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
         "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
         "Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
-        " where school.SchoolEntityID = " + schoolid + " and SchoolApproval.ApprovedFlag = 'P' and((scholarship.scholarshipname like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') ) and schoolapproval.SchoolEntityID =  " + schoolid;
+        " where school.SchoolEntityID = " + @schoolid + " and SchoolApproval.ApprovedFlag = 'P' and((scholarship.scholarshipname like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') ) and schoolapproval.SchoolEntityID =  " + @schoolid;
 
         
         DataTable dt = new DataTable();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
         da.Fill(dt);
         GridView2.DataSource = dt;
         GridView2.DataBind();
