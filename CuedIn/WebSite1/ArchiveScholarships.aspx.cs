@@ -138,14 +138,14 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
-            lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
+            lblSOrganizationName.Text = reader.GetString(6);
+            lblSOrganizationDescription.Text = reader.GetString(7);
             Label3.Text = "Scholarship Name : " + reader.GetString(0);
-            lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
-            lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
-            lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+            lblScholarshipDescription.Text = reader.GetString(1);
+            lblScholarshipMin.Text = "$" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "$" + reader.GetSqlMoney(3);
+            lblScholarshipQuantity.Text = reader.GetInt32(4).ToString();
+            lblScholarshipDueDate.Text = reader.GetDateTime(5).ToString();
 
         }
 
@@ -330,14 +330,14 @@ public partial class ArchiveScholarships : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
-            lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
+            lblSOrganizationName.Text = reader.GetString(6);
+            lblSOrganizationDescription.Text = reader.GetString(7);
             Label3.Text = "Scholarship Name : " + reader.GetString(0);
-            lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
-            lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
-            lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+            lblScholarshipDescription.Text = reader.GetString(1);
+            lblScholarshipMin.Text = "$" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "$" + reader.GetSqlMoney(3);
+            lblScholarshipQuantity.Text = reader.GetInt32(4).ToString();
+            lblScholarshipDueDate.Text = reader.GetDateTime(5).ToString();
 
         }
 
