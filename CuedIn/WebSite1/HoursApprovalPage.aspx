@@ -81,7 +81,7 @@
                        
                         <asp:TemplateField HeaderText="Image" Visible="false">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
+                                <asp:Image ID="studentImage" runat="server" style="max-width:7em; max-height:7em; margin-left:2em;" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                             <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>

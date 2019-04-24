@@ -3,12 +3,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <!DOCTYPE html>
+    
 
 
 	
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -71,7 +71,7 @@
                   <br />
                     
                     <div style="margin-left: auto; margin-right: auto; text-align: center;">
-                    <asp:Label ID="Label10" runat="server" ForeColor="#CC0000" style="text-align:center"></asp:Label>
+                    <asp:Label ID="Label10" runat="server" style="text-align:center"></asp:Label>
 
 
 					<div class="text-center p-t-90">
