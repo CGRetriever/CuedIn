@@ -3,8 +3,8 @@ div.links {
     a
 
 {
-    padding: 4px 8px;
-    padding-right:600px;
+
+    float:right;
     text-decoration: none;
     &.active
 
@@ -19,7 +19,7 @@ div.links {
 .block {
     width: 300px;
     height: 300px;
-    margin: 0 auto 200px;
+
     background: fireBrick;
 }
 body {
