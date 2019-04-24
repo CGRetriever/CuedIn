@@ -13,6 +13,7 @@
         <meta name="keywords" content="">
         <!-- Font Awesome for icons - see https://fontawesome.com/v4.7.0/cheatsheet/ -->
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css" type="text/css" />
@@ -64,32 +65,37 @@
 
 <!--- END Breadcrumb --->
 
-        <div class="container">
+        <div class="container-fluid">
             <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/postingLegend.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" OnClientClick="return false;"/>
-                         <div class="container">
-                <div class="form-row">
-                    <div class="col-md-12">
-
-                            <asp:ListBox ID="InterestGroupDrop"  SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" ></asp:ListBox>
-
-
+            </div>
+              <div class="container-fluid">
+               
                         <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
                             SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
                         </asp:SqlDataSource>
-
-                        <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
-                     
-                        <asp:Button ID="clearButton" runat="server" Text="Clear Filters" CssClass="btn" />
-                        </div>
-                    </div>
-                </div>
+                   
+            <div class="row">
+               
+   </div>
 
                 
+    <div class="form-row">
 
-            <div>
+            <div class="col-md-8 col-lg-8 col-xs-12 col-sm-12">
+
             <asp:Table ID="jobPostingTable" runat="server"></asp:Table>
         </div>
+                <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                    <div class="container-fluid">
+                     <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
+                     
+                        <asp:Button ID="clearButton" runat="server" Text="Clear Filters" CssClass="btn" />
+                 <asp:CheckboxList ID="InterestGroupDrop" CssClass="checkbox" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" BorderStyle="Outset" BorderColor="Silver"></asp:CheckboxList>
             </div>
+                    </div>
+                 
+            </div>
+                  </div>
 
 
 
