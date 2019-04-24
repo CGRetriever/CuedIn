@@ -64,7 +64,7 @@
                        
                         <asp:TemplateField HeaderText="Image">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" style="max-width:7em;max-height:7em; margin-left:2em;" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
+                                <asp:Image ID="studentImage" runat="server" style="max-width:7em;max-height:7em; margin-left:2em;" ImageUrl="~/img/student.JPG" OnLoad="studentImage_Load" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                             <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
@@ -138,7 +138,8 @@
                                   <%--<h5>Student Information</h5>--%>
                                      <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Student Information"></asp:Label>
                                     <br />
-                                    <asp:Image ID="imgStudent" runat="server" CssClass="rounded-circle col-md-6" />
+                                    <asp:Image ID="imgStudent" runat="server" CssClass="img-fluid" style="height:300px" />
+                                    <br />
                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
 
                                 </div>
