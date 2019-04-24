@@ -427,11 +427,11 @@ public partial class TeacherStudentActDec : System.Web.UI.Page
             " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
             " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
             "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
-            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
-            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" +
-            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term
-            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
+            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or " +
+            "Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" +
+            @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term
+            + "%') or (JobListing.JobType like '%" + @term + "%')) and SchoolEntityID =  " + @schoolid;
         ;
 
 
@@ -439,6 +439,8 @@ public partial class TeacherStudentActDec : System.Web.UI.Page
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
         da.Fill(dt);
         GridView1.DataSource = dt;
         GridView1.DataBind();

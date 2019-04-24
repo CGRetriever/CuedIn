@@ -107,6 +107,8 @@
                                     <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -148,6 +150,8 @@
                                     <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl2" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -189,6 +193,8 @@
                                     <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl3" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -230,6 +236,8 @@
                                     <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text=""></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -286,6 +294,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
@@ -324,6 +334,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
@@ -362,6 +374,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
@@ -401,6 +415,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage4" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName4" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
