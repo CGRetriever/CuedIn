@@ -323,11 +323,11 @@
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
                                 <div class="form-group">
 
-                                    <asp:Label ID="Label4" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" Text="Student Comment:"></asp:Label>
+                                    <asp:Label ID="Label4" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" Text="Student Comment:" Font-Bold="true"></asp:Label>
                                     <asp:Label ID="StudentComment" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server"></asp:Label>
                                 </div>
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-center">
-                                    <asp:Label ID="Label5" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" Text="Organization Comment:"></asp:Label>
+                                    <asp:Label ID="Label5" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" Text="Organization Comment:" Font-Bold="true"></asp:Label>
                                     <asp:Label ID="BusinessComment" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server"></asp:Label>
                                 </div>
                             </div>
