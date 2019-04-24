@@ -89,7 +89,7 @@
                    
                      <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
                      
-                        <asp:Button ID="clearButton" runat="server" CssClass="btn" OnClick="ClearButton_Click" />
+                        <asp:Button ID="clearButton" runat="server" CssClass="btn" Text="Clear Filters" OnClick="ClearButton_Click" />
                  <asp:CheckboxList ID="InterestGroupDrop" CssClass="checkbox" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" BorderStyle="Outset" BorderColor="Silver"></asp:CheckboxList>
            
                     </div>
