@@ -106,17 +106,6 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         // OOP Fourth Card
-        if (JobCardsArray[3] != null)
-        {
-            Image4.ImageUrl = JobCardsArray[3].getOrgImage();
-            CompanyNamelbl7.Text = JobCardsArray[3].getOrgName();
-            JobTitlelbl4.Text = JobCardsArray[3].getJobTitle();
-            CompanyNamelbl8.Text = JobCardsArray[3].getOrgName();
-            lblJOrganizationDescription4.Text = JobCardsArray[3].getJobDescription();
-            lblJobType4.Text = JobCardsArray[3].getJobType();
-            lblOrgDescription4.Text = JobCardsArray[3].getOrgDescription();
-            JobLink4.NavigateUrl = JobCardsArray[3].getOrgWebsite();
-        }
 
         sql.Close();
 
@@ -125,24 +114,21 @@ public partial class LandingPage : System.Web.UI.Page
             card1.Visible = false;
             card2.Visible = false;
             card3.Visible = false;
-            card4.Visible = false;
+     
             EmptyPostinglbl.Visible = true;
         }
         else if (JobCardsArray[3] == null && JobCardsArray[2] == null && JobCardsArray[1] == null)
         {
-            card4.Visible = false;
+
             card3.Visible = false;
             card2.Visible = false;
         }
         else if (JobCardsArray[3] == null && JobCardsArray[2] == null)
         {
-            card4.Visible = false;
+
             card3.Visible = false;
         }
-        else if (JobCardsArray[3] == null)
-        {
-            card4.Visible = false;
-        }
+
         else
         {
 
@@ -232,17 +218,7 @@ public partial class LandingPage : System.Web.UI.Page
 
 
         // OOP Fourth Student Request Card
-        if (StudentCardsArray[3] != null)
-        {
-            StudentImage4.ImageUrl = StudentCardsArray[3].getStudentImage();
-            FrontStudentName4.Text = StudentCardsArray[3].getFirstName() + " " + StudentCardsArray[3].getLastName();
-            BackStudentName4.Text = StudentCardsArray[3].getFirstName() + " " + StudentCardsArray[3].getLastName();
-            StudentJobTitlelbl4.Text = StudentCardJobInfoArray[3].getJobTitle();
-            OrgTitle4.Text = StudentCardJobInfoArray[3].getOrgName();
-            StudentGPAlbl4.Text = StudentCardsArray[3].getStudentGPA().ToString();
-            StudentLink4.NavigateUrl = StudentCardJobInfoArray[3].getOrgWebsite();
-        }
-        
+
 
 
         sql.Close();
@@ -253,25 +229,22 @@ public partial class LandingPage : System.Web.UI.Page
             StudentCard1.Visible = false;
             StudentCard2.Visible = false;
             StudentCard3.Visible = false;
-            StudentCard4.Visible = false;
+     
             EmptyStudentslbl.Visible = true;
 
         }
         else if (StudentCardsArray[3] == null && StudentCardsArray[2] == null && StudentCardsArray[1] == null)
         {
-            StudentCard4.Visible = false;
+           
             StudentCard3.Visible = false;
             StudentCard2.Visible = false;
         }
         else if (StudentCardsArray[3] == null && StudentCardsArray[2] == null)
         {
-            StudentCard4.Visible = false;
+    
             StudentCard3.Visible = false;
         }
-        else if (StudentCardsArray[3] == null)
-        {
-            StudentCard4.Visible = false;
-        }
+
         else
         {
 
