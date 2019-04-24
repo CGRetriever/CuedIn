@@ -35,7 +35,7 @@
 
         <div class="form-group">
             <div class="col-md-10 container text-center">
-                <asp:Button ID="Button3" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 92%; color: white; margin-bottom:0.7em" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+                
 
                 <div class="col-auto text-center rounded" style="background-color: #BDC1C7; padding: 10px;">
                     <asp:Label ID="Label4" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
