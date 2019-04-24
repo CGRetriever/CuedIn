@@ -134,22 +134,22 @@
 
                                     <div style="overflow-y: scroll; overflow-x: hidden; height: 500px; width: 450px;">
 
-                        <asp:ListBox ID="StudentInterestGroup" SelectionMode="Multiple"  runat="server" DataSourceID="SqlDataSource1" 
+                        <asp:ListBox ID="StudentInterestGroup" SelectionMode="Multiple"  runat="server" CssClass="rounded" DataSourceID="SqlDataSource1" 
                             DataTextField="InterestGroupName" DataValueField="InterestGroupID">
 
                         </asp:ListBox>
-
+                         <div style="height: 5px; font-size: 10px;">&nbsp;</div>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
                             SelectCommand="SELECT [InterestGroupID], [InterestGroupName] FROM [InterestGroups]">
                         </asp:SqlDataSource>
 
-                        <asp:Button ID="ApplyInterestGroup" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="ApplyInterestGroup_Click"/>
-                        <asp:Button ID="ClearWebButtons" runat="server" Text="Clear Filters" CssClass="btn" OnCommand="ClearWebButtons_Click" />
+                        <asp:Button ID="ApplyInterestGroup" runat="server" Text="Apply Filters"  Style="background-color: white; color: #102B3F;" class="btn btn-circle"  OnClick="ApplyInterestGroup_Click"/>
+                        <asp:Button ID="ClearWebButtons" runat="server" Text="Clear Filters"  Style="background-color: white; color: #102B3F;" class="btn btn-circle" OnCommand="ClearWebButtons_Click" />
                 <div style="height: 5px; font-size: 10px;">&nbsp;</div>
                         <asp:Label ID="InterestGroupLabel"  runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.0em; font-weight: bold;"></asp:Label>
 
 
-                                        <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
+                                        <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center rounded" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
                                             <Columns>
 
                                                 <asp:TemplateField HeaderText="Select">
