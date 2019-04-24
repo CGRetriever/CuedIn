@@ -3,7 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-        <head>
+     <head>
          <link rel='stylesheet' href='css/style.css'>
     </head>
 
@@ -74,7 +74,7 @@
                 </asp:SqlDataSource>
 
          <div class="table-responsive">
-                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped  table-dark"  AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White">
+                <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped  table-dark"  AutoGenerateColumns="False" DataKeyNames="LogID" DataSourceID="JobOpportunity" CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
                     <HeaderStyle BackColor="#4F79A3" />
                     <Columns>
 
