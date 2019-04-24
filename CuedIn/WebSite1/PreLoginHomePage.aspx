@@ -17,6 +17,7 @@
         <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
         
         <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/PreLoginButtonStyling.css">
         
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -36,7 +37,9 @@
             </li>
             
             <li class="nav-item">
+                <button>
                 <a class="nav-link" href="Login.aspx">Log In</a>
+                </button>
             </li>
         
         </ul>
@@ -44,11 +47,7 @@
     <br />
     <br />
     <div class ="links">
-        <p><a href="#bigDesktop">scroool</a></p>
-    <button class="links">
-        
-        hehehe
-    </button>
+        <p><a class="ct-btn-scroll ct-js-btn-scroll" href="#bigDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
         </div>
     <div class="w-100 d-flex flex-nowrap">
         <div class="w-100 d-md-none">
