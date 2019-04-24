@@ -15,6 +15,8 @@ public partial class CounselorStudentMetricsDashboard : System.Web.UI.Page
             {
                 lousiapc.Visible = true;
                 lousiasmall.Visible = true;
+                //lousiatablet.Visible = true;
+
 
             }
             else if (Session["schoolid"].Equals(13))

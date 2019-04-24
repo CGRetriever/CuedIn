@@ -19,12 +19,12 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
             schoolid = Convert.ToInt32(Session["schoolid"]);
         }
 
-        if (!SearchBox2.Text.Equals(""))
+        if (SearchBox1 != null)
         {
             object send1 = new object();
             EventArgs e1 = new EventArgs();
 
-           
+            SearchButton2_Click(send1, e1);
 
         }
 
@@ -36,13 +36,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
            "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
            " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
            "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-           "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'Y'";
+           "WHERE school.SchoolEntityID = " + @schoolid + "  and SchoolApproval.ApprovedFlag = 'Y'";
 
 
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
             da.Fill(dt);
             gridviewAccJobs.DataSource = dt;
             gridviewAccJobs.DataBind();
@@ -50,11 +51,11 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
         }
 
-        if (!SearchBox1.Text.Equals(""))
+        if (SearchBox2 != null)
         {
             object send1 = new object();
             EventArgs e1 = new EventArgs();
-          
+            SearchButton1_Click(send1, e1);
         }
         else
         {
@@ -188,14 +189,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
+            lblJOrganizationName.Text = reader.GetString(0);
+            lblJOrganizationDescription.Text = reader.GetString(1);
             lblJobName.Text = "Job Title: " + reader.GetString(2);
-            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-            lblJobType.Text = "Job Type: " + reader.GetString(4);
-            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
+            lblJobDescription.Text = reader.GetString(3);
+            lblJobType.Text = reader.GetString(4);
+            lblJobLocation.Text = reader.GetString(5);
+            lblJobDeadline.Text = reader.GetDateTime(6).ToString();
+            lblNumOfApplicants.Text = reader.GetInt32(7).ToString();
 
         }
 
@@ -231,14 +232,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
+            lblJOrganizationName.Text = reader.GetString(0);
+            lblJOrganizationDescription.Text = reader.GetString(1);
             lblJobName.Text = "Job Title: " + reader.GetString(2);
-            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-            lblJobType.Text = "Job Type: " + reader.GetString(4);
-            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
+            lblJobDescription.Text = reader.GetString(3);
+            lblJobType.Text = reader.GetString(4);
+            lblJobLocation.Text = reader.GetString(5);
+            lblJobDeadline.Text = reader.GetDateTime(6).ToString();
+            lblNumOfApplicants.Text = reader.GetInt32(7).ToString();
 
         }
 
@@ -514,30 +515,6 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
 
     protected void SearchButton1_Click(object sender, EventArgs e)
     {
-        String term = SearchBox1.Text;
-
-        string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
-                  " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
-                  "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
-                  "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
-                  " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
-                  "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-                  "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'Y' and ((joblisting.jobtitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (joblisting.jobdescription like '%" + term + "%'))" ;
-
-
-        DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        da.Fill(dt);
-        gridviewRejJobs.DataSource = dt;
-        gridviewRejJobs.DataBind();
-        conn.Close();
-    }
-
-    protected void SearchButton2_Click(object sender, EventArgs e)
-    {
         String term = SearchBox2.Text;
 
         string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
@@ -546,17 +523,45 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
                   "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
                   " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
                   "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
-                  "WHERE school.SchoolEntityID = " + schoolid + "  and SchoolApproval.ApprovedFlag = 'N' and ((joblisting.jobtitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (joblisting.jobdescription like '%" + term + "%'))";
+                  "WHERE school.SchoolEntityID = " + @schoolid + "  and SchoolApproval.ApprovedFlag = 'Y' and ((joblisting.jobtitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (joblisting.jobdescription like '%" + @term + "%'))" ;
 
 
         DataTable dt = new DataTable();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
         da.Fill(dt);
         gridviewAccJobs.DataSource = dt;
         gridviewAccJobs.DataBind();
+        conn.Close();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox1.Text;
+
+        string query = "SELECT JobListing.JobTitle, Organization.OrganizationName, JobListing.JobListingID, JobListing.JobDescription, JobListing.JobType, JobListing.Location, Organization.OrganizationDescription, " +
+                  " Organization.ExternalLink FROM  OpportunityEntity INNER JOIN " +
+                  "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+                  "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN " +
+                  " JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
+                  "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID " +
+                  "WHERE school.SchoolEntityID = " + @schoolid + "  and SchoolApproval.ApprovedFlag = 'N' and ((joblisting.jobtitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (joblisting.jobdescription like '%" + @term + "%'))";
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
+        da.Fill(dt);
+        gridviewRejJobs.DataSource = dt;
+        gridviewRejJobs.DataBind();
         conn.Close();
 
     }
