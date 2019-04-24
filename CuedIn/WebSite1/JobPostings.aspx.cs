@@ -252,13 +252,15 @@ public partial class JobPostings : System.Web.UI.Page
         }
         else
         {
-            pullJobInfo.CommandText = "SELECT distinct Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, " +
-                "Organization.ExternalLink, JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, Organization.OrganizationDescription, " +
-                "JobListing.JobListingID FROM " +
-                "SchoolApproval INNER JOIN OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
-                "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN " +
-                " OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID WHERE(SchoolApproval.ApprovedFlag = 'Y') AND OpportunityEntity.OpportunityType = 'JOB' and " +
-                "(SchoolApproval.SchoolEntityID = 12) and (" + s + ")";
+            pullJobInfo.CommandText = "SELECT DISTINCT Organization.OrganizationName, JobListing.JobTitle, JobListing.JobDescription, Organization.Image, Organization.ExternalLink, " +
+                "JobListing.Location, JobListing.Deadline, JobListing.NumOfApplicants, " +
+                "Organization.OrganizationDescription, JobListing.JobListingID FROM  SchoolApproval INNER JOIN " +
+                "OpportunityEntity ON SchoolApproval.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN " +
+                "JobListing ON OpportunityEntity.OpportunityEntityID = JobListing.JobListingID INNER JOIN " +
+                "Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN " +
+                "OpportunityInterestGroups ON OpportunityEntity.OpportunityEntityID = OpportunityInterestGroups.OpportunityEntityID INNER JOIN " +
+                "InterestGroups ON OpportunityInterestGroups.InterestGroupID = InterestGroups.InterestGroupID " +
+                "WHERE(SchoolApproval.ApprovedFlag = 'Y') AND(OpportunityEntity.OpportunityType = 'JOB') AND(SchoolApproval.SchoolEntityID = 12) and (" + s + ")";
 
         }
 
