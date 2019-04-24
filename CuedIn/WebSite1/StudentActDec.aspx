@@ -65,7 +65,7 @@
                         <asp:BoundField DataField="ApplicationID" HeaderText="ApplicationID" ReadOnly="True" SortExpression="ApplicationID" InsertVisible="False" Visible="false" >
                           <ItemStyle Font-Size="Large" />
                           </asp:BoundField>
-                        <asp:TemplateField HeaderText="Image" Visible="false">
+                        <asp:TemplateField HeaderText="Image">
                             <ItemTemplate>
                                      <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>

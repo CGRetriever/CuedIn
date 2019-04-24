@@ -52,6 +52,8 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
+        GridView1.Columns[0].Visible = true;
+
 
 
     }
