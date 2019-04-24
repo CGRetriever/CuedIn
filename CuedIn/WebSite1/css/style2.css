@@ -1,4 +1,26 @@
+div.links {
+    position: fixed;
+    a
 
+{
+    padding: 4px 8px;
+    text-decoration: none;
+    &.active
+
+{
+    color: white;
+    background: fireBrick;
+}
+
+}
+}
+
+.block {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 200px;
+    background: fireBrick;
+}
 body {
     font-family: 'Poppins', sans-serif;
 }
