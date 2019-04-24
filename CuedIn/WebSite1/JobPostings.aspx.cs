@@ -24,20 +24,23 @@ public partial class JobPostings : System.Web.UI.Page
 
 
 
-            if (!IsPostBack)
+        if (!IsPostBack)
         {
-            ViewState["queryOr"] = " ";
-            String s = " ";
-            displayTable(s);
+        ViewState["queryOr"] = " ";
+        String s = " ";
+        displayTable(s);
 
         }
 
         else
         {
+         
             
             applyChanges_click(sender, e);
             displayTable(ViewState["queryOr"].ToString());
         }
+
+ 
 
 
     }
