@@ -59,19 +59,6 @@
                 </div>
 
                 <div style="height:5px;font-size:10px;">&nbsp;</div>
-                
-                <%--<asp:SqlDataSource ID="JobOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore,
- Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, 
- Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, 
- JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization
- ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = @schoolID">
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                        </SelectParameters>
-                    
-                </asp:SqlDataSource>--%>
 
          <div class="table-responsive">
                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-striped  table-dark"  AutoGenerateColumns="False" DataKeyNames="LogID"  CellPadding="1" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView_Click">
