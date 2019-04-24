@@ -82,7 +82,7 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
                         //Download the CSV file.
                         Response.Clear();
                         Response.Buffer = true;
-                        Response.AddHeader("content-disposition", "attachment;filename=SqlExport.csv");
+                        Response.AddHeader("content-disposition", "attachment;filename=Report.csv");
                         Response.Charset = "";
                         Response.ContentType = "application/text";
                         Response.Output.Write(csv);
