@@ -189,13 +189,6 @@
             });
         });
     </script>
-            <script>
-
-   $('.image-flip .mainflip').click(function() {
-   $(this).closest('.image-flip').toggleClass('hover');
-   $(this).css('transform, rotateY(180deg)');
-            });
-            </script>
 
             <script>		
    $('.image-flip .mainflip').click(function() {		
