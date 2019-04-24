@@ -336,13 +336,13 @@ public partial class JobPostings : System.Web.UI.Page
                         break;
                     }
 
-                    sc.Open();
+                    //sc.Open();
 
 
-                    pullJobInfo.CommandText = "SELECT InterestGroups.InterestGroupName, InterestGroups.InterestGroupID FROM InterestGroups " +
-                        "INNER JOIN OpportunityInterestGroups ON InterestGroups.InterestGroupID = OpportunityInterestGroups.InterestGroupID " +
-                        "INNER JOIN OpportunityEntity ON OpportunityInterestGroups.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
-                        "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID";
+                    //pullJobInfo.CommandText = "SELECT InterestGroups.InterestGroupName, InterestGroups.InterestGroupID FROM InterestGroups " +
+                    //    "INNER JOIN OpportunityInterestGroups ON InterestGroups.InterestGroupID = OpportunityInterestGroups.InterestGroupID " +
+                    //    "INNER JOIN OpportunityEntity ON OpportunityInterestGroups.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
+                    //    "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID";
 
 
 
