@@ -100,28 +100,28 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -268,28 +268,28 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
 
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -439,28 +439,28 @@ public partial class OpportunityActDec : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -655,28 +655,28 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -778,28 +778,28 @@ public partial class OpportunityActDec : System.Web.UI.Page
     protected void btnCheckGridView_Click(object sender, EventArgs e)
     {
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -926,7 +926,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
     {
         if (cbSelectAll.Checked == true)
         {
-            chkImage.Checked = true;
+            //chkImage.Checked = true;
             chkJobType.Checked = true;
             chkHoursWBL.Checked = true;
             chkGradeLevel.Checked = true;
@@ -938,7 +938,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
         if (cbSelectAll.Checked == false)
         {
-            chkImage.Checked = false;
+            //chkImage.Checked = false;
             chkJobType.Checked = false;
             chkHoursWBL.Checked = false;
             chkGradeLevel.Checked = false;

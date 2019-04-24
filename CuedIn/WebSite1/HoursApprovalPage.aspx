@@ -43,7 +43,7 @@
                     <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
                     <br />
                     <asp:CheckBox runat="server" Style="color: black; padding-right:30px" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
-                    <asp:CheckBox ID="chkImage" Style="color: black; padding-right:30px" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />
+                   <%-- <asp:CheckBox ID="chkImage" Style="color: black; padding-right:30px" runat="server" Text="Image" Checked="false" CssClass=".JchkGrid" />--%>
                     <asp:CheckBox ID="chkGradeLevel" Style="color: black; padding-right:30px" runat="server" Text="Grade Level" Checked="false" CssClass=".JchkGrid" />
                     <asp:CheckBox ID="chkGPA" Style="color: black; padding-right: 30px" runat="server" Text="GPA" Checked="false" CssClass=".JchkGrid" />
                     <asp:CheckBox ID="chkHoursWBL" Style="color: black; padding-right:30px" runat="server" Text="Hours of WBL" Checked="false" CssClass=".JchkGrid" />
