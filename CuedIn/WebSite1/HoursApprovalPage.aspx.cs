@@ -55,6 +55,11 @@ public partial class OpportunityActDec : System.Web.UI.Page
         GridView1.Columns[0].Visible = true;
 
 
+        // image in gridview
+
+        
+
+
 
     }
 
@@ -946,6 +951,15 @@ public partial class OpportunityActDec : System.Web.UI.Page
 
             cbSelectAll.Text = "Select All";
 
+        }
+    }
+
+    protected void studentImage_Load(object sender, EventArgs e)
+    {
+        foreach (GridViewRow gr in GridView1.Rows)
+        {
+            string temp = GridView1.DataKeys[gr.RowIndex].Value.ToString();
+            int ff = 2;
         }
     }
 }
