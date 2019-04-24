@@ -421,7 +421,7 @@ public partial class OpportunityActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
         moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT StudentComment.Comment, OrganizationComment.Comment AS Expr1 FROM OrganizationComment INNER JOIN StudentComment ON OrganizationComment.LogID = StudentComment.LogID INNER JOIN LogHours ON OrganizationComment.LogID = LogHours.LogID where LogHours.LogID = " + Session["selectedLogID"];
+        moreJobInfo.CommandText = "SELECT StudentComment, OrganizationComment FROM LogHours where LogHours.LogID = " + Session["selectedLogID"]; 
         System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
 
         while (reader.Read())
