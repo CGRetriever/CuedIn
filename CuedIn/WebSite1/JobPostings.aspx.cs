@@ -41,6 +41,15 @@ public partial class JobPostings : System.Web.UI.Page
 
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
+
+        string query = "SELECT distinct Student.FirstName + ' ' + Student.LastName as 'Full Name', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
+                        "StudentInterestGroups ON Student.StudentEntityID = StudentInterestGroups.StudentEntityID INNER JOIN " +
+                        "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolID = " + Session["schoolID"] + s +
+                       " ORDER BY Student.LastName ASC ";
+
+
+
+
         int jobListingID = Convert.ToInt32(e.CommandArgument);
         String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
         System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
