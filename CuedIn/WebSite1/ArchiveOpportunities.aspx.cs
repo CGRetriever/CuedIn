@@ -189,14 +189,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
+            lblJOrganizationName.Text = reader.GetString(0);
+            lblJOrganizationDescription.Text = reader.GetString(1);
             lblJobName.Text = "Job Title: " + reader.GetString(2);
-            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-            lblJobType.Text = "Job Type: " + reader.GetString(4);
-            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
+            lblJobDescription.Text = reader.GetString(3);
+            lblJobType.Text = reader.GetString(4);
+            lblJobLocation.Text = reader.GetString(5);
+            lblJobDeadline.Text = reader.GetDateTime(6).ToString();
+            lblNumOfApplicants.Text = reader.GetInt32(7).ToString();
 
         }
 
@@ -232,14 +232,14 @@ public partial class ArchiveOpportunities : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblJOrganizationName.Text = "Organization Name: " + reader.GetString(0);
-            lblJOrganizationDescription.Text = "Organization Description: " + reader.GetString(1);
+            lblJOrganizationName.Text = reader.GetString(0);
+            lblJOrganizationDescription.Text = reader.GetString(1);
             lblJobName.Text = "Job Title: " + reader.GetString(2);
-            lblJobDescription.Text = "Job Description: " + reader.GetString(3);
-            lblJobType.Text = "Job Type: " + reader.GetString(4);
-            lblJobLocation.Text = "Job Location: " + reader.GetString(5);
-            lblJobDeadline.Text = "Job Deadline: " + reader.GetDateTime(6);
-            lblNumOfApplicants.Text = "Number of Applicants: " + reader.GetInt32(7);
+            lblJobDescription.Text = reader.GetString(3);
+            lblJobType.Text = reader.GetString(4);
+            lblJobLocation.Text = reader.GetString(5);
+            lblJobDeadline.Text = reader.GetDateTime(6).ToString();
+            lblNumOfApplicants.Text = reader.GetInt32(7).ToString();
 
         }
 
