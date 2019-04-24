@@ -20,7 +20,7 @@ public partial class LandingPage : System.Web.UI.Page
         Student[] StudentCardsArray = new Student[5];
         JobListing[] StudentCardJobInfoArray = new JobListing[5];
 
-        ((Label)Master.FindControl("lblMaster")).Text = "Landing Page";
+        ((Label)Master.FindControl("lblMaster")).Text = "Home";
 
         EmptyPostinglbl.Visible = false;
         EmptyStudentslbl.Visible = false;
