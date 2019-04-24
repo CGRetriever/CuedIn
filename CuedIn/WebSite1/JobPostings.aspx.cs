@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -42,13 +45,7 @@ public partial class JobPostings : System.Web.UI.Page
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
 
-        string query = "SELECT distinct Student.FirstName + ' ' + Student.LastName as 'Full Name', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
-                        "StudentInterestGroups ON Student.StudentEntityID = StudentInterestGroups.StudentEntityID INNER JOIN " +
-                        "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolID = " + Session["schoolID"] + s +
-                       " ORDER BY Student.LastName ASC ";
-
-
-
+      
 
         int jobListingID = Convert.ToInt32(e.CommandArgument);
         String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -64,8 +61,21 @@ public partial class JobPostings : System.Web.UI.Page
         interestGroupList = returnInterestList(jobListingID);
         String s = conditionalIf(interestGroupList);
 
+        string query = "SELECT Student.StudentEntityID, Student.StudentImage, Student.FirstName + ' ' + Student.LastName as 'FullName', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
+                      "StudentInterestGroups ON Student.StudentEntityID = StudentInterestGroups.StudentEntityID INNER JOIN " +
+                      "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolEntityID = " + Session["schoolID"] + " AND " + s +
+                     " ORDER BY Student.LastName ASC ";
 
-      
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        gridviewRefer.DataSource = dt;
+        gridviewRefer.DataBind();
+        conn.Close();
+
 
 
         System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
@@ -463,7 +473,7 @@ public partial class JobPostings : System.Web.UI.Page
 
     public String conditionalIf (List<InterestGroup> interestGroupList)
     {
-        String conditionalIf = "OpportunityInterestGroups.InterestGroupID = ";
+        String conditionalIf = "InterestGroups.InterestGroupID = ";
 
         //if all are selected, there is no need to loop. we want to see everything. 
         if (interestGroupList.Count == InterestGroupDrop.Items.Count)
@@ -486,7 +496,7 @@ public partial class JobPostings : System.Web.UI.Page
                 //if the list is not the last index of the list we can add an or clause
                 if (interestID != interestGroupList.Count - 1)
                 {
-                    conditionalIf += interestGroupList[interestID].getInterestGroupID() + " or OpportunityInterestGroups.InterestGroupID = ";
+                    conditionalIf += interestGroupList[interestID].getInterestGroupID() + " or InterestGroups.InterestGroupID = ";
                 }
                 else
                 {

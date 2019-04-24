@@ -138,7 +138,7 @@
                         </asp:SqlDataSource>
 
                         <asp:Button ID="ApplyInterestGroup" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="ApplyInterestGroup_Click"/>
-                                        <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" DataSourceID="ReferStudents" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
+                                        <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
                                             <Columns>
 
                                                 <asp:TemplateField HeaderText="Select">
