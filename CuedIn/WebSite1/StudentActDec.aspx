@@ -67,7 +67,7 @@
                           </asp:BoundField>
                         <asp:TemplateField HeaderText="Image">
                             <ItemTemplate>
-                                     <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
+                                     <asp:Image ID="studentImage" style="max-width:7em;max-height:7em;" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                             <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>

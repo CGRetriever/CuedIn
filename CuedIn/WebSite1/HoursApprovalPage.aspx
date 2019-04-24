@@ -36,14 +36,9 @@
      <div class="row">
      <div class="form-group col-md-12 col-centered"">
       
-            
-           
-                    <%--<asp:Label ID="Label6" runat="server" Text="Search" Style="color: #fff; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
-                    <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
-                    <br />--%>
+
                      <div class="text-center" style="background-color: #BDC1C7;width:auto; padding: 10px;">
-                         <asp:Label ID="Label7" runat="server" Text="Search" Style="color: black; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                     <asp:Label ID="Label7" runat="server" Text="Search" Style="color: black; text-align: center; letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox" runat="server"></asp:TextBox>
                     <asp:LinkButton ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
                     <br />
@@ -68,7 +63,7 @@
                        
                         <asp:TemplateField HeaderText="Image">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
+                                <asp:Image ID="studentImage" runat="server" style="max-width:7em;max-height:7em; margin-left:2em;" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                             <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
@@ -124,7 +119,8 @@
          </div>
         
      </div>
-       </div>      
+       </div>   
+     </div>
        
         <div>
             <%--Student View Modal--%>
