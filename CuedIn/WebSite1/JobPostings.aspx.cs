@@ -48,53 +48,21 @@ public partial class JobPostings : System.Web.UI.Page
       
 
         int jobListingID = Convert.ToInt32(e.CommandArgument);
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
 
-        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
-        pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
-        pullJobInfo.Connection = sc;
+        ViewState["reffJobID"] = jobListingID;
+
+        
+      
 
         //interest Group list is going to the the associated interest groups of the selected job on refferal. 
         List<InterestGroup> interestGroupList = new List<InterestGroup>();
+        //gets the list of jobs that were selected based upon the id selected
         interestGroupList = returnInterestList(jobListingID);
+
+        //returns a conditional statement based on a list
         String s = conditionalIf(interestGroupList);
 
-        string query = "SELECT Student.StudentEntityID, Student.StudentImage, Student.FirstName + ' ' + Student.LastName as 'FullName', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
-                      "StudentInterestGroups ON Student.StudentEntityID = StudentInterestGroups.StudentEntityID INNER JOIN " +
-                      "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolEntityID = " + Session["schoolID"] + " AND " + s +
-                     " ORDER BY Student.LastName ASC ";
-
-
-        DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        da.Fill(dt);
-        gridviewRefer.DataSource = dt;
-        gridviewRefer.DataBind();
-        conn.Close();
-
-
-
-        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
-        String jobTitle = "";
-        String orgName = "";
-        while (reader.Read())
-        {
-            jobTitle = reader.GetString(0);
-            orgName = reader.GetString(5);
-        }
-
-        lblJobTitle.Text = jobTitle;
-        lblOrgName.Text = orgName;
-
-
-
-        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
-
-
+        displayModal(jobListingID, s);
 
 
     }
@@ -149,6 +117,9 @@ public partial class JobPostings : System.Web.UI.Page
 
     public void applyChanges_click(object sender, EventArgs e)
     {
+
+
+
         //Declare a list of interest group IDS going to be string for easy use
         List<InterestGroup> interestGroupList = new List<InterestGroup>();
 
@@ -174,6 +145,8 @@ public partial class JobPostings : System.Web.UI.Page
 
 
         ViewState["queryOr"] = conditionalIf(interestGroupList);
+
+
 
 
 
@@ -515,13 +488,88 @@ public partial class JobPostings : System.Web.UI.Page
 
 
 
+    //GridView Method
     protected void ApplyInterestGroup_Click(object sender, EventArgs e)
     {
+        //Declare a list of interest group IDS going to be string for easy use
+        List<InterestGroup> interestGroupList = new List<InterestGroup>();
+
+        //Loop through the list box and if it selected then add it to a list
+        foreach (ListItem i in StudentInterestGroup.Items)
+        {
+            if (i.Selected == true)
+            {
+                //add to the list
+
+                int interestGroupID = Convert.ToInt32(i.Value);
+                String interestGroupName = i.Text;
+                InterestGroup interestGroup = new InterestGroup(interestGroupID, interestGroupName);
+
+                interestGroupList.Add(interestGroup);
+
+            }
+
+
+        }
+
+        //conditional to get the or statements. 
+        String s = conditionalIf(interestGroupList);
+
+        displayModal(Convert.ToInt32(ViewState["reffJobID"]),s);
+
+        
+
+
 
     }
+
+
+    //Method for getting query for the gridview
+    public void displayModal (int jobListingID, String s) {
+
+        //methodize this so we can use this for both this referall button click and the apply. re-open the modal on both clicks. 
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        sc.Open();
+
+        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
+        pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
+        pullJobInfo.Connection = sc;
+
+        string query = "SELECT Student.StudentEntityID, Student.StudentImage, Student.FirstName + ' ' + Student.LastName as 'FullName', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
+                      "StudentInterestGroups ON Student.StudentEntityID = StudentInterestGroups.StudentEntityID INNER JOIN " +
+                      "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolEntityID = " + Session["schoolID"] + " AND " + s +
+                     " ORDER BY Student.LastName ASC ";
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        gridviewRefer.DataSource = dt;
+        gridviewRefer.DataBind();
+        conn.Close();
+
+
+
+        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
+        String jobTitle = "";
+        String orgName = "";
+        while (reader.Read())
+        {
+            jobTitle = reader.GetString(0);
+            orgName = reader.GetString(5);
+        }
+
+        lblJobTitle.Text = jobTitle;
+        lblOrgName.Text = orgName;
+
+
+
+        ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
+    }
+
+
+
 }
-
-
-
-
-
