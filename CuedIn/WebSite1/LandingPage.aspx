@@ -55,6 +55,37 @@
     </head>
     
     <div class="container container-fluid">
+    
+        <div class="container">
+        <h3 class="">Metrics</h3>
+     <link rel="stylesheet" type="text/css" href="css/TableauFormat.css" />   
+    
+    <div class="row bigDesktop" id="TurnerDesktop" runat="server" visible="false">
+<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1599px; height: 277px;'><object class='tableauViz' width='1599' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashSmallDesktopLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div></div>
+        </div>
+
+    <div class="row tablet" id="TurnerTablet" runat="server" visible="false">
+<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1199px; height: 277px;'><object class='tableauViz' width='1199' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashTabletLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div></div>
+
+
+
+    <div class="row phone" id="TurnerPhone" runat="server" visible="false">
+<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 767px; height: 252px;'><object class='tableauViz' width='767' height='252' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashPhoneLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div> </div>
+
+
+    <div class="row bigDesktop" id="LouisaDesktop" runat="server" visible="false">
+     <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 277px;'><object class='tableauViz' width='100%' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashTabletLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
+    </div>
+
+     <div class="row smallDesktop" id="LouisaTablet" runat="server" visible="false">
+     <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 277px;'><object class='tableauViz' width='100%' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashTabletLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
+         </div>
+
+    <div class="row phone" id="LousiaPhone" runat="server" visible="false">
+<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 252px;'><object class='tableauViz' width='100%' height='252' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashPhoneLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>      </div>
+
+        <br />
+
         <h3 class="">Manage Posts
         <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
             </h3>
@@ -66,16 +97,18 @@
             
             
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card1" runat="server">
+          <div class="col-md-4 col-xs-12 col-sm-12" id="card1" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="Image1" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -83,7 +116,7 @@
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl2" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl2" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label1" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -107,16 +140,18 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card2" runat="server">
+          <div class="col-md-4 col-xs-12 col-sm-12" id="card2" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="Image2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl2" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -124,7 +159,7 @@
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl4" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl4" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label7" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -148,16 +183,18 @@
             </div>
             <!-- ./Team member -->
              <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card3" runat="server">
+        <div class="col-md-4 col-xs-12 col-sm-12" id="card3" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center container-fluid">
                                     <p><asp:Image ID="Image3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl5" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="text-center">
                                     <asp:Label ID="JobTitlelbl3" runat="server" CssClass="card-text" Text="Test Jaunt"></asp:Label>
+                                        <br />
+                                        <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                         </div>
                                 </div>
                             </div>
@@ -165,7 +202,7 @@
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl6" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="CompanyNamelbl6" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif;  padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="Label8" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
                                         <br />
@@ -189,45 +226,7 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="card4" runat="server">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><asp:Image ID="Image4" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="CompanyNamelbl7" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
-                                    <div class="text-center">
-                                    <asp:Label ID="JobTitlelbl4" runat="server" CssClass="card-text" Text=""></asp:Label>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <asp:Label ID="CompanyNamelbl8" runat="server" Text="Sunlimetech" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
-                                    <div class="form-group text-left">
-                                    <asp:Label ID="Label10" runat="server" CssClass="card-text font-weight-bold" Text="Job Type:"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="lblJobType4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
-                                        <br />
-                                     <asp:Label ID="Label15" runat="server" CssClass="card-text font-weight-bold" Text="Job Description:"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="lblJOrganizationDescription4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="Label17" runat="server" CssClass="card-text font-weight-bold" Text="Organization Description:"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="lblOrgDescription4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
-                                        <br />
-                                        </div>
-                                   <asp:HyperLink ID="JobLink4" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <!-- ./Team member -->
             </div>
         </div>
@@ -247,21 +246,23 @@
             
             
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard1" runat="server">
+           <div class="col-md-4 col-xs-12 col-sm-12" id="StudentCard1" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="BackStudentName" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="BackStudentName" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="JTitle" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
                                         <br />
@@ -285,21 +286,23 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard2" runat="server">
+           <div class="col-md-4 col-xs-12 col-sm-12" id="StudentCard2" runat="server">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="BackStudentName2" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="BackStudentName2" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="JTitle2" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
                                         <br />
@@ -323,21 +326,23 @@
             </div>
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard3" runat="server">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+            <div class="col-md-4 col-xs-12 col-sm-12" id="StudentCard3" runat="server">
+                <div class="image-flip"ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
                                 <div class="card-body text-center mt-4">
-                                    <asp:Label ID="BackStudentName3" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
+                                    <asp:Label ID="BackStudentName3" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px;"></asp:Label>
                                     <div class="form-group text-left">
                                     <asp:Label ID="JTitle3" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
                                         <br />
@@ -358,50 +363,17 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div>
+            
             <!-- ./Team member -->
             <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-3" id="StudentCard4" runat="server">
-                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                    <div class="mainflip">
-                        <div class="frontside">
-                            <div class="card">
-                                <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage4" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
-                                    <asp:Label ID="FrontStudentName4" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="backside">
-                            <div class="card">
-                                <div class="card-body text-center mt-4">
-                                    <asp:Label ID="BackStudentName4" runat="server" Text="Text" CssClass="card-title" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; padding-left: 20px; padding-right: 20px;"></asp:Label>
-                                    <div class="form-group text-left">
-                                    <asp:Label ID="JTitle4" runat="server" CssClass="card-text font-weight-bold" Text="Job Title:"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="StudentJobTitlelbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
-                                        <br />
-                                     <asp:Label ID="OrgTitle4" runat="server" CssClass="card-text font-weight-bold" Text="Organization Title:"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="OrgTitlelbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="StudentGPA4" runat="server" CssClass="card-text font-weight-bold" Text="Student GPA:"></asp:Label>
-                                        <br />
-                                    <asp:Label ID="StudentGPAlbl4" runat="server" CssClass="card-text" Text="Test Text"></asp:Label>
-                                        <br />
-                                        </div>
-                                    <asp:HyperLink ID="StudentLink4" runat="server"><i class='fas fa-external-link-alt'></i></asp:HyperLink>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ./Team member -->
-            <!-- ./Team member -->
 
+            <!-- ./Team member -->
+            <!-- ./Team member -->
+                
         </div>
-    </div>
+   
+        
 
         <script>
                 window.onscroll = function() {scrollFunction()};
@@ -421,44 +393,18 @@
             }
 
         </script>
+ 
+
 
 <br />
-<div class="container">
-        <h3 class="">Metrics</h3>
-     <link rel="stylesheet" type="text/css" href="css/TableauFormat.css" />   
-    
-    <div class="row bigDesktop" id="TurnerDesktop" runat="server" visible="false">
-<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1599px; height: 277px;'><object class='tableauViz' width='1599' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashSmallDesktopLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div></div>
-        </div>
 
-    <div class="row tablet" id="TurnerTablet" runat="server" visible="false">
-<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 1199px; height: 277px;'><object class='tableauViz' width='1199' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashTabletLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div></div>
-
-
-
-    <div class="row phone" id="TurnerPhone" runat="server" visible="false">
-<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 767px; height: 252px;'><object class='tableauViz' width='767' height='252' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashPhoneLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div> </div>
-
-
-    <div class="row bigDesktop" id="LouisaDesktop" runat="server" visible="false">
-     <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 277px;'><object class='tableauViz' width='100%' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashTabletLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
-    </div>
-
-     <div class="row tablet" id="LouisaTablet" runat="server" visible="false">
-     <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 277px;'><object class='tableauViz' width='100%' height='277' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashTabletLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>
-         </div>
-
-    <div class="row phone" id="LousiaPhone" runat="server" visible="false">
-<script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 252px;'><object class='tableauViz' width='100%' height='252' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='LandingPageDashPhoneLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>      </div>
 
     
 
 
 
 
-
-
-    </div>
+    
 
 
 

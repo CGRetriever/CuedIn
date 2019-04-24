@@ -19,12 +19,7 @@ public partial class CounselorArchiveOpportunities : System.Web.UI.Page
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
 
-
-
-
         cbSelectAll2.Attributes.Add("onclick", "Selectall");
-
-
 
 
     }
@@ -97,7 +92,7 @@ public partial class CounselorArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveJob = new System.Data.SqlClient.SqlCommand();
         approveJob.Connection = sql;
-        approveJob.CommandText = "update SchoolApproval set approvedFlag = 'Y' where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
+        approveJob.CommandText = "update SchoolApproval set approvedFlag = 'Y', schoolApproval.LastUpdated = getdate() where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
         approveJob.ExecuteNonQuery();
         sql.Close();
 
@@ -279,7 +274,7 @@ public partial class CounselorArchiveOpportunities : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectJob = new System.Data.SqlClient.SqlCommand();
         rejectJob.Connection = sql;
-        rejectJob.CommandText = "update SchoolApproval set approvedFlag = 'N' where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
+        rejectJob.CommandText = "update SchoolApproval set approvedFlag = 'N', schoolApproval.LastUpdated = getdate() where OpportunityEntityID = " + Session["selectedjobID"] + " and schoolEntityID = " + Session["schoolID"];
         rejectJob.ExecuteNonQuery();
         sql.Close();
 

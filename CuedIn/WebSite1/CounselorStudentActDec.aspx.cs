@@ -20,6 +20,9 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
             Session["schoolid"] = 12;
             schoolid = Convert.ToInt32(Session["scholid"]);
         }
+
+
+        // Query for Gridview
         string query = "SELECT ApplicationRequest.ApplicationID, " +
             " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
             " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
@@ -36,10 +39,6 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         conn.Close();
 
 
-        //Object sen = new Object();
-        //EventArgs e1 = new EventArgs();
-        //   btnCheckGridView_Click(sen, e1);
-
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
@@ -47,12 +46,10 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
     }
 
 
-
     public override void VerifyRenderingInServerForm(Control control)
     {
         /* Verifies that the control is rendered */
     }
-
 
 
     protected void approveStudentLinkBtn_Click(object sender, CommandEventArgs e)
@@ -103,7 +100,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand approveStudent = new System.Data.SqlClient.SqlCommand();
         approveStudent.Connection = sql;
-        approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y' where applicationID = " + Session["selectedapplicationID"];
+        approveStudent.CommandText = "update applicationrequest set approvedflag = 'Y', applicationrequest.LastUpdated = getdate() where applicationID = " + Session["selectedapplicationID"];
         approveStudent.ExecuteNonQuery();
         sql.Close();
 
@@ -146,9 +143,6 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         sql.Close();
 
 
-
-
-
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openRejectJModal();", true);
     }
 
@@ -160,7 +154,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand rejectStudent = new System.Data.SqlClient.SqlCommand();
         rejectStudent.Connection = sql;
-        rejectStudent.CommandText = "update applicationrequest set approvedflag = 'N' where applicationID = " + Session["selectedapplicationID"];
+        rejectStudent.CommandText = "update applicationrequest set approvedflag = 'N', applicationrequest.LastUpdated = getdate() where applicationID = " + Session["selectedapplicationID"];
         rejectStudent.ExecuteNonQuery();
         sql.Close();
 
@@ -331,25 +325,11 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
 
 
     }
-
     protected void chkOrgWebsite_CheckedChanged(object sender, EventArgs e)
     {
 
     }
 
-
-    //protected void SearchButton_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox.Text;
-
-    //    StudentOpportunity.SelectParameters.Add("term", term);
-
-    //    StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%'))";
-    //    StudentOpportunity.DataBind();
-    //    GridView1.DataBind();
-
-    //    StudentOpportunity.SelectParameters.Clear();
-    //}
 
 
 
@@ -434,4 +414,48 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
             }
         }
     }
+
+
+    protected void SearchButton_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox.Text;
+
+
+        //Just need to parameterize it
+        string query = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', " +
+            "Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp," +
+            " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
+            " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
+            "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
+            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
+            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
+            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" +
+            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term
+            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
+        ;
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
+        GridView1.DataBind();
+        conn.Close();
+
+    }
+
+    //protected void SearchButton_Click(object sender, EventArgs e)
+    //{
+    //    String term = SearchBox.Text;
+
+    //    StudentOpportunity.SelectParameters.Add("term", term);
+
+    //    StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%'))";
+    //    StudentOpportunity.DataBind();
+    //    GridView1.DataBind();
+
+    //    StudentOpportunity.SelectParameters.Clear();
+    //}
 }
