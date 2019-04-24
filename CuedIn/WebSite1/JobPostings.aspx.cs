@@ -65,55 +65,53 @@ public partial class JobPostings : System.Web.UI.Page
 
     public void sendToButton_Click(object sender, EventArgs e)
     {
-        List<int> studentIDList = new List<int>();
-        for (int i = 0; i < gridviewRefer.Rows.Count; i++)
-        {
-            CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
+        //List<int> studentIDList = new List<int>();
+        //for (int i = 0; i < gridviewRefer.Rows.Count; i++)
+        //{
+        //    CheckBox check = (CheckBox)gridviewRefer.Rows[i].FindControl("studentCheck");
 
 
-            ((Label)Master.FindControl("lblMaster")).Text = "Approved Jobs";
+        //    ((Label)Master.FindControl("lblMaster")).Text = "Approved Jobs";
 
 
-            if (check.Checked)
-            {
-                int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
-                studentIDList.Add(studentID);
-            }
+        //    if (check.Checked)
+        //    {
+        //        int studentID = Convert.ToInt32(gridviewRefer.DataKeys[i]["StudentEntityID"]);
+        //        studentIDList.Add(studentID);
+        //    }
 
-        }
-        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
-        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
-        sc.Open();
+        //}
+        //String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        //System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        //sc.Open();
 
-        System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
-        List<String> emailList = new List<String>();
-        // Mail Button Query
-        EmailQuery.Open();
-        System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
-        query.Connection = EmailQuery;
+        //System.Data.SqlClient.SqlConnection EmailQuery = new System.Data.SqlClient.SqlConnection(connectionString);
+        //List<String> emailList = new List<String>();
+        //// Mail Button Query
+        //EmailQuery.Open();
+        //System.Data.SqlClient.SqlCommand query = new System.Data.SqlClient.SqlCommand();
+        //query.Connection = EmailQuery;
 
-        foreach (var studentID in studentIDList)
-        {
-            query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
-            System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
+        //foreach (var studentID in studentIDList)
+        //{
+        //    query.CommandText = "SELECT UserEntity.EmailAddress FROM UserEntity INNER JOIN Student ON UserEntity.UserEntityID = Student.StudentEntityID WHERE Student.StudentEntityID=" + studentID;
+        //    System.Data.SqlClient.SqlDataReader Result = query.ExecuteReader();
 
-            while (Result.Read())
-            {
-                String email = Result.GetString(0);
-                emailList.Add(email);
+        //    while (Result.Read())
+        //    {
+        //        String email = Result.GetString(0);
+        //        emailList.Add(email);
 
-            }
+        //    }
 
-        }
-        EmailQuery.Close();
-
+        //}
+        //EmailQuery.Close();
 
 
     }
 
     public void applyChanges_click(object sender, EventArgs e)
     {
-
 
 
         //Declare a list of interest group IDS going to be string for easy use
@@ -141,12 +139,6 @@ public partial class JobPostings : System.Web.UI.Page
 
 
         ViewState["queryOr"] = conditionalIf(interestGroupList);
-
-
-
-
-
-
 
     }
 
@@ -582,9 +574,7 @@ public partial class JobPostings : System.Web.UI.Page
 
     protected void ClearButton_Click(object sender, EventArgs e)
     {
-     
-            InterestGroupDrop.ClearSelection();
-        
+        InterestGroupDrop.ClearSelection();
 
     }
 
