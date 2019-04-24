@@ -72,8 +72,10 @@
             <div class="form-group col-md-12">
                     <div class ="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-        		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 93%; color: white; margin-top:1.7em" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-     </div>
+
+        		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+                <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/managejobsscholarshipshelp.png' width=100% height=100% /&gt;" Style="margin-left: 92%; color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton> 
+                    </div>
                 </div>
         
 
