@@ -70,7 +70,7 @@
                 <div class="form-row">
                     <div class="col-md-12">
 
-                            <asp:ListBox ID="InterestGroupDrop" CssClass="dropdown" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em"></asp:ListBox>
+                            <asp:ListBox ID="InterestGroupDrop"  SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" ></asp:ListBox>
 
 
                         <asp:SqlDataSource ID="InterestGroupData" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString %>" 
@@ -79,7 +79,7 @@
 
                         <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
                      
-
+                        <asp:Button ID="clearButton" runat="server" Text="Clear Filters" CssClass="btn" />
                         </div>
                     </div>
                 </div>
