@@ -18,7 +18,9 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
             {
                 lousiapc.Visible = true;
                 lousiasmall.Visible = true;
-              
+                //lousiatablet.Visible = true;
+
+
             }
             else if (Session["schoolid"].Equals(13))
             {
@@ -27,8 +29,7 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
 
             else if (Session["schoolid"].Equals(15))
             {
-                turnerpc.Visible = true;
-                turnerphone.Visible = true;
+              
               
             }
         } else
