@@ -50,6 +50,15 @@ public partial class JobPostings : System.Web.UI.Page
         pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
         pullJobInfo.Connection = sc;
 
+        //interest Group list is going to the the associated interest groups of the selected job on refferal. 
+        List<InterestGroup> interestGroupList = new List<InterestGroup>();
+        interestGroupList = returnInterestList(jobListingID);
+        String s = conditionalIf(interestGroupList);
+
+
+      
+
+
         System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
         String jobTitle = "";
         String orgName = "";
@@ -61,6 +70,8 @@ public partial class JobPostings : System.Web.UI.Page
 
         lblJobTitle.Text = jobTitle;
         lblOrgName.Text = orgName;
+
+
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
 
@@ -120,7 +131,7 @@ public partial class JobPostings : System.Web.UI.Page
     public void applyChanges_click(object sender, EventArgs e)
     {
         //Declare a list of interest group IDS going to be string for easy use
-        List<String> interestGroupList = new List<String>();
+        List<InterestGroup> interestGroupList = new List<InterestGroup>();
 
         //Loop through the list box and if it selected then add it to a list
         foreach (ListItem i in InterestGroupDrop.Items)
@@ -128,47 +139,22 @@ public partial class JobPostings : System.Web.UI.Page
             if (i.Selected == true)
             {
                 //add to the list
-                interestGroupList.Add(i.Value.ToString());
+
+                int interestGroupID = Convert.ToInt32(i.Value);
+                String interestGroupName = i.Text;
+                InterestGroup interestGroup = new InterestGroup(interestGroupID, interestGroupName);
+
+                interestGroupList.Add(interestGroup);
+
             }
+
+            
         }
 
         //if something was selected then lets loop through the array and make the conditional string
-        String condititionalIf = "OpportunityInterestGroups.InterestGroupID = ";
 
-        //if all are selected, there is no need to loop. we want to see everything. 
-        if (interestGroupList.Count == InterestGroupDrop.Items.Count)
-        {
-            condititionalIf = " ";
-        }
 
-        else if (interestGroupList.Count == 0)
-        {
-            condititionalIf = " ";
-        }
-
-        //there is something in the list, and it isn't all selected
-        else if (interestGroupList.Count != 0)
-        {
-
-            //loop through the list
-            for (int interestID = 0; interestID <= interestGroupList.Count - 1; interestID++)
-            {
-                //if the list is not the last index of the list we can add an or clause
-                if (interestID != interestGroupList.Count - 1)
-                {
-                    condititionalIf += interestGroupList[interestID] + " or OpportunityInterestGroups.InterestGroupID = ";
-                }
-                else
-                {
-                    //if it is the last element in the list we have to cut off the sql statement
-                    condititionalIf += interestGroupList[interestID];
-
-                }
-
-            }
-        }
-
-        ViewState["queryOr"] = condititionalIf;
+        ViewState["queryOr"] = conditionalIf(interestGroupList);
 
 
 
@@ -307,12 +293,6 @@ public partial class JobPostings : System.Web.UI.Page
 
             }
             sc.Close();
-
-
-
-
-
-
 
 
             // list of interest group object over here before we loop through it
@@ -470,6 +450,48 @@ public partial class JobPostings : System.Web.UI.Page
         return interestGroupList;
 
     }
+
+
+    public String conditionalIf (List<InterestGroup> interestGroupList)
+    {
+        String conditionalIf = "OpportunityInterestGroups.InterestGroupID = ";
+
+        //if all are selected, there is no need to loop. we want to see everything. 
+        if (interestGroupList.Count == InterestGroupDrop.Items.Count)
+        {
+            conditionalIf = " ";
+        }
+
+        else if (interestGroupList.Count == 0)
+        {
+            conditionalIf = " ";
+        }
+
+        //there is something in the list, and it isn't all selected
+        else if (interestGroupList.Count != 0)
+        {
+
+            //loop through the list
+            for (int interestID = 0; interestID <= interestGroupList.Count - 1; interestID++)
+            {
+                //if the list is not the last index of the list we can add an or clause
+                if (interestID != interestGroupList.Count - 1)
+                {
+                    conditionalIf += interestGroupList[interestID].getInterestGroupID() + " or OpportunityInterestGroups.InterestGroupID = ";
+                }
+                else
+                {
+                    //if it is the last element in the list we have to cut off the sql statement
+                    conditionalIf += interestGroupList[interestID].getInterestGroupID();
+
+                }
+
+            }
+        }
+
+        return conditionalIf;
+    }
+
 
 
     protected void ApplyInterestGroup_Click(object sender, EventArgs e)

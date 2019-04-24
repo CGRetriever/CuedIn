@@ -121,7 +121,7 @@
                                     <asp:SqlDataSource ID="ReferStudents" runat="server" ConnectionString="<%$ ConnectionStrings:CuedInDBConnectionString2 %>" SelectCommand="SELECT Student.StudentEntityID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentImage FROM Student INNER JOIN School ON Student.SchoolEntityID = School.SchoolEntityID WHERE Student.SchoolEntityID = @schoolID ORDER BY Student.LastName ASC">
                                         <SelectParameters>
                                             <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                                                DefaultValue="12" />
+                                                 />
                                         </SelectParameters>
 
                                     </asp:SqlDataSource>
