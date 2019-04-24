@@ -254,7 +254,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
-
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +294,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
-
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
@@ -332,7 +334,8 @@
                                 <div class="card-body text-center">
                                     <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
                                     <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
-
+                                    <br />
+                                    <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
                                 </div>
                             </div>
                         </div>
