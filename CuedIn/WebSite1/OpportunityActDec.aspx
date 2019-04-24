@@ -408,18 +408,29 @@
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
                                 <div class="form-group">
+                                    <asp:Label ID="Label26" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Organization Name:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblSOrganizationName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
+                                    <asp:Label ID="Label27" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Organization Description:" Font-Bold="true"></asp:Label>
                                     <asp:Label ID="lblSOrganizationDescription" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
-
+                                    <asp:Label ID="Label28" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Description:" Font-Bold="true"></asp:Label>
                                     <asp:Label ID="lblScholarshipDescription" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label29" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Minimum:" Font-Bold="true"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblScholarshipMin" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
+                                    <asp:Label ID="Label30" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Maximum:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblScholarshipMax" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
+                                    <asp:Label ID="Label31" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Quantity:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblScholarshipQuantity" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label32" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Due Date:" Font-Bold="true"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblScholarshipDueDate" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
