@@ -210,7 +210,7 @@ public partial class StudentActDec : System.Web.UI.Page
                 lblStudentStatus.Text = "Student not on Track";
             }
 
-            lblOrgName.Text = "Organization Name: " + reader.GetString(9);
+            lblOrgName.Text = reader.GetString(9);
             lblOrgDesc.Text = "Organization Description: " + reader.GetString(10);
             lblJobTitle.Text = "Job Title: " + reader.GetString(3);
             lblJobDesc.Text = "Job Description: " + reader.GetString(4);

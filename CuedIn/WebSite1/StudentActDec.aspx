@@ -282,20 +282,24 @@ function topFunction() {
                             <div class="modal-body" style="background-color: #4F79A3;">
                                 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 text-left">
                                     <div class="form-group">
-                                        <asp:Label ID="lblOrgName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="Label6" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Organization Name:" Font-Bold="true"></asp:Label>
                                         <br />
-                                        <asp:Label ID="lblOrgDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="lblOrgName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                        <br />
+                                        <asp:Label ID="Label7" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Organization Name:" Font-Bold="true"></asp:Label>
+                                        <br />
+                                        <asp:Label ID="lblOrgDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                         <br />
 
-                                        <asp:Label ID="lblJobTitle" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="lblJobTitle" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                         <br />
-                                        <asp:Label ID="lblJobDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="lblJobDesc" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                         <br />
-                                        <asp:Label ID="lblJobLocation" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="lblJobLocation" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                         <br />
-                                        <asp:Label ID="lblJobDeadline" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="lblJobDeadline" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                         <br />
-                                        <asp:Label ID="lblNumberOfApplicants" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.6em;" runat="server" ForeColor="White"></asp:Label>
+                                        <asp:Label ID="lblNumberOfApplicants" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                         <br />
 
 
