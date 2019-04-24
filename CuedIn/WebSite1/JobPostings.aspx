@@ -86,12 +86,12 @@
             <asp:Table ID="jobPostingTable" runat="server"></asp:Table>
         </div>
                 <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
-                    <div class="container-fluid">
+                   
                      <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
                      
-                        <asp:Button ID="clearButton" runat="server" Text="Clear Filters" CssClass="btn" />
+                        <asp:Button ID="clearButton" runat="server" Text="Clear Filters" CssClass="btn" OnClick="ClearButton_Click" />
                  <asp:CheckboxList ID="InterestGroupDrop" CssClass="checkbox" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" BorderStyle="Outset" BorderColor="Silver"></asp:CheckboxList>
-            </div>
+           
                     </div>
                  
             </div>
@@ -135,7 +135,7 @@
                                     <div style="overflow-y: scroll; overflow-x: hidden; height: 500px; width: 450px;">
 
                         <asp:ListBox ID="StudentInterestGroup" SelectionMode="Multiple"  runat="server" DataSourceID="SqlDataSource1" 
-                            DataTextField="InterestGroupName" DataValueField="InterestGroupID" Width="20em">
+                            DataTextField="InterestGroupName" DataValueField="InterestGroupID">
 
                         </asp:ListBox>
 
@@ -144,6 +144,11 @@
                         </asp:SqlDataSource>
 
                         <asp:Button ID="ApplyInterestGroup" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="ApplyInterestGroup_Click"/>
+                        <asp:Button ID="ClearWebButtons" runat="server" Text="Clear Filters" CssClass="btn" OnCommand="ClearWebButtons_Click" />
+                <div style="height: 5px; font-size: 10px;">&nbsp;</div>
+                        <asp:Label ID="InterestGroupLabel"  runat="server" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.0em; font-weight: bold;"></asp:Label>
+
+
                                         <asp:GridView ID="gridviewRefer" runat="server" CssClass="table table-hover table-striped table-dark table-responsive center" HorizontalAlign="Center" Style="border-collapse: collapse; width: auto;" AutoGenerateColumns="False" CellPadding="1" BackColor="white" ForeColor="#102B40" DataKeyNames="StudentEntityID">
                                             <Columns>
 

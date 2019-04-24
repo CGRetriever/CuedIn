@@ -24,10 +24,9 @@ public partial class JobPostings : System.Web.UI.Page
 
 
 
-
-        if (!IsPostBack)
+            if (!IsPostBack)
         {
-            ViewState["queryOR"] = " ";
+            ViewState["queryOr"] = " ";
             String s = " ";
             displayTable(s);
 
@@ -35,6 +34,7 @@ public partial class JobPostings : System.Web.UI.Page
 
         else
         {
+            
             applyChanges_click(sender, e);
             displayTable(ViewState["queryOr"].ToString());
         }
@@ -45,15 +45,11 @@ public partial class JobPostings : System.Web.UI.Page
     public void referralButton_Click(object sender, CommandEventArgs e)
     {
 
-      
-
         int jobListingID = Convert.ToInt32(e.CommandArgument);
 
         ViewState["reffJobID"] = jobListingID;
 
-        
-      
-
+             
         //interest Group list is going to the the associated interest groups of the selected job on refferal. 
         List<InterestGroup> interestGroupList = new List<InterestGroup>();
         //gets the list of jobs that were selected based upon the id selected
@@ -62,7 +58,7 @@ public partial class JobPostings : System.Web.UI.Page
         //returns a conditional statement based on a list
         String s = conditionalIf(interestGroupList);
 
-        displayModal(jobListingID, s);
+        displayModal(jobListingID, s, interestGroupList);
 
 
     }
@@ -311,22 +307,9 @@ public partial class JobPostings : System.Web.UI.Page
                     }
 
                     interestGroupList = (returnInterestList(jobs[count].getID()));
-                 
 
-                    //generating a string to add interest groups to the cards
-                    String interestGroupString = " ";
-                    for (int interestCursor = 0; interestCursor <= interestGroupList.Count -1; interestCursor++)
-                    {
-                        if(interestCursor == interestGroupList.Count - 1)
-                        {
-                            interestGroupString += interestGroupList[interestCursor].getInterestGroupName();
-                        }
-                        else
-                        {
-                            interestGroupString += interestGroupList[interestCursor].getInterestGroupName() + ", ";
 
-                        }
-                    }
+                    String interestGroupString = interestGroupToString(interestGroupList);
 
                     interestGroupList.Clear();
 
@@ -515,17 +498,14 @@ public partial class JobPostings : System.Web.UI.Page
         //conditional to get the or statements. 
         String s = conditionalIf(interestGroupList);
 
-        displayModal(Convert.ToInt32(ViewState["reffJobID"]),s);
-
-        
-
+        displayModal(Convert.ToInt32(ViewState["reffJobID"]),s, interestGroupList);
 
 
     }
 
 
     //Method for getting query for the gridview
-    public void displayModal (int jobListingID, String s) {
+    public void displayModal (int jobListingID, String s, List<InterestGroup> interestGroupList) {
 
         //methodize this so we can use this for both this referall button click and the apply. re-open the modal on both clicks. 
         String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
@@ -536,10 +516,10 @@ public partial class JobPostings : System.Web.UI.Page
         pullJobInfo.CommandText = "SELECT JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, JobListing.Deadline, Organization.OrganizationName FROM JobListing INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID WHERE JobListing.JobListingID = " + jobListingID;
         pullJobInfo.Connection = sc;
 
-        string query = "SELECT Student.StudentEntityID, Student.StudentImage, Student.FirstName + ' ' + Student.LastName as 'FullName', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
+        string query = "SELECT distinct Student.StudentEntityID, Student.StudentImage, Student.FirstName + ' ' + Student.LastName as 'FullName', Student.StudentGradeLevel, Student.StudentGPA FROM Student INNER JOIN " +
                       "StudentInterestGroups ON Student.StudentEntityID = StudentInterestGroups.StudentEntityID INNER JOIN " +
-                      "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolEntityID = " + Session["schoolID"] + " AND " + s +
-                     " ORDER BY Student.LastName ASC ";
+                      "InterestGroups ON StudentInterestGroups.InterestGroupID = InterestGroups.InterestGroupID where Student.SchoolEntityID = " + Session["schoolID"] + " AND " + s + "Order by Student.StudentGPA DESC";
+                     
 
 
         DataTable dt = new DataTable();
@@ -565,10 +545,57 @@ public partial class JobPostings : System.Web.UI.Page
         lblJobTitle.Text = jobTitle;
         lblOrgName.Text = orgName;
 
+        InterestGroupLabel.Text = "Students interested in:"+ interestGroupToString(interestGroupList);
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);
     }
+
+    public String interestGroupToString(List<InterestGroup> interestGroupList)
+    {
+        String interestGroupString = " ";
+        for (int interestCursor = 0; interestCursor <= interestGroupList.Count - 1; interestCursor++)
+        {
+            if (interestCursor == interestGroupList.Count - 1)
+            {
+                interestGroupString += interestGroupList[interestCursor].getInterestGroupName();
+            }
+            else
+            {
+                interestGroupString += interestGroupList[interestCursor].getInterestGroupName() + ", ";
+
+            }
+        }
+        return interestGroupString;
+    }
+
+    protected void ClearWebButtons_Click(object sender, CommandEventArgs e)
+    {
+        StudentInterestGroup.ClearSelection();
+        int jobID = Convert.ToInt32(ViewState["reffJobID"]);
+        List <InterestGroup> interestGroupList =returnInterestList(jobID);
+        String s = conditionalIf(interestGroupList);
+
+        displayModal(jobID, s, interestGroupList);
+        
+    }
+
+    protected void ClearButton_Click(object sender, EventArgs e)
+    {
+     
+            InterestGroupDrop.ClearSelection();
+        
+
+    }
+
+        
+        
+
+    
+
+
+
+
 
 
 
