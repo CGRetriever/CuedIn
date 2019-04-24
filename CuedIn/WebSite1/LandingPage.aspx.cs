@@ -12,6 +12,8 @@ public partial class LandingPage : System.Web.UI.Page
    
     protected void Page_Load(object sender, EventArgs e)
     {
+        Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
 
         // Card Arrays
         JobListing[] JobCardsArray = new JobListing[5];
