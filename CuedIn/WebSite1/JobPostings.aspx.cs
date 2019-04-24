@@ -315,8 +315,8 @@ public partial class JobPostings : System.Web.UI.Page
 
 
 
-
-
+            // list of interest group object over here before we loop through it
+            List<InterestGroup> interestGroupList = new List<InterestGroup>();
 
 
             double doubleRows = countTotalJobs / 3.0;
@@ -336,13 +336,25 @@ public partial class JobPostings : System.Web.UI.Page
                         break;
                     }
 
-                    //sc.Open();
+                    interestGroupList = (returnInterestList(jobs[count].getID()));
+                 
 
+                    //generating a string to add interest groups to the cards
+                    String interestGroupString = " ";
+                    for (int interestCursor = 0; interestCursor <= interestGroupList.Count -1; interestCursor++)
+                    {
+                        if(interestCursor == interestGroupList.Count - 1)
+                        {
+                            interestGroupString += interestGroupList[interestCursor].getInterestGroupName();
+                        }
+                        else
+                        {
+                            interestGroupString += interestGroupList[interestCursor].getInterestGroupName() + ", ";
 
-                    //pullJobInfo.CommandText = "SELECT InterestGroups.InterestGroupName, InterestGroups.InterestGroupID FROM InterestGroups " +
-                    //    "INNER JOIN OpportunityInterestGroups ON InterestGroups.InterestGroupID = OpportunityInterestGroups.InterestGroupID " +
-                    //    "INNER JOIN OpportunityEntity ON OpportunityInterestGroups.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
-                    //    "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID";
+                        }
+                    }
+
+                    interestGroupList.Clear();
 
 
 
@@ -374,12 +386,12 @@ public partial class JobPostings : System.Web.UI.Page
                     c.Controls.Add(new LiteralControl("<div class='card h-100'>"));
                     c.Controls.Add(new LiteralControl("<div class='card-body text-center'>"));
                     c.Controls.Add(new LiteralControl("<h4 class='card-title'>" + jobs[count].getOrgName() + "</h4>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>" + jobs[count].getJobTitle() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'> Location: " + jobs[count].getJobLocation() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Deadline: " + jobs[count].getJobDeadline().ToString() + "</p>"));
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + jobs[count].getNumOfApplicants() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<h6 class='card-text'><strong>" + jobs[count].getJobTitle() + "</strong></h6>"));
+                    c.Controls.Add(new LiteralControl("<h6 class='card-text'> <strong>Location: </strong> " + jobs[count].getJobLocation() + "</h6>"));
+                    c.Controls.Add(new LiteralControl("<h6 class='card-text'> <strong>Deadline: </strong> " + jobs[count].getJobDeadline().ToString() + "</h6>"));
+                    c.Controls.Add(new LiteralControl("<h6 class='card-text'><strong>Number of Applicants: </strong>" + jobs[count].getNumOfApplicants() + "</h6>"));
                     //lets put the interest group information in here
-                    c.Controls.Add(new LiteralControl("<p class='card-text'>  Number of Applicants: " + jobs[count].getNumOfApplicants() + "</p>"));
+                    c.Controls.Add(new LiteralControl("<h6 class='card-text'><strong>Interest Groups: </strong> " + interestGroupString + "</h6>"));
                     //right here boi
                     c.Controls.Add(new LiteralControl("<ul class='list-inline'>"));
                     c.Controls.Add(new LiteralControl("<li class='list-inline-item'>"));
@@ -409,6 +421,53 @@ public partial class JobPostings : System.Web.UI.Page
         }
 
 
+
+    }
+
+
+    //Method to get the interest groups assoicated with a specified job!
+    public List<InterestGroup> returnInterestList (int ID)
+    {
+
+        List<InterestGroup> interestGroupList = new List<InterestGroup>();
+
+        String connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+        System.Data.SqlClient.SqlConnection sc = new System.Data.SqlClient.SqlConnection(connectionString);
+        System.Data.SqlClient.SqlCommand pullJobInfo = new System.Data.SqlClient.SqlCommand();
+
+        pullJobInfo.Connection = sc;
+
+
+
+
+        sc.Open();
+
+
+        pullJobInfo.CommandText = "SELECT InterestGroups.InterestGroupID, InterestGroups.InterestGroupName FROM InterestGroups " +
+            "INNER JOIN OpportunityInterestGroups ON InterestGroups.InterestGroupID = OpportunityInterestGroups.InterestGroupID " +
+            "INNER JOIN OpportunityEntity ON OpportunityInterestGroups.OpportunityEntityID = OpportunityEntity.OpportunityEntityID INNER JOIN JobListing ON " +
+            "OpportunityEntity.OpportunityEntityID = JobListing.JobListingID " +
+
+            "where OpportunityEntity.OpportunityEntityID = " + ID;
+
+        System.Data.SqlClient.SqlDataReader reader = pullJobInfo.ExecuteReader();
+
+        while (reader.Read())
+        {
+
+            int interestGroupID = reader.GetInt32(0);
+            String interestGroupName = reader.GetString(1);
+
+            InterestGroup interestGroup = new InterestGroup(interestGroupID, interestGroupName);
+
+            // don't forget to clear this list after parsing the string 
+            interestGroupList.Add(interestGroup);
+
+        }
+
+        sc.Close();
+
+        return interestGroupList;
 
     }
 
