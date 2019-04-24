@@ -49,16 +49,16 @@
                 </div>
 
 
-                <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
-                    <asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                <div class="col-auto text-center" style="background-color: #BDC1C7; padding: 10px;">
+                    <asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                    <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
 
                     <br />
 
-                    <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
-                    <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox runat="server" Style="color: black; padding-right:30px" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
+                    <asp:CheckBox ID="chkScholarshipMin" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkScholarshipMax" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid" />
                     
                     <asp:Button ID="btnCheckGridView1" runat="server" Text="Apply" OnClick="btnCheckGridView1_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
@@ -68,7 +68,7 @@
                
                 <div class="table-responsive">
                 <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView1_Click">
-
+                 <HeaderStyle BackColor="#4F79A3" />
                     <Columns>
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" >
                         <ItemStyle Font-Size="Large" />
@@ -116,15 +116,15 @@
              
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
 
-                    <div class="col-auto text-center" style="background-color: #102B3F; width: auto; padding: 10px;">
-                        <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    <div class="col-auto text-center" style="background-color: #BDC1C7; width: auto; padding: 10px;">
+                        <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
-                        <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                        <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
 
                         <br />
-                        <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
-                        <asp:CheckBox ID="chkScholarshipMin1" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
-                        <asp:CheckBox ID="chkScholarshipMax1" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
+                        <asp:CheckBox runat="server" Style="color: black; padding-right:30px" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
+                        <asp:CheckBox ID="chkScholarshipMin1" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
+                        <asp:CheckBox ID="chkScholarshipMax1" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
                         
 
 
