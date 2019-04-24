@@ -17,7 +17,6 @@
         <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
         
         <link rel="stylesheet" href="css/style2.css">
-    <link rel="stylesheet" href="css/PreLoginButtonStyling.css">
         
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
          <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -47,7 +46,11 @@
     <br />
     <br />
     <div class ="links">
-        <p><a class="ct-btn-scroll ct-js-btn-scroll" href="#bigDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <br />
+        <br />
+        <p><a id="phoneDownBtn" class="ct-btn-scroll ct-js-btn-scroll" href="#phone"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <p><a id="smallDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll" href="#smallDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <p><a id="bigDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll" href="#bigDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
         </div>
     <div class="w-100 d-flex flex-nowrap">
         <div class="w-100 d-md-none">
@@ -71,7 +74,7 @@
 <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 827px;'><object class='tableauViz' width='100%' height='827' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='OutsiderDash_Phone&#47;NewComerDash' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div></div>--%>
    <div id="phone" class ="phone">
 <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 827px;'><object class='tableauViz' width='100%' height='827' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='OutsiderDash_Tablet&#47;NewComerDash' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div> </div>
-        <div id="smallDesktop" class ="smallDesktop block">
+        <div id="smallDesktop" class ="smallDesktop">
 <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 848px;'><object class='tableauViz' width='100%' height='848' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='OutsiderDash_SmallDesktop&#47;NewComerDash' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div> </div>
    <div id="bigDesktop" class="bigDesktop">
 <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 927px;'><object class='tableauViz' width='100%' height='927' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='OutsiderDash_LargeDesktop&#47;NewComerDash' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div> </div>
