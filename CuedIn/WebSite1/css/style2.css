@@ -4,6 +4,7 @@ div.links {
 
 {
     padding: 4px 8px;
+    padding-right:600px;
     text-decoration: none;
     &.active
 

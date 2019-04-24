@@ -45,21 +45,22 @@
     </div>
     <br />
     <br />
-    <div class ="links">
-        <br />
-        <br />
-        <p><a id="phoneDownBtn" class="ct-btn-scroll ct-js-btn-scroll" href="#phone"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
-        <p><a id="smallDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll" href="#smallDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
-        <p><a id="bigDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll" href="#bigDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
-        </div>
+
     <div class="w-100 d-flex flex-nowrap">
         <div class="w-100 d-md-none">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapsenav">
                 <i class="fas fa-bars fa-lg"></i>
             </button>
         </div>
-        <div class="d-flex w-100 mx-auto order-0">
+        <div >
             <!-- <a class="navbar-brand mx-0" id="logo" href="#">CommUp</a> -->
+                <div class ="links" style="padding-right:700px;">
+        <br />
+        <br />
+        <p><a id="phoneDownBtn" class="ct-btn-scroll ct-js-btn-scroll phone" href="#phone"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <p><a id="smallDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll smallDesktop" href="#smallDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <p><a id="bigDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll bigDesktop" href="#bigDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        </div>
         </div>
     </div>
 </nav>
