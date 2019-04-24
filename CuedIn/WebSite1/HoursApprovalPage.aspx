@@ -138,7 +138,7 @@
                                   <%--<h5>Student Information</h5>--%>
                                      <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Student Information"></asp:Label>
                                     <br />
-                                    <asp:Image ID="imgStudent" runat="server" CssClass="rounded-circle col-md-6" />
+                                    <asp:Image ID="imgStudent" runat="server" CssClass="img-fluid" />
                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
 
                                 </div>
