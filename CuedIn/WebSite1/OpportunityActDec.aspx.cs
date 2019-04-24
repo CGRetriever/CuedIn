@@ -21,8 +21,9 @@ public partial class OpportunityActDec : System.Web.UI.Page
             if (Session["schoolid"].Equals(12))
             {
                 lousiapc.Visible = true;
-                lousiaphone.Visible = true;
+                //lousiaphone.Visible = true;
                 lousiatablet.Visible = true;
+                LouisaDesktop.Visible = true;
             }
             else if (Session["schoolid"].Equals(13))
             {
