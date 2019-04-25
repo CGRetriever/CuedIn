@@ -9,8 +9,8 @@ public partial class CounselorScholarshipDashboard : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
-        ((Label)Master.FindControl("lblMaster2")).Text = "Scholarship Dashboard";
-        
+
+        ((Label)Master.FindControl("lblMaster")).Text = "Scholarship Dashboard";
+
     }
 }
