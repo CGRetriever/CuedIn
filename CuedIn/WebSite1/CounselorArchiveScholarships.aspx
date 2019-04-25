@@ -2,8 +2,10 @@
 
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
     
     <div class="row">
@@ -39,8 +41,14 @@
 
 
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+            
+            <div class="form-check-inline" style="display: flex; justify-content: flex-end">
+            <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 1490px; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+            <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/archivescholarshipshelp.png' width=100% height=100% /&gt;" Style="color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton>
             </div>
+
+
+        </div>
 
 <div class="row">
             <div class="form-group col-md-6">
@@ -49,42 +57,26 @@
                 </div>
 
 
-                <div class="col-auto text-center" style="background-color: #102B3F; padding: 10px;">
-                    <%--<asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                <div class="col-auto text-center" style="background-color: #BDC1C7; padding: 10px;">
+                    <asp:Label ID="lblSearch" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                     <asp:TextBox ID="SearchBox1" runat="server"></asp:TextBox>
-                    <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                    <asp:LinkButton ID="SearchButton1" runat="server" Text="Search" OnClick="SearchButton1_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                    <br />--%>
+                    <br />
 
-                    <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
-                    <asp:CheckBox ID="chkScholarshipMin" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
-                    <asp:CheckBox ID="chkScholarshipMax" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox runat="server" Style="color: black; padding-right:30px" OnCheckedChanged="cbSelectAll_Checked" AutoPostBack="true" ID="cbSelectAll" Text="Select All" CssClass=".JchkAll"/>
+                    <asp:CheckBox ID="chkScholarshipMin" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid" />
+                    <asp:CheckBox ID="chkScholarshipMax" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid" />
                     
                     <asp:Button ID="btnCheckGridView1" runat="server" Text="Apply" OnClick="btnCheckGridView1_Click" Style="background-color: white; color: #102B3F;" class="btn btn-circle" />
                 </div>
 
                 <div style="height:5px;font-size:10px;">&nbsp;</div>
                
-                <asp:SqlDataSource ID="ScholarshipOpportunity" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-                         FROM OpportunityEntity INNER JOIN
-                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
-						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'N'">
-
-                        <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                        </SelectParameters>
-
-
-                </asp:SqlDataSource>
+               
                 <div class="table-responsive">
-                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="ScholarshipOpportunity" BackColor="#102B40" ForeColor="White">
-
+                <asp:GridView ID="rejScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark" AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView1_Click">
+                 <HeaderStyle BackColor="#4F79A3" />
                     <Columns>
                         <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false" >
                         <ItemStyle Font-Size="Large" />
@@ -130,17 +122,18 @@
             <%--Accepted Scholarships--%>
             <div class="form-group col-md-6">
              
+                <div class="text-center">
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
-
-                    <div class="col-auto text-center" style="background-color: #102B3F; width: auto; padding: 10px;">
-                        <%--<asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: #fff; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
+                    </div>
+                    <div class="col-auto text-center" style="background-color: #BDC1C7; width: auto; padding: 10px;">
+                        <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>
-                        <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:white;"><i class="fas fa-search"></i></asp:LinkButton>
+                        <asp:LinkButton ID="SearchButton2" runat="server" Text="Search" OnClick="SearchButton2_Click" Style="color:black;"><i class="fas fa-search"></i></asp:LinkButton>
 
-                        <br />--%>
-                        <asp:CheckBox runat="server" Style="color: white;" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
-                        <asp:CheckBox ID="chkScholarshipMin1" Style="color: white;" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
-                        <asp:CheckBox ID="chkScholarshipMax1" Style="color: white;" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
+                        <br />
+                        <asp:CheckBox runat="server" Style="color: black; padding-right:30px" OnCheckedChanged="cbSelectAll2_Checked" AutoPostBack="true" ID="cbSelectAll2" Text="Select All" CssClass=".JchkAll1"/>
+                        <asp:CheckBox ID="chkScholarshipMin1" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Minimum" Checked="false" CssClass=".JchkGrid1" />
+                        <asp:CheckBox ID="chkScholarshipMax1" Style="color: black; padding-right:30px" runat="server" Text="Scholarship Maximum" Checked="false" CssClass=".JchkGrid1" />
                         
 
 
@@ -150,23 +143,9 @@
                     <div style="height:5px;font-size:10px;">&nbsp;</div>
                     
 
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, 
-                         Organization.ExternalLink
-FROM OpportunityEntity INNER JOIN
-                         Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN
-                         SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN
-                         School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN
-                         Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID
-						 where school.SchoolEntityID  = @schoolID and SchoolApproval.ApprovedFlag = 'Y'">
-                         <SelectParameters>
-                          <asp:SessionParameter Name="schoolID" SessionField="schoolID"
-                           DefaultValue="12" />
-
-                            </SelectParameters>
-                    </asp:SqlDataSource>
 
                 <div class="table-responsive">
-                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" DataSourceID="SqlDataSource1" BackColor="#102B40" ForeColor="White">
+                    <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView2_Click">
 
                         <Columns>
                             <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false">
@@ -327,17 +306,31 @@ FROM OpportunityEntity INNER JOIN
                         <div class="modal-body" style="background-color: #4F79A3;">
                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                                 <div class="form-group">
+                                    <asp:Label ID="Label7" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Organization Name:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblSOrganizationName" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label8" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Organization Description:" Font-Bold="true"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblSOrganizationDescription" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
+                                    <asp:Label ID="Label11" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Description:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblScholarshipDescription" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label12" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Minimum:" Font-Bold="true"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblScholarshipMin" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
+                                    <asp:Label ID="Label13" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Maximum:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblScholarshipMax" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
+                                    <asp:Label ID="Label14" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Quantity:" Font-Bold="true"></asp:Label>
+                                    <br />
                                     <asp:Label ID="lblScholarshipQuantity" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label15" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White" Text="Scholarship Due Date:" Font-Bold="true"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblScholarshipDueDate" Style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.2em;" runat="server" ForeColor="White"></asp:Label>
                                     <br />
@@ -411,4 +404,6 @@ FROM OpportunityEntity INNER JOIN
             }
         </script>
         
+  
+
 </asp:Content>

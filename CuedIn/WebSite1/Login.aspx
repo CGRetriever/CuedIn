@@ -35,7 +35,7 @@
 
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('images/mountains.jpg');">
 			<div class="wrap-login100">			
 					<span>
 						<img src="images/CommUpMainLogo.png" alt="logo" class="RoundedElement">

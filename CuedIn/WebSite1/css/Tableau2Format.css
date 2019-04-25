@@ -11,30 +11,21 @@
 
 }
 
-@media only screen and (min-width :320px) and (max-width :767px) {
+/*@media only screen and (min-width :320px) and (max-width :767px) {
     .bigDesktop, .smallDesktop {
         display: none;
     }
-}
+}*/
 
 
-@media only screen and (min-width :768px) and (max-width :1350px) {
-    .bigDesktop, .smallDesktop, .phone {
+@media only screen and (min-width :0px) and (max-width :1350px) {
+    .bigDesktop {
         display: none;
     }
 }
 
-
-
-
-@media only screen and (min-width :1351px) and (max-width :1599px) {
-    .bigDesktop, .phone, .tablet  {
-        display: none;
-    }
-}
-
-@media only screen and (min-width :1600px) {
-    .smallDesktop, .phone, .tablet  {
+@media only screen and (min-width :1351px) {
+    .smallDesktop  {
         display: none;
     }
 }

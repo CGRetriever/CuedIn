@@ -1,0 +1,217 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Director.master.cs" Inherits="Director" %>
+
+<!DOCTYPE html>
+
+<head>
+
+
+    <title>CommUp</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <!-- Font Awesome for icons - see https://fontawesome.com/v4.7.0/cheatsheet/ -->
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom CSS - update this if you use a name other than style.css for the Sass-generated CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+</head>
+<form id="form1" runat="server">
+
+    <body>
+        <!--Interactive Sidebar Star -->
+
+        <div class="wrapper">
+
+        <!-- Sidebar  -->
+        <nav class="fixed-top" id="sidebar">
+            <div class="sidebar-header">
+                <a href="DirectorLandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
+                <strong>CU</strong>
+            </div>
+
+                <ul class="list-unstyled components">
+                    <li>
+                    
+                        <a href="DirectorLandingPage.aspx">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                    
+
+<li>
+                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+                        <i class="fas fa-tasks"></i>
+                        Manage Postings
+                    </a>
+                    <ul class="collapse list-unstyled" id="OppPages">
+                        <li>
+                            <a href="DirectorOpportunityActDec.aspx">Manage Jobs and <br /> Scholarships</a>
+                        </li>
+                        <li>
+                            <a href="DirectorArchiveOpportunities.aspx">Archived Job Listings</a>
+                        </li>
+                        <li>
+                            <a href="DirectorArchiveScholarships.aspx">Archived Scholarships</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <li>
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+                    <i class="fas fa-portrait"></i>
+                    Students
+                </a>
+                <ul class="collapse list-unstyled" id="StudentPages">
+                    <li>
+                        <a href="DirectorStudentActDec.aspx">Student Application Request</a>
+                    </li>
+                    <li>
+                        <a href="DirectorHoursApprovalPage.aspx">Student Log Hours</a>
+                    </li>
+                </ul>
+                </li>
+                    <li>
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+                   <i class="fas fa-check-square"></i>
+                     Approved Postings
+                </a>
+                <ul class="collapse list-unstyled" id="ApprovedPostings">
+                    <li>
+                        <a href="DirectorJobPostings.aspx">Approved Jobs</a>
+                    </li>
+                    <li>
+                        <a href="DirectorScholarshipBoard.aspx">Approved Scholarships</a>
+                    </li>
+                </ul>
+                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+                  <i class="fas fa-chart-line"></i>
+                     Metrics
+                </a>
+                <ul class="collapse list-unstyled" id="Dashboard">
+                     <li>
+                        <a href="DirectorStudentMetricsDashboard.aspx">Administrative Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="DirectorJobListingMap.aspx">Work Based Learning Map</a>
+                    </li>
+                     <li>
+                        <a href="DirectorScholarshipMap.aspx">Scholarship Map</a>
+                    </li>
+                </ul>
+                </li>
+                 <li>
+                    <a href="DirectorCommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
+                </li>
+                <li>
+                    <a href="DirectorCreateUser.aspx">
+                        <i class="fas fa-user-circle"></i>
+                        Create Users
+                    </a>
+                </li>
+                    <li>
+                    <a href="Login.aspx" style="font-size: 1em">
+                        <i class="fas fa-ban"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+
+          
+
+       
+        </nav>
+            
+        <!-- Page Content  -->
+            <div class="container-fluid" id="cont1">
+            <div class="container-fluid" id="maincont" style="background-color:#4F79A3;">
+               <div class="row" style="height:120px;">
+                   <div class="col-md-3">
+                   </div>
+                   <div class="col-md-6 text-center">
+                       
+                       <%--<h1 style=" color:#fff;  letter-spacing: 6px;"> STUDENT OUTCOMES</h1>--%>
+                       <asp:Label ID="lblMaster" runat="server" Text="" Style="color: #fff; text-align:center; /*font-weight: bold;*/ text-transform: uppercase; letter-spacing: 6px; font-size: 2.5em; margin: .67em"></asp:Label>
+                       <br>
+
+               </div>
+                   
+           </div>
+                
+       </div>
+                <br >
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle</span>
+                    </button>
+                    
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <br>
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+                </div>
+        
+
+
+                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+            <script>		
+   $('.image-flip .mainflip').click(function() {		
+   $(this).closest('.image-flip').toggleClass('hover');		
+   $(this).css('transform, rotateY(180deg)');		
+            });		
+            </script>
+
+                        <script type="text/javascript">
+function resize() {
+    if ($(window).width() > 577) {
+     $('#sidebar').addClass('fixed-top');
+    }
+    else {$('#sidebar').removeClass('fixed-top');}
+}
+
+$(document).ready( function() {
+    $(window).resize(resize);
+    resize();
+});
+</script>
+    
+</body>
+</form>
+</html>
+

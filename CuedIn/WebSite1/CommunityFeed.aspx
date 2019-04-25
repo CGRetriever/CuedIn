@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" width="80%">
 
-    
+    <link rel="stylesheet" type="text/css" href="css/communityFeed.css">
 
 
 <!--- Breadcrumb --->
@@ -30,14 +30,12 @@
 
             </div>
             <div class="card-body ">
-                    <asp:Image ID="profilePicture" CssClass="img-fluid" runat="server" />
+                    <asp:Image ID="profilePicture" CssClass="img-fluid" style="height:100px" runat="server" />
 
                 <asp:Label ID="UserNameLabel" CssClass="card-text" runat="server"  Font-Bold="True"></asp:Label>
                 <asp:TextBox id="TweetBox" rows="5" CssClass="form-control" TextMode="multiline" runat="server" BorderColor="Silver" ValidationGroup="Group1" Font-Size="Smaller" />
                 <asp:Label ID="ValidatorLabel" runat="server" ForeColor="Red"></asp:Label>
                 </div>
-         
-
                 <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass ="invalid-feedback" runat="server" ControlToValidate="TweetBox" ErrorMessage="Must be filled out" ValidationGroup="Group1" ForeColor="Red"></asp:RequiredFieldValidator>--%>
             <div class="card-body">
                 <asp:LinkButton  ID="SendItButton" runat="server" OnCommand="TweetButtonClick" CssClass="btn"><i class="fas fa-paper-plane fa-3x"></i></asp:LinkButton>

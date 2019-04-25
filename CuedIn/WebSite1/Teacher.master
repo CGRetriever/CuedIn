@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 
-
 <head>
 
 
@@ -24,9 +23,9 @@
 
 
 </head>
+<form id="form1" runat="server">
 
-   <form id="form1" runat="server">
-       <body>
+    <body>
         <!--Interactive Sidebar Star -->
 
         <div class="wrapper">
@@ -48,59 +47,57 @@
                     
 
 
-    
-              
                 <li>
                     <li>
-                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                     <i class="fas fa-portrait"></i>
                     Students
                 </a>
                 <ul class="collapse list-unstyled" id="StudentPages">
                     <li>
-                        <a href="TeacherHoursApprovalPage.aspx">Student Log Hours</a>
+                        <a href="TeacherStudentActDec.aspx">Student Application Request</a>
                     </li>
                     <li>
-                        <a href="TeacherStudentActDec.aspx">Student Application Request</a>
+                        <a href="TeacherHoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                 </ul>
                 </li>
-
                     <li>
-
-                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                    <i class="fas fa-check-square"></i>
                      Approved Postings
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="TeacherJobPosting.aspx">Jobs</a>
+                        <a href="TeacherJobPosting.aspx">Approved Jobs</a>
                     </li>
                     <li>
-                        <a href="TeacherScholarshipBoard.aspx">Scholarships</a>
+                        <a href="TeacherScholarshipBoard.aspx">Approved Scholarships</a>
                     </li>
                 </ul>
+                
                 </li>
-                <li>
-                <a href="TeacherCommunityFeed.aspx">
-                <i class="fab fa-twitter-square"></i>
-                Community Feed
-                </a>
+                 <li>
+                    <a href="TeacherCommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
                 </li>
-                  <li>
-                    <a href="Login.aspx">
+                
+                    <li>
+                    <a href="Login.aspx" style="font-size: 1em">
                         <i class="fas fa-ban"></i>
                         Logout
                     </a>
                 </li>
-
-              
             </ul>
 
+          
 
+       
         </nav>
-
-       <!-- Page Content  -->
+            
+        <!-- Page Content  -->
             <div class="container-fluid" id="cont1">
             <div class="container-fluid" id="maincont" style="background-color:#4F79A3;">
                <div class="row" style="height:120px;">
@@ -157,6 +154,13 @@
             });
         });
     </script>
+
+            <script>		
+   $('.image-flip .mainflip').click(function() {		
+   $(this).closest('.image-flip').toggleClass('hover');		
+   $(this).css('transform, rotateY(180deg)');		
+            });		
+            </script>
 
                         <script type="text/javascript">
 function resize() {

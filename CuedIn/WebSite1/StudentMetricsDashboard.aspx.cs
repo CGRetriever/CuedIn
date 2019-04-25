@@ -18,7 +18,9 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
             {
                 lousiapc.Visible = true;
                 lousiasmall.Visible = true;
-              
+                //lousiatablet.Visible = true;
+
+
             }
             else if (Session["schoolid"].Equals(13))
             {
@@ -27,8 +29,7 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
 
             else if (Session["schoolid"].Equals(15))
             {
-                turnerpc.Visible = true;
-                turnerphone.Visible = true;
+              
               
             }
         } else
@@ -79,10 +80,13 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
                             csv += "\r\n";
                         }
 
+                        //Add DateTime Stamp
+                        csv += "DateTime: " + DateTime.Today;
+
                         //Download the CSV file.
                         Response.Clear();
                         Response.Buffer = true;
-                        Response.AddHeader("content-disposition", "attachment;filename=SqlExport.csv");
+                        Response.AddHeader("content-disposition", "attachment;filename=Report.csv");
                         Response.Charset = "";
                         Response.ContentType = "application/text";
                         Response.Output.Write(csv);
