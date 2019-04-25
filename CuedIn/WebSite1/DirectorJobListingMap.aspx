@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
                    <ol class="breadcrumb arr-bread">
-    <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="StudentMetricsDashboard.aspx">Administrative Dashboard</a></li>
-    <li><a href="ScholarshipMap.aspx">Scholarship Map</a></li>
+    <li><a href="DirectorLandingPage.aspx">Home</a></li>
+    <li><a href="DirectorStudentMetricsDashboard.aspx">Administrative Dashboard</a></li>
+    <li><a href="DirectorScholarshipMap.aspx">Scholarship Map</a></li>
     
                                
  
