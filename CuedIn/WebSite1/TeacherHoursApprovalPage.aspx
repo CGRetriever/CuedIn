@@ -17,8 +17,8 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="LandingPage.aspx">Home</a></li>
-    <li><a href="StudentActDec.aspx">Student Application Request</a></li>
+    <li><a href="TeacherLandingPage.aspx">Home</a></li>
+    <li><a href="TeacherStudentActDec.aspx">Student Application Request</a></li>
  
                                
  
