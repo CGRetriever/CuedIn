@@ -9,15 +9,15 @@ public partial class Director : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["user"] == null || !Session["permission"].Equals("Director"))
-        //{
-        //    Response.Redirect("Login.aspx");
-        //}
+        if (Session["user"] == null || !Session["permission"].Equals("Director"))
+        {
+            Response.Redirect("Login.aspx");
+        }
 
-        //else if (!Session.IsNewSession && Request.UrlReferrer == null)
-        //{
-        //    Response.Redirect("Login.aspx");
-        //}
+        else if (!Session.IsNewSession && Request.UrlReferrer == null)
+        {
+            Response.Redirect("Login.aspx");
+        }
 
         //Session["schoolID"] = 12;
         //Session["userCounty"] = "Harrisonburg City Public Schools";
