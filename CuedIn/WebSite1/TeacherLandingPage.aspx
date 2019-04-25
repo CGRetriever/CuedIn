@@ -87,7 +87,7 @@
         <br />
 
         <h3 class="">Manage Posts
-        <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/OpportunityActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+        <asp:LinkButton ID="OppPageLink" runat="server" CssClass="btn" PostBackUrl="~/TeacherJobPosting.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
             </h3>
         <div class="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
@@ -236,7 +236,7 @@
         <br />
         <div class="container container-fluid">
         <h3 class="">Student Applications Pending Approval
-            <asp:LinkButton ID="StudentPageLink" runat="server" CssClass="btn" PostBackUrl="~/StudentActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
+            <asp:LinkButton ID="StudentPageLink" runat="server" CssClass="btn" PostBackUrl="~/TeacherStudentActDec.aspx"><i class="fas fa-arrow-circle-right fa-2x"></i></asp:LinkButton>
         </h3>
         <div class="row">
            

@@ -33,7 +33,7 @@
         <!-- Sidebar  -->
         <nav class="fixed-top" id="sidebar">
             <div class="sidebar-header">
-                <a href="LandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
+                <a href="DirectorLandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
                 <strong>CU</strong>
             </div>
 
