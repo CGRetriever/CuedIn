@@ -59,7 +59,7 @@
     <ol class="breadcrumb arr-bread">
 
         <li><a href="CounselorLandingPage.aspx">Home</a></li>
-        <li><a href="CounselorJobPostings.aspx">Approved Jobs</a></li>
+        <li><a href="CounselorJobPosting.aspx">Approved Jobs</a></li>
 
 
 
