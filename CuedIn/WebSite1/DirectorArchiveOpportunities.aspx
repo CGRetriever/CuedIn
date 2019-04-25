@@ -11,9 +11,9 @@
 
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="CounselorLandingPage.aspx">Home</a></li>
-    <li><a href="CounselorOpportunityActDec.aspx">Manage Opportunities</a></li>
-    <li><a href="CounselorArchiveScholarships.aspx">Archived Scholarships</a></li>
+    <li><a href="DirectorLandingPage.aspx">Home</a></li>
+    <li><a href="DirectorOpportunityActDec.aspx">Manage Opportunities</a></li>
+    <li><a href="DirectorArchiveScholarships.aspx">Archived Scholarships</a></li>
                                
  
     <li class="active"><span>Archived Jobs</span></li>       
