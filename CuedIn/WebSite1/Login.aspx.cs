@@ -77,7 +77,7 @@ public partial class Login : System.Web.UI.Page
 
         System.Data.SqlClient.SqlDataReader reader = query.ExecuteReader();
 
-
+        username.Value = username.Value.Trim();
         String storedPassword = " ";
         while (reader.Read())
         {
@@ -98,6 +98,7 @@ public partial class Login : System.Web.UI.Page
         //method to validate if password in hashed textbox matches our hashed password in the DB
         if (PasswordHash.ValidatePassword(password.Value, storedPassword))
         {
+           
 
             Label10.Text = "Success!";
             String permissions = " ";
