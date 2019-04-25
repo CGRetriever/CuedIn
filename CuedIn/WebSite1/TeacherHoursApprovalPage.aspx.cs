@@ -13,6 +13,7 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
     public static String email;
     public static String fullName;
     private int schoolid = 12;
+    public static String imagePath;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -20,13 +21,6 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         {
             schoolid = Convert.ToInt32(Session["schoolid"]);
         }
-
-
-        string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
-            " Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, " +
-            "  Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
-            "   JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization " +
-            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + schoolid;
 
 
         if (SearchBox != null)
@@ -37,6 +31,12 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         }
         else
         {
+            string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, " +
+            " Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, " +
+            "  Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, " +
+            "   JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization " +
+            " ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + schoolid;
+
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
             conn.Open();
@@ -52,6 +52,13 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
 
         cbSelectAll.Attributes.Add("onclick", "Selectall");
+
+        GridView1.Columns[0].Visible = true;
+
+
+        // image in gridview
+
+
 
 
 
@@ -99,28 +106,28 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
 
 
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -267,28 +274,28 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
 
 
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -420,7 +427,7 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         sql.Open();
         System.Data.SqlClient.SqlCommand moreJobInfo = new System.Data.SqlClient.SqlCommand();
         moreJobInfo.Connection = sql;
-        moreJobInfo.CommandText = "SELECT StudentComment.Comment, OrganizationComment.Comment AS Expr1 FROM OrganizationComment INNER JOIN StudentComment ON OrganizationComment.LogID = StudentComment.LogID INNER JOIN LogHours ON OrganizationComment.LogID = LogHours.LogID where LogHours.LogID = " + Session["selectedLogID"];
+        moreJobInfo.CommandText = "SELECT StudentComment, OrganizationComment FROM LogHours where LogHours.LogID = " + Session["selectedLogID"];
         System.Data.SqlClient.SqlDataReader reader = moreJobInfo.ExecuteReader();
 
         while (reader.Read())
@@ -438,28 +445,28 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openEditJModal();", true);
 
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -653,17 +660,35 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openviewStudentModal();", true);
-    }
 
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-    protected void btnCheckGridView_Click(object sender, EventArgs e)
-    {
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-        if (chkImage.Checked != true)
+        //        }
+        //    }
+        //}
+
+        if (chkGradeLevel.Checked != true)
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Image")
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
                 {
                     GridView1.Columns[i].Visible = false;
 
@@ -674,13 +699,113 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
         {
             for (int i = 0; i < GridView1.Columns.Count; i++)
             {
-                if (GridView1.Columns[i].HeaderText == "Image")
+                if (GridView1.Columns[i].HeaderText == "Grade Level")
                 {
                     GridView1.Columns[i].Visible = true;
 
                 }
             }
         }
+
+
+        if (chkGPA.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "GPA")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkHoursWBL.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Hours of WBL")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+
+
+        if (chkJobType.Checked != true)
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = false;
+
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < GridView1.Columns.Count; i++)
+            {
+                if (GridView1.Columns[i].HeaderText == "Job Type")
+                {
+                    GridView1.Columns[i].Visible = true;
+
+                }
+            }
+        }
+    }
+
+
+    protected void btnCheckGridView_Click(object sender, EventArgs e)
+    {
+
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
+
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
+
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -787,13 +912,18 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
     {
         String term = SearchBox.Text;
 
-        JobOpportunity.SelectParameters.Add("term", term);
+        string query = "SELECT LogHours.LogID, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.StudentACTScore, Student.StudentSATScore, Student.StudentGender, Student.StudentEthnicity, Student.HoursOfWorkPlaceExp, Student.StudentAthleteFlag, Student.StudentGraduationTrack, Student.StudentImage, Organization.OrganizationName, Organization.OrganizationDescription, Organization.ExternalLink, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, JobListing.Location, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID where (LogHours.CounselorApproval = 'P' AND LogHours.OrganizationApproval = 'Y' and SchoolEntityID = " + schoolid + ") and ((Student.FirstName like '%" + term + "%') or (Student.LastName like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" + term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (Organization.OrganizationName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (JobListing.JobType like '%" + term + "%') or (LogHours.HoursRequested like + '%" + term + "%'))";
 
-        JobOpportunity.SelectCommand = "SELECT LogHours.LogID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, Organization.OrganizationName, JobListing.JobTitle, JobListing.JobType, LogHours.HoursRequested FROM JobListing INNER JOIN LogHours ON JobListing.JobListingID = LogHours.JobListingID INNER JOIN Student ON LogHours.StudentEntityID = Student.StudentEntityID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID where(CounselorApproval = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%') or(LogHours.HoursRequested like + '%" + @term + "%'))";
-        JobOpportunity.DataBind();
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
+        da.Fill(dt);
+        GridView1.DataSource = dt;
         GridView1.DataBind();
-
-        JobOpportunity.SelectParameters.Clear();
+        conn.Close();
     }
 
 
@@ -802,7 +932,7 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
     {
         if (cbSelectAll.Checked == true)
         {
-            chkImage.Checked = true;
+            //chkImage.Checked = true;
             chkJobType.Checked = true;
             chkHoursWBL.Checked = true;
             chkGradeLevel.Checked = true;
@@ -814,7 +944,7 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
 
         if (cbSelectAll.Checked == false)
         {
-            chkImage.Checked = false;
+            //chkImage.Checked = false;
             chkJobType.Checked = false;
             chkHoursWBL.Checked = false;
             chkGradeLevel.Checked = false;
@@ -822,6 +952,36 @@ public partial class TeacherHoursApproval : System.Web.UI.Page
 
             cbSelectAll.Text = "Select All";
 
+        }
+    }
+
+    protected void studentImage_Load(object sender, EventArgs e)
+    {
+        foreach (GridViewRow gr in GridView1.Rows)
+        {
+            string studentID = GridView1.DataKeys[gr.RowIndex].Value.ToString();
+            var imageControl = gr.Cells[0].FindControl("studentImage") as Image;
+
+            // query database for imageURl
+            String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+            sql.Open();
+            System.Data.SqlClient.SqlCommand getStudentImage = new System.Data.SqlClient.SqlCommand();
+            getStudentImage.Connection = sql;
+            getStudentImage.CommandText = "SELECT Student.StudentImage, LogHours.LogID FROM  Student INNER JOIN LogHours ON Student.StudentEntityID = LogHours.StudentEntityID where LogHours.LogID = " + studentID;
+            System.Data.SqlClient.SqlDataReader reader = getStudentImage.ExecuteReader();
+
+
+
+            while (reader.Read())
+            {
+                imagePath = reader.GetString(0);
+            }
+
+            sql.Close();
+
+            imageControl.ImageUrl = imagePath;
         }
     }
 }
