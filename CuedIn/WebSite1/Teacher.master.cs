@@ -9,7 +9,7 @@ public partial class Teacher : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["user"] == null || !Session["permission"].Equals("Educator"))
+        //if (Session["user"] == null || !Session["permission"].Equals("Admin"))
         //{
         //    Response.Redirect("Login.aspx");
         //}
@@ -19,13 +19,18 @@ public partial class Teacher : System.Web.UI.MasterPage
         //    Response.Redirect("Login.aspx");
         //}
 
-
         Session["schoolID"] = 12;
         Session["userCounty"] = "Harrisonburg City Public Schools";
+
+    }
+
+    protected void btn(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
     }
 
     protected void HomeButton_Click(object sender, ImageClickEventArgs e)
     {
-        Response.Redirect("TeacherJobPosting.aspx");
+        Response.Redirect("JobPostings.aspx");
     }
 }

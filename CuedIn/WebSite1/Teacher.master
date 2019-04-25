@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 
-
 <head>
 
 
@@ -24,9 +23,9 @@
 
 
 </head>
+<form id="form1" runat="server">
 
-   <form id="form1" runat="server">
-       <body>
+    <body>
         <!--Interactive Sidebar Star -->
 
         <div class="wrapper">
@@ -34,73 +33,106 @@
         <!-- Sidebar  -->
         <nav class="fixed-top" id="sidebar">
             <div class="sidebar-header">
-                <a href="TeacherLandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
+                <a href="LandingPage.aspx"><img src="images/CommUpMainLogo.png"  alt="homepage" style="width:200px; height:100px;"></a>
                 <strong>CU</strong>
             </div>
 
                 <ul class="list-unstyled components">
                     <li>
                     
-                        <a href="TeacherLandingPage.aspx">
+                        <a href="LandingPage.aspx">
                             <i class="fas fa-home"></i>
                             Home
                         </a>
                     
 
-
-    
-              
+<li>
+                    <a href="#OppPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+                        <i class="fas fa-tasks"></i>
+                        Manage Postings
+                    </a>
+                    <ul class="collapse list-unstyled" id="OppPages">
+                        <li>
+                            <a href="OpportunityActDec.aspx">Manage Jobs and <br /> Scholarships</a>
+                        </li>
+                        <li>
+                            <a href="ArchiveOpportunities.aspx">Archived Job Listings</a>
+                        </li>
+                        <li>
+                            <a href="ArchiveScholarships.aspx">Archived Scholarships</a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <li>
-                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#StudentPages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                     <i class="fas fa-portrait"></i>
                     Students
                 </a>
                 <ul class="collapse list-unstyled" id="StudentPages">
                     <li>
-                        <a href="TeacherHoursApprovalPage.aspx">Student Log Hours</a>
+                        <a href="StudentActDec.aspx">Student Application Request</a>
                     </li>
                     <li>
-                        <a href="TeacherStudentActDec.aspx">Student Application Request</a>
+                        <a href="HoursApprovalPage.aspx">Student Log Hours</a>
                     </li>
                 </ul>
                 </li>
-
                     <li>
-
-                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#ApprovedPostings" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
                    <i class="fas fa-check-square"></i>
                      Approved Postings
                 </a>
                 <ul class="collapse list-unstyled" id="ApprovedPostings">
                     <li>
-                        <a href="TeacherJobPosting.aspx">Jobs</a>
+                        <a href="JobPostings.aspx">Approved Jobs</a>
                     </li>
                     <li>
-                        <a href="TeacherScholarshipBoard.aspx">Scholarships</a>
+                        <a href="ScholarshipBoard.aspx">Approved Scholarships</a>
+                    </li>
+                </ul>
+                <a href="#Dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" style="font-size: 1em">
+                  <i class="fas fa-chart-line"></i>
+                     Metrics
+                </a>
+                <ul class="collapse list-unstyled" id="Dashboard">
+                     <li>
+                        <a href="StudentMetricsDashboard.aspx">Administrative Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="JobListingMap.aspx">Work Based Learning Map</a>
+                    </li>
+                     <li>
+                        <a href="ScholarshipMap.aspx">Scholarship Map</a>
                     </li>
                 </ul>
                 </li>
-                <li>
-                <a href="TeacherCommunityFeed.aspx">
-                <i class="fab fa-twitter-square"></i>
-                Community Feed
-                </a>
+                 <li>
+                    <a href="CommunityFeed.aspx">
+                  <i class="fab fa-twitter-square"></i>
+                        Community Feed
+                    </a>
                 </li>
-                  <li>
-                    <a href="Login.aspx">
+                <li>
+                    <a href="CreateUser.aspx">
+                        <i class="fas fa-user-circle"></i>
+                        Create Users
+                    </a>
+                </li>
+                    <li>
+                    <a href="Login.aspx" style="font-size: 1em">
                         <i class="fas fa-ban"></i>
                         Logout
                     </a>
                 </li>
-
-              
             </ul>
 
+          
 
+       
         </nav>
-
-       <!-- Page Content  -->
+            
+        <!-- Page Content  -->
             <div class="container-fluid" id="cont1">
             <div class="container-fluid" id="maincont" style="background-color:#4F79A3;">
                <div class="row" style="height:120px;">
@@ -157,6 +189,13 @@
             });
         });
     </script>
+
+            <script>		
+   $('.image-flip .mainflip').click(function() {		
+   $(this).closest('.image-flip').toggleClass('hover');		
+   $(this).css('transform, rotateY(180deg)');		
+            });		
+            </script>
 
                         <script type="text/javascript">
 function resize() {
