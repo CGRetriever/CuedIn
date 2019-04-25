@@ -9,11 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
     
-    <div class="row">
-        <div class="col-12 ">
-            <p>Archived Scholarships</p>
-        </div>
-    </div>
+  
 
     
 
@@ -122,8 +118,9 @@
             </div>
             <%--Accepted Scholarships--%>
             <div class="form-group col-md-6">
-             
+                  <div class="text-center">
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
+                      </div>
 
                     <div class="col-auto text-center" style="background-color: #BDC1C7; width: auto; padding: 10px;">
                         <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
@@ -146,7 +143,7 @@
 
                 <div class="table-responsive">
                     <asp:GridView ID="acceptScholarshipGridview" runat="server" CssClass="table table-hover table-striped table-dark"  AutoGenerateColumns="False" DataKeyNames="ScholarshipID" BackColor="#102B40" ForeColor="White" OnDataBinding="btnCheckGridView2_Click">
-
+                        <HeaderStyle BackColor="#4F79A3" />
                         <Columns>
                             <asp:BoundField DataField="ScholarshipID" InsertVisible="false" ReadOnly="true" Visible="false">
                             <ItemStyle Font-Size="Large" />

@@ -89,8 +89,9 @@
              
                 <div class="form-group col-md-6">
             
+                    <div class="text-center">
                 <label class="form-control-lg font-weight-bold" for="inputJobs">Job Listings to Approve</label>
-
+                </div>
 
            <div class="col-auto text-center" style="background-color:#BDC1C7;">
            <asp:Label ID="Label17" runat="server" Text="Search" Style="color: black; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
@@ -153,8 +154,9 @@
      
                 <div class="form-group col-md-6">
             
+                <div class="text-center">
                 <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Scholarships to Approve</label> 
-
+                </div>
 
                <div class="col-auto text-center" style="background-color:#BDC1C7;">
                <asp:Label ID="Label18" runat="server" Text="Search" Style="color: black; text-align:center; /*font-weight: bold;*/ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
