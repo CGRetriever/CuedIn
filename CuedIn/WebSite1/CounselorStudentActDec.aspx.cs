@@ -10,37 +10,52 @@ using System.Web.UI.WebControls;
 
 public partial class CounselorStudentActDec : System.Web.UI.Page
 {
+
     public static String email;
     private int schoolid = 12;
+    public static String imagePath;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["schoolid"] == null)
+        if (Session["schoolid"] != null)
         {
-            Session["schoolid"] = 12;
-            schoolid = Convert.ToInt32(Session["scholid"]);
+
+            schoolid = Convert.ToInt32(Session["schoolid"]);
         }
 
 
-        // Query for Gridview
-        string query = "SELECT ApplicationRequest.ApplicationID, " +
-            " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
-            " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
-            "  INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER " +
-            " JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID" +
-            " WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID =  " + Session["schoolid"];
-        DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
-        conn.Open();
-        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-        da.Fill(dt);
-        GridView1.DataSource = dt;
-        GridView1.DataBind();
-        conn.Close();
+        if (SearchBox != null)
+        {
+            object o = new object();
+            EventArgs e1 = new EventArgs();
+            SearchButton_Click(0, e1);
+        }
+        else
+        {
 
 
+
+            // Query for Gridview
+            string query = "SELECT ApplicationRequest.ApplicationID, " +
+                " Student.FirstName + ' ' + Student.LastName AS FullName, JobListing.JobTitle, Organization.OrganizationName,Student.StudentGradeLevel, Student.StudentGPA, Student.DaysAbsent, Student.HoursOfWorkPlaceExp, Student.StudentImage, JobListing.JobDescription, JobListing.JobType," +
+                " JobListing.Location, Organization.ExternalLink FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID" +
+                "  INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER " +
+                " JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID" +
+                " WHERE(ApplicationRequest.ApprovedFlag = 'P') and SchoolEntityID =  " + Session["schoolid"];
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.Fill(dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            conn.Close();
+
+        }
         ((Label)Master.FindControl("lblMaster")).Text = "Student Application Requests";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
+
+        GridView1.Columns[1].Visible = true;
 
 
     }
@@ -199,13 +214,13 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
                 lblStudentStatus.Text = "Student not on Track";
             }
 
-            lblOrgName.Text = "Organization Name: " + reader.GetString(9);
-            lblOrgDesc.Text = "Organization Description: " + reader.GetString(10);
-            lblJobTitle.Text = "Job Title: " + reader.GetString(3);
-            lblJobDesc.Text = "Job Description: " + reader.GetString(4);
-            lblJobLocation.Text = "Location: " + reader.GetString(6);
-            lblJobDeadline.Text = "Deadline: " + reader.GetDateTime(7).ToString();
-            lblNumberOfApplicants.Text = "Number Of Applicants: " + reader.GetInt32(8).ToString();
+            lblOrgName.Text = reader.GetString(9);
+            lblOrgDesc.Text = reader.GetString(10);
+            lblJobTitle.Text = reader.GetString(3);
+            lblJobDesc.Text = reader.GetString(4);
+            lblJobLocation.Text = reader.GetString(6);
+            lblJobDeadline.Text = reader.GetDateTime(7).ToString();
+            lblNumberOfApplicants.Text = reader.GetInt32(8).ToString();
 
         }
 
@@ -226,28 +241,28 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
     protected void btnCheckGridView_Click(object sender, EventArgs e)
     {
 
-        if (chkImage.Checked != true)
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = false;
+        //if (chkImage.Checked != true)
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = false;
 
-                }
-            }
-        }
-        else
-        {
-            for (int i = 0; i < GridView1.Columns.Count; i++)
-            {
-                if (GridView1.Columns[i].HeaderText == "Image")
-                {
-                    GridView1.Columns[i].Visible = true;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    for (int i = 0; i < GridView1.Columns.Count; i++)
+        //    {
+        //        if (GridView1.Columns[i].HeaderText == "Image")
+        //        {
+        //            GridView1.Columns[i].Visible = true;
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         if (chkGradeLevel.Checked != true)
         {
@@ -396,7 +411,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
                 chkGPA.Checked = true;
                 chkGradeLevel.Checked = true;
 
-                chkImage.Checked = true;
+                //chkImage.Checked = true;
                 chkJobType.Checked = true;
                 cbSelectAll.Text = "Unselect All";
 
@@ -407,7 +422,7 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
                 chkGPA.Checked = false;
                 chkGradeLevel.Checked = false;
 
-                chkImage.Checked = false;
+                //chkImage.Checked = false;
 
                 chkJobType.Checked = false;
                 cbSelectAll.Text = "Select All";
@@ -427,18 +442,20 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
             " JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest" +
             " INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON " +
             "JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = " +
-            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + term + "%' or " +
-            "Student.LastName like '%" + term + "%') or (JobListing.JobTitle like '%" + term + "%') or (Organization.OrganizationName " +
-            "like '%" + term + "%') or (Student.StudentGradeLevel like '%" + term + "%') or (Student.StudentGPA like '%" +
-            term + "%') or (Student.HoursOfWorkPlaceExp like '%" + term + "%') or (JobListing.JobDescription like '%" + term
-            + "%') or (JobListing.JobType like '%" + term + "%')) and SchoolEntityID =  " + schoolid;
-        ;
+            "Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or " +
+            "Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName " +
+            "like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" +
+            @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term
+            + "%') or (JobListing.JobType like '%" + @term + "%')) and SchoolEntityID =  " + @schoolid;
+
 
 
         DataTable dt = new DataTable();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
         conn.Open();
         SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@term", term);
+        da.SelectCommand.Parameters.AddWithValue("@schoolid", schoolid);
         da.Fill(dt);
         GridView1.DataSource = dt;
         GridView1.DataBind();
@@ -446,16 +463,35 @@ public partial class CounselorStudentActDec : System.Web.UI.Page
 
     }
 
-    //protected void SearchButton_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox.Text;
 
-    //    StudentOpportunity.SelectParameters.Add("term", term);
 
-    //    StudentOpportunity.SelectCommand = "SELECT ApplicationRequest.ApplicationID, Student.StudentImage, CONCAT(Student.FirstName, ' ', Student.LastName) AS FullName, Student.StudentGradeLevel, Student.StudentGPA, Student.HoursOfWorkPlaceExp, JobListing.JobTitle, JobListing.JobDescription, JobListing.JobType, Organization.OrganizationName FROM ApplicationRequest INNER JOIN JobListing ON ApplicationRequest.JobListingID = JobListing.JobListingID INNER JOIN Organization ON JobListing.OrganizationID = Organization.OrganizationEntityID INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE(ApplicationRequest.ApprovedFlag = 'P') and((Student.FirstName like '%" + @term + "%' or Student.LastName like '%" + @term + "%') or (JobListing.JobTitle like '%" + @term + "%') or (Organization.OrganizationName like '%" + @term + "%') or (Student.StudentGradeLevel like '%" + @term + "%') or (Student.StudentGPA like '%" + @term + "%') or (Student.HoursOfWorkPlaceExp like '%" + @term + "%') or (JobListing.JobDescription like '%" + @term + "%') or (JobListing.JobType like '%" + @term + "%'))";
-    //    StudentOpportunity.DataBind();
-    //    GridView1.DataBind();
+    protected void studentImage_Load(object sender, EventArgs e)
+    {
+        foreach (GridViewRow gr in GridView1.Rows)
+        {
+            string studentID = GridView1.DataKeys[gr.RowIndex].Value.ToString();
+            var imageControl = gr.Cells[1].FindControl("studentImage") as Image;
 
-    //    StudentOpportunity.SelectParameters.Clear();
-    //}
+            // query database for imageURl
+            String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+            sql.Open();
+            System.Data.SqlClient.SqlCommand getStudentImage = new System.Data.SqlClient.SqlCommand();
+            getStudentImage.Connection = sql;
+            getStudentImage.CommandText = "SELECT Student.StudentImage FROM ApplicationRequest INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE ApplicationRequest.ApplicationID = " + studentID;
+            System.Data.SqlClient.SqlDataReader reader = getStudentImage.ExecuteReader();
+
+
+
+            while (reader.Read())
+            {
+                imagePath = reader.GetString(0);
+            }
+
+            sql.Close();
+
+            imageControl.ImageUrl = imagePath;
+        }
+    }
 }
