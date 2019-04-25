@@ -40,6 +40,7 @@
 <!--- END Breadcrumb --->
     <br />
     <br />
+
         <div class="row bigDesktop" id="LouisaDesktop" runat="server" visible="true">
 <script type='text/javascript' src='https://us-east-1.online.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 100%; height: 307px;'><object class='tableauViz' width='100%' height='307' style='display:none;'><param name='host_url' value='https%3A%2F%2Fus-east-1.online.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='&#47;t&#47;commup' /><param name='name' value='ApprovalDashboardLargeDesktopLouisaCounty&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='showAppBanner' value='false' /><param name='filter' value='iframeSizedToWindow=true' /></object></div>    </div>
 
@@ -72,13 +73,16 @@
             <div class="form-group col-md-12">
                     <div class ="row">
             <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-        		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 93%; color: white; margin-top:1.7em" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
-     </div>
+
+                <div class="form-check-inline" style="display: flex; justify-content: flex-end">
+        		<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left:1480px; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+                <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/managejobsscholarshipshelp.png' width=100% height=100% /&gt;" Style=" color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton> 
+                </div>    
+                    
+                    
+                    </div>
                 </div>
         
-
-  
-
             <div class="row">
              
                 <div class="form-group col-md-6">

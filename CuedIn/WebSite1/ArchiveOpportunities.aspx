@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
 
-
+    <link rel="stylesheet" href="css/style.css" />
    
 
            <!--- Breadcrumb --->
@@ -29,7 +29,14 @@
 <div class="row">
 
     <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-    <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+   
+
+    <div class="form-check-inline" style="display: flex; justify-content: flex-end">
+    <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 1490px; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" />
+    <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/archivejobshelp.png' width=100% height=100% /&gt;" Style=" color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton> 
+    </div>
+
+
 </div>
 
 
@@ -40,6 +47,7 @@
             <div class="form-group col-lg-6">
                 <div class="text-center">
                     <label class="form-control-lg font-weight-bold" for="inputJobs">Rejected Jobs </label>
+
 
 
                     <div class="col-auto text-center" style="background-color: #BDC1C7; padding: 10px;">
@@ -182,7 +190,10 @@
             <script>
                 //Initialize popover with jQuery
                 $(document).ready(function () {
-                    $('.popovers').popover();
+                    $('.popovers').popover({
+                        container: 'body',
+                    });
+
                 });
 
                 window.onscroll = function() {scrollFunction()};

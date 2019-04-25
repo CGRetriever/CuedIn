@@ -30,8 +30,15 @@
  <div class="container-fluid">
     <div class="row">
         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
-        <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AccDecComm.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+        
+        
+        
+        <div class="form-check-inline" style="display: flex; justify-content: flex-end ">
+        <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left:1470px; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+        <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/studentapphelp.png' width=100% height=100% /&gt;" Style=" color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton>
         </div>
+        
+    </div>
 
      <div class="row">
      <div class="form-group col-md-12 col-centered"">
@@ -63,7 +70,7 @@
                        
                         <asp:TemplateField HeaderText="Image">
                             <ItemTemplate>
-                                <asp:Image ID="studentImage" runat="server" style="max-width:7em;max-height:7em; margin-left:2em;" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
+                                <asp:Image ID="studentImage" runat="server" style="max-width:7em;max-height:7em; margin-left:2em;" ImageUrl="~/img/student.JPG" OnLoad="studentImage_Load" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                             <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
@@ -137,7 +144,8 @@
                                   <%--<h5>Student Information</h5>--%>
                                      <asp:Label ID="Label3" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 1.6em; font-weight: bold;" Text="Student Information"></asp:Label>
                                     <br />
-                                    <asp:Image ID="imgStudent" runat="server" CssClass="rounded-circle col-md-6" />
+                                    <asp:Image ID="imgStudent" runat="server" CssClass="img-fluid" style="height:300px" />
+                                    <br />
                                     <asp:Label ID="lblStudentName" runat="server" Style="color: #102B3F; font-family: 'Poppins', sans-serif; font-size: 2.1em; font-weight: bold;"></asp:Label>
 
                                 </div>

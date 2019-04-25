@@ -57,7 +57,7 @@
     <div class="container container-fluid">
     
         <div class="container">
-        <h3 class="">Metrics</h3>
+        <h3 class="">To-Do</h3>
      <link rel="stylesheet" type="text/css" href="css/TableauFormat.css" />   
     
     <div class="row bigDesktop" id="TurnerDesktop" runat="server" visible="false">
@@ -252,7 +252,7 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <p><asp:Image ID="StudentImage" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" style="height: 200px; width:auto" /></p>
                                     <asp:Label ID="FrontStudentName" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <br />
                                     <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
@@ -292,7 +292,7 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <p><asp:Image ID="StudentImage2" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" style="height: 200px; width:auto" /></p>
                                     <asp:Label ID="FrontStudentName2" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <br />
                                     <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>
@@ -332,7 +332,7 @@
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" /></p>
+                                    <p><asp:Image ID="StudentImage3" runat="server" ImageUrl="~/img/arconic.jpg" CssClass="img-fluid" style="height: 200px; width:auto" /></p>
                                     <asp:Label ID="FrontStudentName3" runat="server" Text="Text" CssClass="card-title img-fluid" Style="color: #102B3F; font-family: 'Poppins', sans-serif; padding-left: 20px; padding-right: 20px; "></asp:Label>
                                     <br />
                                     <a href='#' class='btn btn-primary btn-sm' style="margin-top:5px"><i class='fa fa-plus'></i></a>

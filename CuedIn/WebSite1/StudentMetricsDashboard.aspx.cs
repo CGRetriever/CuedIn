@@ -80,6 +80,9 @@ public partial class StudentMetricsDashboard : System.Web.UI.Page
                             csv += "\r\n";
                         }
 
+                        //Add DateTime Stamp
+                        csv += "DateTime: " + DateTime.Today;
+
                         //Download the CSV file.
                         Response.Clear();
                         Response.Buffer = true;

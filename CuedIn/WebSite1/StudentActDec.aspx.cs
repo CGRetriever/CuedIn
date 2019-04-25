@@ -12,6 +12,7 @@ public partial class StudentActDec : System.Web.UI.Page
 {
     public static String email;
     private int schoolid = 12;
+    public static String imagePath;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -461,5 +462,35 @@ public partial class StudentActDec : System.Web.UI.Page
         
     }
 
-    
+
+
+    protected void studentImage_Load(object sender, EventArgs e)
+    {
+        foreach (GridViewRow gr in GridView1.Rows)
+        {
+            string studentID = GridView1.DataKeys[gr.RowIndex].Value.ToString();
+            var imageControl = gr.Cells[1].FindControl("studentImage") as Image;
+
+            // query database for imageURl
+            String connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            System.Data.SqlClient.SqlConnection sql = new System.Data.SqlClient.SqlConnection(connectionString);
+
+            sql.Open();
+            System.Data.SqlClient.SqlCommand getStudentImage = new System.Data.SqlClient.SqlCommand();
+            getStudentImage.Connection = sql;
+            getStudentImage.CommandText = "SELECT Student.StudentImage FROM ApplicationRequest INNER JOIN Student ON ApplicationRequest.StudentEntityID = Student.StudentEntityID WHERE ApplicationRequest.ApplicationID = " + studentID;
+            System.Data.SqlClient.SqlDataReader reader = getStudentImage.ExecuteReader();
+
+
+
+            while (reader.Read())
+            {
+                imagePath = reader.GetString(0);
+            }
+
+            sql.Close();
+
+            imageControl.ImageUrl = imagePath;
+        }
+    }
 }

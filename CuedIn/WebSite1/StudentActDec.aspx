@@ -27,13 +27,17 @@
 <!--- END Breadcrumb --->
 
    
-        <%--<asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 90%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />--%>
-         
+        <div class="form-check-inline" style="display: flex; justify-content: flex-end ">
+        <asp:Button ID="btnTop0" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-right: 1%; color: white;" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+        <asp:LinkButton ID="helpButton" runat="server" CssClass="btn btn-sm popovers img-fluid fa-2x" data-content="&lt;img src='img/studentapphelp.png' width=100% height=100% /&gt;" Style="margin-right: 8%; color: #006699;" data-html="true" data-placement="top" data-trigger="hover" BackColor="Transparent"><i class="far fa-question-circle"></i></asp:LinkButton>
+        </div>
+        
+
         <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
 
         <div class="form-group">
             <div class="col-md-10 container text-center">
-                <asp:Button ID="Button3" runat="server" CssClass="btn  btn-sm popovers img-fluid" data-content="&lt;img src='img/AppDecMoreInfo.png' /&gt;" Style="margin-left: 92%; color: white; margin-bottom:0.7em" data-html="true" data-placement="top" data-trigger="hover" Text="Icon Legend" BackColor="#006699" BorderColor="Black" />
+                
 
                 <div class="col-auto text-center rounded" style="background-color: #BDC1C7; padding: 10px;">
                     <asp:Label ID="Label4" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
@@ -67,7 +71,7 @@
                           </asp:BoundField>
                         <asp:TemplateField HeaderText="Image">
                             <ItemTemplate>
-                                     <asp:Image ID="studentImage" style="max-width:7em;max-height:7em;" runat="server" ImageUrl="~/img/student.JPG" CssClass="img-fluid" BackColor="White" />
+                                     <asp:Image ID="studentImage" style="max-width:7em;max-height:7em;" runat="server" ImageUrl="~/img/student.JPG" OnLoad="studentImage_Load" CssClass="img-fluid" BackColor="White" />
                             </ItemTemplate>
                             <ItemStyle Font-Size="Large" />
                         </asp:TemplateField>
