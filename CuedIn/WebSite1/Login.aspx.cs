@@ -196,19 +196,26 @@ public partial class Login : System.Web.UI.Page
                 Response.Redirect("LandingPage.aspx");
 
             }
-            else if (permissions.Equals("Counselor"))
+            else if (permissions.Equals("Advisor"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
                 Session["schoolid"] = school;
                 Response.Redirect("CounselorLandingPage.aspx");
             }
-            else if (permissions.Equals("Teacher"))
+            else if (permissions.Equals("Educator"))
             {
                 Session["user"] = username.Value;
                 Session["permission"] = permissions;
                 Session["schoolid"] = school;
                 Response.Redirect("TeacherLandingPage.aspx");
+            }
+            else if (permissions.Equals("Director"))
+            {
+                Session["user"] = username.Value;
+                Session["permission"] = permissions;
+                Session["schoolid"] = school;
+                Response.Redirect("DirectorLandingPage.aspx");
             }
 
         }
