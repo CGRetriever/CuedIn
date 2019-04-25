@@ -541,7 +541,7 @@ public partial class JobPostings : System.Web.UI.Page
         lblJobTitle.Text = jobTitle;
         lblOrgName.Text = orgName;
 
-        InterestGroupLabel.Text = "Students interested in: " + interestGroupToString(interestGroupList);
+        InterestGroupLabel.Text = "Student Interest: " + interestGroupToString(interestGroupList);
 
 
         ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openSendToModal();", true);

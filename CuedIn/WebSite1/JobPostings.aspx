@@ -69,20 +69,20 @@
 
                 
     <div class="row">
-
-            <div class="col-md-7 col-lg-7 col-xs-12 col-sm-12">
+                        <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                   
+                    
+                 <asp:CheckboxList ID="InterestGroupDrop" CssClass="checkbox" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" BorderStyle="Outset" BorderColor="Silver"></asp:CheckboxList>
+            <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
+                     
+                        <asp:Button ID="clearButton" runat="server" CssClass="btn" Text="Clear Filters" OnClick="ClearButton_Click" />
+                    </div>
+                 
+            <div class="col-md-9 col-lg-9 col-xs-12 col-sm-12">
 
             <asp:Table ID="jobPostingTable" runat="server"></asp:Table>
         </div>
-                <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
-                   
-                     <asp:Button ID="ApplyChanges" runat="server" Text="Apply Filters" CssClass="btn"  OnClick="applyChanges_click"/>
-                     
-                        <asp:Button ID="clearButton" runat="server" CssClass="btn" Text="Clear Filters" OnClick="ClearButton_Click" />
-                 <asp:CheckboxList ID="InterestGroupDrop" CssClass="checkbox" SelectionMode="Multiple" runat="server" DataSourceID="InterestGroupData" DataTextField="InterestGroupName" DataValueField="InterestGroupID" BorderStyle="Outset" BorderColor="Silver"></asp:CheckboxList>
-           
-                    </div>
-                 
+
             </div>
                   </div>
 
