@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" MasterPageFile="~/SchoolMaster.master" runat="server" CodeFile="CreateUser.aspx.cs" Inherits="CreateUser"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Director.master" AutoEventWireup="true" CodeFile="DirectorCreateUser.aspx.cs" Inherits="DirectorCreateUser" %>
+
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="server">
@@ -38,7 +40,7 @@
  
     <ol class="breadcrumb arr-bread">
  
-    <li><a href="LandingPage.aspx">Home</a></li>                         
+    <li><a href="DirectorLandingPage.aspx">Home</a></li>                         
  
     <li class="active"><span>Create User</span></li>       
  
@@ -116,7 +118,8 @@
                         
                             <asp:ListItem Text="Educator"></asp:ListItem>
                             <asp:ListItem Text="Advisor"></asp:ListItem>
-
+                            <asp:ListItem Text="Admin"></asp:ListItem>
+                            <asp:ListItem Text="Director"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <br />
@@ -214,4 +217,5 @@ function topFunction() {
 </html>
 
 </asp:Content>
+
 
