@@ -80,9 +80,9 @@
         
     </div>
     <section>
-    <a href="#smallDesktop" id="smallbt" class="scroll-down" address="true"></a>
-     <a href="#phone" id="phonebt" class="scroll-down" address="true"></a>
-     <a href="#bigDesktop" id="bigbt" class="scroll-down" address="true"></a>
+    <a href="#smallDesktop" id="smallbt" class="scroll-down" address="true" style="background-color:#102B3F;  outline-color:black;"></a>
+     <a href="#phone" id="phonebt" class="scroll-down" address="true" style="background-color:#102B3F;  outline-color:black;"></a>
+     <a href="#bigDesktop" id="bigbt" class="scroll-down" address="true" style="background-color:#102B3F; outline-color:black;"></a>
     </section>
  
     <section class="ok">
