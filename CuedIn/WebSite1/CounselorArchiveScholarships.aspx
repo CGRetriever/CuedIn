@@ -122,8 +122,9 @@
             <%--Accepted Scholarships--%>
             <div class="form-group col-md-6">
              
+                <div class="text-center">
                     <label class="form-control-lg font-weight-bold" for="ScholarshipOpportunity">Accepted Scholarships</label>
-
+                    </div>
                     <div class="col-auto text-center" style="background-color: #BDC1C7; width: auto; padding: 10px;">
                         <asp:Label ID="lblSearch2" runat="server" Text="Search" Style="color: black; text-align: center; /*font-weight: bold; */ letter-spacing: 6px; font-size: 1.2em; margin: .67em"></asp:Label>
                         <asp:TextBox ID="SearchBox2" runat="server"></asp:TextBox>

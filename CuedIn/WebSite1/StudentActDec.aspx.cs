@@ -48,6 +48,9 @@ public partial class StudentActDec : System.Web.UI.Page
             da.Fill(dt);
             GridView1.DataSource = dt;
             GridView1.DataBind();
+
+            
+
             conn.Close();
 
         }
