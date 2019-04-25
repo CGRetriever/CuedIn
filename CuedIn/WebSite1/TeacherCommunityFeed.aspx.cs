@@ -68,7 +68,11 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
         //Get the profile pic
         var profilePic = authUser.ProfileImageUrlFullSize;
 
+        //Set the profile pic in the Card
+        profilePicture.ImageUrl = profilePic;
 
+        //Get twitter handle and set it to a label in a card
+        UserNameLabel.Text = "@" + authUser.UserIdentifier.ToString();
 
 
 
@@ -270,7 +274,32 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
 
 
     }
-   
+    protected void TweetButtonClick(object sender, CommandEventArgs e)
+    {
+        //Transfer the text in the textbox to the Modal Text box
+        Tweet.Text = TweetBox.Text;
+
+        if (Tweet.Text == "")
+        {
+            ValidatorLabel.Text = "Unable to Tweet! Tweet is empty.";
+        }
+        else
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "Pop", "openTweetVerification();", true);
+            ValidatorLabel.Text = "";
+        }
+
+
+    }
+
+
+    protected void SendTweet_Click(object sender, EventArgs e)
+    {
+        //The stuff in the modal text box is the stuff we are going to tweet
+        String yeet = Tweet.Text;
+        var firstTweet = Tweetinvi.Tweet.PublishTweet(yeet);
+        TweetBox.Text = "";
+    }
 
 
     public void Button_click(object sender, CommandEventArgs e)
