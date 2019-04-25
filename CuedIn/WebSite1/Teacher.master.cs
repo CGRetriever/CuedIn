@@ -9,7 +9,7 @@ public partial class Teacher : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["user"] == null || !Session["permission"].Equals("Teacher"))
+        //if (Session["user"] == null || !Session["permission"].Equals("Educator"))
         //{
         //    Response.Redirect("Login.aspx");
         //}

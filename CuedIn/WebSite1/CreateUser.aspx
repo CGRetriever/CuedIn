@@ -114,8 +114,8 @@
                     <div class="ddl">
                         <asp:DropDownList ID="role" runat="server"   border-radius="50px" Width="390px" Height="50px" BackColor="#36536f" BorderColor="Transparent" ForeColor="#efefef" Font-Names="Poppins-Regular"  Font-Size="Medium" > 
                         
-                            <asp:ListItem Text="Teacher"></asp:ListItem>
-                            <asp:ListItem Text="Counselor"></asp:ListItem>
+                            <asp:ListItem Text="Educator"></asp:ListItem>
+                            <asp:ListItem Text="Advisor"></asp:ListItem>
                             <asp:ListItem Text="Admin"></asp:ListItem>
                         </asp:DropDownList>
                     </div>

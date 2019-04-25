@@ -9,7 +9,7 @@ public partial class Counselor : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Session["user"] == null || !Session["permission"].Equals("Counselor"))
+        //if (Session["user"] == null || !Session["permission"].Equals("Advisor"))
         //{
         //    Response.Redirect("Login.aspx");
         //}
