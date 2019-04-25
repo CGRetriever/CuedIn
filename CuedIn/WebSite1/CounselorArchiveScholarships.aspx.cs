@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,9 +11,79 @@ using System.Web.UI.WebControls;
 public partial class CounselorArchiveScholarships : System.Web.UI.Page
 {
     public static String email;
-
+    private int schoolid = 12;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["schoolid"] != null)
+        {
+            schoolid = Convert.ToInt32(Session["schoolid"]);
+
+        }
+
+
+        if (SearchBox1 != null)
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+
+            SearchButton2_Click(send1, e1);
+
+        }
+
+        else
+        {
+            string query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+                " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
+                " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN" +
+                " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+                "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+                " Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+                "where school.SchoolEntityID = @schoolID and SchoolApproval.ApprovedFlag = 'N'";
+
+
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
+            da.SelectCommand.Parameters.AddWithValue("@schoolID", schoolid);
+            da.Fill(dt);
+            rejScholarshipGridview.DataSource = dt;
+            rejScholarshipGridview.DataBind();
+            conn.Close();
+
+        }
+
+        if (SearchBox2 != null)
+        {
+            object send1 = new object();
+            EventArgs e1 = new EventArgs();
+            SearchButton1_Click(send1, e1);
+        }
+        else
+        {
+
+            string query1 = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+                " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
+                " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN " +
+                "SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+                "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+                " Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID" +
+                " where school.SchoolEntityID = @schoolID and SchoolApproval.ApprovedFlag = 'Y'";
+
+            DataTable dt1 = new DataTable();
+            SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+            conn1.Open();
+            SqlDataAdapter da1 = new SqlDataAdapter(query1, conn1);
+            da1.SelectCommand.Parameters.AddWithValue("@schoolID", schoolid);
+            da1.Fill(dt1);
+            acceptScholarshipGridview.DataSource = dt1;
+            acceptScholarshipGridview.DataBind();
+            conn1.Close();
+        }
+
+
+
+
         rejScholarshipGridview.Columns[0].Visible = false;
         ((Label)Master.FindControl("lblMaster")).Text = "Archived Scholarships";
         ((Label)Master.FindControl("lblMaster")).Attributes.Add("Style", "color: #fff; text-align:center; text-transform: uppercase; letter-spacing: 6px; font-size: 2.0em; margin: .67em");
@@ -66,14 +138,14 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
-            lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
+            lblSOrganizationName.Text = reader.GetString(6);
+            lblSOrganizationDescription.Text = reader.GetString(7);
             Label3.Text = "Scholarship Name : " + reader.GetString(0);
-            lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
-            lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
-            lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+            lblScholarshipDescription.Text = reader.GetString(1);
+            lblScholarshipMin.Text = "$" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "$" + reader.GetSqlMoney(3);
+            lblScholarshipQuantity.Text = reader.GetInt32(4).ToString();
+            lblScholarshipDueDate.Text = reader.GetDateTime(5).ToString();
 
         }
 
@@ -258,14 +330,14 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
         while (reader.Read())
         {
             //set labels to db values
-            lblSOrganizationName.Text = "Organization Name: " + reader.GetString(6);
-            lblSOrganizationDescription.Text = "Organization Description: " + reader.GetString(7);
+            lblSOrganizationName.Text = reader.GetString(6);
+            lblSOrganizationDescription.Text = reader.GetString(7);
             Label3.Text = "Scholarship Name : " + reader.GetString(0);
-            lblScholarshipDescription.Text = "Scholarship Description: " + reader.GetString(1);
-            lblScholarshipMin.Text = "Scholarship Minimum: $" + reader.GetSqlMoney(2);
-            lblScholarshipMax.Text = "Scholarship Maximum: $" + reader.GetSqlMoney(3);
-            lblScholarshipQuantity.Text = "Scholarship Quantity: " + reader.GetInt32(4);
-            lblScholarshipDueDate.Text = "Scholarship Due Date: " + reader.GetDateTime(5);
+            lblScholarshipDescription.Text = reader.GetString(1);
+            lblScholarshipMin.Text = "$" + reader.GetSqlMoney(2);
+            lblScholarshipMax.Text = "$" + reader.GetSqlMoney(3);
+            lblScholarshipQuantity.Text = reader.GetInt32(4).ToString();
+            lblScholarshipDueDate.Text = reader.GetDateTime(5).ToString();
 
         }
 
@@ -387,33 +459,58 @@ public partial class CounselorArchiveScholarships : System.Web.UI.Page
     }
 
 
-    //protected void SearchButton1_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox1.Text;
+    protected void SearchButton1_Click(object sender, EventArgs e)
+    {
 
-    //    ScholarshipOpportunity.SelectParameters.Add("term", term);
+        String term = SearchBox1.Text;
 
-    //    ScholarshipOpportunity.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'N') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
-    //    ScholarshipOpportunity.DataBind();
-    //    rejScholarshipGridview.DataBind();
-
-    //    ScholarshipOpportunity.SelectParameters.Clear();
-    //}
-
-    //protected void SearchButton2_Click(object sender, EventArgs e)
-    //{
-    //    String term = SearchBox2.Text;
-
-    //    SqlDataSource1.SelectParameters.Add("term", term);
-
-    //    SqlDataSource1.SelectCommand = "SELECT Scholarship.ScholarshipID, Scholarship.ScholarshipName, Organization.OrganizationName, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax FROM Scholarship INNER JOIN Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID where(approved = 'Y') and((Scholarship.ScholarshipName like '%" + @term + "%' or Organization.OrganizationName like '%" + @term + "%') or (Scholarship.ScholarshipMin like '%" + term + "%') or (Scholarship.ScholarshipMax like '%" + term + "%'))";
-    //    SqlDataSource1.DataBind();
-    //    acceptScholarshipGridview.DataBind();
-
-    //    SqlDataSource1.SelectParameters.Clear();
+        string query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+               " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
+               " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN" +
+               " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+               "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+               " Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+               "where school.SchoolEntityID = @schoolID and SchoolApproval.ApprovedFlag = 'N' and ((scholarship.scholarshipname like '%" + @term + "%') or (organization.organizationname like" +
+               " '%" + @term + "%') or (scholarship.scholarshipdescription like '%" + @term + "%'))";
 
 
-    //}
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolID", schoolid);
+        da.Fill(dt);
+        rejScholarshipGridview.DataSource = dt;
+        rejScholarshipGridview.DataBind();
+        conn.Close();
+    }
+
+    protected void SearchButton2_Click(object sender, EventArgs e)
+    {
+        String term = SearchBox2.Text;
+
+        string query = "SELECT Scholarship.ScholarshipID,Scholarship.ScholarshipName, Scholarship.ScholarshipDescription, Scholarship.ScholarshipMin, Scholarship.ScholarshipMax, Organization.OrganizationName, Organization.OrganizationDescription, " +
+               " Organization.ExternalLink FROM OpportunityEntity INNER JOIN" +
+               " Scholarship ON OpportunityEntity.OpportunityEntityID = Scholarship.ScholarshipID INNER JOIN" +
+               " SchoolApproval ON OpportunityEntity.OpportunityEntityID = SchoolApproval.OpportunityEntityID INNER JOIN " +
+               "School ON SchoolApproval.SchoolEntityID = School.SchoolEntityID INNER JOIN" +
+               " Organization ON Scholarship.OrganizationID = Organization.OrganizationEntityID " +
+               "where school.SchoolEntityID = @schoolID and SchoolApproval.ApprovedFlag = 'Y' and ((scholarship.scholarshipname like '%" + @term + "%') or (organization.organizationname like" +
+               " '%" + @term + "%') or (scholarship.scholarshipdescription like '%" + @term + "%'))";
+
+
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString);
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter(query, conn);
+        da.SelectCommand.Parameters.AddWithValue("@schoolID", schoolid);
+        da.Fill(dt);
+        acceptScholarshipGridview.DataSource = dt;
+        acceptScholarshipGridview.DataBind();
+        conn.Close();
+
+
+    }
 
 
     protected void cbSelectAll_Checked(object sender, EventArgs e)
