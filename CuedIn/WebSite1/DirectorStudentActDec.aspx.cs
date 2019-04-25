@@ -119,7 +119,7 @@ public partial class DirectorStudentActDec : System.Web.UI.Page
         sql.Close();
 
 
-        Response.Redirect("~/StudentActDec.aspx");
+        Response.Redirect("~/DirectorStudentActDec.aspx");
     }
 
 
@@ -172,7 +172,7 @@ public partial class DirectorStudentActDec : System.Web.UI.Page
         rejectStudent.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/StudentActDec.aspx");
+        Response.Redirect("~/DirectorStudentActDec.aspx");
     }
 
     protected void moreInfoStudentLinkBtn_Click(object sender, CommandEventArgs e)

@@ -111,7 +111,7 @@ public partial class DirectorArchiveScholarships : System.Web.UI.Page
         approveScholarship.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/ArchiveScholarships.aspx");
+        Response.Redirect("~/DirectorArchiveScholarships.aspx");
     }
     //Gridview Rejected View More Button
     protected void btnRejScholarshipViewMore_Click(object sender, CommandEventArgs e)
@@ -176,7 +176,7 @@ public partial class DirectorArchiveScholarships : System.Web.UI.Page
         //UPDATE WITH QUERIES
         string email = "abc@abc.com";
         ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
-        Response.Redirect("~/ArchiveScholarships.aspx");
+        Response.Redirect("~/DirectorArchiveScholarships.aspx");
     }
     //Gridview Approve Button in Rejected GridView
     protected void btnScholarshipApprove_Click(object sender, CommandEventArgs e)
@@ -304,7 +304,7 @@ public partial class DirectorArchiveScholarships : System.Web.UI.Page
         rejectScholarship.ExecuteNonQuery();
         sql.Close();
 
-        Response.Redirect("~/ArchiveScholarships.aspx");
+        Response.Redirect("~/DirectorArchiveScholarships.aspx");
     }
 
     //Gridview Accepted View More Button
