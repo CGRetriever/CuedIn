@@ -70,8 +70,6 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
 
 
 
-
-
         //initialize arrays of objects!!!
         List<UserEntity> userEntityList = new List<UserEntity>();
         List<School> schoolList = new List<School>();
@@ -270,7 +268,7 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
 
 
     }
-   
+
 
 
     public void Button_click(object sender, CommandEventArgs e)

@@ -1,11 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Teacher.master" AutoEventWireup="true" CodeFile="TeacherCommunityFeed.aspx.cs" Inherits="TeacherCommunityFeed" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server" width="80%">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    
-
-
-<!--- Breadcrumb --->
+    <!--- Breadcrumb --->
 
  
     <ol class="breadcrumb arr-bread">
@@ -24,7 +21,7 @@
      <div class ="col-sm-4">
          <button onclick="topFunction()" id="myBtn"><i class="fas fa-angle-double-up"></i></button>
        
-     
+  
           <div class ="card text-center" >
                 <div class="card-header">
                     <asp:Label ID="TweetStream" runat="server" Text="Our Tweets" Font-Bold="True"></asp:Label>
@@ -72,10 +69,6 @@
 
 
 
-    
-
-
-
 
             <script type='text/javascript'>
                 function openTweetVerification() {
@@ -98,10 +91,6 @@
             }
 
             </script>
-
-
-    
-
 
 
 </asp:Content>
