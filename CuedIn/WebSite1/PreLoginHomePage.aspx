@@ -29,14 +29,9 @@
 <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
 
     <div class="navbar-collapse collapse w-100 order-4 order-md-0 collapsenav">
-            <div class ="links" style="padding-left:200px; padding-bottom:40px;">
-        <br />
-        <br />
-        <p><a id="phoneDownBtn" class="ct-btn-scroll ct-js-btn-scroll phone" href="#phone"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
-        <p><a id="smallDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll smallDesktop" href="#smallDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
-        <p><a id="bigDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll bigDesktop" href="#bigDesktop"><img alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
-        </div>
+            
         <ul class="navbar-nav mr-auto">
+
             <%--<li class="nav-item">
                 <a class="nav-link text-center" id="about" href="#">About</a>
             </li>--%>
@@ -54,11 +49,20 @@
            
         
         </ul>
+
     </div>
+
     <br />
     <br />
 
     <div class="w-100 d-flex flex-nowrap">
+        <div class ="links" style="padding-top:350px; padding-right:50px; position:fixed;">
+        <br />
+        <br />
+        <p><a id="phoneDownBtn" class="ct-btn-scroll ct-js-btn-scroll phone" href="#phone"><img style="position:fixed;" alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <p><a id="smallDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll smallDesktop" href="#smallDesktop"><img style="position:fixed;"  alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        <p><a id="bigDesktopDownBtn" class="ct-btn-scroll ct-js-btn-scroll bigDesktop" href="#bigDesktop"><img style="position:fixed;"  alt="Arrow Down Icon" src="https://www.solodev.com/assets/anchor/arrow-down.png"/></a></p>
+        </div>
         <div class="w-100 d-md-none">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapsenav">
