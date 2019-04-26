@@ -21,7 +21,7 @@ public class Organization : UserEntity
 
     public Organization(int organizationEntityID, String organizationName, String organizationDescription, String streetAddress,
         String country, String city, String state, int zipcode, String image, String externalLink, String userName,
-        String emailAddress, String twitterHandle, String twitterLink, String entityType) : base(organizationEntityID, userName, emailAddress, twitterHandle, twitterHandle, entityType)
+        String emailAddress, String twitterHandle, String twitterLink, String entityType) : base(organizationEntityID, userName, emailAddress, twitterHandle, twitterLink, entityType)
     {
         this.organizationEntityID = organizationEntityID;
         this.organizationName = organizationName;

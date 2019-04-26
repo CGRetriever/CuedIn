@@ -18,8 +18,8 @@ public partial class CommunityFeed : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //this is for testing purposes
-        //Session["schoolID"] = 12;
-        //Session["userCounty"] = "Harrisonburg City Public Schools";
+        Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
         //set up county variables. This is for community feed, and contacts.
         String countyFeed = "";
         String countyTwitterHandle = "";
@@ -120,7 +120,7 @@ public partial class CommunityFeed : System.Web.UI.Page
         populateUsers.CommandText = "SELECT  School.SchoolEntityID, School.SchoolName, School.StreetAddress, School.Country, School.City, School.State, " +
             "School.SchoolCounty, School.ZipCode, UserEntity.UserName, UserEntity.EmailAddress," +
             " UserEntity.TwitterHandle, UserEntity.TwitterLink, UserEntity.EntityType FROM   UserEntity INNER JOIN " +
-            " School ON UserEntity.UserEntityID = School.SchoolEntityIDWHERE(UserEntity.TwitterHandle IS NOT NULL)"
+            " School ON UserEntity.UserEntityID = School.SchoolEntityID WHERE(UserEntity.TwitterHandle IS NOT NULL)";
 
         reader = populateUsers.ExecuteReader();
 
@@ -234,8 +234,8 @@ public partial class CommunityFeed : System.Web.UI.Page
                 if (userEntityList[i].getUserEntityID() == schoolList[j].getSchoolEntityID())
                 {
                   
-                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(schoolList[i].getTwitterHandle());
-                    schoolList[i].setImage(schoolUser.ProfileImageUrl);
+                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(schoolList[j].getTwitterHandle());
+                    schoolList[j].setImage(schoolUser.ProfileImageUrl);
 
                     //this particular component is a school we are going to make the button display the school name
                     //then we are going to add it into a row and cell
@@ -252,7 +252,7 @@ public partial class CommunityFeed : System.Web.UI.Page
                     ContactsTable.Rows.Add(row);
 
                     twitterContactLink.Command += new CommandEventHandler(this.Button_click);
-                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
+                    twitterContactLink.CommandArgument = schoolList[j].getTwitterLink();
                     break;
 
                 }
@@ -264,8 +264,7 @@ public partial class CommunityFeed : System.Web.UI.Page
                 //after set the image to the twitter image url
                 if (userEntityList[i].getUserEntityID() == organizationList[j].GetOrganizationEntityID())
                 {
-                    userEntityList[i].setOrganization(organizationList[j]);
-                    var organizationUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
+                    var organizationUser = Tweetinvi.User.GetUserFromScreenName(organizationList[j].getTwitterHandle());
                     organizationList[j].setImage(organizationUser.ProfileImageUrl);
 
                     //this particular component is a school we are going to make the button display the school name
