@@ -241,9 +241,9 @@ public partial class CommunityFeed : System.Web.UI.Page
                     //then we are going to add it into a row and cell
                     //then add a commandeventhandler dynamically
 
-                    twitterContactLink.Text = schoolList[i].getSchoolName() + "\n";
+                    twitterContactLink.Text = schoolList[j].getSchoolName() + "\n";
                     twitterContactLink.ID = "TwitterContactLink" + i;
-                    twitterAvi.ImageUrl = schoolList[i].getImage();
+                    twitterAvi.ImageUrl = schoolList[j].getImage();
                     cell.Controls.Add(twitterContactLink);
                     
                     cell2.Controls.Add(twitterAvi);
@@ -266,16 +266,16 @@ public partial class CommunityFeed : System.Web.UI.Page
                 {
                     userEntityList[i].setOrganization(organizationList[j]);
                     var organizationUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
-                    userEntityList[i].getOrganization().setImage(organizationUser.ProfileImageUrl);
+                    organizationList[j].setImage(organizationUser.ProfileImageUrl);
 
                     //this particular component is a school we are going to make the button display the school name
                     //then we are going to add it into a row and cell
                     //then add a commandeventhandler dynamically
 
-                    twitterContactLink.Text = organizationList[i].getOrganizationName() + "\n";
+                    twitterContactLink.Text = organizationList[j].getOrganizationName() + "\n";
                     twitterContactLink.ID = "TwitterContactLink" + i;
                     cell.Controls.Add(twitterContactLink);
-                    twitterAvi.ImageUrl = organizationList[i].getOrganization().GetImage();
+                    twitterAvi.ImageUrl = organizationList[j].GetImage();
                     cell.Controls.Add(twitterContactLink);
                     cell2.Controls.Add(twitterAvi);
                     row.Cells.Add(cell2);
@@ -286,7 +286,7 @@ public partial class CommunityFeed : System.Web.UI.Page
 
 
                     twitterContactLink.Command += new CommandEventHandler(this.Button_click);
-                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
+                    twitterContactLink.CommandArgument = organizationList[j].getTwitterLink();
                     break;
                 }
 
