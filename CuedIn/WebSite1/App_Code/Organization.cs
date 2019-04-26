@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for Organization
 /// </summary>
-public class Organization
+public class Organization : UserEntity
 {
     private int organizationEntityID;
     private String organizationName;
@@ -20,7 +20,8 @@ public class Organization
     private String externalLink;
 
     public Organization(int organizationEntityID, String organizationName, String organizationDescription, String streetAddress,
-        String country, String city, String state, int zipcode, String image, String externalLink)
+        String country, String city, String state, int zipcode, String image, String externalLink, String userName,
+        String emailAddress, String twitterHandle, String twitterLink, String entityType) : base(organizationEntityID, userName, emailAddress, twitterHandle, twitterHandle, entityType)
     {
         this.organizationEntityID = organizationEntityID;
         this.organizationName = organizationName;

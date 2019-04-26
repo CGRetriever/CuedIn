@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for School
 /// </summary>
-public class School
+public class School: UserEntity
 {
     private int schoolEntityID;
     private String schoolName;
@@ -19,7 +19,11 @@ public class School
     private String image;
 
     public School(int schoolEntityID, String schoolName, String streetAddress,
-        String country, String city, String state, String schoolCounty, int zipCode)
+        String country, String city, String state, String schoolCounty, int zipCode, String userName, 
+        String emailAddress, String twitterHandle, String twitterLink, String entityType) 
+
+        //super constructor
+        : base( schoolEntityID, userName, emailAddress, twitterHandle, twitterLink, entityType)
     {
         setSchoolEntityID(schoolEntityID);
         setSchoolName(schoolName);

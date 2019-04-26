@@ -81,6 +81,8 @@ public partial class CommunityFeed : System.Web.UI.Page
         List<School> schoolList = new List<School>();
         List<Organization> organizationList = new List<Organization>();
 
+
+
         //Populating these arrays with some fully loaded info for flexibility and future usage
         sc.Open();
         System.Data.SqlClient.SqlCommand populateUsers = new System.Data.SqlClient.SqlCommand();
@@ -90,6 +92,9 @@ public partial class CommunityFeed : System.Web.UI.Page
         populateUsers.CommandText = "Select * from UserEntity where TwitterHandle is not null and EntityType != 'STUD'";
 
         System.Data.SqlClient.SqlDataReader reader = populateUsers.ExecuteReader();
+
+
+
 
         //populate our array with fully loaded UserEntityObjects
         while (reader.Read()){
@@ -112,8 +117,10 @@ public partial class CommunityFeed : System.Web.UI.Page
 
         //Schools populate
         sc.Open();
-        populateUsers.CommandText = "SELECT SchoolEntityID,SchoolName,StreetAddress,Country,City,State,SchoolCounty,ZipCode FROM UserEntity " +
-            "INNER JOIN School ON UserEntity.UserEntityID = School.SchoolEntityID where TwitterHandle is not null";
+        populateUsers.CommandText = "SELECT  School.SchoolEntityID, School.SchoolName, School.StreetAddress, School.Country, School.City, School.State, " +
+            "School.SchoolCounty, School.ZipCode, UserEntity.UserName, UserEntity.EmailAddress," +
+            " UserEntity.TwitterHandle, UserEntity.TwitterLink, UserEntity.EntityType FROM   UserEntity INNER JOIN " +
+            " School ON UserEntity.UserEntityID = School.SchoolEntityIDWHERE(UserEntity.TwitterHandle IS NOT NULL)"
 
         reader = populateUsers.ExecuteReader();
 
@@ -128,8 +135,17 @@ public partial class CommunityFeed : System.Web.UI.Page
             String schoolCounty = reader.GetString(6);
             int zipCode = reader.GetInt32(7);
 
+            String userName = reader.GetString(8);
+            String emailAddress = reader.GetString(9);
+            String twitterHandle = reader.GetString(10);
+            String twitterLink = reader.GetString(11);
+            String entityType = reader.GetString(12);
+
+            //userEntityID 
+
             School schoolObj = new School(schoolEntityID, schoolName, streetAddress,
-               country, city, state, schoolCounty, zipCode);
+               country, city, state, schoolCounty, zipCode, userName, emailAddress, 
+               twitterHandle, twitterLink, entityType);
 
             schoolList.Add(schoolObj);
         }
@@ -139,8 +155,13 @@ public partial class CommunityFeed : System.Web.UI.Page
         //Organization populate
         sc.Open();
 
-        populateUsers.CommandText = "SELECT  OrganizationEntityID,OrganizationName,OrganizationDescription,StreetAddress,Country,City,State,ZipCode,Image,ExternalLink FROM " +
-            "UserEntity INNER JOIN Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID where TwitterHandle is not null";
+        populateUsers.CommandText = "SELECT Organization.OrganizationEntityID, Organization.OrganizationName, Organization.OrganizationDescription, " +
+            "Organization.StreetAddress, Organization.Country, Organization.City, Organization.State, " +
+            " Organization.ZipCode, Organization.Image, Organization.ExternalLink, UserEntity.UserName, UserEntity.EmailAddress," +
+            " UserEntity.TwitterHandle, UserEntity.TwitterLink, UserEntity.EntityType " +
+            "FROM  UserEntity INNER JOIN " + 
+            "Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID " +
+            "WHERE(UserEntity.TwitterHandle IS NOT NULL)";
 
         reader = populateUsers.ExecuteReader();
 
@@ -157,8 +178,14 @@ public partial class CommunityFeed : System.Web.UI.Page
             String image = reader.GetString(8);
             String externalLink = reader.GetString(9);
 
+            String userName = reader.GetString(10);
+            String emailAddress = reader.GetString(11);
+            String twitterHandle = reader.GetString(12);
+            String twitterLink = reader.GetString(13);
+            String entityType = reader.GetString(14);
+
             Organization organizationObj = new Organization(organizationEntityID, organizationName, organizationDescription, streetAddress,
-                country, city, state, zipCode, image, externalLink);
+                country, city, state, zipCode, image, externalLink, userName, emailAddress, twitterHandle, twitterLink, entityType);
 
             organizationList.Add(organizationObj);
 
@@ -206,17 +233,17 @@ public partial class CommunityFeed : System.Web.UI.Page
                 //after set the image to the twitter image url
                 if (userEntityList[i].getUserEntityID() == schoolList[j].getSchoolEntityID())
                 {
-                    userEntityList[i].setSchool(schoolList[j]);
-                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
-                    userEntityList[i].getSchool().setImage(schoolUser.ProfileImageUrl);
+                  
+                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(schoolList[i].getTwitterHandle());
+                    schoolList[i].setImage(schoolUser.ProfileImageUrl);
 
                     //this particular component is a school we are going to make the button display the school name
                     //then we are going to add it into a row and cell
                     //then add a commandeventhandler dynamically
 
-                    twitterContactLink.Text = userEntityList[i].getSchool().getSchoolName() + "\n";
+                    twitterContactLink.Text = schoolList[i].getSchoolName() + "\n";
                     twitterContactLink.ID = "TwitterContactLink" + i;
-                    twitterAvi.ImageUrl = userEntityList[i].getSchool().getImage();
+                    twitterAvi.ImageUrl = schoolList[i].getImage();
                     cell.Controls.Add(twitterContactLink);
                     
                     cell2.Controls.Add(twitterAvi);
@@ -245,10 +272,10 @@ public partial class CommunityFeed : System.Web.UI.Page
                     //then we are going to add it into a row and cell
                     //then add a commandeventhandler dynamically
 
-                    twitterContactLink.Text = userEntityList[i].getOrganization().getOrganizationName() + "\n";
+                    twitterContactLink.Text = organizationList[i].getOrganizationName() + "\n";
                     twitterContactLink.ID = "TwitterContactLink" + i;
                     cell.Controls.Add(twitterContactLink);
-                    twitterAvi.ImageUrl = userEntityList[i].getOrganization().GetImage();
+                    twitterAvi.ImageUrl = organizationList[i].getOrganization().GetImage();
                     cell.Controls.Add(twitterContactLink);
                     cell2.Controls.Add(twitterAvi);
                     row.Cells.Add(cell2);
