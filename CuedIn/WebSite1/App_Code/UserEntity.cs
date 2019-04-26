@@ -16,7 +16,15 @@ public class UserEntity
     private String twitterLink;
     private Organization organization;
     private School school;
+
+
+    public UserEntity()
+    {
+
     
+
+    }
+
     public UserEntity(String userName, String emailAddress, String entityType)
     {
 

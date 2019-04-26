@@ -91,14 +91,14 @@ public partial class CreateUser : System.Web.UI.Page
                         lastName.Value.Trim();
 
                         //Create user entity
-                        UserEntity user = new UserEntity(username.Value.Trim(), email.Value.Trim(), role.SelectedItem.Value);
+                       // UserEntity user = new UserEntity(username.Value.Trim(), email.Value.Trim(), role.SelectedItem.Value);
                         SchoolEmployee employee = new SchoolEmployee(firstName.Value.Trim(), lastName.Value.Trim(), middleName.Value.Trim(),
-                            address.Value.Trim(), "USA", city.Value.Trim(), "VA", zipcode.Value, user.getEntityType(),
-                            Convert.ToInt32(DropDownList2.SelectedItem.Value));
+                            address.Value.Trim(), "USA", city.Value.Trim(), "VA", zipcode.Value, role.SelectedItem.Value,
+                            Convert.ToInt32(DropDownList2.SelectedItem.Value), username.Value.Trim(), email.Value.Trim());
 
 
-                        insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(user.getUserName()));
-                        insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(user.getEmailAddress()));
+                        insert.Parameters.AddWithValue("@username", HttpUtility.HtmlEncode(employee.getUserName()));
+                        insert.Parameters.AddWithValue("@emailaddress", HttpUtility.HtmlEncode(employee.getEmailAddress()));
                         insert.Parameters.AddWithValue("@entitytype", HttpUtility.HtmlEncode("SCHL"));
 
 
