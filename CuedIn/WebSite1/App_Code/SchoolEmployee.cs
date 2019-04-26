@@ -7,8 +7,10 @@ using System.Web;
 /// <summary>
 /// Summary description for SchoolEmployee
 /// </summary>
-public class SchoolEmployee
+
+public class SchoolEmployee : UserEntity
 {
+
     int schoolEmployeeEntityID;
     private String firstName;
     private String lastName;
@@ -18,14 +20,21 @@ public class SchoolEmployee
     private String city;
     private String state;
     private String zipcode;
+    private String userName;
+    private String email; 
     private String schoolEmployeeEntityType;
     private int schoolEntityID;
     private int userEntityID;
 
+
+
     public SchoolEmployee(String firstName, String lastName, String middleName,
         String streetAddress, String country, String city, String state, String zipcode, String schoolEmployeeEntityType,
-        int schoolEntityID)
+        int schoolEntityID, String userName, String email) : base(userName, email, schoolEmployeeEntityType)
     {
+        base.setUserName(userName);
+        base.setEmailAddress(email);
+        base.setEntityType(schoolEmployeeEntityType);
         setFirstName(firstName);
         setLastName(lastName);
         setMiddleName(middleName);
@@ -90,6 +99,15 @@ public class SchoolEmployee
         this.userEntityID = userEntityID;
     }
 
+    public void setUsername(String username)
+    {
+        this.userName = username;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
     public String getFirstName()
     {
@@ -146,4 +164,12 @@ public class SchoolEmployee
         return this.schoolEmployeeEntityID;
     }
 
+    public String getUsername()
+    {
+        return this.userName;
+    }
+    public String getEmail()
+    {
+        return this.email;
+    }
 }
