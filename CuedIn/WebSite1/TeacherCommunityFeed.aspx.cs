@@ -18,8 +18,8 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //this is for testing purposes
-        //Session["schoolID"] = 12;
-        //Session["userCounty"] = "Harrisonburg City Public Schools";
+        Session["schoolID"] = 12;
+        Session["userCounty"] = "Harrisonburg City Public Schools";
         //set up county variables. This is for community feed, and contacts.
         String countyFeed = "";
         String countyTwitterHandle = "";
@@ -62,11 +62,6 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
         //Set up the Auth for Twitter
         Auth.SetUserCredentials(ConsumerAPIKey, ConsumerSecretKey, accessToken, accessSecretToken);
 
-        //Make a new Twitter user obj based on our credentials
-        var authUser = Tweetinvi.User.GetAuthenticatedUser();
-
-        //Get the profile pic
-        var profilePic = authUser.ProfileImageUrlFullSize;
 
 
 
@@ -74,6 +69,8 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
         List<UserEntity> userEntityList = new List<UserEntity>();
         List<School> schoolList = new List<School>();
         List<Organization> organizationList = new List<Organization>();
+
+
 
         //Populating these arrays with some fully loaded info for flexibility and future usage
         sc.Open();
@@ -84,6 +81,9 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
         populateUsers.CommandText = "Select * from UserEntity where TwitterHandle is not null and EntityType != 'STUD'";
 
         System.Data.SqlClient.SqlDataReader reader = populateUsers.ExecuteReader();
+
+
+
 
         //populate our array with fully loaded UserEntityObjects
         while (reader.Read())
@@ -107,8 +107,10 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
 
         //Schools populate
         sc.Open();
-        populateUsers.CommandText = "SELECT SchoolEntityID,SchoolName,StreetAddress,Country,City,State,SchoolCounty,ZipCode FROM UserEntity " +
-            "INNER JOIN School ON UserEntity.UserEntityID = School.SchoolEntityID where TwitterHandle is not null";
+        populateUsers.CommandText = "SELECT  School.SchoolEntityID, School.SchoolName, School.StreetAddress, School.Country, School.City, School.State, " +
+            "School.SchoolCounty, School.ZipCode, UserEntity.UserName, UserEntity.EmailAddress," +
+            " UserEntity.TwitterHandle, UserEntity.TwitterLink, UserEntity.EntityType FROM   UserEntity INNER JOIN " +
+            " School ON UserEntity.UserEntityID = School.SchoolEntityID WHERE(UserEntity.TwitterHandle IS NOT NULL)";
 
         reader = populateUsers.ExecuteReader();
 
@@ -123,8 +125,17 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
             String schoolCounty = reader.GetString(6);
             int zipCode = reader.GetInt32(7);
 
+            String userName = reader.GetString(8);
+            String emailAddress = reader.GetString(9);
+            String twitterHandle = reader.GetString(10);
+            String twitterLink = reader.GetString(11);
+            String entityType = reader.GetString(12);
+
+            //userEntityID 
+
             School schoolObj = new School(schoolEntityID, schoolName, streetAddress,
-               country, city, state, schoolCounty, zipCode);
+               country, city, state, schoolCounty, zipCode, userName, emailAddress,
+               twitterHandle, twitterLink, entityType);
 
             schoolList.Add(schoolObj);
         }
@@ -134,8 +145,13 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
         //Organization populate
         sc.Open();
 
-        populateUsers.CommandText = "SELECT  OrganizationEntityID,OrganizationName,OrganizationDescription,StreetAddress,Country,City,State,ZipCode,Image,ExternalLink FROM " +
-            "UserEntity INNER JOIN Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID where TwitterHandle is not null";
+        populateUsers.CommandText = "SELECT Organization.OrganizationEntityID, Organization.OrganizationName, Organization.OrganizationDescription, " +
+            "Organization.StreetAddress, Organization.Country, Organization.City, Organization.State, " +
+            " Organization.ZipCode, Organization.Image, Organization.ExternalLink, UserEntity.UserName, UserEntity.EmailAddress," +
+            " UserEntity.TwitterHandle, UserEntity.TwitterLink, UserEntity.EntityType " +
+            "FROM  UserEntity INNER JOIN " +
+            "Organization ON UserEntity.UserEntityID = Organization.OrganizationEntityID " +
+            "WHERE(UserEntity.TwitterHandle IS NOT NULL)";
 
         reader = populateUsers.ExecuteReader();
 
@@ -152,8 +168,14 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
             String image = reader.GetString(8);
             String externalLink = reader.GetString(9);
 
+            String userName = reader.GetString(10);
+            String emailAddress = reader.GetString(11);
+            String twitterHandle = reader.GetString(12);
+            String twitterLink = reader.GetString(13);
+            String entityType = reader.GetString(14);
+
             Organization organizationObj = new Organization(organizationEntityID, organizationName, organizationDescription, streetAddress,
-                country, city, state, zipCode, image, externalLink);
+                country, city, state, zipCode, image, externalLink, userName, emailAddress, twitterHandle, twitterLink, entityType);
 
             organizationList.Add(organizationObj);
 
@@ -201,17 +223,17 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
                 //after set the image to the twitter image url
                 if (userEntityList[i].getUserEntityID() == schoolList[j].getSchoolEntityID())
                 {
-                    userEntityList[i].setSchool(schoolList[j]);
-                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
-                    userEntityList[i].getSchool().setImage(schoolUser.ProfileImageUrl);
+
+                    var schoolUser = Tweetinvi.User.GetUserFromScreenName(schoolList[j].getTwitterHandle());
+                    schoolList[j].setImage(schoolUser.ProfileImageUrl);
 
                     //this particular component is a school we are going to make the button display the school name
                     //then we are going to add it into a row and cell
                     //then add a commandeventhandler dynamically
 
-                    twitterContactLink.Text = userEntityList[i].getSchool().getSchoolName() + "\n";
+                    twitterContactLink.Text = schoolList[j].getSchoolName() + "\n";
                     twitterContactLink.ID = "TwitterContactLink" + i;
-                    twitterAvi.ImageUrl = userEntityList[i].getSchool().getImage();
+                    twitterAvi.ImageUrl = schoolList[j].getImage();
                     cell.Controls.Add(twitterContactLink);
 
                     cell2.Controls.Add(twitterAvi);
@@ -220,7 +242,7 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
                     ContactsTable.Rows.Add(row);
 
                     twitterContactLink.Command += new CommandEventHandler(this.Button_click);
-                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
+                    twitterContactLink.CommandArgument = schoolList[j].getTwitterLink();
                     break;
 
                 }
@@ -232,18 +254,17 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
                 //after set the image to the twitter image url
                 if (userEntityList[i].getUserEntityID() == organizationList[j].GetOrganizationEntityID())
                 {
-                    userEntityList[i].setOrganization(organizationList[j]);
-                    var organizationUser = Tweetinvi.User.GetUserFromScreenName(userEntityList[i].getTwitterHandle());
-                    userEntityList[i].getOrganization().setImage(organizationUser.ProfileImageUrl);
+                    var organizationUser = Tweetinvi.User.GetUserFromScreenName(organizationList[j].getTwitterHandle());
+                    organizationList[j].setImage(organizationUser.ProfileImageUrl);
 
                     //this particular component is a school we are going to make the button display the school name
                     //then we are going to add it into a row and cell
                     //then add a commandeventhandler dynamically
 
-                    twitterContactLink.Text = userEntityList[i].getOrganization().getOrganizationName() + "\n";
+                    twitterContactLink.Text = organizationList[j].getOrganizationName() + "\n";
                     twitterContactLink.ID = "TwitterContactLink" + i;
                     cell.Controls.Add(twitterContactLink);
-                    twitterAvi.ImageUrl = userEntityList[i].getOrganization().GetImage();
+                    twitterAvi.ImageUrl = organizationList[j].GetImage();
                     cell.Controls.Add(twitterContactLink);
                     cell2.Controls.Add(twitterAvi);
                     row.Cells.Add(cell2);
@@ -254,7 +275,7 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
 
 
                     twitterContactLink.Command += new CommandEventHandler(this.Button_click);
-                    twitterContactLink.CommandArgument = userEntityList[i].getTwitterLink();
+                    twitterContactLink.CommandArgument = organizationList[j].getTwitterLink();
                     break;
                 }
 
@@ -268,8 +289,7 @@ public partial class TeacherCommunityFeed : System.Web.UI.Page
 
 
     }
-
-
+  
 
     public void Button_click(object sender, CommandEventArgs e)
     {
