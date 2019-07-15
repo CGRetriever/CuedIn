@@ -9,18 +9,7 @@ public partial class SchoolMaster : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["user"] == null || !Session["permission"].Equals("Admin"))
-        {
-            Response.Redirect("Login.aspx");
-        }
-
-        else if (!Session.IsNewSession && Request.UrlReferrer == null)
-        {
-            Response.Redirect("Login.aspx");
-        }
-
-        //Session["schoolID"] = 12;
-        //Session["userCounty"] = "Harrisonburg City Public Schools";
+        
 
     }
 
